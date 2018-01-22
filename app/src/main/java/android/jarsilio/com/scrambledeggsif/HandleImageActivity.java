@@ -3,6 +3,7 @@ package android.jarsilio.com.scrambledeggsif;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,13 +25,18 @@ public class HandleImageActivity extends AppCompatActivity {
 
         if (Intent.ACTION_SEND.equals(action) && type != null) {
             if (type.startsWith("image/")) {
-                int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-                if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
-                    // TODO after the check is done, the file won't be shared anymore. Tell the user s/he'll need to re-share the image
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+                    int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+                    if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                        Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+                        // TODO after the check is done, the file won't be shared anymore. Tell the user s/he'll need to re-share the image
+                    } else {
+                        Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...    ");
+                        handleSendImage(intent);
+                    }
                 } else {
-                    Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...    ");
+                    Log.d(TAG, "READ_EXTERNAL_STORAGE not needed due to old Android version. Handling sent image...    ");
                     handleSendImage(intent);
                 }
             }

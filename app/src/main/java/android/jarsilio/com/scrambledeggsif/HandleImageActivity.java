@@ -112,6 +112,7 @@ public class HandleImageActivity extends AppCompatActivity {
             }
             removeExifData(scrambledEggsifImage.toString());
             shareImage(scrambledEggsifImage);
+            finish();
         }
     }
 

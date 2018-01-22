@@ -7,8 +7,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class HandleImageActivity extends AppCompatActivity {
+    private static final String TAG = "HandleImageActivity";
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000;
 
     @Override
@@ -24,9 +26,11 @@ public class HandleImageActivity extends AppCompatActivity {
             if (type.startsWith("image/")) {
                 int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
                 if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
                     // TODO after the check is done, the file won't be shared anymore. Tell the user s/he'll need to re-share the image
                 } else {
+                    Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...    ");
                     handleSendImage(intent);
                 }
             }

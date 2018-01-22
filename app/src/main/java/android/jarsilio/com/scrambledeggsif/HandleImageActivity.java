@@ -12,6 +12,7 @@ import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -100,7 +101,8 @@ public class HandleImageActivity extends AppCompatActivity {
             String path = getRealPathFromURI(imageUri);
             Log.d(TAG, "Image path: " + path);
             File originalImage = new File(path);
-            File scrambledEggsifImage = new File(String.format("%s/IMG_EGGSIF_%s", getApplicationContext().getCacheDir(), new Random().nextLong()));
+            new File(getApplicationContext().getCacheDir() + "/images").mkdir();
+            File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s", getApplicationContext().getCacheDir(), Math.abs(new Random().nextLong())));
             try {
                 Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
                 copy(originalImage, scrambledEggsifImage);
@@ -109,6 +111,20 @@ public class HandleImageActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             removeExifData(scrambledEggsifImage.toString());
+            shareImage(scrambledEggsifImage);
+        }
+    }
+
+    private void shareImage(File image) {
+        Uri contentUri = FileProvider.getUriForFile(getApplicationContext(), "com.jarsilio.android.scrambledeggsif.fileprovider", image);
+
+        if (contentUri != null) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
+            shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         }
     }
 

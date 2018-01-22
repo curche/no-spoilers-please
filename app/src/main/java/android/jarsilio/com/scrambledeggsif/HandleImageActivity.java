@@ -1,14 +1,31 @@
 package android.jarsilio.com.scrambledeggsif;
 
 import android.Manifest;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+
+import android.database.Cursor;
+import android.media.ExifInterface;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.nio.charset.Charset;
+import java.util.Random;
 
 public class HandleImageActivity extends AppCompatActivity {
     private static final String TAG = "HandleImageActivity";
@@ -59,6 +76,79 @@ public class HandleImageActivity extends AppCompatActivity {
         }
     }
 
+    public static void copy(File src, File dst) throws IOException {
+        InputStream in = new FileInputStream(src);
+        try {
+            OutputStream out = new FileOutputStream(dst);
+            try {
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+            } finally {
+                out.close();
+            }
+        } finally {
+            in.close();
+        }
+    }
+
     private void handleSendImage(Intent intent) {
+        Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imageUri != null) {
+            String path = getRealPathFromURI(imageUri);
+            Log.d(TAG, "Image path: " + path);
+            File originalImage = new File(path);
+            File scrambledEggsifImage = new File(String.format("%s/IMG_EGGSIF_%s", getApplicationContext().getCacheDir(), new Random().nextLong()));
+            try {
+                Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
+                copy(originalImage, scrambledEggsifImage);
+            } catch (IOException e) {
+                Log.e(TAG, "Error copying file to cache dir");
+                e.printStackTrace();
+            }
+            removeExifData(scrambledEggsifImage.toString());
+        }
+    }
+
+    private void removeExifData(String image) {
+        try {
+            ExifInterface exifInterface = new ExifInterface(image);
+            Field[] fields = ExifInterface.class.getDeclaredFields();
+            // Get all fields that the concrete Android-Java implementation have and delete them
+            for (Field field : fields) {
+                if (Modifier.isPublic(field.getModifiers()) &&
+                        Modifier.isStatic(field.getModifiers()) &&
+                        Modifier.isFinal(field.getModifiers())) {
+
+                    if (field.getType() == String.class) {
+                        String attribute = (String) field.get(String.class);
+                        Log.d(TAG, String.format("%s (%s) old value: %s", field.getName(), attribute, exifInterface.getAttribute(attribute)));
+                        exifInterface.setAttribute(attribute, null);
+                        Log.d(TAG, String.format("%s (%s) new value: %s", field.getName(), attribute, exifInterface.getAttribute(attribute)));
+                    }
+                }
+            }
+            exifInterface.saveAttributes();
+        } catch (IOException e) {
+            Log.e(TAG, "Error reading Exif data from image");
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            Log.e(TAG, "Error setting Exif data for new temp image");
+            e.printStackTrace();
+        }
+
+    }
+
+    private String getRealPathFromURI(Uri contentUri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(getApplicationContext(), contentUri, projection, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(columnIndex);
+        cursor.close();
+        return result;
     }
 }

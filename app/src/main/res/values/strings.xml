@@ -74,4 +74,11 @@
     <string name="pref_title_vibrate">Vibrate</string>
 
     <string name="share_via">Share image with scrambled Exif via</string>
+    <string name="permission_request">Request permission</string>
+    <string name="permission_granted">Permission granted</string>
+    <string name="permissions_already_granted">Permissions already granted</string>
+    <string name="permission_sdcard_text">Scrambled Exif needs to be able to read your device\'s
+        files in order to be able to remove the Exif from the images you share with it.\n\n
+        Please tap on the button below to grant access to files.
+    </string>
 </resources>

@@ -99,10 +99,11 @@ public class HandleImageActivity extends AppCompatActivity {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
             String path = getRealPathFromURI(imageUri);
+            String extension = path.substring(path.lastIndexOf('.'));
             Log.d(TAG, "Image path: " + path);
             File originalImage = new File(path);
             new File(getApplicationContext().getCacheDir() + "/images").mkdir();
-            File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s", getApplicationContext().getCacheDir(), Math.abs(new Random().nextLong())));
+            File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", getApplicationContext().getCacheDir(), Math.abs(new Random().nextLong()), extension));
             try {
                 Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
                 copy(originalImage, scrambledEggsifImage);

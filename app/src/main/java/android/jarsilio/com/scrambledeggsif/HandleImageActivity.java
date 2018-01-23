@@ -10,12 +10,12 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.nio.charset.Charset;
 import java.util.Random;
 
 public class HandleImageActivity extends AppCompatActivity {
@@ -46,9 +45,9 @@ public class HandleImageActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
                     int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
                     if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                        Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
-                        // TODO after the check is done, the file won't be shared anymore. Tell the user s/he'll need to re-share the image
+                        Log.d(TAG, "READ_EXTERNAL_STORAGE permission not granted. Showing toast to tell the user to open the app");
+                        Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
+                        finish();
                     } else {
                         Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...    ");
                         handleSendImage(intent);

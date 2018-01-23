@@ -8,4 +8,6 @@
         files in order to be able to remove the Exif from the images you share with it.\n\n
         Please tap on the button below to grant access to files.
     </string>
+    <string name="permissions_open_app_toast">Scrambled Exif needs file access.
+        Please open the app and grant it from there</string>
 </resources>

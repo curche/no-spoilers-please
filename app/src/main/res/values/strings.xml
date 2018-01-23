@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scrambled Eggsif</string>
+    <string name="app_name">Scrambled Exif</string>
 
     <!-- Strings related to Settings -->
 
@@ -73,5 +73,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
-    <string name="share_via">Share scrambled eggsified image via</string>
+    <string name="share_via">Share image with scrambled Exif via</string>
 </resources>

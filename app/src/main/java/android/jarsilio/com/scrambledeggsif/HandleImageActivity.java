@@ -43,19 +43,17 @@ public class HandleImageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
-
-        if (Intent.ACTION_SEND.equals(action) && type != null) {
-            if (arePermissionsGranted()) {
-                if (type.startsWith("image/")) {
-                    Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...");
+        if (arePermissionsGranted()) {
+            if (action.equals(Intent.ACTION_SEND)) {
+                if (type != null && type.startsWith("image/")) {
                     handleSendImage(intent);
                 }
-            } else {
-                Log.d(TAG, "READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
-                Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
-                finish();
             }
+        } else {
+            Log.d(TAG, "READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
+            Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
         }
+        finish();
     }
 
     private boolean arePermissionsGranted() {

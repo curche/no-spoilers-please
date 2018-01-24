@@ -63,7 +63,7 @@ public class HandleImageActivity extends AppCompatActivity {
         }
     }
 
-    public static void copy(File src, File dst) throws IOException {
+    private static void copy(File src, File dst) throws IOException {
         InputStream in = new FileInputStream(src);
         try {
             OutputStream out = new FileOutputStream(dst);

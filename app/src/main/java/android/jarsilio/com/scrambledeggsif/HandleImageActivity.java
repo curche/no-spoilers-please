@@ -44,23 +44,28 @@ public class HandleImageActivity extends AppCompatActivity {
         String type = intent.getType();
 
         if (Intent.ACTION_SEND.equals(action) && type != null) {
-            if (type.startsWith("image/")) {
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-                    int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-                    if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                        Log.d(TAG, "READ_EXTERNAL_STORAGE permission not granted. Showing toast to tell the user to open the app");
-                        Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
-                        finish();
-                    } else {
-                        Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...    ");
-                        handleSendImage(intent);
-                    }
-                } else {
-                    Log.d(TAG, "READ_EXTERNAL_STORAGE not needed due to old Android version. Handling sent image...    ");
+            if (arePermissionsGranted()) {
+                if (type.startsWith("image/")) {
+                    Log.d(TAG, "READ_EXTERNAL_STORAGE permission already granted. Handling sent image...");
                     handleSendImage(intent);
                 }
+            } else {
+                Log.d(TAG, "READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
+                Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
+                finish();
             }
         }
+    }
+
+    private boolean arePermissionsGranted() {
+        boolean granted = true;
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+            int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+            granted = permissionCheck == PackageManager.PERMISSION_GRANTED;
+        }
+
+        return granted;
     }
 
     private static void copy(File src, File dst) throws IOException {

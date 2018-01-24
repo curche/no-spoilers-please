@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -149,6 +150,10 @@ public class HandleImageActivity extends AppCompatActivity {
         String result = cursor.getString(columnIndex);
         cursor.close();
         return result;
+    }
+
+    private static boolean isImage(String path) {
+        return BitmapFactory.decodeFile(path) != null;
     }
 
     private static Set<String> getExifAttributes() {

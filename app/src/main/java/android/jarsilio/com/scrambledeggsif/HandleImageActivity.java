@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -48,6 +49,8 @@ public class HandleImageActivity extends AppCompatActivity {
                 if (type != null && type.startsWith("image/")) {
                     handleSendImage(intent);
                 }
+            } else if (action.equals(Intent.ACTION_SEND_MULTIPLE)) {
+                handleSendMultipleImages(intent);
             }
         } else {
             Log.d(TAG, "READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
@@ -109,6 +112,23 @@ public class HandleImageActivity extends AppCompatActivity {
             finish();
         }
     }
+    private void handleSendMultipleImages(Intent intent) {
+        Log.d(TAG, "Scrambling multiple images");
+        ArrayList<Uri> imageUriList = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
+
+        ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
+        for (Uri imageUri : imageUriList) {
+            if (isImage(getRealPathFromURI(imageUri))) {
+                Log.d(TAG, "Received image (uri): " + imageUri);
+                Uri scrambledImage = scrambleImage(imageUri);
+                scrambledImagesUriList.add(scrambledImage);
+            } else {
+                Log.d(TAG, String.format("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", getRealPathFromURI(imageUri)));
+            }
+        }
+
+        shareMultipleImages(scrambledImagesUriList);
+    }
 
     private Uri scrambleImage(Uri imageUri) {
         File scrambledImageFile = copyToCacheDir(imageUri);
@@ -125,6 +145,17 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
+        }
+    }
+
+    private void shareMultipleImages(ArrayList<Uri> scrambledImagesUriList) {
+        if (scrambledImagesUriList.size() > 0) {
+            Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
+            shareIntent.setType("image/*");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, scrambledImagesUriList);
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
     }
 

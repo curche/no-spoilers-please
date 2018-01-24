@@ -94,22 +94,27 @@ public class HandleImageActivity extends AppCompatActivity {
         }
     }
 
+    private File copyToCacheDir(Uri imageUri) {
+        String path = getRealPathFromURI(imageUri);
+        String extension = path.substring(path.lastIndexOf('.'));
+        Log.d(TAG, "Image path: " + path);
+        File originalImage = new File(path);
+        new File(getApplicationContext().getCacheDir() + "/images").mkdir();
+        File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", getApplicationContext().getCacheDir(), Math.abs(new Random().nextLong()), extension));
+        try {
+            Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
+            copy(originalImage, scrambledEggsifImage);
+        } catch (IOException e) {
+            Log.e(TAG, "Error copying file to cache dir");
+            e.printStackTrace();
+        }
+        return scrambledEggsifImage;
+    }
+
     private void handleSendImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
-            String path = getRealPathFromURI(imageUri);
-            String extension = path.substring(path.lastIndexOf('.'));
-            Log.d(TAG, "Image path: " + path);
-            File originalImage = new File(path);
-            new File(getApplicationContext().getCacheDir() + "/images").mkdir();
-            File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", getApplicationContext().getCacheDir(), Math.abs(new Random().nextLong()), extension));
-            try {
-                Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
-                copy(originalImage, scrambledEggsifImage);
-            } catch (IOException e) {
-                Log.e(TAG, "Error copying file to cache dir");
-                e.printStackTrace();
-            }
+            File scrambledEggsifImage = copyToCacheDir(imageUri);
             removeExifData(scrambledEggsifImage.toString());
             shareImage(scrambledEggsifImage);
             finish();

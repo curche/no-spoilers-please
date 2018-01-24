@@ -115,7 +115,7 @@ public class HandleImageActivity extends AppCompatActivity {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
             File scrambledEggsifImage = copyToCacheDir(imageUri);
-            removeExifData(scrambledEggsifImage.toString());
+            removeExifData(scrambledEggsifImage);
             shareImage(scrambledEggsifImage);
             finish();
         }
@@ -134,9 +134,9 @@ public class HandleImageActivity extends AppCompatActivity {
         }
     }
 
-    private void removeExifData(String image) {
+    private void removeExifData(File image) {
         try {
-            ExifInterface exifInterface = new ExifInterface(image);
+            ExifInterface exifInterface = new ExifInterface(image.toString());
             Field[] fields = ExifInterface.class.getDeclaredFields();
             // Get all fields that the concrete Android-Java implementation have and delete them
             for (Field field : fields) {

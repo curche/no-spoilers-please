@@ -90,7 +90,6 @@ public class HandleImageActivity extends AppCompatActivity {
     private File copyToCacheDir(Uri imageUri) {
         String path = getRealPathFromURI(imageUri);
         String extension = path.substring(path.lastIndexOf('.'));
-        Log.d(TAG, "Image path: " + path);
         File originalImage = new File(path);
         new File(getApplicationContext().getCacheDir() + "/images").mkdir();
         File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", getApplicationContext().getCacheDir(), Math.abs(new Random().nextLong()), extension));
@@ -107,22 +106,26 @@ public class HandleImageActivity extends AppCompatActivity {
     private void handleSendImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
-            File scrambledEggsifImage = copyToCacheDir(imageUri);
-            removeExifData(scrambledEggsifImage);
-            shareImage(scrambledEggsifImage);
+            Uri scrambledImage = scrambleImage(imageUri);
+            shareImage(scrambledImage);
             finish();
         }
     }
 
-    private void shareImage(File image) {
-        Uri contentUri = FileProvider.getUriForFile(getApplicationContext(), "com.jarsilio.android.scrambledeggsif.fileprovider", image);
+    private Uri scrambleImage(Uri imageUri) {
+        File scrambledImageFile = copyToCacheDir(imageUri);
+        removeExifData(scrambledImageFile);
+        Uri scrambledImageUri = FileProvider.getUriForFile(getApplicationContext(), "com.jarsilio.android.scrambledeggsif.fileprovider", scrambledImageFile);
+        return scrambledImageUri;
+    }
 
-        if (contentUri != null) {
+    private void shareImage(Uri imageUri) {
+        if (imageUri != null) {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
-            shareIntent.setDataAndType(contentUri, getContentResolver().getType(contentUri));
-            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         }
     }

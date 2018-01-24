@@ -31,7 +31,6 @@ import java.util.Set;
 
 public class HandleImageActivity extends AppCompatActivity {
     private static final String TAG = "HandleImageActivity";
-    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000;
 
     private static Set<String> exifAttributes;
 
@@ -60,22 +59,6 @@ public class HandleImageActivity extends AppCompatActivity {
                     Log.d(TAG, "READ_EXTERNAL_STORAGE not needed due to old Android version. Handling sent image...    ");
                     handleSendImage(intent);
                 }
-            }
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
             }
         }
     }

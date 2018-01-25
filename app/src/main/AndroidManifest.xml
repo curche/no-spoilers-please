@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".HandleImageActivity">
+        <activity
+            android:name=".HandleImageActivity"
+            android:theme="@style/Theme.AppCompat.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

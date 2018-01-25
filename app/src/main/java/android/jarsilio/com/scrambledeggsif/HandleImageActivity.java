@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 
 import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +15,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import java.io.File;
@@ -44,11 +44,10 @@ public class HandleImageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
+        Log.d(TAG, "Type (intent): " + type);
         if (arePermissionsGranted()) {
             if (action.equals(Intent.ACTION_SEND)) {
-                if (type != null && type.startsWith("image/")) {
-                    handleSendImage(intent);
-                }
+                handleSendImage(intent);
             } else if (action.equals(Intent.ACTION_SEND_MULTIPLE)) {
                 handleSendMultipleImages(intent);
             }
@@ -107,8 +106,10 @@ public class HandleImageActivity extends AppCompatActivity {
     private void handleSendImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
-            Uri scrambledImage = scrambleImage(imageUri);
-            shareImage(scrambledImage);
+            if (isImage(imageUri)) {
+                Uri scrambledImage = scrambleImage(imageUri);
+                shareImage(scrambledImage);
+            }
             finish();
         }
     }
@@ -118,7 +119,7 @@ public class HandleImageActivity extends AppCompatActivity {
 
         ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
         for (Uri imageUri : imageUriList) {
-            if (isImage(getRealPathFromURI(imageUri))) {
+            if (isImage(imageUri)) {
                 Log.d(TAG, "Received image (uri): " + imageUri);
                 Uri scrambledImage = scrambleImage(imageUri);
                 scrambledImagesUriList.add(scrambledImage);
@@ -184,8 +185,20 @@ public class HandleImageActivity extends AppCompatActivity {
         return result;
     }
 
-    private static boolean isImage(String path) {
-        return BitmapFactory.decodeFile(path) != null;
+    private boolean isImage(Uri uri) {
+        // return BitmapFactory.decodeFile(path) != null; // This is safer but slower
+        String allegedMimeType = getAllegedMimeType(getRealPathFromURI(uri));
+        Log.d(TAG, "mimeType (alleged): " + allegedMimeType);
+        return allegedMimeType.startsWith("image/");
+    }
+
+    public static String getAllegedMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+        }
+        return type;
     }
 
     private static Set<String> getExifAttributes() {

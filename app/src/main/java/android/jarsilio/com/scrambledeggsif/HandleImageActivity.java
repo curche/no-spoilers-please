@@ -163,7 +163,12 @@ public class HandleImageActivity extends AppCompatActivity {
         try {
             ExifInterface exifInterface = new ExifInterface(image.toString());
             for (String attribute : getExifAttributes()) {
-                exifInterface.setAttribute(attribute, null);
+                if (exifInterface.getAttribute(attribute) != null) {
+                    Log.d(TAG, "Exif attribute " + attribute + " exists. Setting to null...");
+                    exifInterface.setAttribute(attribute, null);
+                } else {
+                    Log.d(TAG, "Exif attribute " + attribute + " doesn't exist. Skipping...");
+                }
             }
             exifInterface.saveAttributes();
 

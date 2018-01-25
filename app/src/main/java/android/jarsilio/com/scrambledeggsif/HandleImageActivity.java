@@ -110,7 +110,6 @@ public class HandleImageActivity extends AppCompatActivity {
                 Uri scrambledImage = scrambleImage(imageUri);
                 shareImage(scrambledImage);
             }
-            finish();
         }
     }
     private void handleSendMultipleImages(Intent intent) {

@@ -45,7 +45,7 @@ public class HandleImageActivity extends AppCompatActivity {
         String action = intent.getAction();
         String type = intent.getType();
         Log.d(TAG, "Type (intent): " + type);
-        if (arePermissionsGranted()) {
+        if (Utils.isPermissionGranted(getApplicationContext())) {
             if (action.equals(Intent.ACTION_SEND)) {
                 handleSendImage(intent);
             } else if (action.equals(Intent.ACTION_SEND_MULTIPLE)) {
@@ -56,17 +56,6 @@ public class HandleImageActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
         }
         finish();
-    }
-
-    private boolean arePermissionsGranted() {
-        boolean granted = true;
-
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-            int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-            granted = permissionCheck == PackageManager.PERMISSION_GRANTED;
-        }
-
-        return granted;
     }
 
     private static void copy(File src, File dst) throws IOException {

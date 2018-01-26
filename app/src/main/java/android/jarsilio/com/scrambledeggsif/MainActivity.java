@@ -40,20 +40,8 @@ public class MainActivity extends AppCompatActivity {
         updateLayout();
     }
 
-    private boolean isPermissionsGranted() {
-        boolean granted = true;
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
-            int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                granted = false;
-            }
-        }
-
-        return granted;
-    }
-
     private void requestPermissions() {
-        if (isPermissionsGranted()) {
+        if (Utils.isPermissionGranted(getApplicationContext())) {
             Toast.makeText(this, getString(R.string.permissions_already_granted), Toast.LENGTH_SHORT).show();
         } else {
             Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
@@ -65,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.request_permission_button);
         final TextView textView = findViewById(R.id.permissions_explanation);
 
-        if (isPermissionsGranted()) {
+        if (Utils.isPermissionGranted(getApplicationContext())) {
             button.setBackgroundResource(R.color.yolkLight);
             button.setText(R.string.permission_granted);
             button.setTextColor(Color.BLACK);

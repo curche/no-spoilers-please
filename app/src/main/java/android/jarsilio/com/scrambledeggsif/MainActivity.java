@@ -6,9 +6,13 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,6 +42,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateLayout();
+    }
+    @Override
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.privacy_policy_menu_item:
+                showPrivacyPolicyDialog();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    private void showPrivacyPolicyDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.privacy_policy_dialog_title);
+        builder.setMessage(R.string.privacy_policy_dialog_text);
+        builder.setPositiveButton(android.R.string.ok, null);
+
+        AlertDialog dialog = builder.show();
+
+        // Work-around to make links clickable (don't ask me why this works):
+        // See: https://stackoverflow.com/questions/1997328/how-can-i-get-clickable-hyperlinks-in-alertdialog-from-a-string-resource
+        if (Build.VERSION.SDK_INT > 8) {
+            ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+        }
     }
 
     private void requestPermissions() {

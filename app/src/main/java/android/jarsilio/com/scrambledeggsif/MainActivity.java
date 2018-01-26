@@ -39,24 +39,31 @@ public class MainActivity extends AppCompatActivity {
         changePermissionsButton();
     }
 
-    private void requestPermissions() {
+    private boolean isPermissionsGranted() {
+        boolean granted = true;
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-                Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
-                ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
-            } else {
-                Toast.makeText(this, getString(R.string.permissions_already_granted), Toast.LENGTH_SHORT).show();
+                granted = false;
             }
+        }
+
+        return granted;
+    }
+
+    private void requestPermissions() {
+        if (isPermissionsGranted()) {
+            Toast.makeText(this, getString(R.string.permissions_already_granted), Toast.LENGTH_SHORT).show();
+        } else {
+            Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
         }
     }
 
     private void changePermissionsButton() {
         final Button button = findViewById(R.id.request_permission_button);
 
-        int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-
-        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+        if (isPermissionsGranted()) {
             button.setBackgroundResource(R.color.yolkLight);
             button.setText(R.string.permission_granted);
             button.setTextColor(Color.BLACK);

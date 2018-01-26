@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        changePermissionsButton();
+        updateLayout();
     }
 
     @Override
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        changePermissionsButton();
+        updateLayout();
     }
 
     private boolean isPermissionsGranted() {
@@ -60,17 +61,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void changePermissionsButton() {
+    private void updateLayout() {
         final Button button = findViewById(R.id.request_permission_button);
+        final TextView textView = findViewById(R.id.permissions_explanation);
 
         if (isPermissionsGranted()) {
             button.setBackgroundResource(R.color.yolkLight);
             button.setText(R.string.permission_granted);
             button.setTextColor(Color.BLACK);
+            textView.setText(R.string.ready_to_roll);
         } else {
             button.setBackgroundResource(R.color.yolk);
             button.setText(R.string.permission_request);
             button.setTextColor(Color.BLACK);
+            textView.setText(R.string.permission_sdcard_text);
         }
     }
 
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Log.d(TAG,"Permission denied");
                 }
-                changePermissionsButton();
+                updateLayout();
                 return;
             }
         }

@@ -6,6 +6,7 @@
     <string name="permission_granted">Permission granted</string>
     <string name="permissions_already_granted">Permissions already granted</string>
     <string name="permission_sdcard_text">Scrambled Exif needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
+    <string name="ready_to_roll"><b>You\'re ready to roll! </b>\n\nJust share a picture with Scrambled Exif - it will delete the Exif data and offer you to share it again.</string>
     <string name="permissions_open_app_toast">Scrambled Exif needs file access.
         Please open the app and grant it from there</string>
 </resources>

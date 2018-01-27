@@ -118,8 +118,7 @@ public class HandleImageActivity extends AppCompatActivity {
     private Uri scrambleImage(Uri imageUri) {
         File scrambledImageFile = copyToCacheDir(imageUri);
         removeExifData(scrambledImageFile);
-        Uri scrambledImageUri = FileProvider.getUriForFile(getApplicationContext(), "com.jarsilio.android.scrambledeggsif.fileprovider", scrambledImageFile);
-        return scrambledImageUri;
+        return FileProvider.getUriForFile(getApplicationContext(), "com.jarsilio.android.scrambledeggsif.fileprovider", scrambledImageFile);
     }
 
     private void shareImage(Uri imageUri) {
@@ -192,7 +191,7 @@ public class HandleImageActivity extends AppCompatActivity {
 
     private static Set<String> getExifAttributes() {
         if (exifAttributes == null) {
-            exifAttributes = new HashSet<String>();
+            exifAttributes = new HashSet<>();
 
             // From my current Android SDK
             exifAttributes.add("FNumber");

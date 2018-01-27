@@ -3,7 +3,6 @@ package com.jarsilio.android.scrambledeggsif;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -75,9 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Work-around to make links clickable (don't ask me why this works):
         // See: https://stackoverflow.com/questions/1997328/how-can-i-get-clickable-hyperlinks-in-alertdialog-from-a-string-resource
-        if (Build.VERSION.SDK_INT > 8) {
-            ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
-        }
+        ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void requestPermissions() {
@@ -116,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG,"Permission denied");
                 }
                 updateLayout();
-                return;
             }
         }
     }

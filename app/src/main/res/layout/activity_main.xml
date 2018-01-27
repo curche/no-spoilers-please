@@ -13,7 +13,6 @@
         android:layout_margin="20dp">
 
         <ImageView
-            android:id="@+id/scrambled_eggs"
             android:layout_width="match_parent"
             android:layout_height="230dp"
             app:srcCompat="@drawable/ic_scrambled_eggsif_optimized" />

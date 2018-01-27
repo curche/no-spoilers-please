@@ -19,9 +19,13 @@
 
 package com.jarsilio.android.scrambledeggsif;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -54,7 +58,20 @@ public class HandleImageActivity extends AppCompatActivity {
             Log.d(TAG, "READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
             Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
         }
+        scheduleAlarm();
         finish();
+    }
+
+    public void scheduleAlarm() {
+        Log.d(TAG, "Scheduling alarm to clean up cache directory (ExifScramblerCleanUp)");
+        AlarmManager alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getApplicationContext(), CleanUpAlarmReceiver.class);
+        PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime(),
+                AlarmManager.INTERVAL_HALF_DAY,
+                alarmPendingIntent);
     }
 
     private void handleSendImage(Intent intent) {

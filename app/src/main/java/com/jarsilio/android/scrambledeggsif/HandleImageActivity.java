@@ -11,7 +11,6 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import java.io.File;
@@ -175,18 +174,9 @@ public class HandleImageActivity extends AppCompatActivity {
 
     private boolean isImage(Uri uri) {
         // return BitmapFactory.decodeFile(path) != null; // This is safer but slower
-        String allegedMimeType = getAllegedMimeType(getRealPathFromURI(uri));
+        String allegedMimeType = Utils.getAllegedMimeType(getRealPathFromURI(uri));
         Log.d(TAG, "mimeType (alleged): " + allegedMimeType);
         return allegedMimeType.startsWith("image/");
-    }
-
-    public static String getAllegedMimeType(String url) {
-        String type = null;
-        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
-        if (extension != null) {
-            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
-        }
-        return type;
     }
 
     private static Set<String> getExifAttributes() {

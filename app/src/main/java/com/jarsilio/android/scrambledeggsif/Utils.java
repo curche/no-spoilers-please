@@ -21,12 +21,30 @@ package com.jarsilio.android.scrambledeggsif;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.util.Random;
+
 class Utils {
+    private static final String TAG = "ScrambledExifUtils";
 
     public static boolean isPermissionGranted(Context context) {
         boolean granted = true;
@@ -46,5 +64,68 @@ class Utils {
             type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
         }
         return type;
+    }
+
+    public static String getAllegedMimeType(File image) {
+        String mimeType = "unknown";
+        try {
+            mimeType = getAllegedMimeType(image.toURI().toURL().toString());
+        } catch (MalformedURLException e) {
+            Log.d(TAG, "Failed to read mime type from image: " + image);
+            e.printStackTrace();
+        }
+        return  mimeType;
+    }
+
+    private static void copy(File src, File dst) throws IOException {
+        InputStream in = new FileInputStream(src);
+        try {
+            OutputStream out = new FileOutputStream(dst);
+            try {
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+            } finally {
+                out.close();
+            }
+        } finally {
+            in.close();
+        }
+    }
+
+    public static File copyToCacheDir(Context context, Uri imageUri) {
+        String path = getRealPathFromURI(context, imageUri);
+        String extension = path.substring(path.lastIndexOf('.'));
+        File originalImage = new File(path);
+        new File(context.getCacheDir() + "/images").mkdir();
+        File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
+        try {
+            Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
+            copy(originalImage, scrambledEggsifImage);
+        } catch (IOException e) {
+            Log.e(TAG, "Error copying file to cache dir");
+            e.printStackTrace();
+        }
+        return scrambledEggsifImage;
+    }
+
+    public static String getRealPathFromURI(Context context, Uri contentUri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        CursorLoader loader = new CursorLoader(context, contentUri, projection, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(columnIndex);
+        cursor.close();
+        return result;
+    }
+
+    public static boolean isImage(Context context, Uri uri) {
+        // return BitmapFactory.decodeFile(path) != null; // This is safer but slower
+        String allegedMimeType = getAllegedMimeType(getRealPathFromURI(context, uri));
+        Log.d(TAG, "mimeType (alleged): " + allegedMimeType);
+        return allegedMimeType.startsWith("image/");
     }
 }

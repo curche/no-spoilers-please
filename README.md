@@ -10,6 +10,10 @@ So you don't want to share all the metadata your phone stores for every picture?
 
 This Android app will remove all this data before sharing. Just share a picture like you'd normally do and choose *Scrambled Exif*. A moment later, the share 'dialog' will reappear. Just share with the app you intended to share with in the first place. Et voilà!
 
+## Required Android Permissions:
+
+- READ_EXTERNAL_STORAGE to read the images other apps share with it.
+
 ## Misc Stuff and Facts
 
 - Basically, Exif is used by jpeg, which is the format in which your Android camera saves pictures. If you want to know more about Exif, check the [Wikipedia](https://en.wikipedia.org/wiki/Exif).

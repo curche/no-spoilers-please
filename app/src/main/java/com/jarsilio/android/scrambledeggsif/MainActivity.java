@@ -1,11 +1,10 @@
-package android.jarsilio.com.scrambledeggsif;
+package com.jarsilio.android.scrambledeggsif;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package android.jarsilio.com.scrambledeggsif;
+package com.jarsilio.android.scrambledeggsif;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("android.jarsilio.com.scrambledeggsif", appContext.getPackageName());
+        assertEquals("com.jarsilio.androidus.scrambledeggsif", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package android.jarsilio.com.scrambledeggsif;
+package com.jarsilio.android.scrambledeggsif;
 
 import android.Manifest;
 import android.content.Context;

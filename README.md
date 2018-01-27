@@ -1,4 +1,4 @@
-# Scrambled Exif: Remove metadata from your pictures before sharing them
+# Scrambled Exif
 
 Some people like Facebook and co. to know were their picture was taken so that it can be easily geotagged. Or for whatever reason. That's okay.
 

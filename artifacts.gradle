@@ -1,0 +1,21 @@
+/*
+ * From: https://blog.jayway.com/2015/03/13/producing-better-named-android-apks-with-gradle/
+ *
+ * Copyright (actually No Copyright https://creativecommons.org/publicdomain/zero/1.0/)
+ *
+ * Thank you very much for this, jayway!
+ */
+
+android.applicationVariants.all { variant ->
+    def appName
+    //Check if an applicationName property is supplied; if not use the name of the parent project.
+    if (project.hasProperty("applicationName")) {
+        appName = applicationName
+    } else {
+        appName = parent.name
+    }
+
+    variant.outputs.all { output ->
+        outputFileName = "${appName}-${output.baseName}-${variant.versionName}_unsigned.apk"
+    }
+}

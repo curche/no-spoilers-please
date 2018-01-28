@@ -24,4 +24,4 @@ Please refer to the [F-Droid web page](https://f-droid.org/about/) for more info
 
 If you contact me per email, I will exclusively use your contact data to process your inquiry.
 
-Please feel free to contact me, e.g. per email (juam+scrambledexif@posteo.net), if you want me to delete your data.
+Please feel free to contact me, e.g. per email (juam+scrambled@posteo.net), if you want me to delete your data.

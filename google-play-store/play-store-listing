@@ -1,12 +1,12 @@
-Some people like Facebook and co. to know were their picture was taken so that it can be easily geotagged. Or for whatever reason. That's okay.
+A lot of data is stored when you take a picture with your phone. This is nice, as you can always know where you took a picture, for example. You might want the rest of the world to know that. That's good. You might <i>not</i> want the rest of the world to know that. That's also good.
 
-Some people <i>don't</i> like that. That's is also okay.
+Scrambled Exif (pronounced <i>egg</i>sif) helps you remove this data before sharing your pictures.
 
-<b>Scrambled Exif</b> (pronounced <i>egg</i>sif) is definitely for the latter.
+If you feel like it.
 
-So you don't want to share all the metadata your phone stores for every picture?
+Just share a picture like you'd normally do and choose <i>Scrambled Exif</i>. A moment later, a new share 'dialog' will reappear. Just share with the app you intended to share with in the first place.
 
-This Android app will remove all this data before sharing. Just share a picture like you'd normally do and choose <i>Scrambled Exif</i>. A moment later, the share 'dialog' will reappear. Just share with the app you intended to share with in the first place. Et voilà!
+Et voilà!
 
 <b>Required Android Permissions:</b>
 

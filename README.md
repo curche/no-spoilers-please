@@ -14,6 +14,12 @@ This Android app will remove all this data before sharing. Just share a picture 
 
 - READ_EXTERNAL_STORAGE to read the images other apps share with it.
 
+## Download it
+
+[<img src="https://f-droid.org/badge/get-it-on.png"
+      alt="Get it on F-Droid"
+      height="80">](https://f-droid.org/app/com.jarsilio.android.scrambledeggsif)
+
 ## Misc Stuff and Facts
 
 - Basically, Exif is used by jpeg, which is the format in which your Android camera saves pictures. If you want to know more about Exif, check the [Wikipedia](https://en.wikipedia.org/wiki/Exif).

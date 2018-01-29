@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Scrambled Exif</string>
+    <string name="share_via">Gescrambletes Bild teilen über</string>
+    <string name="share_multiple_via">Gescramblete Bilder teilen über</string>
+    <string name="permission_request">Berechtigung erteilen</string>
+    <string name="permission_sdcard_text">Scrambled Exif braucht Zugriff auf Deine Dateien, um die von Dir geteilten Bilder weiterteilen zu können.\n\nEinfach auf den unteren Knopf drucken, um die Berechtigung zu erteilen.</string>
+
+    <string name="instructions_title">Anleitung</string>
+    <string name="instructions_1">Wähle die Bilder aus der Galerie, die Du gerne teilen möchtest.</string>
+    <string name="instructions_2">Drück auf dem Android-Share-Icon. Eine \"Teile über\"-Ansicht sollte erscheinen.</string>
+    <string name="instructions_3">Wähle <i>Scrambled Exif</i> (statt der App mit der Du eigentlich die Bilder teilen möchtest). <i>Eine andere</i> \"Teile über\"-Ansicht sollte einen Augenblick später erscheinen.</string>
+    <string name="instructions_3_1">An diesem Zeitpunkt sind die Metadaten von den Bildern schon weg!</string>
+    <string name="instructions_4">Nun wähle die App, mit der Du eigentlich die Bilder teilen möchtest.</string>
+    <string name="instructions_voila">Et voilà! Du hast ein paar Bilder ohne Metadaten mit der Welt geteilt!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif braucht Zugriff auf Deine Dateien. Bitte mach die App ein mal auf, um die Berechtigung zu erteilen.</string>
+    <string name="privacy_policy_menu_item">Datenschutzerklärung</string>
+</resources>

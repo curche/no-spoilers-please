@@ -99,12 +99,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestPermissions() {
-        if (Utils.isPermissionGranted(getApplicationContext())) {
-            Toast.makeText(this, getString(R.string.permissions_already_granted), Toast.LENGTH_SHORT).show();
-        } else {
-            Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
-            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
-        }
+        Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
+        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
     }
 
     private void updateLayout() {

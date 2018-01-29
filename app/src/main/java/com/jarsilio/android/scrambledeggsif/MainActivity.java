@@ -21,7 +21,6 @@ package com.jarsilio.android.scrambledeggsif;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -32,8 +31,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -107,18 +109,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateLayout() {
         final Button button = findViewById(R.id.request_permission_button);
-        final TextView textView = findViewById(R.id.permissions_explanation);
+        final TextView permissionExplanation = findViewById(R.id.permissions_explanation);
+        final TextView instructionsTitle = findViewById(R.id.instructions_title);
+        final TableLayout instructionsTable  = findViewById(R.id.instructions_table);
+        final TextView instructionsVoila = findViewById(R.id.instructions_voila);
 
         if (Utils.isPermissionGranted(getApplicationContext())) {
-            button.setBackgroundResource(R.color.yolkLight);
-            button.setText(R.string.permission_granted);
-            button.setTextColor(Color.BLACK);
-            textView.setText(R.string.ready_to_roll);
+            button.setVisibility(View.GONE);
+            permissionExplanation.setVisibility(View.GONE);
+            instructionsTitle.setVisibility(View.VISIBLE);
+            instructionsTable.setVisibility(View.VISIBLE);
+            instructionsVoila.setVisibility(View.VISIBLE);
         } else {
-            button.setBackgroundResource(R.color.yolk);
-            button.setText(R.string.permission_request);
-            button.setTextColor(Color.BLACK);
-            textView.setText(R.string.permission_sdcard_text);
+            button.setVisibility(View.VISIBLE);
+            permissionExplanation.setVisibility(View.VISIBLE);
+            instructionsTitle.setVisibility(View.GONE);
+            instructionsTable.setVisibility(View.GONE);
+            instructionsVoila.setVisibility(View.GONE);
         }
     }
 

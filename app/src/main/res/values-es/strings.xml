@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Scrambled Exif</string>
+    <string name="share_via">Compartir imagen sin metadatos vía</string>
+    <string name="share_multiple_via">Compartir imágenes sin metadatos vía</string>
+    <string name="permission_request">Pedir permiso</string>
+    <string name="permission_sdcard_text">Scrambled Exif necesita acceso a los archivos de tu dispositivo\n\nDale al botón de abajo para concederle los permisos necesarios.</string>
+
+    <string name="instructions_title">Instrucciones</string>
+    <string name="instructions_1">Selecciona las imágenes de la galería que quieres compartir.</string>
+    <string name="instructions_2">Dale al botón de compartir. Aparecerá una ventana de tipo \'compartir vía\'.</string>
+    <string name="instructions_3">Selecciona <i>Scrambled Exif</i> (en vez de la app con la que quieres compartir las imágenes). Unos segundos más tarde, aparecerá otra ventana de tipo \'compartir vía\'.</string>
+    <string name="instructions_3_1">En este momento, los metadatos ya han sido borrados de las imágenes.</string>
+    <string name="instructions_4">Finalmente, selecciona la app con la que querías compartir las imágenes originalmente.</string>
+    <string name="instructions_voila">¡Ya está! Acabas de compartir unas fotos libres de metadatos con el mundo.</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la app para concedérselo.</string>
+    <string name="privacy_policy_menu_item">Política de privacidad</string>
+</resources>

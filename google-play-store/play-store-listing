@@ -12,6 +12,12 @@ Et voilà!
 
 ★ READ_EXTERNAL_STORAGE to read the images other apps share with it.
 
+<b>Source Code</b>
+
+★ This app is open source. You can take a look at the code (and contribute if you feel like it) here:
+
+https://gitlab.com/juanitobananas/scrambled-exif
+
 <b>Misc Stuff and Facts</b>
 
 ★ Basically, Exif is used by jpeg, which is the format in which your Android camera saves pictures. If you want to know more about Exif, check the Wikipedia.

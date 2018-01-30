@@ -51,7 +51,8 @@
                 android:id="@+id/instructions_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:textStyle="bold"
                 android:text="@string/instructions_title" />
 
@@ -95,7 +96,9 @@
                         android:gravity="left"
                         android:singleLine="false" />
                 </TableRow>
-                <TableRow android:layout_marginVertical="10dp">
+                <TableRow
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
                     <TextView android:id="@+id/instructions_number_3_1"
                         android:layout_height="wrap_content"
                         android:text=""
@@ -126,14 +129,16 @@
                 android:id="@+id/instructions_voila"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/instructions_voila" />
 
             <Button
                 android:id="@+id/request_permission_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/yolk"
                 android:text="@string/permission_request" />
         </LinearLayout>

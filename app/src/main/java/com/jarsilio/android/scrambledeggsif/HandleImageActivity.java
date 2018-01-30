@@ -62,7 +62,7 @@ public class HandleImageActivity extends AppCompatActivity {
         finish();
     }
 
-    public void scheduleAlarm() {
+    private void scheduleAlarm() {
         Log.d(TAG, "Scheduling alarm to clean up cache directory (ExifScramblerCleanUp)");
         AlarmManager alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getApplicationContext(), CleanUpAlarmReceiver.class);

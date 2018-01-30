@@ -38,7 +38,7 @@ import java.util.Set;
 
 class ExifScrambler {
     private static final String TAG = "ExifScrambler";
-    private Context context;
+    private final Context context;
     private static ExifScrambler instance;
     private static Set<String> exifAttributes;
 
@@ -84,7 +84,7 @@ class ExifScrambler {
         }
     }
 
-    public void resaveImage(File image) {
+    private void resaveImage(File image) {
         String allegedMimeType = Utils.getAllegedMimeType(image);
         Bitmap originalImage = BitmapFactory.decodeFile(image.getPath());
         try {

@@ -57,7 +57,7 @@ class Utils {
         return granted;
     }
 
-    public static String getAllegedMimeType(String url) {
+    private static String getAllegedMimeType(String url) {
         String type = null;
         String extension = MimeTypeMap.getFileExtensionFromUrl(url);
         if (extension != null) {
@@ -111,7 +111,7 @@ class Utils {
         return scrambledEggsifImage;
     }
 
-    public static String getRealPathFromURI(Context context, Uri contentUri) {
+    private static String getRealPathFromURI(Context context, Uri contentUri) {
         String[] projection = { MediaStore.Images.Media.DATA };
         CursorLoader loader = new CursorLoader(context, contentUri, projection, null, null, null);
         Cursor cursor = loader.loadInBackground();

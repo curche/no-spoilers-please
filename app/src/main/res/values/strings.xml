@@ -25,11 +25,10 @@
     <string name="permission_sdcard_text">Scrambled Exif needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
 
     <string name="instructions_title">Instructions</string>
-    <string name="instructions_1">Select the pictures you wish to share from your gallery.</string>
-    <string name="instructions_2">Tap on the Android share icon. A \'share via\' view will appear.</string>
-    <string name="instructions_3">Select <i>Scrambled Exif</i> (instead of the app with which you actually want to share the pictures). A moment later, <i>another</i> \'share via\' view will appear.</string>
-    <string name="instructions_3_1">At this point, the metadata is already gone!</string>
-    <string name="instructions_4">Now just select the app with which you actually want to share your pictures.</string>
+    <string name="instructions_1">Select the pictures you wish to share from your gallery and tap on the share icon.</string>
+    <string name="instructions_2">Select <i>Scrambled Exif</i> from the app list.</string>
+    <string name="instructions_2_1">At this point, the metadata is being deleted!</string>
+    <string name="instructions_3">Once this is done, the app list appears again. Just share the pictures like you normally would.</string>
     <string name="instructions_voila">Et voilà! You just shared some pictures without metadata with the world!</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif needs file access.

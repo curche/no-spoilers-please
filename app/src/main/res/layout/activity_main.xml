@@ -84,6 +84,21 @@
                         android:gravity="left"
                         android:singleLine="false" />
                 </TableRow>
+                <TableRow
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp">
+                    <TextView android:id="@+id/instructions_number_2_1"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:singleLine="false" />
+                    <TextView android:id="@+id/instructions_value_2_1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/instructions_2_1"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:singleLine="false"
+                        android:textStyle="bold" />
+                </TableRow>
                 <TableRow>
                     <TextView android:id="@+id/instructions_number_3"
                         android:layout_height="wrap_content"
@@ -92,33 +107,6 @@
                     <TextView android:id="@+id/instructions_value_3"
                         android:layout_height="wrap_content"
                         android:text="@string/instructions_3"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:singleLine="false" />
-                </TableRow>
-                <TableRow
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
-                    <TextView android:id="@+id/instructions_number_3_1"
-                        android:layout_height="wrap_content"
-                        android:text=""
-                        android:singleLine="false" />
-                    <TextView android:id="@+id/instructions_value_3_1"
-                        android:layout_height="wrap_content"
-                        android:text="@string/instructions_3_1"
-                        android:layout_weight="1"
-                        android:gravity="left"
-                        android:singleLine="false"
-                        android:textStyle="bold" />
-                </TableRow>
-                <TableRow>
-                    <TextView android:id="@+id/instructions_number_4"
-                        android:layout_height="wrap_content"
-                        android:text="4. "
-                        android:singleLine="false" />
-                    <TextView android:id="@+id/instructions_value_4"
-                        android:layout_height="wrap_content"
-                        android:text="@string/instructions_4"
                         android:layout_weight="1"
                         android:gravity="left"
                         android:singleLine="false" />

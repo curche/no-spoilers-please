@@ -49,7 +49,7 @@ class Utils {
     public static boolean isPermissionGranted(Context context) {
         boolean granted = true;
 
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             int permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
             granted = permissionCheck == PackageManager.PERMISSION_GRANTED;
         }

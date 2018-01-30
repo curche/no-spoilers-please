@@ -21,6 +21,7 @@ package com.jarsilio.android.scrambledeggsif;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -99,8 +100,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestPermissions() {
-        Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
-        ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
+        }
     }
 
     private void updateLayout() {

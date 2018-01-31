@@ -25,11 +25,10 @@
     <string name="permission_sdcard_text">Scrambled Exif necesita acceso a los archivos de tu dispositivo\n\nDale al botón de abajo para concederle los permisos necesarios.</string>
 
     <string name="instructions_title">Instrucciones</string>
-    <string name="instructions_1">Selecciona las imágenes de la galería que quieres compartir.</string>
-    <string name="instructions_2">Dale al botón de compartir. Aparecerá una ventana de tipo \'compartir vía\'.</string>
-    <string name="instructions_3">Selecciona <i>Scrambled Exif</i> (en vez de la app con la que quieres compartir las imágenes). Unos segundos más tarde, aparecerá otra ventana de tipo \'compartir vía\'.</string>
-    <string name="instructions_3_1">En este momento, los metadatos ya han sido borrados de las imágenes.</string>
-    <string name="instructions_4">Finalmente, selecciona la app con la que querías compartir las imágenes originalmente.</string>
+    <string name="instructions_1">Selecciona las imágenes de la galería que quieres compartir y dale al icono de compartir.</string>
+    <string name="instructions_2">Selecciona <i>Scrambled Exif</i> de la lista de apps.</string>
+    <string name="instructions_2_1">En este momento, los metadatos están siendo borrados de las imágenes.</string>
+    <string name="instructions_3">Cuanto termine, la lista de apps reaparecerá. Ya puedes compartir las imágenes como normalmente lo harías.</string>
     <string name="instructions_voila">¡Ya está! Acabas de compartir unas fotos libres de metadatos con el mundo.</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la app para concedérselo.</string>

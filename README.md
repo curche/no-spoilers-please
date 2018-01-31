@@ -24,6 +24,10 @@ This Android app will remove all this data before sharing. Just share a picture 
       alt="Get it on Google Play"
       height="80">](https://play.google.com/store/apps/details?id=com.jarsilio.android.scrambledeggsif)
 
+## Translations
+
+If you wish to help to translate this app to your own language, you can do so using [transifex](https://www.transifex.com/juanitobananas/scrambled-exif/).
+
 ## Misc Stuff and Facts
 
 - Basically, Exif is used by jpeg, which is the format in which your Android camera saves pictures. If you want to know more about Exif, check the [Wikipedia](https://en.wikipedia.org/wiki/Exif).

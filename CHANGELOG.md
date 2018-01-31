@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file. Format inspired by http://keepachangelog.com/ and this example https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
 
+## [1.0.1b] - 2018-01-31
+### Changed
+- Instructions and
+### Updated
+- Spanish and German translations
+
 ## [1.0.1a] - 2018-01-30
 ### Added
 - Spanish and German translations

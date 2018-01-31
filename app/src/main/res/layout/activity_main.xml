@@ -96,8 +96,7 @@
                         android:text="@string/instructions_2_1"
                         android:layout_weight="1"
                         android:gravity="left"
-                        android:singleLine="false"
-                        android:textStyle="bold" />
+                        android:singleLine="false" />
                 </TableRow>
                 <TableRow>
                     <TextView android:id="@+id/instructions_number_3"

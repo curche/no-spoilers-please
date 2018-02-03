@@ -76,29 +76,39 @@ public class HandleImageActivity extends AppCompatActivity {
 
     private void handleSendImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        if (imageUri != null) {
+        boolean alreadyScrambled = intent.getExtras().getBoolean("scrambled");
+        if (alreadyScrambled) {
+            Log.d(TAG, "Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
+            shareImage(imageUri);
+        } else if (imageUri != null) {
             if (Utils.isImage(getApplicationContext(), imageUri)) {
                 Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
                 shareImage(scrambledImage);
             }
         }
     }
+
     private void handleSendMultipleImages(Intent intent) {
         Log.d(TAG, "Scrambling multiple images");
         ArrayList<Uri> imageUriList = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-
-        ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
-        for (Uri imageUri : imageUriList) {
-            if (Utils.isImage(getApplicationContext(), imageUri)) {
-                Log.d(TAG, "Received image (uri): " + imageUri);
-                Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
-                scrambledImagesUriList.add(scrambledImage);
-            } else {
-                Log.d(TAG, String.format("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri));
+        boolean alreadyScrambled = intent.getExtras().getBoolean("scrambled");
+        if (alreadyScrambled) {
+            Log.d(TAG, "Images already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
+            shareMultipleImages(imageUriList);
+        } else {
+            ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
+            for (Uri imageUri : imageUriList) {
+                if (Utils.isImage(getApplicationContext(), imageUri)) {
+                    Log.d(TAG, "Received image (uri): " + imageUri);
+                    Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
+                    scrambledImagesUriList.add(scrambledImage);
+                } else {
+                    Log.d(TAG, String.format("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri));
+                }
             }
-        }
 
-        shareMultipleImages(scrambledImagesUriList);
+            shareMultipleImages(scrambledImagesUriList);
+        }
     }
 
 
@@ -110,6 +120,7 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+            shareIntent.putExtra("scrambled", true);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         }
     }
@@ -121,6 +132,7 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setType("image/*");
             shareIntent.putExtra(Intent.EXTRA_STREAM, scrambledImagesUriList);
+            shareIntent.putExtra("scrambled", true);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
     }

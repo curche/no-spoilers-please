@@ -20,6 +20,7 @@
 package com.jarsilio.android.scrambledeggsif;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -79,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.privacy_policy_menu_item:
                 showPrivacyPolicyDialog();
+                break;
+            case R.id.settings_menu_item:
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 break;
         }
 

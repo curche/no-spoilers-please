@@ -121,8 +121,12 @@ class Utils {
 
     public static boolean isImage(Context context, Uri uri) {
         // return BitmapFactory.decodeFile(path) != null; // This is safer but slower
+        boolean isImage = false;
         String allegedMimeType = getAllegedMimeType(getRealPathFromURI(context, uri));
-        Log.d(TAG, "mimeType (alleged): " + allegedMimeType);
-        return allegedMimeType.startsWith("image/");
+        if (allegedMimeType != null) {
+            Log.d(TAG, "mimeType (alleged): " + allegedMimeType);
+            isImage = allegedMimeType.startsWith("image/");
+        }
+        return isImage;
     }
 }

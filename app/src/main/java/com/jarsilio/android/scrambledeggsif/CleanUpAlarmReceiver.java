@@ -53,7 +53,11 @@ public class CleanUpAlarmReceiver extends BroadcastReceiver {
                 Log.d(TAG, "Cache folder is empty. Canceling cleanup alarm until next time somebody shares an image with us");
                 PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
                 AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-                alarmManager.cancel(sender);
+                if (alarmManager != null) {
+                    alarmManager.cancel(sender);
+                } else {
+                    Log.e(TAG, "Failed to get alarm service from system. Cannot set a scheduled task to clean up files!");
+                }
             } else {
                 Log.d(TAG, "There are still files left in the cache folder (not old enough to delete)");
             }

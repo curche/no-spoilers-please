@@ -1,6 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file. Format inspired by http://keepachangelog.com/ and this example https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
 
+## [1.0.3] - 2018-02-07
+
+### Added
+
+- French translation. xin, thanks for that!
+
+### Fixed
+
+- Crash while cleaning temp directory if it didn't exist.
+- Crash if failed to determine image type.
+
+
 ## [1.0.2] - 2018-02-03
 
 ### Fixed

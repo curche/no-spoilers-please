@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2018 xin
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Scrambled Exif</string>
+    <string name="share_via">Partager l’image avec Exif enlevés via</string>
+    <string name="share_multiple_via">Partager les images avec Exif enlevés via</string>
+    <string name="permission_request">Demande de permission</string>
+    <string name="permission_sdcard_text">Scrambled Exif a besoin d’accéder à vos fichiers pour lire les images que vous partagez avec lui.\n\nVeuillez appuyer sur le bouton ci-dessous pour accorder la permission nécessaire.</string>
+
+    <string name="instructions_title">Instructions</string>
+    <string name="instructions_1">Sélectionnez les images que vous voulez partager depuis votre galerie et appuyez sur l’icône de partage.</string>
+    <string name="instructions_2">Sélectionnez <i>Scrambled Exif</i> dans la liste des app.</string>
+    <string name="instructions_2_1">À ce stade, les métadonnées ont été supprimés !</string>
+    <string name="instructions_3">Une fois ceci fait, la liste des app apparaît à nouveau. Partagez les images comme vous le feriez normalement.</string>
+    <string name="instructions_voila">Et voilà ! Vous venez de partager avec le monde des images sans métadonnées !</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif a besoin de l’accès aux fichiers.
+        Merci d’ouvrir l’app et de l’autoriser à partir d’elle</string>
+    <string name="privacy_policy_menu_item">Politique de confidentialité</string>
+</resources>

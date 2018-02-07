@@ -36,22 +36,27 @@ public class CleanUpAlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d(TAG, "Received alarm: cleaning up cache");
         File imagesDir = new File(context.getCacheDir() + "/images");
-        for (File image : imagesDir.listFiles()) {
-            if (System.currentTimeMillis() - image.lastModified() > DAY) {
-                Log.d(TAG, String.format("Found an image older than a day. Deleting '%s'", image));
-                image.delete();
-            }
-        }
-
-        // If there are no more files left, we don't need to clean up periodically.
-        // We will set the alarm again once Scrambled Exif scrambles some Exifs
-        if (imagesDir.listFiles().length == 0) {
-            Log.d(TAG,"Cache folder is empty. Canceling cleanup alarm until next time somebody shares an image with us");
-            PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-            alarmManager.cancel(sender);
+        File[] files = imagesDir.listFiles();
+        if (files == null) {
+            Log.e(TAG, "For some reason " + imagesDir + " is not a directory. Skipping cleaning");
         } else {
-            Log.d(TAG, "There are still files left in the cache folder (not old enough to delete)");
+            for (File image : files) {
+                if (System.currentTimeMillis() - image.lastModified() > DAY) {
+                    Log.d(TAG, String.format("Found an image older than a day. Deleting '%s'", image));
+                    image.delete();
+                }
+            }
+
+            // If there are no more files left, we don't need to clean up periodically.
+            // We will set the alarm again once Scrambled Exif scrambles some Exifs
+            if (files.length == 0) {
+                Log.d(TAG, "Cache folder is empty. Canceling cleanup alarm until next time somebody shares an image with us");
+                PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+                alarmManager.cancel(sender);
+            } else {
+                Log.d(TAG, "There are still files left in the cache folder (not old enough to delete)");
+            }
         }
     }
 }

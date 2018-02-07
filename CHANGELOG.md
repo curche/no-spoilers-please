@@ -12,6 +12,9 @@ All notable changes to this project will be documented in this file. Format insp
 - Crash while cleaning temp directory if it didn't exist.
 - Crash if failed to determine image type.
 
+### Removed
+
+- Unnecessary SET_ALARM permission.
 
 ## [1.0.2] - 2018-02-03
 

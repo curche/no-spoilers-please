@@ -27,14 +27,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class HandleImageActivity extends AppCompatActivity {
-    private static final String TAG = "HandleImageActivity";
+import timber.log.Timber;
 
+public class HandleImageActivity extends AppCompatActivity {
     private ExifScrambler exifScrambler;
 
     @Override
@@ -47,7 +46,8 @@ public class HandleImageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
-        Log.d(TAG, "Type (intent): " + type);
+        Timber.d("Type (intent): " + type);
+        Timber.d("Intent type: " + type);
         if (Utils.isPermissionGranted(getApplicationContext())) {
             if (action.equals(Intent.ACTION_SEND)) {
                 handleSendImage(intent);
@@ -55,7 +55,7 @@ public class HandleImageActivity extends AppCompatActivity {
                 handleSendMultipleImages(intent);
             }
         } else {
-            Log.d(TAG, "READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
+            Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app");
             Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show();
         }
         scheduleAlarm();
@@ -63,7 +63,7 @@ public class HandleImageActivity extends AppCompatActivity {
     }
 
     private void scheduleAlarm() {
-        Log.d(TAG, "Scheduling alarm to clean up cache directory (ExifScramblerCleanUp)");
+        Timber.d("Scheduling alarm to clean up cache directory (ExifScramblerCleanUp)");
         AlarmManager alarmManager =(AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(getApplicationContext(), CleanUpAlarmReceiver.class);
         PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -78,7 +78,7 @@ public class HandleImageActivity extends AppCompatActivity {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
         boolean alreadyScrambled = intent.getExtras().getBoolean("scrambled");
         if (alreadyScrambled) {
-            Log.d(TAG, "Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
+            Timber.d("Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareImage(imageUri);
         } else if (imageUri != null) {
             if (Utils.isImage(getApplicationContext(), imageUri)) {
@@ -89,21 +89,21 @@ public class HandleImageActivity extends AppCompatActivity {
     }
 
     private void handleSendMultipleImages(Intent intent) {
-        Log.d(TAG, "Scrambling multiple images");
+        Timber.d("Scrambling multiple images");
         ArrayList<Uri> imageUriList = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         boolean alreadyScrambled = intent.getExtras().getBoolean("scrambled");
         if (alreadyScrambled) {
-            Log.d(TAG, "Images already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
+            Timber.d("Images already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareMultipleImages(imageUriList);
         } else {
             ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
             for (Uri imageUri : imageUriList) {
                 if (Utils.isImage(getApplicationContext(), imageUri)) {
-                    Log.d(TAG, "Received image (uri): " + imageUri);
+                    Timber.d("Received image (uri): " + imageUri);
                     Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
                     scrambledImagesUriList.add(scrambledImage);
                 } else {
-                    Log.d(TAG, String.format("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri));
+                    Timber.d(String.format("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri));
                 }
             }
 

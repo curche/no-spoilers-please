@@ -28,7 +28,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import java.io.File;
@@ -40,8 +39,9 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.util.Random;
 
+import timber.log.Timber;
+
 class Utils {
-    private static final String TAG = "ScrambledExifUtils";
 
     public static boolean isPermissionGranted(Context context) {
         boolean granted = true;
@@ -68,7 +68,7 @@ class Utils {
         try {
             mimeType = getAllegedMimeType(image.toURI().toURL().toString());
         } catch (MalformedURLException e) {
-            Log.d(TAG, "Failed to read mime type from image: " + image);
+            Timber.d("Failed to read mime type from image: " + image);
             e.printStackTrace();
         }
         return  mimeType;
@@ -99,10 +99,10 @@ class Utils {
         new File(context.getCacheDir() + "/images").mkdir();
         File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
         try {
-            Log.d(TAG, String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
+            Timber.d(String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
             copy(originalImage, scrambledEggsifImage);
         } catch (IOException e) {
-            Log.e(TAG, "Error copying file to cache dir");
+            Timber.e(e,"Error copying file to cache dir");
             e.printStackTrace();
         }
         return scrambledEggsifImage;
@@ -124,7 +124,7 @@ class Utils {
         boolean isImage = false;
         String allegedMimeType = getAllegedMimeType(getRealPathFromURI(context, uri));
         if (allegedMimeType != null) {
-            Log.d(TAG, "mimeType (alleged): " + allegedMimeType);
+            Timber.d("mimeType (alleged): " + allegedMimeType);
             isImage = allegedMimeType.startsWith("image/");
         }
         return isImage;

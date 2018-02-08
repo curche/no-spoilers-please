@@ -28,7 +28,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,8 +35,9 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import timber.log.Timber;
+
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000;
 
     @Override
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            Log.d(TAG, "Requesting READ_EXTERNAL_STORAGE permission");
+            Timber.d("Requesting READ_EXTERNAL_STORAGE permission");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
         }
     }
@@ -131,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d(TAG,"Permission granted");
+                    Timber.d("Permission granted");
                 } else {
-                    Log.d(TAG,"Permission denied");
+                    Timber.d("Permission denied");
                 }
                 updateLayout();
             }

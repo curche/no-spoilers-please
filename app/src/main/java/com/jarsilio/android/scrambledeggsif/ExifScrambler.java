@@ -25,7 +25,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.media.ExifInterface;
 import android.support.v4.content.FileProvider;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,8 +35,9 @@ import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Set;
 
+import timber.log.Timber;
+
 class ExifScrambler {
-    private static final String TAG = "ExifScrambler";
     private final Context context;
     private static ExifScrambler instance;
     private static Set<String> exifAttributes;
@@ -67,19 +67,19 @@ class ExifScrambler {
             ExifInterface exifInterface = new ExifInterface(image.toString());
             for (String attribute : getExifAttributes()) {
                 if (exifInterface.getAttribute(attribute) != null) {
-                    Log.d(TAG, "Exif attribute " + attribute + " exists. Setting to null...");
+                    Timber.d("Exif attribute " + attribute + " exists. Setting to null...");
                     exifInterface.setAttribute(attribute, null);
                 } else {
-                    Log.d(TAG, "Exif attribute " + attribute + " doesn't exist. Skipping...");
+                    Timber.d("Exif attribute " + attribute + " doesn't exist. Skipping...");
                 }
             }
             exifInterface.saveAttributes();
 
         } catch (IOException e) {
-            Log.e(TAG, "Error while trying to read or write image Exif properties");
+            Timber.e(e,"Error while trying to read or write image Exif properties");
             e.printStackTrace();
             // Rewrite whole file
-            Log.d(TAG, "Trying to resave whole image to get rid of the Exif properties");
+            Timber.d("Trying to resave whole image to get rid of the Exif properties");
             resaveImage(image);
         }
     }
@@ -96,7 +96,7 @@ class ExifScrambler {
                 originalImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
             }
         } catch (FileNotFoundException e) {
-            Log.e(TAG, "Couldn't find file to write to:" + image);
+            Timber.e("Couldn't find file to write to:" + image);
             e.printStackTrace();
         }
     }
@@ -258,7 +258,7 @@ class ExifScrambler {
                             attribute = (String) field.get(String.class);
                             exifAttributes.add(attribute);
                         } catch (IllegalAccessException e) {
-                            Log.e(TAG, "Error trying to read ExifAttributes fields");
+                            Timber.e("Error trying to read ExifAttributes fields");
                             e.printStackTrace();
                         }
                     }

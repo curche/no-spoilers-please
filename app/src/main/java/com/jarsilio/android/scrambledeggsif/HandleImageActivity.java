@@ -103,7 +103,7 @@ public class HandleImageActivity extends AppCompatActivity {
                     Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
                     scrambledImagesUriList.add(scrambledImage);
                 } else {
-                    Timber.d(String.format("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri));
+                    Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri);
                 }
             }
 

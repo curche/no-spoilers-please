@@ -99,7 +99,7 @@ class Utils {
         new File(context.getCacheDir() + "/images").mkdir();
         File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
         try {
-            Timber.d(String.format("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage));
+            Timber.d("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage);
             copy(originalImage, scrambledEggsifImage);
         } catch (IOException e) {
             Timber.e(e,"Error copying file to cache dir");

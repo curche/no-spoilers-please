@@ -42,7 +42,7 @@ public class CleanUpAlarmReceiver extends BroadcastReceiver {
         } else {
             for (File image : files) {
                 if (System.currentTimeMillis() - image.lastModified() > DAY) {
-                    Timber.d(String.format("Found an image older than a day. Deleting '%s'", image));
+                    Timber.d("Found an image older than a day. Deleting '%s'", image);
                     image.delete();
                 }
             }

@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Scrambled Exif</string>
+    <string name="share_via">Deel afbeelding zonder Exif-data met</string>
+    <string name="share_multiple_via">Deel afbeeldingen zonder Exif-data met</string>
+    <string name="permission_request">Toestemming vragen</string>
+    <string name="permission_sdcard_text">Scrambled Exif moet toegang hebben tot uw bestanden om de afbeeldingen die u wilt delen uit te kunnen lezen.\n\nDruk alstublieft op de onderstaande knop om de benodigde toestemming te verlenen.</string>
+
+    <string name="instructions_title">Aanwijzingen</string>
+    <string name="instructions_1">Selecteer de afbeeldingen die u wilt delen in de galerij en druk op de deel-knop.</string>
+    <string name="instructions_2">Selecteer <i>Scrambled Exif</i> in de lijst met applicaties.</string>
+    <string name="instructions_2_1">Op dat moment wordt de metadata verwijderd.</string>
+    <string name="instructions_3">Hierna verschijnt de lijst met applicaties opnieuw. Deel de afbeeldingen zoals u dat normaal zou doen.</string>
+    <string name="instructions_voila">Tadaa! U heeft zojuist afbeeldingen zonder metadata gedeeld!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif heeft toegang nodig tot uw bestanden.
+ Open de app om vanuit daar de toestemming te verlenen.</string>
+    <string name="privacy_policy_menu_item">Privacybeleid</string>
+    </resources>

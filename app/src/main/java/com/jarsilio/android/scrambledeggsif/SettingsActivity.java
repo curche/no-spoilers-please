@@ -46,6 +46,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         switch (key) {
+            case Settings.REWRITE_IMAGES:
+                Timber.d(Settings.REWRITE_IMAGES + " changed to " + getSettings().isRewriteImages());
+                break;
             default:
                 Timber.d("Unkown preference with key: " + key);
         }

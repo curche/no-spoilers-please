@@ -26,6 +26,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
 class Settings {
+    public static final String REWRITE_IMAGES = "pref_rewrite_images";
+
     private Context context;
     private PreferenceActivity preferenceActivity = null;
 
@@ -35,6 +37,14 @@ class Settings {
 
     SharedPreferences getPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    public boolean isRewriteImages() {
+        return getPreferences().getBoolean(REWRITE_IMAGES, true);
+    }
+
+    public void setRewriteImages(boolean rewriteImages) {
+        setPreference(REWRITE_IMAGES, rewriteImages);
     }
 
     private void setPreference(String key, boolean value) {

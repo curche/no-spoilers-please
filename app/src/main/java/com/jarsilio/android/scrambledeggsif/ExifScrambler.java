@@ -41,6 +41,7 @@ class ExifScrambler {
     private final Context context;
     private static ExifScrambler instance;
     private static Set<String> exifAttributes;
+    private Settings settings;
 
     private ExifScrambler(Context context) {
         this.context = context;
@@ -60,27 +61,32 @@ class ExifScrambler {
     }
 
     private void removeExifData(File image) {
-        /* First try to delete Exif data because it is the fastest way to do it.
-        *  If this fails, open the image and save it again with the resave image
-        */
-        try {
-            ExifInterface exifInterface = new ExifInterface(image.toString());
-            for (String attribute : getExifAttributes()) {
-                if (exifInterface.getAttribute(attribute) != null) {
-                    Timber.d("Exif attribute " + attribute + " exists. Setting to null...");
-                    exifInterface.setAttribute(attribute, null);
-                } else {
-                    Timber.d("Exif attribute " + attribute + " doesn't exist. Skipping...");
-                }
-            }
-            exifInterface.saveAttributes();
-
-        } catch (IOException e) {
-            Timber.e(e,"Error while trying to read or write image Exif properties");
-            e.printStackTrace();
-            // Rewrite whole file
-            Timber.d("Trying to resave whole image to get rid of the Exif properties");
+        if (getSettings().isRewriteImages()) {
+            Timber.d("Force rewrite of image is on: rewriting whole image instead of just removing EXIF data");
             resaveImage(image);
+        } else {
+            /* First try to delete Exif data because it is the fastest way to do it.
+            *  If this fails, open the image and save it again with the resave image
+            */
+            try {
+                ExifInterface exifInterface = new ExifInterface(image.toString());
+                for (String attribute : getExifAttributes()) {
+                    if (exifInterface.getAttribute(attribute) != null) {
+                        Timber.d("Exif attribute " + attribute + " exists. Setting to null...");
+                        exifInterface.setAttribute(attribute, null);
+                    } else {
+                        Timber.d("Exif attribute " + attribute + " doesn't exist. Skipping...");
+                    }
+                }
+                exifInterface.saveAttributes();
+
+            } catch (IOException e) {
+                Timber.e(e, "Error while trying to read or write image Exif properties");
+                e.printStackTrace();
+                // Rewrite whole file
+                Timber.d("Trying to resave whole image to get rid of the Exif properties");
+                resaveImage(image);
+            }
         }
     }
 
@@ -99,6 +105,13 @@ class ExifScrambler {
             Timber.e("Couldn't find file to write to:" + image);
             e.printStackTrace();
         }
+    }
+
+    private Settings getSettings() {
+        if (settings == null) {
+            settings = new Settings(context);
+        }
+        return settings;
     }
 
     private static Set<String> getExifAttributes() {

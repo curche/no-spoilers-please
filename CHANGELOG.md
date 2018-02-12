@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file. Format inspired by http://keepachangelog.com/ and this example https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
 
+## [1.0.4] - 2018-02-12
+
+### Added
+
+- Option to force rewrite of images (not only remove EXIF data)
+
 ## [1.0.3] - 2018-02-07
 
 ### Added

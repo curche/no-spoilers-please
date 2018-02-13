@@ -42,6 +42,7 @@ import java.util.Random;
 import timber.log.Timber;
 
 class Utils {
+    public enum ImageType {JPG, PNG, BMP, GIF, TIFF, UNKNOWN};
 
     public static boolean isPermissionGranted(Context context) {
         boolean granted = true;
@@ -131,13 +132,12 @@ class Utils {
         return new String(hexChars);
     }
 
-    private static String getMagicNumbers(Context context, Uri uri) {
+    private static String getMagicNumbers(InputStream inputStream) {
         final int BYTES_TO_READ = 8;
         byte[] magicBytes = new byte[BYTES_TO_READ];
         int bytesRead;
 
         try {
-            InputStream inputStream = context.getContentResolver().openInputStream(uri);
             bytesRead = inputStream.read(magicBytes, 0, BYTES_TO_READ);
             inputStream.close();
         } catch (IOException e) {
@@ -157,27 +157,62 @@ class Utils {
         return magicBytesAsHexString;
     }
 
-    public static boolean isImage(Context context, Uri uri) {
-        boolean isImage = true;
+    private static ImageType getImageType(Context context, InputStream inputStream) {
+        String magicNumbers = getMagicNumbers(inputStream);
 
-        String magicNumbers = getMagicNumbers(context, uri);
-        Timber.d("Checking if '%s' is an image. Its magic numbers (hex) are: %s", uri, magicNumbers);
+        ImageType imageType;
 
         if (magicNumbers.startsWith("FFD8")) {
+            imageType = ImageType.JPG;
             Timber.d("It's a JPEG image");
         } else if (magicNumbers.startsWith("89504E470D0A1A0A")) {
+            imageType = ImageType.PNG;
             Timber.d("It's a PNG image");
+        } else if (magicNumbers.startsWith("424D")) {
+            imageType = ImageType.BMP;
+            Timber.d("It's a BMP image");
         } else if (magicNumbers.startsWith("474946383961") ||
                 magicNumbers.startsWith("474946383761")) {
+            imageType = ImageType.GIF;
             Timber.d("It's a GIF image");
         } else if (magicNumbers.startsWith("49492A00") ||
                 magicNumbers.startsWith("4D4D002A")) {
+            imageType = ImageType.TIFF;
             Timber.d("It's a TIFF image");
         } else {
-            isImage = false;
-            Timber.d("'%s' is (probably) not an image. Failed to recognize type.", uri);
+            imageType = ImageType.UNKNOWN;
+            Timber.d("It's (probably) not an image. Failed to recognize type.");
         }
 
-        return isImage;
+        return imageType;
+    }
+
+    public static ImageType getImageType(Context context, Uri uri) {
+        Timber.d("Getting ImageType from uri '%s'...", uri);
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            return getImageType(context, inputStream);
+        } catch (FileNotFoundException e) {
+            Timber.e(e, "Couldn't open input stream from content resolver for uri '%s'", uri);
+            e.printStackTrace();
+            return ImageType.UNKNOWN;
+        }
+    }
+
+    public static ImageType getImageType(Context context, File file) {
+        Timber.d("Getting ImageType from file '%s'...", file);
+        try {
+            InputStream inputStream = new FileInputStream(file);
+            return getImageType(context, inputStream);
+        } catch (FileNotFoundException e) {
+            Timber.e(e, "Couldn't open input stream from content resolver for file '%s'", file);
+            e.printStackTrace();
+            return ImageType.UNKNOWN;
+        }
+    }
+
+    public static boolean isImage(Context context, Uri uri) {
+        Timber.d("Checking if uri '%s' corresponds to an image...", uri);
+        return getImageType(context, uri) != ImageType.UNKNOWN;
     }
 }

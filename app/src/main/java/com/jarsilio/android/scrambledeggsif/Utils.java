@@ -119,14 +119,65 @@ class Utils {
         return result;
     }
 
-    public static boolean isImage(Context context, Uri uri) {
-        // return BitmapFactory.decodeFile(path) != null; // This is safer but slower
-        boolean isImage = false;
-        String allegedMimeType = getAllegedMimeType(getRealPathFromURI(context, uri));
-        if (allegedMimeType != null) {
-            Timber.d("mimeType (alleged): " + allegedMimeType);
-            isImage = allegedMimeType.startsWith("image/");
+    public static String bytesToHex(byte[] bytes) {
+        final char[] hexArray = "0123456789ABCDEF".toCharArray();
+
+        char[] hexChars = new char[bytes.length * 2];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = hexArray[v >>> 4];
+            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
+        return new String(hexChars);
+    }
+
+    private static String getMagicNumbers(Context context, Uri uri) {
+        final int BYTES_TO_READ = 8;
+        byte[] magicBytes = new byte[BYTES_TO_READ];
+        int bytesRead;
+
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            bytesRead = inputStream.read(magicBytes, 0, BYTES_TO_READ);
+            inputStream.close();
+        } catch (IOException e) {
+            Timber.e("An error ocurred while trying to read the file. Supposing it is not an image");
+            e.printStackTrace();
+            return "";
+        }
+
+        if (bytesRead != BYTES_TO_READ) {
+            Timber.e("Failed to read the first %s bytes for file", BYTES_TO_READ);
+            return "";
+        }
+
+        String magicBytesAsHexString = bytesToHex(magicBytes);
+        Timber.d("First %s bytes: %s", BYTES_TO_READ, magicBytesAsHexString);
+
+        return magicBytesAsHexString;
+    }
+
+    public static boolean isImage(Context context, Uri uri) {
+        boolean isImage = true;
+
+        String magicNumbers = getMagicNumbers(context, uri);
+        Timber.d("Checking if '%s' is an image. Its magic numbers (hex) are: %s", uri, magicNumbers);
+
+        if (magicNumbers.startsWith("FFD8")) {
+            Timber.d("It's a JPEG image");
+        } else if (magicNumbers.startsWith("89504E470D0A1A0A")) {
+            Timber.d("It's a PNG image");
+        } else if (magicNumbers.startsWith("474946383961") ||
+                magicNumbers.startsWith("474946383761")) {
+            Timber.d("It's a GIF image");
+        } else if (magicNumbers.startsWith("49492A00") ||
+                magicNumbers.startsWith("4D4D002A")) {
+            Timber.d("It's a TIFF image");
+        } else {
+            isImage = false;
+            Timber.d("'%s' is (probably) not an image. Failed to recognize type.", uri);
+        }
+
         return isImage;
     }
 }

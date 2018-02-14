@@ -91,11 +91,11 @@ class ExifScrambler {
     }
 
     private void resaveImage(File image) {
-        String allegedMimeType = Utils.getAllegedMimeType(image);
         Bitmap originalImage = BitmapFactory.decodeFile(image.getPath());
+        Utils.ImageType originalImageType = Utils.getImageType(context, image);
         try {
             FileOutputStream outputStream = new FileOutputStream(image);
-            if (allegedMimeType.equals("image/png")) {
+            if (originalImageType.equals(Utils.ImageType.PNG)) {
                 originalImage.compress(Bitmap.CompressFormat.PNG, 95, outputStream);
             } else {
                 // If I don't know what type of image it is (or it is a JPEG), save as JPEG

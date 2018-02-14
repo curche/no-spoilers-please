@@ -32,6 +32,7 @@ import android.webkit.MimeTypeMap;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,28 +56,7 @@ class Utils {
         return granted;
     }
 
-    private static String getAllegedMimeType(String url) {
-        String type = null;
-        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
-        if (extension != null) {
-            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
-        }
-        return type;
-    }
-
-    public static String getAllegedMimeType(File image) {
-        String mimeType = "unknown";
-        try {
-            mimeType = getAllegedMimeType(image.toURI().toURL().toString());
-        } catch (MalformedURLException e) {
-            Timber.d("Failed to read mime type from image: " + image);
-            e.printStackTrace();
-        }
-        return  mimeType;
-    }
-
-    private static void copy(File src, File dst) throws IOException {
-        InputStream in = new FileInputStream(src);
+    private static void copy(InputStream in, File dst) throws IOException {
         try {
             OutputStream out = new FileOutputStream(dst);
             try {
@@ -94,14 +74,15 @@ class Utils {
     }
 
     public static File copyToCacheDir(Context context, Uri imageUri) {
-        String path = getRealPathFromURI(context, imageUri);
-        String extension = path.substring(path.lastIndexOf('.'));
-        File originalImage = new File(path);
+        Timber.d("Copying image '%s' to cache dir", imageUri.getPath());
+
+        String extension = getImageType(context, imageUri).name();
         new File(context.getCacheDir() + "/images").mkdir();
-        File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
+        File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s.%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
         try {
-            Timber.d("Copying '%s' to cache dir '%s'", originalImage, scrambledEggsifImage);
-            copy(originalImage, scrambledEggsifImage);
+            InputStream inputStream = context.getContentResolver().openInputStream(imageUri);
+            Timber.d("Copying '%s' to cache dir '%s'", imageUri, scrambledEggsifImage);
+            copy(inputStream, scrambledEggsifImage);
         } catch (IOException e) {
             Timber.e(e,"Error copying file to cache dir");
             e.printStackTrace();

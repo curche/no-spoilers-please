@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file. Format inspired by http://keepachangelog.com/ and this example https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
 
+## [1.1] - 2018-02-14
+
+### Fixed
+
+- Crash while sharing to Scrambled Exif from an app other than the Gallery
+
 ## [1.0.4] - 2018-02-12
 
 ### Added

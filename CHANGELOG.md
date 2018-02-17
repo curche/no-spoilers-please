@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file. Format inspired by http://keepachangelog.com/ and this example https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
 
+## [1.1.1] - 2018-02-17
+
+### Fixed
+
+- Bug introduced in 1.1: Images where being shared as binary files and
+  some apps (like Signal) wouldn't treat them as images.
+
 ## [1.1] - 2018-02-14
 
 ### Fixed

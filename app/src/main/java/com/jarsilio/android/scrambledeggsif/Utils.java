@@ -74,7 +74,7 @@ class Utils {
     public static File copyToCacheDir(Context context, Uri imageUri) {
         Timber.d("Copying image '%s' to cache dir", imageUri.getPath());
 
-        String extension = getImageType(context, imageUri).name();
+        String extension = getImageType(context, imageUri).name().toLowerCase();
         new File(context.getCacheDir() + "/images").mkdir();
         File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s.%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
         try {

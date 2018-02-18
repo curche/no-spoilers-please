@@ -95,7 +95,7 @@ class ExifScrambler {
                 originalImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
             }
         } catch (FileNotFoundException e) {
-            Timber.e("Couldn't find file to write to:" + image);
+            Timber.e("Couldn't find file to write to: %s", image);
             e.printStackTrace();
         }
     }

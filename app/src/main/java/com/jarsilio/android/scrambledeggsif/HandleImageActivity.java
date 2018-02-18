@@ -45,8 +45,7 @@ public class HandleImageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
-        Timber.d("Type (intent): " + type);
-        Timber.d("Intent type: " + type);
+        Timber.d("Intent type: %s", type);
         if (getUtils().isPermissionGranted()) {
             if (action.equals(Intent.ACTION_SEND)) {
                 handleSendImage(intent);
@@ -98,7 +97,7 @@ public class HandleImageActivity extends AppCompatActivity {
             ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
             for (Uri imageUri : imageUriList) {
                 if (getUtils().isImage(imageUri)) {
-                    Timber.d("Received image (uri): " + imageUri);
+                    Timber.d("Received image (uri): %s", imageUri);
                     Uri scrambledImage = getExifScrambler().scrambleImage(imageUri);
                     scrambledImagesUriList.add(scrambledImage);
                 } else {

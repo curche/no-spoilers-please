@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements Sha
                 Timber.d(Settings.REWRITE_IMAGES + " changed to " + getSettings().isRewriteImages());
                 break;
             default:
-                Timber.d("Unkown preference with key: " + key);
+                Timber.d("Unkown preference with key: %s", key);
         }
     }
 

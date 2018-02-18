@@ -41,9 +41,15 @@ import java.util.Random;
 import timber.log.Timber;
 
 class Utils {
-    public enum ImageType {JPG, PNG, BMP, GIF, TIFF, UNKNOWN};
+    public enum ImageType {JPG, PNG, BMP, GIF, TIFF, UNKNOWN}
 
-    public static boolean isPermissionGranted(Context context) {
+    private Context context;
+
+    Utils (Context context) {
+        this.context = context;
+    }
+
+    public boolean isPermissionGranted() {
         boolean granted = true;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
@@ -71,10 +77,10 @@ class Utils {
         }
     }
 
-    public static File copyToCacheDir(Context context, Uri imageUri) {
+    public File copyToCacheDir(Uri imageUri) {
         Timber.d("Copying image '%s' to cache dir", imageUri.getPath());
 
-        String extension = getImageType(context, imageUri).name().toLowerCase();
+        String extension = getImageType(imageUri).name().toLowerCase();
         new File(context.getCacheDir() + "/images").mkdir();
         File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s.%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
         try {
@@ -88,7 +94,7 @@ class Utils {
         return scrambledEggsifImage;
     }
 
-    private static String getRealPathFromURI(Context context, Uri contentUri) {
+    private String getRealPathFromURI(Uri contentUri) {
         String[] projection = { MediaStore.Images.Media.DATA };
         CursorLoader loader = new CursorLoader(context, contentUri, projection, null, null, null);
         Cursor cursor = loader.loadInBackground();
@@ -99,7 +105,7 @@ class Utils {
         return result;
     }
 
-    public static String bytesToHex(byte[] bytes) {
+    private static String bytesToHex(byte[] bytes) {
         final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
         char[] hexChars = new char[bytes.length * 2];
@@ -136,7 +142,7 @@ class Utils {
         return magicBytesAsHexString;
     }
 
-    private static ImageType getImageType(Context context, InputStream inputStream) {
+    private ImageType getImageType(InputStream inputStream) {
         String magicNumbers = getMagicNumbers(inputStream);
 
         ImageType imageType;
@@ -166,11 +172,11 @@ class Utils {
         return imageType;
     }
 
-    public static ImageType getImageType(Context context, Uri uri) {
+    public ImageType getImageType(Uri uri) {
         Timber.d("Getting ImageType from uri '%s'...", uri);
         try {
             InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            return getImageType(context, inputStream);
+            return getImageType(inputStream);
         } catch (FileNotFoundException e) {
             Timber.e(e, "Couldn't open input stream from content resolver for uri '%s'", uri);
             e.printStackTrace();
@@ -178,11 +184,11 @@ class Utils {
         }
     }
 
-    public static ImageType getImageType(Context context, File file) {
+    public ImageType getImageType(File file) {
         Timber.d("Getting ImageType from file '%s'...", file);
         try {
             InputStream inputStream = new FileInputStream(file);
-            return getImageType(context, inputStream);
+            return getImageType(inputStream);
         } catch (FileNotFoundException e) {
             Timber.e(e, "Couldn't open input stream from content resolver for file '%s'", file);
             e.printStackTrace();
@@ -190,8 +196,8 @@ class Utils {
         }
     }
 
-    public static boolean isImage(Context context, Uri uri) {
+    public boolean isImage(Uri uri) {
         Timber.d("Checking if uri '%s' corresponds to an image...", uri);
-        return getImageType(context, uri) != ImageType.UNKNOWN;
+        return getImageType(uri) != ImageType.UNKNOWN;
     }
 }

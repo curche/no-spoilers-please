@@ -40,6 +40,7 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000;
+    private Utils utils;
 
     @Override
     protected void onResume() {
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         final TableLayout instructionsTable  = findViewById(R.id.instructions_table);
         final TextView instructionsVoila = findViewById(R.id.instructions_voila);
 
-        if (Utils.isPermissionGranted(getApplicationContext())) {
+        if (getUtils().isPermissionGranted()) {
             button.setVisibility(View.GONE);
             permissionExplanation.setVisibility(View.GONE);
             instructionsTitle.setVisibility(View.VISIBLE);
@@ -142,5 +143,12 @@ public class MainActivity extends AppCompatActivity {
                 updateLayout();
             }
         }
+    }
+
+    private Utils getUtils() {
+        if (utils == null) {
+            utils = new Utils(getApplicationContext());
+        }
+        return utils;
     }
 }

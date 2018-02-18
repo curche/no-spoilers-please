@@ -35,6 +35,7 @@ import timber.log.Timber;
 
 public class HandleImageActivity extends AppCompatActivity {
     private ExifScrambler exifScrambler;
+    private Utils utils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class HandleImageActivity extends AppCompatActivity {
         String type = intent.getType();
         Timber.d("Type (intent): " + type);
         Timber.d("Intent type: " + type);
-        if (Utils.isPermissionGranted(getApplicationContext())) {
+        if (getUtils().isPermissionGranted()) {
             if (action.equals(Intent.ACTION_SEND)) {
                 handleSendImage(intent);
             } else if (action.equals(Intent.ACTION_SEND_MULTIPLE)) {
@@ -81,7 +82,7 @@ public class HandleImageActivity extends AppCompatActivity {
             Timber.d("Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareImage(imageUri);
         } else if (imageUri != null) {
-            if (Utils.isImage(getApplicationContext(), imageUri)) {
+            if (getUtils().isImage(imageUri)) {
                 Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
                 shareImage(scrambledImage);
             }
@@ -98,7 +99,7 @@ public class HandleImageActivity extends AppCompatActivity {
         } else {
             ArrayList<Uri> scrambledImagesUriList = new ArrayList<>();
             for (Uri imageUri : imageUriList) {
-                if (Utils.isImage(getApplicationContext(), imageUri)) {
+                if (getUtils().isImage(imageUri)) {
                     Timber.d("Received image (uri): " + imageUri);
                     Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
                     scrambledImagesUriList.add(scrambledImage);
@@ -135,5 +136,12 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.putExtra("scrambled", true);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
+    }
+
+    private Utils getUtils() {
+        if (utils == null) {
+            utils = new Utils(getApplicationContext());
+        }
+        return utils;
     }
 }

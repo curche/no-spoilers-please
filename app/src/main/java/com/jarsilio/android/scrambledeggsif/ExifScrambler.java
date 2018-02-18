@@ -42,6 +42,7 @@ class ExifScrambler {
     private static ExifScrambler instance;
     private static Set<String> exifAttributes;
     private Settings settings;
+    private Utils utils;
 
     private ExifScrambler(Context context) {
         this.context = context;
@@ -55,7 +56,7 @@ class ExifScrambler {
     }
 
     public Uri scrambleImage(Uri imageUri) {
-        File scrambledImageFile = Utils.copyToCacheDir(context, imageUri);
+        File scrambledImageFile = getUtils().copyToCacheDir(imageUri);
         removeExifData(scrambledImageFile);
         return FileProvider.getUriForFile(context, "com.jarsilio.android.scrambledeggsif.fileprovider", scrambledImageFile);
     }
@@ -92,7 +93,7 @@ class ExifScrambler {
 
     private void resaveImage(File image) {
         Bitmap originalImage = BitmapFactory.decodeFile(image.getPath());
-        Utils.ImageType originalImageType = Utils.getImageType(context, image);
+        Utils.ImageType originalImageType = getUtils().getImageType(image);
         try {
             FileOutputStream outputStream = new FileOutputStream(image);
             if (originalImageType.equals(Utils.ImageType.PNG)) {
@@ -112,6 +113,13 @@ class ExifScrambler {
             settings = new Settings(context);
         }
         return settings;
+    }
+
+    private Utils getUtils() {
+        if (utils == null) {
+            utils = new Utils(context);
+        }
+        return utils;
     }
 
     private static Set<String> getExifAttributes() {

@@ -60,38 +60,47 @@ class Utils {
         return granted;
     }
 
-    private static void copy(InputStream in, File dst) throws IOException {
-        try {
-            OutputStream out = new FileOutputStream(dst);
-            try {
-                byte[] buf = new byte[1024];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
-                }
-            } finally {
-                out.close();
-            }
-        } finally {
-            in.close();
-        }
-    }
-
     public File copyToCacheDir(Uri imageUri) {
         Timber.d("Copying image '%s' to cache dir", imageUri.getPath());
 
-        String extension = getImageType(imageUri).name().toLowerCase();
-        new File(context.getCacheDir() + "/images").mkdir();
-        File scrambledEggsifImage = new File(String.format("%s/images/IMG_EGGSIF_%s.%s", context.getCacheDir(), Math.abs(new Random().nextLong()), extension));
+        File imagesCacheDir = new File(context.getCacheDir() + "/images");
+        imagesCacheDir.mkdir();
+
+        File destination = new File(String.format("%s/img_eggsif_%s.%s",
+                imagesCacheDir,
+                Math.abs(new Random().nextLong()),
+                getImageType(imageUri).name().toLowerCase()));
+
+        Timber.d("Temporary file name: %s", destination);
         try {
-            InputStream inputStream = context.getContentResolver().openInputStream(imageUri);
-            Timber.d("Copying '%s' to cache dir '%s'", imageUri, scrambledEggsifImage);
-            copy(inputStream, scrambledEggsifImage);
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            try {
+                inputStream = context.getContentResolver().openInputStream(imageUri);
+                outputStream = new FileOutputStream(destination);
+
+                byte[] buffer = new byte[1024];
+                int bytesCount;
+                while ((bytesCount = inputStream.read(buffer)) > 0) {
+                    outputStream.write(buffer, 0, bytesCount);
+                }
+            } catch (IOException e) {
+                Timber.e(e,"Error copying file to cache dir");
+                e.printStackTrace();
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                }
+            }
         } catch (IOException e) {
-            Timber.e(e,"Error copying file to cache dir");
+            Timber.e(e, "Error closing streams while copying file while copying file to cache dir");
             e.printStackTrace();
         }
-        return scrambledEggsifImage;
+
+        return destination;
     }
 
     private String getRealPathFromURI(Uri contentUri) {

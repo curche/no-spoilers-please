@@ -103,17 +103,6 @@ class Utils {
         return destination;
     }
 
-    private String getRealPathFromURI(Uri contentUri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
-        CursorLoader loader = new CursorLoader(context, contentUri, projection, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String result = cursor.getString(columnIndex);
-        cursor.close();
-        return result;
-    }
-
     private static String bytesToHex(byte[] bytes) {
         final char[] hexArray = "0123456789ABCDEF".toCharArray();
 

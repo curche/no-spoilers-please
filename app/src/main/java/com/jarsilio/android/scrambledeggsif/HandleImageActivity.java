@@ -42,8 +42,6 @@ public class HandleImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handle_image);
 
-        exifScrambler = ExifScrambler.getInstance(getApplicationContext());
-
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
@@ -83,7 +81,7 @@ public class HandleImageActivity extends AppCompatActivity {
             shareImage(imageUri);
         } else if (imageUri != null) {
             if (getUtils().isImage(imageUri)) {
-                Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
+                Uri scrambledImage = getExifScrambler().scrambleImage(imageUri);
                 shareImage(scrambledImage);
             }
         }
@@ -101,7 +99,7 @@ public class HandleImageActivity extends AppCompatActivity {
             for (Uri imageUri : imageUriList) {
                 if (getUtils().isImage(imageUri)) {
                     Timber.d("Received image (uri): " + imageUri);
-                    Uri scrambledImage = exifScrambler.scrambleImage(imageUri);
+                    Uri scrambledImage = getExifScrambler().scrambleImage(imageUri);
                     scrambledImagesUriList.add(scrambledImage);
                 } else {
                     Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri);
@@ -136,6 +134,13 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.putExtra("scrambled", true);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
+    }
+
+    private ExifScrambler getExifScrambler() {
+        if (exifScrambler == null) {
+            exifScrambler = new ExifScrambler(getApplicationContext());
+        }
+        return exifScrambler;
     }
 
     private Utils getUtils() {

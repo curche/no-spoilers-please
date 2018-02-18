@@ -39,20 +39,12 @@ import timber.log.Timber;
 
 class ExifScrambler {
     private final Context context;
-    private static ExifScrambler instance;
     private static Set<String> exifAttributes;
     private Settings settings;
     private Utils utils;
 
-    private ExifScrambler(Context context) {
+    public ExifScrambler(Context context) {
         this.context = context;
-    }
-
-    public static ExifScrambler getInstance(Context context) {
-        if (instance == null) {
-            instance = new ExifScrambler(context);
-        }
-        return instance;
     }
 
     public Uri scrambleImage(Uri imageUri) {

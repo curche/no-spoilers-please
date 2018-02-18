@@ -176,9 +176,15 @@ class Utils {
         Timber.d("Getting ImageType from uri '%s'...", uri);
         try {
             InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            return getImageType(inputStream);
+            ImageType imageType = getImageType(inputStream);
+            inputStream.close();
+            return imageType;
         } catch (FileNotFoundException e) {
             Timber.e(e, "Couldn't open input stream from content resolver for uri '%s'", uri);
+            e.printStackTrace();
+            return ImageType.UNKNOWN;
+        } catch (IOException e) {
+            Timber.e(e, "Couldn't close input stream from content resolver for uri '%s'", uri);
             e.printStackTrace();
             return ImageType.UNKNOWN;
         }

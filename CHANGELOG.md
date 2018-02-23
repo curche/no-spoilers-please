@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file. Format inspired by http://keepachangelog.com/ and this example https://github.com/olivierlacan/keep-a-changelog/blob/master/CHANGELOG.md
 
+## [1.1.2] - 2018-02-23
+
+### Fixed
+
+- Failed update on some LOS and Android 5 devices
+
+### Added
+
+- Adaptive icon for newer Android version (>=8)
+
 ## [1.1.1] - 2018-02-17
 
 ### Fixed

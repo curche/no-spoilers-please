@@ -40,6 +40,11 @@ android {
     lintOptions{
         disable 'MissingTranslation'
     }
+
+    packagingOptions {
+        exclude 'META-INF/android.arch.lifecycle_runtime.version'
+        exclude 'META-INF/com.android.support_*.version'
+    }
 }
 
 dependencies {

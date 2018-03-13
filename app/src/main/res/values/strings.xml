@@ -42,4 +42,7 @@
 
     <string name="settings_force_image_rewrite">Force image rewrite</string>
     <string name="settings_force_image_rewrite_summary">This option forces rewriting the whole image file (normally only the EXIF data is removed).\n\nThis option makes removing EXIF data slower but safer, and could have an influence in picture quality</string>
+
+    <string name="licenses_menu_item">Licenses</string>
+    <string name="licenses_about_libraries_text"><![CDATA[<br/><b>Scrambled Exif License</b><br/><br/>Copyright (c) 2018 Juan García Basilio<br/><br/>This app is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/><br/>This app is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a href="http://www.gnu.org/licenses/">GNU General Public License</a> for more details.<br/><br/><b>Third-party libraries</b><br/><br/>Here is a list of the libraries used by this app. Tap on them for more information.]]></string>
 </resources>

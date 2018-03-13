@@ -36,6 +36,9 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.LibsBuilder;
+
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -85,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.settings_menu_item:
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 break;
+            case R.id.licenses_menu_item:
+                showAboutLicensesActivity();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -100,6 +106,19 @@ public class MainActivity extends AppCompatActivity {
         // Work-around to make links clickable (don't ask me why this works):
         // See: https://stackoverflow.com/questions/1997328/how-can-i-get-clickable-hyperlinks-in-alertdialog-from-a-string-resource
         ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    private void showAboutLicensesActivity() {
+        new LibsBuilder()
+                //provide a style (optional) (LIGHT, DARK, LIGHT_DARK_TOOLBAR)
+                .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
+                .withAboutIconShown(true)
+                .withAboutVersionShown(true)
+                .withActivityTitle(getString(R.string.licenses_menu_item))
+                .withAboutDescription(getString(R.string.licenses_about_libraries_text))
+                //.withAboutDescription("This is a small sample which can be set in the about my app description file.<br /><b>You can style this with html markup :D</b>")
+                //start the activity
+                .start(getApplicationContext());
     }
 
     private void requestPermissions() {

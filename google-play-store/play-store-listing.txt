@@ -2,7 +2,7 @@ Scrambled Exif (pronounced <i>egg</i>sif) helps you remove the metadata in your 
 
 If you feel like it.
 
-If you don't want the big Internet companies (or whomever) to know were your pictures were taken don't forget to remove the metadata from them before you share them.
+If you don't want the big Internet companies (or whomever) to know where your pictures were taken don't forget to remove the metadata from them before you share them.
 
 To remove the metadata from a picture, simply share it like you'd normally do and choose <i>Scrambled Exif</i>. A moment later, the share 'dialog' will reappear. Now just share with the app you intended to share with in the first place.
 

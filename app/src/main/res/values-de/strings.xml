@@ -34,4 +34,9 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif braucht Zugriff auf Deine Dateien. Bitte öffne die App, um die Berechtigung zu erteilen.</string>
     <string name="privacy_policy_menu_item">Datenschutzerklärung</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Einstellungen</string>
+
+    <string name="settings_force_image_rewrite">Umschrieben der Bilder zwingen</string>
+    <string name="settings_force_image_rewrite_summary">Diese Option forciert das Umschreiben der Bild-Dateien: Normalerweise wierden nur die Metadaten gelöscht.\n\nDiese Option verlangsamt das Entfernen von Metadaten ist aber sichererer. Es könnte auch die Qualität der Bilder beeinflussen.</string>
 </resources>

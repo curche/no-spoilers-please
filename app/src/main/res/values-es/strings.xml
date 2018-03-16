@@ -33,4 +33,9 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la app para concedérselo.</string>
     <string name="privacy_policy_menu_item">Política de privacidad</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Configuración</string>
+
+    <string name="settings_force_image_rewrite">Forzar reescritura de las imágenes</string>
+    <string name="settings_force_image_rewrite_summary">Esta opción fuerza la reescritura por complete de las imágenes (en vez de simplemente borrar los metadatos EXIF).\n\nEsta opción es más lenta pero más segura. Podría afectar la calidad resultante de las imágenes.</string>
 </resources>

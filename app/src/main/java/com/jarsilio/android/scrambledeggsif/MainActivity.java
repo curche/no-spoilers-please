@@ -25,10 +25,8 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +34,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.jarsilio.android.privacypolicy.PrivacyPolicyBuilder;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.privacy_policy_menu_item:
-                showPrivacyPolicyDialog();
+                showPrivacyPolicyActivity();
                 break;
             case R.id.settings_menu_item:
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
@@ -95,29 +94,24 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private void showPrivacyPolicyDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(R.string.privacy_policy_dialog_title);
-        builder.setMessage(R.string.privacy_policy_dialog_text);
-        builder.setPositiveButton(android.R.string.ok, null);
-
-        AlertDialog dialog = builder.show();
-
-        // Work-around to make links clickable (don't ask me why this works):
-        // See: https://stackoverflow.com/questions/1997328/how-can-i-get-clickable-hyperlinks-in-alertdialog-from-a-string-resource
-        ((TextView) dialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
+    private void showPrivacyPolicyActivity() {
+        new PrivacyPolicyBuilder()
+                .withIntro(getString(R.string.app_name), "Juan García Basilio (juanitobananas)")
+                .withUrl("https://gitlab.com/juanitobananas/scrambled-exif/blob/master/PRIVACY.md#scrambled-exif-privacy-policy")
+                .withMeSection()
+                .withFDroidSection()
+                .withGooglePlaySection()
+                .withEmailSection("juam+scrambled@posteo.net")
+                .start(getApplicationContext());
     }
 
     private void showAboutLicensesActivity() {
         new LibsBuilder()
-                //provide a style (optional) (LIGHT, DARK, LIGHT_DARK_TOOLBAR)
                 .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
                 .withAboutIconShown(true)
                 .withAboutVersionShown(true)
                 .withActivityTitle(getString(R.string.licenses_menu_item))
                 .withAboutDescription(getString(R.string.licenses_about_libraries_text))
-                //.withAboutDescription("This is a small sample which can be set in the about my app description file.<br /><b>You can style this with html markup :D</b>")
-                //start the activity
                 .start(getApplicationContext());
     }
 

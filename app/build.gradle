@@ -44,7 +44,8 @@ android {
     }
 
     packagingOptions {
-        exclude 'META-INF/android.arch.lifecycle_runtime.version'
+        exclude 'META-INF/android.arch.lifecycle_*.version'
+        exclude 'META-INF/android.arch.core_runtime.version'
         exclude 'META-INF/com.android.support_*.version'
     }
 }

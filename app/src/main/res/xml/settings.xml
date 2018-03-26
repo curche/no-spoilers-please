@@ -23,4 +23,9 @@
     android:title="@string/settings_force_image_rewrite"
     android:key="pref_rewrite_images"
     android:summary="@string/settings_force_image_rewrite_summary" />
+<SwitchPreference
+    android:defaultValue="true"
+    android:title="@string/settings_keep_jpeg_orientation"
+    android:key="pref_keep_jpeg_orientation"
+    android:summary="@string/settings_keep_jpeg_orientation_summary" />
 </PreferenceScreen>

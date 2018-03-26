@@ -28,6 +28,7 @@ import android.preference.PreferenceManager;
 class Settings {
     public static final String REWRITE_IMAGES = "pref_rewrite_images";
     public static final String LAST_ALREADY_SCRAMBLED_PROOF = "pref_last_already_scrambled_proof";
+    public static final String KEEP_JPEG_ORIENTATION = "pref_keep_jpeg_orientation";
 
     private Context context;
     private PreferenceActivity preferenceActivity = null;
@@ -42,6 +43,10 @@ class Settings {
 
     public boolean isRewriteImages() {
         return getPreferences().getBoolean(REWRITE_IMAGES, true);
+    }
+
+    public boolean isKeepJpegOrientation() {
+        return getPreferences().getBoolean(KEEP_JPEG_ORIENTATION, true);
     }
 
     public void setRewriteImages(boolean rewriteImages) {

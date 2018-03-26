@@ -29,6 +29,7 @@ import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 
 import timber.log.Timber;
@@ -118,7 +119,8 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-            shareIntent.putExtra("scrambled", true);
+            int alreadyScrambledProof = new SecureRandom().nextInt();
+            shareIntent.putExtra("alreadyScrambled", alreadyScrambledProof);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         }
     }
@@ -130,7 +132,8 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setType("image/*");
             shareIntent.putExtra(Intent.EXTRA_STREAM, scrambledImagesUriList);
-            shareIntent.putExtra("scrambled", true);
+            int alreadyScrambledProof = new SecureRandom().nextInt();
+            shareIntent.putExtra("alreadyScrambled", alreadyScrambledProof);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
     }

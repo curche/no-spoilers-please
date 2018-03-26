@@ -27,6 +27,7 @@ import android.preference.PreferenceManager;
 
 class Settings {
     public static final String REWRITE_IMAGES = "pref_rewrite_images";
+    public static final String LAST_ALREADY_SCRAMBLED_PROOF = "pref_last_already_scrambled_proof";
 
     private Context context;
     private PreferenceActivity preferenceActivity = null;
@@ -47,6 +48,14 @@ class Settings {
         setPreference(REWRITE_IMAGES, rewriteImages);
     }
 
+    public int getLastAlreadyScrambledProof() {
+        return getPreferences().getInt(LAST_ALREADY_SCRAMBLED_PROOF, 0);
+    }
+
+    public void setLastAlreadyScrambledProof(int proof) {
+        setPreference(LAST_ALREADY_SCRAMBLED_PROOF, proof);
+    }
+
     private void setPreference(String key, boolean value) {
         if (preferenceActivity != null) { // This changes the GUI, but it needs the MainActivity to have started
             CheckBoxPreference checkBox = (CheckBoxPreference) preferenceActivity.findPreference(key);
@@ -58,6 +67,10 @@ class Settings {
 
     private void setPreference(String key, long value) {
         getPreferences().edit().putLong(key, value).apply();
+    }
+
+    private void setPreference(String key, int value) {
+        getPreferences().edit().putInt(key, value).apply();
     }
 
     private void setPreference(String key, String value) {

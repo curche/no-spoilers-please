@@ -64,6 +64,11 @@ class ExifScrambler {
     }
 
     private void removeExifDataByResavingImage(File image) {
+        String originalOrientation = null; // We might not need this
+        if (getSettings().isKeepJpegOrientation()) {
+             originalOrientation = getOrientation(image);
+        }
+
         Bitmap originalImage = BitmapFactory.decodeFile(image.getPath());
         Utils.ImageType originalImageType = getUtils().getImageType(image);
         try {
@@ -73,6 +78,9 @@ class ExifScrambler {
             } else {
                 // If I don't know what type of image it is (or it is a JPEG), save as JPEG
                 originalImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+                if (getSettings().isKeepJpegOrientation()) {
+                    setOrientation(originalOrientation, image);
+                }
             }
         } catch (FileNotFoundException e) {
             Timber.e("Couldn't find file to write to: %s", image);
@@ -87,7 +95,13 @@ class ExifScrambler {
         try {
             ExifInterface exifInterface = new ExifInterface(image.toString());
             for (String attribute : getExifAttributes()) {
-                if (exifInterface.getAttribute(attribute) != null) {
+                String value = exifInterface.getAttribute(attribute);
+                if (getSettings().isKeepJpegOrientation() && attribute.equals(ExifInterface.TAG_ORIENTATION)) {
+                    Timber.d("Keep orientation is on: skipping ExifInterface.TAG_ORIENTATION attribute. " +
+                            "Orientation is set to %s", value);
+                    continue;
+                }
+                if (value != null) {
                     Timber.v("Exif attribute " + attribute + " is set. Removing (setting to null)");
                     exifInterface.setAttribute(attribute, null);
                 }
@@ -97,6 +111,32 @@ class ExifScrambler {
             Timber.e(e, "Failed to remove exif data with ExifInterface. Falling back to re-saving image");
             removeExifDataByResavingImage(image);
         }
+    }
+
+    private String getOrientation(File image) {
+        String orientation = null;
+        try {
+            ExifInterface exifInterface = new ExifInterface(image.toString());
+            orientation = exifInterface.getAttribute(ExifInterface.TAG_ORIENTATION);
+        } catch (IOException e) {
+            Timber.e(e, "Couldn't read orientation exif attribute for image '%s'", image);
+            e.printStackTrace();
+        }
+        return orientation;
+    }
+
+    private String setOrientation(String orientation, File image) {
+        // TODO: somehow, this adds ImageLength, ImageWidth and LigtSource to th exif metadata
+        try {
+            Timber.d("Trying to set orientation for image '%s' to %s", image, orientation);
+            ExifInterface exifInterface = new ExifInterface(image.toString());
+            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, orientation);
+            exifInterface.saveAttributes();
+        } catch (IOException e) {
+            Timber.e(e, "Couldn't save orientation exif tag for image '%s'", image);
+            e.printStackTrace();
+        }
+        return orientation;
     }
 
     private Settings getSettings() {

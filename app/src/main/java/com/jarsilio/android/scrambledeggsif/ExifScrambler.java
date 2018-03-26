@@ -55,35 +55,15 @@ class ExifScrambler {
 
     private void removeExifData(File image) {
         if (getSettings().isRewriteImages()) {
-            Timber.d("Force rewrite of image is on: rewriting whole image instead of just removing EXIF data");
-            resaveImage(image);
+            Timber.d("Force image re-write is on: rewriting whole image instead of just removing EXIF data");
+            removeExifDataByResavingImage(image);
         } else {
-            /* First try to delete Exif data because it is the fastest way to do it.
-            *  If this fails, open the image and save it again with the resave image
-            */
-            try {
-                ExifInterface exifInterface = new ExifInterface(image.toString());
-                for (String attribute : getExifAttributes()) {
-                    if (exifInterface.getAttribute(attribute) != null) {
-                        Timber.d("Exif attribute " + attribute + " exists. Setting to null...");
-                        exifInterface.setAttribute(attribute, null);
-                    } else {
-                        Timber.d("Exif attribute " + attribute + " doesn't exist. Skipping...");
-                    }
-                }
-                exifInterface.saveAttributes();
-
-            } catch (IOException e) {
-                Timber.e(e, "Error while trying to read or write image Exif properties");
-                e.printStackTrace();
-                // Rewrite whole file
-                Timber.d("Trying to resave whole image to get rid of the Exif properties");
-                resaveImage(image);
-            }
+            Timber.d("Force image re-write is off: trying to just remove EXIF data");
+            removeExifDataWithExifInterface(image);
         }
     }
 
-    private void resaveImage(File image) {
+    private void removeExifDataByResavingImage(File image) {
         Bitmap originalImage = BitmapFactory.decodeFile(image.getPath());
         Utils.ImageType originalImageType = getUtils().getImageType(image);
         try {
@@ -97,6 +77,25 @@ class ExifScrambler {
         } catch (FileNotFoundException e) {
             Timber.e("Couldn't find file to write to: %s", image);
             e.printStackTrace();
+        }
+    }
+
+    private void removeExifDataWithExifInterface(File image) {
+        /* First try to delete Exif data because it is the fastest way to do it.
+         * If this fails, open the image and save it again with the resave image
+         */
+        try {
+            ExifInterface exifInterface = new ExifInterface(image.toString());
+            for (String attribute : getExifAttributes()) {
+                if (exifInterface.getAttribute(attribute) != null) {
+                    Timber.v("Exif attribute " + attribute + " is set. Removing (setting to null)");
+                    exifInterface.setAttribute(attribute, null);
+                }
+            }
+            exifInterface.saveAttributes();
+        } catch (IOException e) {
+            Timber.e(e, "Failed to remove exif data with ExifInterface. Falling back to re-saving image");
+            removeExifDataByResavingImage(image);
         }
     }
 

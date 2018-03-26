@@ -21,3 +21,7 @@
 #-renamesourcefileattribute SourceFile
 
 -dontobfuscate
+-keep class .R
+-keep class **.R$* {
+    <fields>;
+ }

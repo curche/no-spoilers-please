@@ -86,9 +86,12 @@ class ExifScrambler {
             Timber.e("Couldn't find file to write to: %s", image);
             e.printStackTrace();
         }
+
+        Timber.d("Sometimes re-saving as JPEG might add exif data. Removing exif data with ExifInterface to try to delete it");
+        removeExifDataWithExifInterface(image, false);
     }
 
-    private void removeExifDataWithExifInterface(File image) {
+    private void removeExifDataWithExifInterface(File image, boolean fallback) {
         /* First try to delete Exif data because it is the fastest way to do it.
          * If this fails, open the image and save it again with the resave image
          */
@@ -108,9 +111,17 @@ class ExifScrambler {
             }
             exifInterface.saveAttributes();
         } catch (IOException e) {
-            Timber.e(e, "Failed to remove exif data with ExifInterface. Falling back to re-saving image");
-            removeExifDataByResavingImage(image);
+            if (fallback) {
+                Timber.e(e, "Failed to remove exif data with ExifInterface. Falling back to re-saving image");
+                removeExifDataByResavingImage(image);
+            } else {
+                Timber.e(e, "Failed to remove exif data with ExifInterface.");
+            }
         }
+    }
+
+    private void removeExifDataWithExifInterface(File image) {
+        removeExifDataWithExifInterface(image, true);
     }
 
     private String getOrientation(File image) {
@@ -126,7 +137,8 @@ class ExifScrambler {
     }
 
     private String setOrientation(String orientation, File image) {
-        // TODO: somehow, this adds ImageLength, ImageWidth and LigtSource to th exif metadata
+        // Somehow, this adds ImageLength, ImageWidth and LigtSource to the exif metadata
+        // Running remove exif data with ExifInterface after re-writing image to get rid of these
         try {
             Timber.d("Trying to set orientation for image '%s' to %s", image, orientation);
             ExifInterface exifInterface = new ExifInterface(image.toString());

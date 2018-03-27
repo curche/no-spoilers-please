@@ -19,7 +19,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 <SwitchPreference
-    android:defaultValue="false"
+    android:defaultValue="true"
     android:title="@string/settings_force_image_rewrite"
     android:key="pref_rewrite_images"
     android:summary="@string/settings_force_image_rewrite_summary" />

@@ -39,4 +39,7 @@
 
     <string name="settings_force_image_rewrite">Umschreiben der Bilder erzwingen</string>
     <string name="settings_force_image_rewrite_summary">Diese Option erzwingt das Umschreiben der Bild-Dateien: Normalerweise werden nur die Metadaten gelöscht.\n\nDiese Option verlangsamt das Entfernen von Metadaten, ist aber sicherer. Dies kann allerdings die Qualität der Bilder beeinflussen.</string>
+
+    <string name="settings_keep_jpeg_orientation">Bildausrichtung beibehalten (nur JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Behält die Information zur Bildausrichtung bei JPEG-Dateien bei.</string>
 </resources>

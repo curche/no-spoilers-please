@@ -23,12 +23,12 @@
     <string name="share_via">Gescrambletes Bild teilen über</string>
     <string name="share_multiple_via">Gescramblete Bilder teilen über</string>
     <string name="permission_request">Berechtigung erteilen</string>
-    <string name="permission_sdcard_text">Scrambled Exif braucht Zugriff auf Deine Dateien, um die von Dir geteilten Bilder weiterteilen zu können.\n\nEinfach auf den unteren Knopf drucken, um die Berechtigung zu erteilen.</string>
+    <string name="permission_sdcard_text">Scrambled Exif braucht Zugriff auf Deine Dateien, um die von Dir geteilten Bilder weiterteilen zu können.\n\nEinfach auf die untere Schaltfläche tippen, um die Berechtigung zu erteilen.</string>
 
     <string name="instructions_title">Anleitung</string>
-    <string name="instructions_1">Wähle die Bilder aus, die du ohne Metadaten teilen möchtest, und wähle \"Teile über\" aus.</string>
+    <string name="instructions_1">Wähle die Bilder aus, die Du ohne Metadaten teilen möchtest, und wähle \"Teile über\" aus.</string>
     <string name="instructions_2">Wähle <i>Scrambled Exif</i> aus der App-Liste.</string>
-    <string name="instructions_2_1">Zu diesem Zeitpunkt werden die Metadaten von den Bildern von den Bildern gelöscht!</string>
+    <string name="instructions_2_1">Zu diesem Zeitpunkt werden die Metadaten aus den Bildern gelöscht!</string>
     <string name="instructions_3">Sobald dies erledigt ist, erscheint die App-Liste erneut. Nun kannst Du die Bilder wie gewohnt teilen.</string>
     <string name="instructions_voila">Et voilà! Du hast ein paar Bilder ohne Metadaten mit der Welt geteilt!</string>
 
@@ -37,6 +37,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Einstellungen</string>
 
-    <string name="settings_force_image_rewrite">Umschrieben der Bilder zwingen</string>
-    <string name="settings_force_image_rewrite_summary">Diese Option forciert das Umschreiben der Bild-Dateien: Normalerweise wierden nur die Metadaten gelöscht.\n\nDiese Option verlangsamt das Entfernen von Metadaten ist aber sichererer. Es könnte auch die Qualität der Bilder beeinflussen.</string>
+    <string name="settings_force_image_rewrite">Umschreiben der Bilder erzwingen</string>
+    <string name="settings_force_image_rewrite_summary">Diese Option erzwingt das Umschreiben der Bild-Dateien: Normalerweise werden nur die Metadaten gelöscht.\n\nDiese Option verlangsamt das Entfernen von Metadaten, ist aber sicherer. Dies kann allerdings die Qualität der Bilder beeinflussen.</string>
 </resources>

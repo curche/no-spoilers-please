@@ -37,6 +37,9 @@ import timber.log.Timber;
 public class HandleImageActivity extends AppCompatActivity {
     private ExifScrambler exifScrambler;
     private Utils utils;
+    private Settings settings;
+
+    private static final String ALREADY_SCRAMBLED_PROOF_KEY = "already_scrambled_proof_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +78,8 @@ public class HandleImageActivity extends AppCompatActivity {
 
     private void handleSendImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        boolean alreadyScrambled = intent.getExtras().getBoolean("scrambled");
+        int alreadyScrambledProof = intent.getExtras().getInt(ALREADY_SCRAMBLED_PROOF_KEY);
+        boolean alreadyScrambled = alreadyScrambledProof == getSettings().getLastAlreadyScrambledProof();
         if (alreadyScrambled) {
             Timber.d("Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareImage(imageUri);
@@ -90,7 +94,8 @@ public class HandleImageActivity extends AppCompatActivity {
     private void handleSendMultipleImages(Intent intent) {
         Timber.d("Scrambling multiple images");
         ArrayList<Uri> imageUriList = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-        boolean alreadyScrambled = intent.getExtras().getBoolean("scrambled");
+        int alreadyScrambledProof = intent.getExtras().getInt(ALREADY_SCRAMBLED_PROOF_KEY);
+        boolean alreadyScrambled = alreadyScrambledProof == getSettings().getLastAlreadyScrambledProof();
         if (alreadyScrambled) {
             Timber.d("Images already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareMultipleImages(imageUriList);
@@ -119,8 +124,11 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+
             int alreadyScrambledProof = new SecureRandom().nextInt();
-            shareIntent.putExtra("alreadyScrambled", alreadyScrambledProof);
+            shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof);
+            getSettings().setLastAlreadyScrambledProof(alreadyScrambledProof);
+
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         }
     }
@@ -132,8 +140,11 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setType("image/*");
             shareIntent.putExtra(Intent.EXTRA_STREAM, scrambledImagesUriList);
+
             int alreadyScrambledProof = new SecureRandom().nextInt();
-            shareIntent.putExtra("alreadyScrambled", alreadyScrambledProof);
+            shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof);
+            getSettings().setLastAlreadyScrambledProof(alreadyScrambledProof);
+
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
     }
@@ -150,5 +161,12 @@ public class HandleImageActivity extends AppCompatActivity {
             utils = new Utils(getApplicationContext());
         }
         return utils;
+    }
+
+    private Settings getSettings() {
+        if (settings == null) {
+            settings = new Settings(getApplicationContext());
+        }
+        return settings;
     }
 }

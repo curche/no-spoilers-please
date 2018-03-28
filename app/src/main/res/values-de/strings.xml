@@ -43,4 +43,6 @@
 
     <string name="settings_keep_jpeg_orientation">Bildausrichtung beibehalten (nur JPEG)</string>
     <string name="settings_keep_jpeg_orientation_summary">Behält die Information zur Bildausrichtung bei JPEG-Dateien bei.</string>
+
+    <string name="licenses_menu_item">Lizenzen</string>
 </resources>

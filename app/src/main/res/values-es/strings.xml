@@ -38,4 +38,9 @@
 
     <string name="settings_force_image_rewrite">Forzar reescritura de las imágenes</string>
     <string name="settings_force_image_rewrite_summary">Esta opción fuerza la reescritura por complete de las imágenes (en vez de simplemente borrar los metadatos EXIF).\n\nEsta opción es más lenta pero más segura. Podría afectar la calidad resultante de las imágenes.</string>
+
+    <string name="settings_keep_jpeg_orientation">Mantener la orientación (sólo para JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Mantiene la metainformación sobre la orientación para imágenes JPEG.</string>
+
+    <string name="licenses_menu_item">Licencias</string>
 </resources>

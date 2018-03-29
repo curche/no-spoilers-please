@@ -27,11 +27,21 @@
     <string name="instructions_title">Aanwijzingen</string>
     <string name="instructions_1">Selecteer de afbeeldingen die u wilt delen in de galerij en druk op de deel-knop.</string>
     <string name="instructions_2">Selecteer <i>Scrambled Exif</i> in de lijst met applicaties.</string>
-    <string name="instructions_2_1">Op dat moment wordt de metadata verwijderd.</string>
+    <string name="instructions_2_1">Op dat moment worden de metadata verwijderd.</string>
     <string name="instructions_3">Hierna verschijnt de lijst met applicaties opnieuw. Deel de afbeeldingen zoals u dat normaal zou doen.</string>
     <string name="instructions_voila">Tadaa! U heeft zojuist afbeeldingen zonder metadata gedeeld!</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif heeft toegang nodig tot uw bestanden.
  Open de app om vanuit daar de toestemming te verlenen.</string>
     <string name="privacy_policy_menu_item">Privacybeleid</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Instellingen</string>
+
+    <string name="settings_force_image_rewrite">Forceer herschrijven van afbeelding</string>
+    <string name="settings_force_image_rewrite_summary">Deze optie zorgt ervoor dat het hele bestand wordt herschreven (normaal worden alleen de Exif-data verwijderd).\n\nDeze optie maakt het verwijderen van Exif-data langzamer maar veiliger, en kan invloed hebben op de afbeeldingskwaliteit.</string>
+
+    <string name="settings_keep_jpeg_orientation">Behoud oriëntatie (alleen voor JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Behoud oriëntatie-informatie van JPEG-afbeeldingen</string>
+
+    <string name="licenses_menu_item">Licenties</string>
     </resources>

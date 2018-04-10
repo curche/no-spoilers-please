@@ -25,6 +25,8 @@ import android.preference.CheckBoxPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 
+import java.util.UUID;
+
 class Settings {
     public static final String REWRITE_IMAGES = "pref_rewrite_images";
     public static final String LAST_ALREADY_SCRAMBLED_PROOF = "pref_last_already_scrambled_proof";
@@ -54,7 +56,7 @@ class Settings {
     }
 
     public String getLastAlreadyScrambledProof() {
-        return getPreferences().getString(LAST_ALREADY_SCRAMBLED_PROOF, "NO_PROOF");
+        return getPreferences().getString(LAST_ALREADY_SCRAMBLED_PROOF, UUID.randomUUID().toString());
     }
 
     public void setLastAlreadyScrambledProof(String proof) {

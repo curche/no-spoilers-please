@@ -78,10 +78,7 @@ public class HandleImageActivity extends AppCompatActivity {
 
     private void handleSendImage(Intent intent) {
         Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        int alreadyScrambledProof = intent.getExtras().getInt(ALREADY_SCRAMBLED_PROOF_KEY);
-        boolean alreadyScrambled = alreadyScrambledProof != 0 &&
-                alreadyScrambledProof == getSettings().getLastAlreadyScrambledProof();
-        if (alreadyScrambled) {
+        if (isAlreadyScrambled(intent)) {
             Timber.d("Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareImage(imageUri);
         } else if (imageUri != null) {
@@ -95,10 +92,7 @@ public class HandleImageActivity extends AppCompatActivity {
     private void handleSendMultipleImages(Intent intent) {
         Timber.d("Scrambling multiple images");
         ArrayList<Uri> imageUriList = intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-        int alreadyScrambledProof = intent.getExtras().getInt(ALREADY_SCRAMBLED_PROOF_KEY);
-        boolean alreadyScrambled = alreadyScrambledProof != 0 &&
-                alreadyScrambledProof == getSettings().getLastAlreadyScrambledProof();
-        if (alreadyScrambled) {
+        if (isAlreadyScrambled(intent)) {
             Timber.d("Images already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing");
             shareMultipleImages(imageUriList);
         } else {
@@ -126,11 +120,7 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-
-            int alreadyScrambledProof = new SecureRandom().nextInt(); // In the extremely remote case of this being 0, the image/s will be re-scrambled
-            shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof);
-            getSettings().setLastAlreadyScrambledProof(alreadyScrambledProof);
-
+            setAlreadyScrambled(shareIntent);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));
         }
     }
@@ -142,13 +132,21 @@ public class HandleImageActivity extends AppCompatActivity {
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
             shareIntent.setType("image/*");
             shareIntent.putExtra(Intent.EXTRA_STREAM, scrambledImagesUriList);
-
-            int alreadyScrambledProof = new SecureRandom().nextInt(); // In the extremely remote case of this being 0, the image/s will be re-scrambled
-            shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof);
-            getSettings().setLastAlreadyScrambledProof(alreadyScrambledProof);
-
+            setAlreadyScrambled(shareIntent);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)));
         }
+    }
+
+    private boolean isAlreadyScrambled(Intent intent) {
+        int alreadyScrambledProof = intent.getExtras().getInt(ALREADY_SCRAMBLED_PROOF_KEY);
+        return alreadyScrambledProof != 0 &&
+                alreadyScrambledProof == getSettings().getLastAlreadyScrambledProof();
+    }
+
+    private void setAlreadyScrambled(Intent shareIntent) {
+        int alreadyScrambledProof = new SecureRandom().nextInt(); // In the extremely remote case of this being 0, the image/s will be re-scrambled
+        shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof);
+        getSettings().setLastAlreadyScrambledProof(alreadyScrambledProof);
     }
 
     private ExifScrambler getExifScrambler() {

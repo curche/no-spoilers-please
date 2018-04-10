@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import timber.log.Timber;
 
@@ -138,13 +139,19 @@ public class HandleImageActivity extends AppCompatActivity {
     }
 
     private boolean isAlreadyScrambled(Intent intent) {
-        int alreadyScrambledProof = intent.getExtras().getInt(ALREADY_SCRAMBLED_PROOF_KEY);
-        return alreadyScrambledProof != 0 &&
-                alreadyScrambledProof == getSettings().getLastAlreadyScrambledProof();
+        String alreadyScrambledProof = intent.getExtras().getString(ALREADY_SCRAMBLED_PROOF_KEY);
+        if (alreadyScrambledProof == null) {
+            return false;
+        } else {
+            String lastAlreadyScrambledProof = getSettings().getLastAlreadyScrambledProof();
+            Timber.v("Current intent's 'already scrambled proof': %s", alreadyScrambledProof);
+            Timber.v("Last 'already scrambled proof' we generated: %s", lastAlreadyScrambledProof);
+            return alreadyScrambledProof.equals(lastAlreadyScrambledProof);
+        }
     }
 
     private void setAlreadyScrambled(Intent shareIntent) {
-        int alreadyScrambledProof = new SecureRandom().nextInt(); // In the extremely remote case of this being 0, the image/s will be re-scrambled
+        String alreadyScrambledProof = UUID.randomUUID().toString();
         shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof);
         getSettings().setLastAlreadyScrambledProof(alreadyScrambledProof);
     }

@@ -53,11 +53,11 @@ class Settings {
         setPreference(REWRITE_IMAGES, rewriteImages);
     }
 
-    public int getLastAlreadyScrambledProof() {
-        return getPreferences().getInt(LAST_ALREADY_SCRAMBLED_PROOF, 0);
+    public String getLastAlreadyScrambledProof() {
+        return getPreferences().getString(LAST_ALREADY_SCRAMBLED_PROOF, "NO_PROOF");
     }
 
-    public void setLastAlreadyScrambledProof(int proof) {
+    public void setLastAlreadyScrambledProof(String proof) {
         setPreference(LAST_ALREADY_SCRAMBLED_PROOF, proof);
     }
 

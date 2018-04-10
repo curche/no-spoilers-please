@@ -56,7 +56,7 @@ class Settings {
     }
 
     public String getLastAlreadyScrambledProof() {
-        return getPreferences().getString(LAST_ALREADY_SCRAMBLED_PROOF, UUID.randomUUID().toString());
+        return getPreferences().getString(LAST_ALREADY_SCRAMBLED_PROOF, "NO_PROOF-" + UUID.randomUUID().toString());
     }
 
     public void setLastAlreadyScrambledProof(String proof) {

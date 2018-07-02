@@ -1,0 +1,48 @@
+<!--
+  ~ Copyright (c) 2018 NK
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Измешани Егзиф</string>
+    <string name="share_via">Поделите слику коришћењем Измешаног Егзиф-а</string>
+    <string name="share_multiple_via">Поделите слике коришћењем Измешаног Егзиф-а</string>
+    <string name="permission_request">Затражите дозволу</string>
+    <string name="permission_sdcard_text">Измешаном Егзиф-у је неопходан приступ датотекама како би се могле читати слике које желите да делите путем ове апликације.\n\nМолимо да одобрите дозволе за добијање неопходних привилегија.</string>
+
+    <string name="instructions_title">Упутства</string>
+    <string name="instructions_1">Изаберите слике које желите да делите и одабрите иконицу за дељење.</string>
+    <string name="instructions_2">Одаберите <i>Измешани Егзиф</i> из листе апликација.</string>
+    <string name="instructions_2_1">У овом моменту, мета-подаци су избрисани!</string>
+    <string name="instructions_3">Након што се мета-подаци подаци избришу, листа апликација ће се појавити опет. У новом изборнику је неопходно за изаберете жељени начин дељења садржаја и да делите слике као што би то и обично урадили.</string>
+    <string name="instructions_voila">Готово! Управо сте поделили слике са светом које на садрже мета-податке!</string>
+
+    <string name="permissions_open_app_toast">Измешани Егзиф мора имати приступ датотекама.
+        Молимо да отворите апликацију и дозволите приступ из ње.</string>
+    <string name="privacy_policy_menu_item">Правила приватности</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Подешавања</string>
+
+    <string name="settings_force_image_rewrite">Присили прераду слике</string>
+    <string name="settings_force_image_rewrite_summary">Ова опција присиљава прераду слике преписивањем комплетне слике (обично су само Егзиф (EXIF) подаци уклоњени).\n\nОва опција чини уклањање Егзиф података споријим али сигурнијим и може имати утицаја на квалитет слике</string>
+
+    <string name="settings_keep_jpeg_orientation">Задржавање оријентације (само за ЈПЕГ)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Задржавање информације о оријентацији за ЈПЕГ слике</string>
+
+    <string name="licenses_menu_item">Лиценце</string>
+</resources>

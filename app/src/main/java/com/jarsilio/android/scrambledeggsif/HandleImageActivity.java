@@ -119,7 +119,7 @@ public class HandleImageActivity extends AppCompatActivity {
             Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // temp permission for receiving app to read this file
-            shareIntent.setDataAndType(imageUri, getContentResolver().getType(imageUri));
+            shareIntent.setType(getContentResolver().getType(imageUri));
             shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
             setAlreadyScrambled(shareIntent);
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)));

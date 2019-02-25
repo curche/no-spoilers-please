@@ -16,6 +16,6 @@ android.applicationVariants.all { variant ->
     }
 
     variant.outputs.all { output ->
-        outputFileName = "${appName}-${output.baseName}-${variant.versionName}_unsigned.apk"
+        outputFileName = "${appName}-${output.baseName}-${variant.versionName}.apk"
     }
 }

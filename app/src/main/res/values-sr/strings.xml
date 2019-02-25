@@ -18,7 +18,6 @@
   -->
 
 <resources>
-    <string name="app_name">Измешани Егзиф</string>
     <string name="share_via">Поделите слику коришћењем Измешаног Егзиф-а</string>
     <string name="share_multiple_via">Поделите слике коришћењем Измешаног Егзиф-а</string>
     <string name="permission_request">Затражите дозволу</string>

@@ -39,6 +39,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "version"
+    productFlavors {
+        standard {
+            dimension "version"
+            resValue "string", "app_name", "Scrambled Exif"
+        }
+        peace {
+            dimension "version"
+            resValue "string", "app_name", "Scrambled Exif ✌"
+            applicationIdSuffix ".peace"
+        }
+        cheers {
+            dimension "version"
+            resValue "string", "app_name", "Scrambled Exif 🍻"
+            applicationIdSuffix ".cheers"
+        }
+        love {
+            dimension "version"
+            resValue "string", "app_name", "Scrambled Exif ❤️"
+            applicationIdSuffix ".love"
+        }
+        dollar {
+            dimension "version"
+            resValue "string", "app_name", "Scrambled Exif 💵"
+            applicationIdSuffix ".dollar"
+        }
+    }
     lintOptions{
         disable 'MissingTranslation'
     }

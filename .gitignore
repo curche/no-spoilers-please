@@ -7,3 +7,7 @@
 /captures
 .externalNativeBuild
 *.apk
+/fastlane/README.md
+/fastlane/report.xml
+Gemfile.lock
+

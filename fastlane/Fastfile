@@ -1,0 +1,169 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+base_package_name = "com.jarsilio.android.scrambledeggsif"
+
+default_platform(:android)
+
+platform :android do
+  password = ""
+
+  private_lane :prompt_password_once do
+    if password == ""
+      password = prompt(
+        text: "Please enter keystore password:",
+        secure_text: true
+      )
+    end
+  end
+
+  before_all do
+    gradle(task: "clean")
+  end
+
+  lane :build_all do
+    build_flavor(flavor: "")
+  end
+
+  lane :build_standard do |values|
+    build_flavor(flavor: "standard")
+  end
+
+  lane :build_cheers do |values|
+    build_flavor(flavor: "cheers")
+  end
+
+  lane :build_dollar do |values|
+    build_flavor(flavor: "dollar")
+  end
+
+  lane :build_love do |values|
+    build_flavor(flavor: "love")
+  end
+
+  lane :build_peace do |values|
+    build_flavor(flavor: "peace")
+  end
+
+  lane :build_flavor do |values|
+    flavor = values[:flavor]
+    prompt_password_once
+    gradle(
+      task: "assemble",
+      build_type: "Release",
+      flavor: flavor,
+      print_command: false,
+      properties: {
+        "android.injected.signing.store.file" => "/keys/apk-release/juanitobananas-release-key.jks",
+        "android.injected.signing.store.password" => password,
+        "android.injected.signing.key.alias" => "app",
+        "android.injected.signing.key.password" => password,
+      }
+    )
+  end
+
+  desc "Deploy production (all flavors) to the Google Play"
+  lane :deploy_all do
+    deploy_standard
+    deploy_cheers
+    deploy_dollar
+    deploy_love
+    deploy_peace
+  end
+
+  desc "Deploy production 'standard' flavor to the Google Play"
+  lane :deploy_standard do
+    deploy_flavor(flavor: "standard")
+  end
+
+  desc "Deploy production 'cheers' flavor to the Google Play"
+  lane :deploy_cheers do
+    deploy_flavor(flavor: "cheers")
+  end
+
+  desc "Deploy production 'dollar' flavor to the Google Play"
+  lane :deploy_dollar do
+    deploy_flavor(flavor: "dollar")
+  end
+
+  desc "Deploy production 'love' flavor to the Google Play"
+  lane :deploy_love do
+    deploy_flavor(flavor: "love")
+  end
+
+  desc "Deploy production 'peace' flavor to the Google Play"
+  lane :deploy_peace do
+    deploy_flavor(flavor: "peace")
+  end
+
+  lane :deploy_flavor do |values|
+    flavor = values[:flavor]
+    build_flavor(flavor: flavor)
+    package_name = flavor == "standard" ? base_package_name : base_package_name + "." + flavor
+    upload_to_play_store(
+      track: "production",
+      package_name: package_name,
+      metadata_path: "fastlane/" + flavor + "/metadata/android"
+    )
+  end
+
+  lane :update_metadata_all do
+    update_metadata_standard
+    update_metadata_cheers
+    update_metadata_dollar
+    update_metadata_love
+    update_metadata_peace
+  end
+
+  lane :update_metadata_standard do
+    update_metadata_flavor(flavor: "standard")
+  end
+
+  lane :update_metadata_cheers do
+    update_metadata_flavor(flavor: "cheers")
+  end
+
+  lane :update_metadata_dollar do
+    update_metadata_flavor(flavor: "dollar")
+  end
+
+  lane :update_metadata_love do
+    update_metadata_flavor(flavor: "love")
+  end
+
+  lane :update_metadata_peace do
+    update_metadata_flavor(flavor: "peace")
+  end
+
+  private_lane :update_metadata_flavor do |values|
+    flavor = values[:flavor]
+    package_name = flavor == "standard" ? base_package_name : base_package_name + "." + flavor
+    upload_to_play_store(
+      track: "production",
+      package_name: package_name,
+      metadata_path: "fastlane/" + flavor + "/metadata/android",
+      skip_upload_apk: true
+    )
+  end
+
+  desc "Fetch all metadata of apps"
+  lane :fetch_metadata do
+    sh("fastlane supply init --metadata_path ./standard/metadata/android --package_name com.jarsilio.android.scrambledeggsif")
+    sh("fastlane supply init --metadata_path ./peace/metadata/android --package_name com.jarsilio.android.scrambledeggsif.peace")
+    sh("fastlane supply init --metadata_path ./cheers/metadata/android --package_name com.jarsilio.android.scrambledeggsif.cheers")
+    sh("fastlane supply init --metadata_path ./love/metadata/android --package_name com.jarsilio.android.scrambledeggsif.love")
+    sh("fastlane supply init --metadata_path ./dollar/metadata/android --package_name com.jarsilio.android.scrambledeggsif.dollar")
+  end
+end

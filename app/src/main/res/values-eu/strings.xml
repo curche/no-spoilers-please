@@ -1,0 +1,44 @@
+<!--
+  ~ Copyright (c) 2019 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="share_multiple_via">Partekatu metadatu gabeko irudiak honen bidez</string>
+    <string name="permission_request">Eskatu baimena</string>
+    <string name="permission_sdcard_text">Scrambled Exif-k zure gailuaren fitxategiak atzitzeko baimena behar du\n\nSakatu beheko botoia baimena emateko.</string>
+
+    <string name="instructions_title">Jarraibideak</string>
+    <string name="instructions_1">Aukeratu galeriatik partekatu nahi dutuzun argazkiak eta sakatu partekatu botoia.</string>
+    <string name="instructions_2">Aukeratu <i>Scrambled Exif</i> aplikazio zerrendatik.</string>
+    <string name="instructions_2_1">Momentu honetan, metadatuak irudietatik ezabatzen ari dira.</string>
+    <string name="instructions_3">Bukatzean, aplikazioen zerrenda berriz agertuko da. Irudiak betiko moduan partekatu ditzakezu orain.</string>
+    <string name="instructions_voila">Kito! Metadatu gabeko irudiak partekatu dituzu munduarekin!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif-k zure gailuaren fitxategiak atzitzeko baimena behar du. Ireki aplikazioa baimenak emateko</string>
+    <string name="privacy_policy_menu_item">Pribatutasun Politika</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Ezarpenak</string>
+
+    <string name="settings_force_image_rewrite">Irudien berridazketa behartu</string>
+    <string name="settings_force_image_rewrite_summary">Aukera honek irudien berridazketa osoa behartzen du (EXIF metadatuak soilik ezabatu beharrean).\n\nAukera hau motelagoa da, baina seguruagoa. Irudien kalitatean eragina izan dezake</string>
+
+    <string name="settings_keep_jpeg_orientation">Mantendu orientazioa (JPEGentzako soilik)</string>
+    <string name="settings_keep_jpeg_orientation_summary">JPEG irudien orientazio metadatua mantentzen du</string>
+
+    <string name="licenses_menu_item">Lizentziak</string>
+    </resources>

@@ -117,6 +117,7 @@ platform :android do
       package_name: package_name,
       metadata_path: "fastlane/" + flavor + "/metadata/android"
     )
+    gradle(task: "clean")
   end
 
   lane :update_metadata_all do

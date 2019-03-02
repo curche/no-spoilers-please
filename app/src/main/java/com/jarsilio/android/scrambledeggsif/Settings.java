@@ -31,6 +31,7 @@ class Settings {
     public static final String REWRITE_IMAGES = "pref_rewrite_images";
     public static final String LAST_ALREADY_SCRAMBLED_PROOF = "pref_last_already_scrambled_proof";
     public static final String KEEP_JPEG_ORIENTATION = "pref_keep_jpeg_orientation";
+    public static final String RENAME_IMAGES = "pref_rename_images";
 
     private Context context;
     private PreferenceActivity preferenceActivity = null;
@@ -53,6 +54,14 @@ class Settings {
 
     public void setRewriteImages(boolean rewriteImages) {
         setPreference(REWRITE_IMAGES, rewriteImages);
+    }
+
+    public boolean isRenameImages() {
+        return getPreferences().getBoolean(RENAME_IMAGES, true);
+    }
+
+    public void setRenameImages(boolean renameImages) {
+        setPreference(RENAME_IMAGES, renameImages);
     }
 
     public String getLastAlreadyScrambledProof() {

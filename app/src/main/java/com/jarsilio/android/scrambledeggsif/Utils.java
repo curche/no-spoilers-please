@@ -22,8 +22,11 @@ package com.jarsilio.android.scrambledeggsif;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
+
 import androidx.core.content.ContextCompat;
 
 import java.io.File;
@@ -58,17 +61,8 @@ class Utils {
     }
 
     public File copyToCacheDir(Uri imageUri) {
-        Timber.d("Copying image '%s' to cache dir", imageUri.getPath());
-
-        File imagesCacheDir = new File(context.getCacheDir() + "/images");
-        imagesCacheDir.mkdir();
-
-        File destination = new File(String.format("%s/img_eggsif_%s.%s",
-                imagesCacheDir,
-                Math.abs(new Random().nextLong()),
-                getImageType(imageUri).name().toLowerCase()));
-
-        Timber.d("Temporary file name: %s", destination);
+        File destination = getDestinationFile(imageUri);
+        Timber.d("Copying image from intent '%s' to cache dir: %s", imageUri.getPath(), destination);
         try {
             InputStream inputStream = null;
             OutputStream outputStream = null;
@@ -98,6 +92,26 @@ class Utils {
         }
 
         return destination;
+    }
+
+    private File getDestinationFile(Uri imageUri) {
+        File imagesCacheDir = new File(context.getCacheDir() + "/images");
+        imagesCacheDir.mkdir();
+
+        Settings settings = new Settings(context);
+        File destinationFile;
+        if (settings.isRenameImages()) {
+            destinationFile = new File(String.format("%s/img_eggsif_%s.%s",
+                    imagesCacheDir,
+                    Math.abs(new Random().nextLong()),
+                    getImageType(imageUri).name().toLowerCase()));
+        } else {
+            destinationFile = new File(
+                    String.format("%s/%s", imagesCacheDir, getRealFilenameFromURI(imageUri))
+            );
+
+        }
+        return destinationFile;
     }
 
     private static String bytesToHex(byte[] bytes) {
@@ -200,5 +214,17 @@ class Utils {
     public boolean isImage(Uri uri) {
         Timber.d("Checking if uri '%s' corresponds to an image...", uri);
         return getImageType(uri) != ImageType.UNKNOWN;
+    }
+
+    public String getRealFilenameFromURI(Uri uri) {
+        String realPath = getRealPathFromURI(uri);
+        return (new File(realPath)).getName();
+    }
+
+    public String getRealPathFromURI(Uri uri) {
+        Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+        return cursor.getString(index);
     }
 }

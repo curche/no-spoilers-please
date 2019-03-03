@@ -40,7 +40,7 @@
     <string name="settings_menu_item">Settings</string>
 
     <string name="settings_force_image_rewrite">Force image rewrite</string>
-    <string name="settings_force_image_rewrite_summary">This option forces rewriting the whole image file (normally only the EXIF data is removed).\n\nThis option makes removing EXIF data slower but safer, and could have an influence in picture quality</string>
+    <string name="settings_force_image_rewrite_summary">This option forces rewriting the whole image file (normally only the EXIF data is removed).\n\nThis option makes removing EXIF data slower but safer, and could have an influence in picture quality.</string>
 
     <string name="settings_rename_images">Rename images</string>
     <string name="settings_rename_images_summary">Filenames can tell a recipient of the file the date and time that a photo was taken on some devices.\n\nThis option renames all shared images with a random filename.</string>

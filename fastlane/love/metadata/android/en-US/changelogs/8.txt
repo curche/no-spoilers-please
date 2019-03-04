@@ -1,2 +1,0 @@
-★ Added option to force rewriting of images instead of just removing EXIF data. This is safer but slower.
-★ Fixed crash while sharing a pic with Scrambled Exif from an app other than the Gallery

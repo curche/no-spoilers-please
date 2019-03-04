@@ -1,2 +1,0 @@
-★ Added French translation. Thanks, xin!
-★ Fix some bugs that caused the app to crash.

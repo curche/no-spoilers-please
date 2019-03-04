@@ -1,0 +1,18 @@
+Changes in 1.2.5a
+★ Fix crash while opening settings.
+
+Changes in 1.2.5
+★ Add option to disable renaming of images.
+
+Changes in 1.2.4
+★ Add Basque translation. Thanks Radiation Gamma!
+
+Changes in 1.2.1
+★ Fixed critical bug. The exif data wouldn't get scrambled under certain conditions.
+
+Changes in 1.2
+★ Add option to retain JPEG orientation.
+★ Update some translations.
+
+Changes in 1.1.1
+★ Minor bug fixes while sharing with certain apps.

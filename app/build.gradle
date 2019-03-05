@@ -30,8 +30,8 @@ android {
         applicationId "com.jarsilio.android.scrambledeggsif"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 18
-        versionName "1.2.5a"
+        versionCode 19
+        versionName "1.2.5b"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary= true
     }

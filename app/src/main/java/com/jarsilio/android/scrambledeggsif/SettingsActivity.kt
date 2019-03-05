@@ -39,7 +39,7 @@ import timber.log.Timber
  * API Guide](http://developer.android.com/guide/topics/ui/settings.html) for more information on developing a Settings UI.
  */
 class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
-    private var settings: Settings? = null
+    private lateinit var settings: Settings
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
@@ -98,9 +98,9 @@ class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnShar
     private fun getSettings(): Settings {
         if (settings == null) {
             settings = Settings(applicationContext)
-            settings!!.setPreferenceActivity(this)
+            settings.setPreferenceActivity(this)
         }
-        return settings!!
+        return settings
     }
 
     private fun registerPreferencesListener() {

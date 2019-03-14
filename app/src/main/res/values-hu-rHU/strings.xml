@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2019 Juan García Basilio, JamBove
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Scrambled Exif</string>
+    <string name="share_via">Ossza meg a képet Scrambled Exif segítségével</string>
+    <string name="share_multiple_via">Ossza meg a képeket Scrambled Exif segítségével</string>
+    <string name="permission_request">Alkalmazásengedély kérése</string>
+    <string name="permission_sdcard_text">A kódolt Exif-nek hozzáférnie kell a fájljaihoz ahhoz, hogy elolvassa a vele megosztott képeket.\n\nKérjük, érintse meg az alábbi gombot a szükséges engedély megadásához.</string>
+
+    <string name="instructions_title">Utasítások</string>
+    <string name="instructions_1">Válassza ki azokat a képeket, amelyeket meg szeretne osztani a galériájából, és érintse meg a megosztási ikont.</string>
+    <string name="instructions_2">Az alkalmazáslistából válassza a <i>Scrambled Exif</i> lehetőséget.</string>
+    <string name="instructions_2_1">A metaadatok ebben a pillanatban törlődnek!</string>
+    <string name="instructions_3">Ha ez megtörtént, az alkalmazás lista ismét megjelenik. Csak ossza meg a képeket, ahogyan általában szokta.</string>
+    <string name="instructions_voila">Íme! Megosztott a világgal néhány metaadatok nélküli képet!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif fájlhozzáférést igényel.
+        Kérjük, nyissa meg az alkalmazást, és engedélyezze ott</string>
+    <string name="privacy_policy_menu_item">Adatvédelmi irányelvek</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Beállítások</string>
+
+    <string name="settings_force_image_rewrite">Kényszerítse a képújraírást</string>
+    <string name="settings_force_image_rewrite_summary">Ez az opció arra kényszeríti, hogy átírja a teljes képfájlt (általában csak az EXIF adatokat távolítja el).\n\nEz az opció az EXIF adatok lassabb, de biztonságosabb eltávolítását teszi lehetővé, és befolyásolhatja a képminőséget.</string>
+
+    <string name="settings_keep_jpeg_orientation">Tartsa meg az orientációt (csak JPEG esetén)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Tartsa meg a JPEG képek orientációjára vonatkozó információkat</string>
+
+    <string name="licenses_menu_item">Licencek</string>
+    </resources>

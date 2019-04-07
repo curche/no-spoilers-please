@@ -20,11 +20,37 @@
 package com.jarsilio.android.scrambledeggsif;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Build;
+
+import org.acra.ACRA;
+import org.acra.annotation.AcraCore;
+import org.acra.annotation.AcraMailSender;
+import org.acra.annotation.AcraNotification;
 
 import timber.log.Timber;
 
+@AcraCore(buildConfigClass = BuildConfig.class)
+
+@AcraMailSender(mailTo = "juam+scrambled-acra@posteo.net")
+
+@AcraNotification(
+        resTitle = R.string.acra_notification_title,
+        resText = R.string.acra_notification_text,
+        resChannelName = R.string.acra_notification_channel_name,
+        resSendButtonText = R.string.acra_notification_send,
+        resDiscardButtonText = android.R.string.cancel
+)
+
 public class App extends Application {
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        // The following line triggers the initialization of ACRA
+        ACRA.init(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

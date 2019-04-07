@@ -77,6 +77,11 @@ android {
         exclude 'META-INF/android.arch.core_runtime.version'
         exclude 'META-INF/com.android.support_*.version'
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -99,6 +104,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation project(path: ':privacypolicy')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // ACRA
+    def acraVersion = '5.3.0'
+    implementation "ch.acra:acra-mail:$acraVersion"
+    implementation "ch.acra:acra-notification:$acraVersion"
+    implementation "ch.acra:acra-dialog:$acraVersion"
 }
 repositories {
     mavenCentral()

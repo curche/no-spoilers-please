@@ -18,6 +18,7 @@
   -->
 
 <resources>
+    <string name="share_via">Partekatu metadatu gabeko irudia honen bidez</string>
     <string name="share_multiple_via">Partekatu metadatu gabeko irudiak honen bidez</string>
     <string name="permission_request">Eskatu baimena</string>
     <string name="permission_sdcard_text">Scrambled Exif-k zure gailuaren fitxategiak atzitzeko baimena behar du\n\nSakatu beheko botoia baimena emateko.</string>

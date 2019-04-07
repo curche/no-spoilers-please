@@ -38,7 +38,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                app:srcCompat="@drawable/ic_scrambled_eggsif_optimized" />
+                app:srcCompat="@mipmap/eggsif_d_on_white_2048x2048" />
 
             <TextView
                 android:id="@+id/permissions_explanation"

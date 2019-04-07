@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2019 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Scrambled Exif</string>
+    <string name="share_via">Поделитесь изображением с scrambled Exif через</string>
+    <string name="share_multiple_via">Делитесь изображениями с scrambled Exif через</string>
+    <string name="permission_request">Запросить разрешение</string>
+    <string name="permission_sdcard_text">Scrambled Exif необходим доступ к файлам для чтения изображений, которыми вы делитесь.\n\nНажмите на кнопку ниже для предоставления необходимых разрешений.</string>
+
+    <string name="instructions_title">Инструкция</string>
+    <string name="instructions_1">Выберите фотографии, которыми хотите поделиться, из галереи и нажмите значок обмена.</string>
+    <string name="instructions_2">Выберите <i>Scrambled Exif</i> из списка приложений.</string>
+    <string name="instructions_2_1">В этот момент метаданные удаляются!</string>
+    <string name="instructions_3">Как только это будет сделано, список приложений появится снова. Просто делитесь фотографиями, как обычно.</string>
+    <string name="instructions_voila">И вуаля! Вы поделились с миром фотографиями без метаданных!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif нужен доступ к файлам.
+        Пожалуйста, откройте приложение и предоставьте его оттуда</string>
+    <string name="privacy_policy_menu_item">Политика конфиденциальности</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Настройки</string>
+
+    <string name="settings_force_image_rewrite">Принудительно перезаписывать изображение</string>
+    <string name="settings_force_image_rewrite_summary">Этот параметр вызывает перезапись всего изображения (обычно удаляются только EXIF данные).\n\nЭтот параметр делает удаление EXIF данных медленнее, но безопаснее и может повлиять на качество изображения.</string>
+
+    <string name="settings_keep_jpeg_orientation">Сохранять ориентацию (только для JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Сохранять информацию об ориентации для JPEG изображений.</string>
+
+    <string name="licenses_menu_item">Licenses</string>
+    </resources>

@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="share_via">Поділитися зображенням зі Смаженим Exif через</string>
+    <string name="share_multiple_via">Поділитися зображеннями зі Смаженим Exif через</string>
+    <string name="permission_request">Запитати дозволи</string>
+    <string name="permission_sdcard_text">Смажений Exif потребує доступу до ваших файлів, щоб читати зображення, якими ви ділитися через нього.\n\nНатисніть на кнопку нижче, щоб надати необхідний дозвіл.</string>
+
+    <string name="instructions_title">Інструкція</string>
+    <string name="instructions_1">Оберіть в галереї зображення, якими ви хочете поділитися, та натисніть на піктограму \"Поділитися\".</string>
+    <string name="instructions_2">Оберіть <i>Смажений Exif</i> зі списку додатків.</string>
+    <string name="instructions_2_1">На цьому етапі метаінформація видаляється!</string>
+    <string name="instructions_3">Щойно це буде зроблено, ви знову побачите список додатків. Просто поділіться зображеннями як зазвичай.</string>
+    <string name="instructions_voila">Вуаля! Ви щойно поділилися зі світом зображеннями без метаінформації!</string>
+
+    <string name="permissions_open_app_toast">Смажений Exif потребує доступу до файлів.
+Відкрийте додаток і надайте його звідти.</string>
+    <string name="privacy_policy_menu_item">Політика приватності</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Налаштування</string>
+
+    <string name="settings_force_image_rewrite">Примусове перезаписування зображень</string>
+    <string name="settings_force_image_rewrite_summary">Цей параметр примусово перезаписує весь файл зображення (зазвичай просто видаляється EXIF-інформація).\n\nЦей параметр робить видалення EXIF-інформації повільнішим, проте більш безпечним, та може вплинути на якість зображення.</string>
+
+    <string name="settings_keep_jpeg_orientation">Зберігати орієнтацію (лише для JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Зберігати інформацію про орієнтацію JPEG-зображень</string>
+
+    <string name="licenses_menu_item">Ліцензії</string>
+    </resources>

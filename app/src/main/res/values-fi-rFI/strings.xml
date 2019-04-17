@@ -1,0 +1,46 @@
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="share_via">Jaa kuva scrambled Exifin kautta</string>
+    <string name="share_multiple_via">Jaa kuvat scrambled Exifin kautta</string>
+    <string name="permission_request">Pyydä lupaa</string>
+    <string name="permission_sdcard_text">Scrambled Exif tarvitsee lupaa tiedostojesi lukemiseen, jotta se voi lukea kuvia, joita jaat sen kanssa.\n\nPaina alla olevaa painiketta antaaksesi tarvitun luvan.</string>
+
+    <string name="instructions_title">Ohjeet</string>
+    <string name="instructions_1">Valitse kuvat, jotka tahdot jakaa galleriastasi ja napauta jakamisikonia.</string>
+    <string name="instructions_2">Valitse <i>Scrambled Exif</i> sovelluslistasta.</string>
+    <string name="instructions_2_1">Tässä kohdassa metadata poistetaan!</string>
+    <string name="instructions_3">Kun tämä on tehty, sovelluslista aukeaa uudestaan. Sitten vain jaat kuvasi niin kuin normaalisti tekisit.</string>
+    <string name="instructions_voila">Et voilà! Jaoit juuri muutaman kuvan maailman kanssa ilman metadataa!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif tarvitsee luvan käyttää tiedostoja.
+        Avaa sovellus ja anna se sille sieltä</string>
+    <string name="privacy_policy_menu_item">Tietosuojakäytäntö</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Asetukset</string>
+
+    <string name="settings_force_image_rewrite">Pakota kuvan ylikirjoitus</string>
+    <string name="settings_force_image_rewrite_summary">Tämä asetus pakottaa koko kuvan ylikirjoittamisen (normaalisti vain EXIF data poistetaan).\n\nTämä asetus tekee EXIF datan poistamisen hitaammaksi mutta turvallisemmaksi. Tämä voi vaikuttaa kuvan laatuun</string>
+
+    <string name="settings_keep_jpeg_orientation">Säilytä kuvan suunta (vain JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Säilytä suuntatiedot JPEG kuvissa</string>
+
+    <string name="licenses_menu_item">Lisenssit</string>
+    </resources>

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2018 Juan García Basilio
+  ~ Copyright (c) 2018-2019 Juan García Basilio
   ~
   ~ This file is part of Scrambled Exif.
   ~
@@ -18,28 +18,37 @@
   -->
 
 <resources>
-    <string name="share_via">Compartir imagen sin metadatos vía</string>
-    <string name="share_multiple_via">Compartir imágenes sin metadatos vía</string>
+    <string name="share_via">Compartir imagen vía Scrambled Exif</string>
+    <string name="share_multiple_via">Compartir imágenes vía Scrambled exif</string>
     <string name="permission_request">Pedir permiso</string>
-    <string name="permission_sdcard_text">Scrambled Exif necesita acceso a los archivos de tu dispositivo\n\nDale al botón de abajo para concederle los permisos necesarios.</string>
+    <string name="permission_sdcard_text">Scrambled Exif necesita acceso a tus archivos para leer las imágenes que compartes.\n\nDale al botón de abajo para concederle los permisos necesarios.</string>
 
     <string name="instructions_title">Instrucciones</string>
-    <string name="instructions_1">Selecciona las imágenes de la galería que quieres compartir y dale al icono de compartir.</string>
-    <string name="instructions_2">Selecciona <i>Scrambled Exif</i> de la lista de apps.</string>
+    <string name="instructions_1">Selecciona las imágenes que quieres compartir en la galería y dale al icono de compartir.</string>
+    <string name="instructions_2">Selecciona <i>Scrambled Exif</i> de la lista de aplicaciones.</string>
     <string name="instructions_2_1">En este momento, los metadatos están siendo borrados de las imágenes.</string>
-    <string name="instructions_3">Cuanto termine, la lista de apps reaparecerá. Ya puedes compartir las imágenes como normalmente lo harías.</string>
-    <string name="instructions_voila">¡Ya está! Acabas de compartir unas fotos libres de metadatos con el mundo.</string>
+    <string name="instructions_3">Cuanto termine, la lista de aplicaciones reaparecerá. Solo comparte las imágenes como normalmente lo harías.</string>
+    <string name="instructions_voila">¡Ya está! Acabas de compartir algunas fotos libres de metadatos con el mundo.</string>
 
-    <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la app para concedérselo.</string>
+    <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la aplicación y concedelos desde ahí.</string>
     <string name="privacy_policy_menu_item">Política de privacidad</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Configuración</string>
 
     <string name="settings_force_image_rewrite">Forzar reescritura de las imágenes</string>
-    <string name="settings_force_image_rewrite_summary">Esta opción fuerza la reescritura por complete de las imágenes (en vez de simplemente borrar los metadatos EXIF).\n\nEsta opción es más lenta pero más segura. Podría afectar la calidad resultante de las imágenes.</string>
+    <string name="settings_force_image_rewrite_summary">Esta opción fuerza a reescribir por completo el archivo de imagen (normalmente solo los datos EXIF son removidos).\n\n Está opción hace remover los datos EXIF más lento pero es más seguro, y podría influir en la calidad de la imagen.</string>
+
+    <string name="settings_rename_images">Renombrar imágenes</string>
+    <string name="settings_rename_images_summary">Los nombres de archivo pueden indicar al que recibe el archivo la fecha y hora que una foto fue tomada en algunos dispositivos.\n\n Está opción renombra todas las imágenes compartidas con un nombre de archivo al azar.</string>
 
     <string name="settings_keep_jpeg_orientation">Mantener la orientación (sólo para JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Mantiene la metainformación sobre la orientación para imágenes JPEG.</string>
+    <string name="settings_keep_jpeg_orientation_summary">Mantiene la información sobre la orientación para imágenes JPEG.</string>
 
     <string name="licenses_menu_item">Licencias</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Fallos</string>
+    <string name="acra_notification_title">Uuups! Fallo detectado 💩</string>
+    <string name="acra_notification_text">Por favor envía el reporte al desarrollador para que él intenté arreglarlo.</string>
+    <string name="acra_notification_send">Enviar correo electrónico</string>
+
 </resources>

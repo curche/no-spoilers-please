@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2018 Juan García Basilio
-  ~ Copyright (c) 2018 skolarianer
+  ~ Copyright (c) 2018-2019 Juan García Basilio
+  ~ Copyright (c) 2018-2019 skolarianer
   ~
   ~ This file is part of Scrambled Exif.
   ~
@@ -40,8 +40,17 @@
     <string name="settings_force_image_rewrite">Umschreiben der Bilder erzwingen</string>
     <string name="settings_force_image_rewrite_summary">Diese Option erzwingt das Umschreiben der Bild-Dateien: Normalerweise werden nur die Metadaten gelöscht.\n\nDiese Option verlangsamt das Entfernen von Metadaten, ist aber sicherer. Dies kann allerdings die Qualität der Bilder beeinflussen.</string>
 
+    <string name="settings_rename_images">Bilder umbenennen</string>
+    <string name="settings_rename_images_summary">In einigen Geräten, könnten Dateinamen dem Empfänger verraten, wo und wann das Bild aufgenommen wurde.\n\nDiese Option umbenennt alle Bilder mit zufälligen Dateinamen.</string>
+
     <string name="settings_keep_jpeg_orientation">Bildausrichtung beibehalten (nur JPEG)</string>
     <string name="settings_keep_jpeg_orientation_summary">Behält die Information zur Bildausrichtung bei JPEG-Dateien bei.</string>
 
     <string name="licenses_menu_item">Lizenzen</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Abstürze</string>
+    <string name="acra_notification_title">Uuuuups! Absturz erkannt 💩</string>
+    <string name="acra_notification_text">Bitte schick den Bericht an dem Entwickler, damit er versuchen kann, das Problem zu beheben.</string>
+    <string name="acra_notification_send">E-Mail verschicken</string>
+
 </resources>

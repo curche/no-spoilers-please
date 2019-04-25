@@ -1,0 +1,15 @@
+Changes in 1.3.2
+★ Add Italian translation. Thanks Random_R!
+★ Add Portuguese (Brasil) translation. Thanks Chacal.Ex!
+★ Update French, German and Spanish translations.
+
+Changes in 1.3.1
+★ Add Finnish translation. Thanks SirAntsa!
+★ Add Hungarian translation. Thanks JamBove!
+★ Add Ukrainian translation. Thanks _ _!
+
+Changes in 1.3.0
+★ Add super cool new icon. Thanks, Dario!
+★ Add Hungarian and Russian translations.
+★ Update Basque translation.
+★ Add crash reporting support. Reports can be sent per email. Only if the user chooses to!

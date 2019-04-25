@@ -1,0 +1,55 @@
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="share_via">Compartilhar imagem com scrambled Exif via</string>
+    <string name="share_multiple_via">Compartilhe imagens com scrambled Exif via</string>
+    <string name="permission_request">Solicitar permissão</string>
+    <string name="permission_sdcard_text">Scrambled Exif precisa acessar seus arquivos para ler as imagens que você compartilha com ele.\n\nPor favor, toque no botão abaixo para conceder a permissão necessária.</string>
+
+    <string name="instructions_title">Instruções</string>
+    <string name="instructions_1">Selecione as fotos que você deseja compartilhar da sua galeria e toque no ícone de compartilhamento.</string>
+    <string name="instructions_2">Selecione <i>Scrambled Exif</i> na lista de aplicativos.</string>
+    <string name="instructions_2_1">Neste ponto, os metadados estão sendo excluídos!</string>
+    <string name="instructions_3">Depois disso, a lista de aplicativos é exibida novamente. Basta compartilhar as fotos como você faria normalmente.</string>
+    <string name="instructions_voila">E voilà! Você acabou de compartilhar algumas fotos sem metadados com o mundo!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif precisa de acesso ao arquivo.
+  Por favor, abra o aplicativo e conceda-o de lá</string>
+    <string name="privacy_policy_menu_item">Política de Privacidade</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Configurações</string>
+
+    <string name="settings_force_image_rewrite">Forçar reescrita de imagem</string>
+    <string name="settings_force_image_rewrite_summary">Essa opção força a regravação de todo o arquivo de imagem (normalmente apenas os dados EXIF ​​são removidos).\n\nEsta opção torna a remoção de dados EXIF ​​mais lenta, porém mais segura, e pode ter uma influência na qualidade da imagem.</string>
+
+    <string name="settings_rename_images">Renomear imagens</string>
+    <string name="settings_rename_images_summary">Os nomes dos arquivos podem informar ao destinatário do arquivo a data e a hora em que uma foto foi tirada em alguns dispositivos.\n\nEsta opção renomeia todas as imagens compartilhadas com um nome de arquivo aleatório.</string>
+
+    <string name="settings_keep_jpeg_orientation">Mantenha a orientação (apenas para JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Mantenha as informações de orientação para imagens JPEG</string>
+
+    <string name="licenses_menu_item">Licenças</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Falhas</string>
+    <string name="acra_notification_title">Wooops! Falha detectada 💩</string>
+    <string name="acra_notification_text">Por favor, envie o relatório para o desenvolvedor para que ele possa tentar corrigi-lo.</string>
+    <string name="acra_notification_send">Enviar email</string>
+
+</resources>

@@ -36,10 +36,19 @@
     <string name="settings_menu_item">Ezarpenak</string>
 
     <string name="settings_force_image_rewrite">Irudien berridazketa behartu</string>
-    <string name="settings_force_image_rewrite_summary">Aukera honek irudien berridazketa osoa behartzen du (EXIF metadatuak soilik ezabatu beharrean).\n\nAukera hau motelagoa da, baina seguruagoa. Irudien kalitatean eragina izan dezake</string>
+    <string name="settings_force_image_rewrite_summary">Aukera honek irudi osoaren fitxategia berridazten du (normalean EXIF datuak soilik kentzen dira).\n\nAukera honek EXIF datuak motelago kentzen ditu baina seguruago, eta eragin dezake argazkien kalitatean.</string>
+
+    <string name="settings_rename_images">Berrizendatu irudiak</string>
+    <string name="settings_rename_images_summary">Fitxategi-izenak fitxategi horren hartzaileei argazkia gailu batzuetan eginiko data eta ordua eman diezaiekete.\n\nAukera honek partekatutako irudi guztiak berrizendatzen ditu ausazko fitxategi-izen batekin.</string>
 
     <string name="settings_keep_jpeg_orientation">Mantendu orientazioa (JPEGentzako soilik)</string>
     <string name="settings_keep_jpeg_orientation_summary">JPEG irudien orientazio metadatua mantentzen du</string>
 
     <string name="licenses_menu_item">Lizentziak</string>
-    </resources>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Hutsegiteak</string>
+    <string name="acra_notification_title">Wooops! Hutsegitea detektatuta 💩</string>
+    <string name="acra_notification_text">Mesedez bidali akatsen berri garatzaileari, konpontzen saiatu dadin.</string>
+    <string name="acra_notification_send">Bidali mezua</string>
+
+</resources>

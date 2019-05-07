@@ -1,0 +1,13 @@
+Changes in 1.3.3
+★ Add Polish translation. Thanks Paba22!
+★ Update Ukrainian translation.
+
+Changes in 1.3.2
+★ Add Italian translation. Thanks Random_R!
+★ Add Portuguese (Brasil) translation. Thanks Chacal.Ex!
+★ Update French, German and Spanish translations.
+
+Changes in 1.3.1
+★ Add Finnish translation. Thanks SirAntsa!
+★ Add Hungarian translation. Thanks JamBove!
+★ Add Ukrainian translation. Thanks _ _!

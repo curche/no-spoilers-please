@@ -48,7 +48,7 @@
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Fallos</string>
     <string name="acra_notification_title">Uuups! Fallo detectado 💩</string>
-    <string name="acra_notification_text">Por favor envía el reporte al desarrollador para que él intenté arreglarlo.</string>
+    <string name="acra_notification_text">Por favor envía el reporte al desarrollador para que intente arreglarlo.</string>
     <string name="acra_notification_send">Enviar correo electrónico</string>
 
 </resources>

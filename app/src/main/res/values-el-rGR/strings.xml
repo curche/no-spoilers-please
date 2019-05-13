@@ -1,0 +1,55 @@
+<!--
+  ~ Copyright (c) 2018 Juan García Basilio
+  ~
+  ~ This file is part of Scrambled Exif.
+  ~
+  ~ Scrambled Exif is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Scrambled Exif is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="share_via">Διαμοιρασμός εικόνας με το scrambled Exif μέσω</string>
+    <string name="share_multiple_via">Διαμοιρασμός εικόνων με το scrambled Exif μέσω</string>
+    <string name="permission_request">Αίτηση δικαιώματος</string>
+    <string name="permission_sdcard_text">Το scrambled Exif χρειάζεται πρόσβαση στα αρχεία σας για να διαβάσει τις εικόνες που μοιράζεστε με αυτό.\n\nΠαρακαλώ πατήστε το παρακάτω κουμπί για να δώσετε το απαραίτητο δικαίωμα.</string>
+
+    <string name="instructions_title">Οδηγίες</string>
+    <string name="instructions_1">Επιλέξτε τις φωτογραφίες που θέλετε να μοιραστείτε από την έκθεση και πατήστε το εικονίδιο διαμοιρασμού.</string>
+    <string name="instructions_2">Επιλέξτε το <i>Scrambled Exif</i> από τη λίστα εφαρμογών.</string>
+    <string name="instructions_2_1">Σε αυτό το σημείο, τα μεταδεδομένα διαγράφονται!</string>
+    <string name="instructions_3">Αφού γίνει αυτό, η λίστα εφαρμογών εμφανίζεται πάλι. Απλώς μοιραστείτε τις φωτογραφίες όπως θα κάνατε κανονικά.</string>
+    <string name="instructions_voila">Και ιδού! Μόλις μοιραστήκατε μερικές φωτογραφίες χωρίς μεταδεδομένα με τον κόσμο!</string>
+
+    <string name="permissions_open_app_toast">Το Scrambled Exif χρειάζεται πρόσβαση στα αρχεία.
+         Παρακαλώ ανοίξτε την εφαρμογή και παραχωρήστε το δικαίωμα από εκεί</string>
+    <string name="privacy_policy_menu_item">Πολιτική Ιδιωτικότητας</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Ρυθμίσεις</string>
+
+    <string name="settings_force_image_rewrite">Υποχρεωτική επανεγγραφή εικόνας</string>
+    <string name="settings_force_image_rewrite_summary">Αυτή η επιλογή υποχρεώνει την επανεγγραφή ολόκληρου του αρχείου εικόνας (κανονικά μόνο τα δεδομένα EXIF αφαιρούνται).\n\nΑυτή η επιλογή κάνει την αφαίρεση των δεδομένων EXIF πιο αργή αλλά πιο ασφαλή, και είναι πιθανό να επηρεάσει την ποιότητα της εικόνας.</string>
+
+    <string name="settings_rename_images">Μετονομασία εικόνων</string>
+    <string name="settings_rename_images_summary">Τα ονόματα αρχείων μπορούν να αποκαλύψουν στον παραλήπτη του αρχείου την ημερομηνία και ώρα που πάρθηκε η φωτογραφία σε μερικές συσκευές.\n\nΑυτή η επιλογή μετονομάζει όλα τα διαμοιραζόμενα αρχεία σε τυχαία ονόματα.</string>
+
+    <string name="settings_keep_jpeg_orientation">Τήρηση προσανατολισμού (μόνο για JPEG)</string>
+    <string name="settings_keep_jpeg_orientation_summary">Τήρηση προσανατολισμού στα αρχεία JPEG</string>
+
+    <string name="licenses_menu_item">Άδειες</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Σφάλματα</string>
+    <string name="acra_notification_title">Ώπ! Ανιχνεύθηκε σφάλμα 💩</string>
+    <string name="acra_notification_text">Παρακαλώ στείλτε την αναφορά στον προγραμματιστή ώστε να προσπαθήσει να διορθώσει το σφάλμα.</string>
+    <string name="acra_notification_send">Αποστολή email</string>
+
+</resources>

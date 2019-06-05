@@ -17,5 +17,5 @@
  * along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':app', ':privacypolicy'
-project(':privacypolicy').projectDir = new File('privacy-policy-lib/privacypolicy')
+include ':app', ':common'
+project(':common').projectDir = new File('libcommon/common')

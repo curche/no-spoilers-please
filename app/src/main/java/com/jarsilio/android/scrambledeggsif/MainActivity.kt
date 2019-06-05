@@ -32,8 +32,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TextView
+import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
 
-import com.jarsilio.android.privacypolicy.PrivacyPolicyBuilder
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.LibsBuilder
 

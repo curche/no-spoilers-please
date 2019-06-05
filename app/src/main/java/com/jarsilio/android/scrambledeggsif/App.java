@@ -21,7 +21,8 @@ package com.jarsilio.android.scrambledeggsif;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Build;
+
+import com.jarsilio.android.common.logging.LongTagTree;
 
 import org.acra.ACRA;
 import org.acra.annotation.AcraCore;
@@ -56,52 +57,7 @@ public class App extends Application {
         super.onCreate();
         if (BuildConfig.DEBUG) {
             // Timber.plant(new Timber.DebugTree());
-            Timber.plant(new LongTagTree(getPackageName()));
-        }
-    }
-
-    public class LongTagTree extends Timber.DebugTree {
-        private static final int MAX_TAG_LENGTH = 23;
-        private final String packageName;
-
-        public LongTagTree(String packageName) {
-            this.packageName = packageName;
-        }
-
-        protected String getMessage(String tag, String message) {
-            String newMessage;
-            if (android.os.Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
-                // Tag length limitation (<23): Use truncated package name and add class name to message
-                newMessage = String.format("%s: %s", tag, message);
-            } else {
-                // No tag length limit limitation: Use package name *and* class name
-                newMessage = message;
-            }
-            return newMessage;
-        }
-
-        protected String getTag(String tag) {
-            String newTag;
-            if (android.os.Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
-                // Tag length limitation (<23): Use truncated package name and add class name to message
-                newTag = packageName;
-                if (newTag.length() > MAX_TAG_LENGTH) {
-                    newTag = "..." + packageName.substring(packageName.length() - MAX_TAG_LENGTH + 3, packageName.length());
-                }
-            } else {
-                // No tag length limit limitation: Use package name *and* class name
-                newTag = String.format("%s (%s)", packageName, tag);
-            }
-
-            return newTag;
-        }
-
-        @Override
-        protected void log(int priority, String tag, String message, Throwable t) {
-            String newMessage = getMessage(tag, message);
-            String newTag = getTag(tag);
-
-            super.log(priority, newTag, newMessage, t);
+            Timber.plant(new LongTagTree(this));
         }
     }
 }

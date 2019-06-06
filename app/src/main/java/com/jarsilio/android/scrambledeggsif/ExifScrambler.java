@@ -26,6 +26,8 @@ import android.net.Uri;
 import androidx.exifinterface.media.ExifInterface;
 import androidx.core.content.FileProvider;
 
+import com.jarsilio.android.scrambledeggsif.BuildConfig;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -50,7 +52,7 @@ class ExifScrambler {
     public Uri scrambleImage(Uri imageUri) {
         File scrambledImageFile = getUtils().copyToCacheDir(imageUri);
         removeExifData(scrambledImageFile);
-        return FileProvider.getUriForFile(context, "com.jarsilio.android.scrambledeggsif.fileprovider", scrambledImageFile);
+        return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", scrambledImageFile);
     }
 
     private void removeExifData(File image) {

@@ -115,7 +115,8 @@ platform :android do
     upload_to_play_store(
       track: "production",
       package_name: package_name,
-      metadata_path: "fastlane/" + flavor + "/metadata/android"
+      metadata_path: "fastlane/" + flavor + "/metadata/android",
+      skip_upload_images: true
     )
     gradle(task: "clean")
   end

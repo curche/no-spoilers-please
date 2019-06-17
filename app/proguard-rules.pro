@@ -25,3 +25,4 @@
 -keep class **.R$* {
     <fields>;
  }
+-keep class **.BuildConfig { *; }

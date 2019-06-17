@@ -83,6 +83,14 @@ platform :android do
     deploy_peace
   end
 
+  desc "Deploy production (paid flavors) to the Google Play"
+  lane :deploy_paid do
+    deploy_cheers
+    deploy_dollar
+    deploy_love
+    deploy_peace
+  end
+
   desc "Deploy production 'standard' flavor to the Google Play"
   lane :deploy_standard do
     deploy_flavor(flavor: "standard")

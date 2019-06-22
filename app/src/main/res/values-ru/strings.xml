@@ -1,6 +1,6 @@
 <resources>
-    <string name="share_via">Поделитесь изображением с scrambled Exif через</string>
-    <string name="share_multiple_via">Делитесь изображениями с scrambled Exif через</string>
+    <string name="share_via">Поделиться изображением с очищенным Exif через</string>
+    <string name="share_multiple_via">Поделиться изображениями с очищенным Exif через</string>
     <string name="permission_request">Запросить разрешение</string>
     <string name="permission_sdcard_text">Scrambled Exif необходим доступ к файлам для чтения изображений, которыми вы делитесь.\n\nНажмите на кнопку ниже для предоставления необходимых разрешений.</string>
 

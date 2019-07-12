@@ -30,15 +30,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 
 import java.util.ArrayList
-import java.util.UUID
 
 import timber.log.Timber
+import android.os.Parcelable
 
 class HandleImageActivity : AppCompatActivity() {
 
     private val exifScrambler: ExifScrambler by lazy { ExifScrambler(applicationContext) }
     private val utils: Utils by lazy { Utils(applicationContext) }
-    private val settings: Settings by lazy { Settings(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,13 +75,10 @@ class HandleImageActivity : AppCompatActivity() {
 
     private fun handleSendImage(intent: Intent) {
         val imageUri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
-        if (isAlreadyScrambled(intent)) {
-            Timber.d("Image already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing")
-            shareImage(imageUri)
-        } else if (imageUri != null) {
+        if (imageUri != null) {
             if (utils.isImage(imageUri)) {
                 val scrambledImage = exifScrambler.scrambleImage(imageUri)
-                shareImage(scrambledImage)
+                shareImageExcludingApp(scrambledImage)
             }
         }
     }
@@ -90,37 +86,47 @@ class HandleImageActivity : AppCompatActivity() {
     private fun handleSendMultipleImages(intent: Intent) {
         Timber.d("Scrambling multiple images")
         val imageUriList = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
-        if (isAlreadyScrambled(intent)) {
-            Timber.d("Images already scrambled (did you tap twice on 'Scrambled Exif'?). Directly sharing")
-            shareMultipleImages(imageUriList)
-        } else {
-            val scrambledImagesUriList = ArrayList<Uri>()
-            for (imageUri in imageUriList) {
-                if (utils.isImage(imageUri)) {
-                    Timber.d("Received image (uri): %s", imageUri)
-                    val scrambledImage = exifScrambler.scrambleImage(imageUri)
-                    scrambledImagesUriList.add(scrambledImage)
-                } else {
-                    Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri)
-                }
+        val scrambledImagesUriList = ArrayList<Uri>()
+        for (imageUri in imageUriList) {
+            if (utils.isImage(imageUri)) {
+                Timber.d("Received image (uri): %s", imageUri)
+                val scrambledImage = exifScrambler.scrambleImage(imageUri)
+                scrambledImagesUriList.add(scrambledImage)
+            } else {
+                Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri)
+            }
+        }
+
+        shareImagesExcludingApp(scrambledImagesUriList)
+    }
+
+    private fun shareImageExcludingApp(imageUri: Uri) {
+        shareImagesExcludingApp(arrayListOf(imageUri))
+    }
+
+    private fun shareImagesExcludingApp(imageUris: ArrayList<Uri>) {
+        val targetedShareIntents = buildTargetedShareIntents(imageUris)
+        val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), getString(R.string.share_multiple_via))
+        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
+        startActivity(chooserIntent)
+    }
+
+    private fun buildTargetedShareIntents(imageUris: ArrayList<Uri>): ArrayList<Intent> {
+        /* Remove our own package from the apps to share with */
+
+        val targetedShareIntents = ArrayList<Intent>()
+        val resolveInfos = packageManager.queryIntentActivities(createShareIntent(imageUris), 0)
+        for (info in resolveInfos) {
+            if (info.activityInfo.packageName.toLowerCase() == packageName.toLowerCase()) {
+                continue // Don't add out own package
             }
 
-            shareMultipleImages(scrambledImagesUriList)
+            val targetedShareIntent = createShareIntent(imageUris)
+            targetedShareIntent.setPackage(info.activityInfo.packageName)
+            targetedShareIntents.add(targetedShareIntent)
         }
-    }
 
-    private fun shareImage(imageUri: Uri?) {
-        imageUri?.apply {
-            shareMultipleImages(arrayListOf(imageUri))
-        }
-    }
-
-    private fun shareMultipleImages(scrambledImagesUriList: ArrayList<Uri>) {
-        if (scrambledImagesUriList.size > 0) {
-            val shareIntent = createShareIntent(scrambledImagesUriList)
-            setAlreadyScrambled(shareIntent)
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)))
-        }
+        return targetedShareIntents
     }
 
     private fun createShareIntent(uris: ArrayList<Uri>): Intent {
@@ -135,28 +141,5 @@ class HandleImageActivity : AppCompatActivity() {
             type = "image/*"
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
         }
-    }
-
-    private fun isAlreadyScrambled(intent: Intent): Boolean {
-        val alreadyScrambledProof = intent.extras?.getString(ALREADY_SCRAMBLED_PROOF_KEY)
-        if (alreadyScrambledProof == null) {
-            return false
-        } else {
-            val lastAlreadyScrambledProof = settings.lastAlreadyScrambledProof
-            Timber.v("Current intent's 'already scrambled proof': %s", alreadyScrambledProof)
-            Timber.v("Last 'already scrambled proof' we generated: %s", lastAlreadyScrambledProof)
-            return alreadyScrambledProof == lastAlreadyScrambledProof
-        }
-    }
-
-    private fun setAlreadyScrambled(shareIntent: Intent) {
-        val alreadyScrambledProof = UUID.randomUUID().toString()
-        shareIntent.putExtra(ALREADY_SCRAMBLED_PROOF_KEY, alreadyScrambledProof)
-        settings.lastAlreadyScrambledProof = alreadyScrambledProof
-    }
-
-    companion object {
-
-        private val ALREADY_SCRAMBLED_PROOF_KEY = "already_scrambled_proof_key"
     }
 }

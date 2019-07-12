@@ -109,28 +109,31 @@ class HandleImageActivity : AppCompatActivity() {
         }
     }
 
-
     private fun shareImage(imageUri: Uri?) {
-        if (imageUri != null) {
-            val shareIntent = Intent()
-            shareIntent.action = Intent.ACTION_SEND
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
-            shareIntent.type = contentResolver.getType(imageUri)
-            shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri)
-            setAlreadyScrambled(shareIntent)
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.share_via)))
+        imageUri?.apply {
+            shareMultipleImages(arrayListOf(imageUri))
         }
     }
 
     private fun shareMultipleImages(scrambledImagesUriList: ArrayList<Uri>) {
         if (scrambledImagesUriList.size > 0) {
-            val shareIntent = Intent()
-            shareIntent.action = Intent.ACTION_SEND_MULTIPLE
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
-            shareIntent.type = "image/*"
-            shareIntent.putExtra(Intent.EXTRA_STREAM, scrambledImagesUriList)
+            val shareIntent = createShareIntent(scrambledImagesUriList)
             setAlreadyScrambled(shareIntent)
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share_multiple_via)))
+        }
+    }
+
+    private fun createShareIntent(uris: ArrayList<Uri>): Intent {
+        return Intent().apply {
+            if (uris.size == 1) {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_STREAM, uris[0])
+            } else {
+                action = Intent.ACTION_SEND_MULTIPLE
+                putExtra(Intent.EXTRA_STREAM, uris)
+            }
+            type = "image/*"
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
         }
     }
 

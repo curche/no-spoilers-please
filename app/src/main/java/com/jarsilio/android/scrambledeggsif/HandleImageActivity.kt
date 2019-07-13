@@ -49,7 +49,7 @@ class HandleImageActivity : AppCompatActivity() {
             Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app")
             Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show()
         }
-        scheduleAlarm()
+        scheduleCacheCleanup()
         finish()
     }
 
@@ -81,18 +81,6 @@ class HandleImageActivity : AppCompatActivity() {
         }
 
         return scrambledImages
-    }
-
-    private fun scheduleAlarm() {
-        Timber.d("Scheduling alarm to clean up cache directory (ExifScramblerCleanUp)")
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val intent = Intent(applicationContext, CleanUpAlarmReceiver::class.java)
-        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime(),
-                AlarmManager.INTERVAL_HALF_DAY,
-                alarmPendingIntent)
     }
 
     private fun shareImages(imageUris: ArrayList<Uri>) {
@@ -132,5 +120,17 @@ class HandleImageActivity : AppCompatActivity() {
             type = "image/*"
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
         }
+    }
+
+    private fun scheduleCacheCleanup() {
+        Timber.d("Scheduling alarm to clean up cache directory (ExifScramblerCleanUp)")
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(applicationContext, CleanUpAlarmReceiver::class.java)
+        val alarmPendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime(),
+                AlarmManager.INTERVAL_HALF_DAY,
+                alarmPendingIntent)
     }
 }

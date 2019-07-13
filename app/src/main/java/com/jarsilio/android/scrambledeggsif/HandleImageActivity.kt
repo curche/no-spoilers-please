@@ -43,22 +43,44 @@ class HandleImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_handle_image)
 
-        val intent = intent
-        val action = intent.action
-        val type = intent.type
-        Timber.d("Intent type: %s", type)
         if (utils.isPermissionGranted) {
-            if (action == Intent.ACTION_SEND) {
-                handleSendImage(intent)
-            } else if (action == Intent.ACTION_SEND_MULTIPLE) {
-                handleSendMultipleImages(intent)
-            }
+            scrambleAndShareImages()
         } else {
             Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app")
             Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show()
         }
         scheduleAlarm()
         finish()
+    }
+
+    private fun scrambleAndShareImages() {
+        val receivedImages = if (intent.action == Intent.ACTION_SEND) {
+            arrayListOf(intent.getParcelableExtra(Intent.EXTRA_STREAM))
+        } else if (intent.action == Intent.ACTION_SEND_MULTIPLE) {
+            intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)
+        } else {
+            ArrayList<Uri>()
+        }
+
+        val scrambledImages = scrambleImages(receivedImages)
+        shareImages(scrambledImages)
+    }
+
+    private fun scrambleImages(imageUris: ArrayList<Uri>): ArrayList<Uri> {
+        Timber.d("Scrambling images")
+
+        val scrambledImages = ArrayList<Uri>()
+
+        for (imageUri in imageUris) {
+            if (utils.isImage(imageUri)) {
+                Timber.d("Received image (uri): %s. Scrambling...", imageUri)
+                scrambledImages.add(exifScrambler.scrambleImage(imageUri))
+            } else {
+                Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri)
+            }
+        }
+
+        return scrambledImages
     }
 
     private fun scheduleAlarm() {
@@ -73,38 +95,7 @@ class HandleImageActivity : AppCompatActivity() {
                 alarmPendingIntent)
     }
 
-    private fun handleSendImage(intent: Intent) {
-        val imageUri = intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
-        if (imageUri != null) {
-            if (utils.isImage(imageUri)) {
-                val scrambledImage = exifScrambler.scrambleImage(imageUri)
-                shareImageExcludingApp(scrambledImage)
-            }
-        }
-    }
-
-    private fun handleSendMultipleImages(intent: Intent) {
-        Timber.d("Scrambling multiple images")
-        val imageUriList = intent.getParcelableArrayListExtra<Uri>(Intent.EXTRA_STREAM)
-        val scrambledImagesUriList = ArrayList<Uri>()
-        for (imageUri in imageUriList) {
-            if (utils.isImage(imageUri)) {
-                Timber.d("Received image (uri): %s", imageUri)
-                val scrambledImage = exifScrambler.scrambleImage(imageUri)
-                scrambledImagesUriList.add(scrambledImage)
-            } else {
-                Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri)
-            }
-        }
-
-        shareImagesExcludingApp(scrambledImagesUriList)
-    }
-
-    private fun shareImageExcludingApp(imageUri: Uri) {
-        shareImagesExcludingApp(arrayListOf(imageUri))
-    }
-
-    private fun shareImagesExcludingApp(imageUris: ArrayList<Uri>) {
+    private fun shareImages(imageUris: ArrayList<Uri>) {
         val targetedShareIntents = buildTargetedShareIntents(imageUris)
         val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), getString(R.string.share_multiple_via))
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())

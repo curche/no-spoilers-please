@@ -1,0 +1,17 @@
+New in 1.3.6
+★ Fix small "gratitude" bug.
+
+Changes in 1.3.5
+★ Add Swedish translation. Thanks, Markus Eriksson!
+★ Work-around for "gratitude" dialog (unimportant bug)
+
+Changes in 1.3.4
+★ Add Greek translation. Thanks, Spyros Melissovas!
+★ Add Portuguese translation. Thanks, l1904l!
+★ Update Russian translation.
+★ Add "show the dev some love" dialog :)
+★ Small bug fixes
+
+Changes in 1.3.3
+★ Add Polish translation. Thanks Paba22!
+★ Update Ukrainian translation.

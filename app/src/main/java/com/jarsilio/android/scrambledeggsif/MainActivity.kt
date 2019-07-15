@@ -34,6 +34,7 @@ import android.widget.TableLayout
 import android.widget.TextView
 import com.jarsilio.android.common.dialog.Dialogs
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
+import com.jarsilio.android.scrambledeggsif.utils.Utils
 
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.LibsBuilder

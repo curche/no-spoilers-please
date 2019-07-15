@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import timber.log.Timber
 import android.app.Activity
+import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 
 const val PICK_IMAGE_REQUEST = 100
 

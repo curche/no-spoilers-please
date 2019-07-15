@@ -17,7 +17,7 @@
  * along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.jarsilio.android.scrambledeggsif
+package com.jarsilio.android.scrambledeggsif.utils
 
 import android.content.Context
 import android.content.SharedPreferences

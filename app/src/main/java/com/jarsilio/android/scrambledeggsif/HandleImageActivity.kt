@@ -33,6 +33,8 @@ import java.util.ArrayList
 
 import timber.log.Timber
 import android.os.Parcelable
+import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
+import com.jarsilio.android.scrambledeggsif.utils.Utils
 
 class HandleImageActivity : AppCompatActivity() {
 

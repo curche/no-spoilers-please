@@ -26,6 +26,8 @@ import android.preference.PreferenceFragment;
 import androidx.appcompat.app.ActionBar;
 import android.view.MenuItem;
 
+import com.jarsilio.android.scrambledeggsif.utils.Settings;
+
 import timber.log.Timber;
 
 /**

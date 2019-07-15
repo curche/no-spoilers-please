@@ -72,7 +72,7 @@ internal class Utils(private val context: Context) {
     }
 
     private fun getDestinationFile(imageUri: Uri): File {
-        val imagesCacheDir = File(context.cacheDir,"/images")
+        val imagesCacheDir = File(context.cacheDir, "/images")
         imagesCacheDir.mkdir()
 
         return if (Settings(context).isRenameImages) {

@@ -105,7 +105,12 @@ class HandleImageActivity : AppCompatActivity() {
             targetedShareIntents.add(targetedShareIntent)
         }
 
-        return targetedShareIntents
+        return if (targetedShareIntents.isNotEmpty()) {
+            targetedShareIntents
+        } else {
+            // Avoid IndexOutOfBoundsException at removeAt(0) for weird devices that return an empty list.
+            arrayListOf(createShareIntent(imageUris))
+        }
     }
 
     private fun createShareIntent(uris: ArrayList<Uri>): Intent {

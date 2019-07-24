@@ -1,22 +1,3 @@
-<!--
-  ~ Copyright (c) 2018 Soem
-  ~
-  ~ This file is part of Scrambled Exif.
-  ~
-  ~ Scrambled Exif is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ Scrambled Exif is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
 <resources>
     <string name="share_via">Deel afbeelding zonder Exif-data met</string>
     <string name="share_multiple_via">Deel afbeeldingen zonder Exif-data met</string>
@@ -37,8 +18,6 @@
     <string name="settings_menu_item">Instellingen</string>
 
     <string name="settings_force_image_rewrite">Forceer herschrijven van afbeelding</string>
-    <string name="settings_force_image_rewrite_summary">Deze optie zorgt ervoor dat het hele bestand wordt herschreven (normaal worden alleen de Exif-data verwijderd).\n\nDeze optie maakt het verwijderen van Exif-data langzamer maar veiliger, en kan invloed hebben op de afbeeldingskwaliteit.</string>
-
     <string name="settings_keep_jpeg_orientation">Behoud oriëntatie (alleen voor JPEG)</string>
     <string name="settings_keep_jpeg_orientation_summary">Behoud oriëntatie-informatie van JPEG-afbeeldingen</string>
 

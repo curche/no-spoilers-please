@@ -20,6 +20,7 @@
 package com.jarsilio.android.scrambledeggsif.utils
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -27,20 +28,25 @@ import android.os.Build
 import android.provider.MediaStore
 
 import androidx.core.content.ContextCompat
-
+import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
-import java.util.Random
+import java.io.OutputStream
 
 import timber.log.Timber
 import java.lang.StringBuilder
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Random
 import kotlin.math.abs
 
 internal class Utils(private val context: Context) {
+
+    val settings: Settings by lazy { Settings(context) }
 
     val isPermissionGranted: Boolean
         get() {
@@ -56,31 +62,55 @@ internal class Utils(private val context: Context) {
         JPG, PNG, BMP, GIF, TIFF, UNKNOWN
     }
 
-    fun copyToCacheDir(imageUri: Uri): File {
-        val destination = getDestinationFile(imageUri)
-        Timber.d("Copying image from intent ${imageUri.path} to cache dir: $destination")
-
-        val inputStream = context.contentResolver.openInputStream(imageUri)
-        val outputStream = FileOutputStream(destination)
-        inputStream?.use { input ->
+    fun copy(inputStream: InputStream, outputStream: OutputStream) {
+        inputStream.use { input ->
             outputStream.use { output ->
                 input.copyTo(output)
             }
         }
-
-        return destination
     }
 
-    private fun getDestinationFile(imageUri: Uri): File {
-        val imagesCacheDir = File(context.cacheDir, "/images")
-        imagesCacheDir.mkdir()
-
-        return if (Settings(context).isRenameImages) {
-            File("$imagesCacheDir/img_eggsif_${abs(Random().nextLong())}" +
-                    ".${getImageType(imageUri).name.toLowerCase()}")
+    fun prepareScrambledFileInCacheDir(imageFile: File): File {
+        val unscrambledCopy = if (settings.isRenameImages) {
+            getRandomScrambledImage(getImageType(imageFile))
         } else {
-            File("$imagesCacheDir/${getRealFilenameFromURI(imageUri)}")
+            File(context.imagesCacheDir, imageFile.name)
         }
+
+        if (imageFile.canonicalPath == unscrambledCopy.canonicalPath) {
+            Timber.d("Not copying to 'images' dir. It's already there.")
+        } else {
+            Timber.d("Copying image $imageFile to 'images' dir: $unscrambledCopy")
+            copy(FileInputStream(imageFile), FileOutputStream(unscrambledCopy))
+        }
+
+        return unscrambledCopy
+    }
+
+    fun createFileFromBytesArray(imageBytes: ByteArray): File {
+        @SuppressLint("SimpleDateFormat")
+        val now = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+
+        val unscrambledCopy = File(context.imagesCacheDir, "IMG_$now.jpg")
+        Timber.d("Writing bytes to 'images' dir: $unscrambledCopy")
+
+        unscrambledCopy.writeBytes(imageBytes)
+
+        return unscrambledCopy
+    }
+
+    fun createFileFromUri(imageUri: Uri): File {
+        val unscrambledCopy = File(context.imagesCacheDir, getRealFilenameFromURI(imageUri))
+        Timber.d("Copying image from uri (probably from an intent) ${imageUri.path} to 'unscrambled' dir: $unscrambledCopy")
+
+        copy(context.contentResolver.openInputStream(imageUri)!!, FileOutputStream(unscrambledCopy))
+
+        return unscrambledCopy
+    }
+
+    private fun getRandomScrambledImage(imageType: ImageType = ImageType.JPG): File {
+        val scrambledImageFilename = "img_eggsif_${abs(Random().nextLong())}.${imageType.name.toLowerCase()}"
+        return File(context.imagesCacheDir, scrambledImageFilename)
     }
 
     private fun bytesToHex(bytes: ByteArray): String {
@@ -179,14 +209,16 @@ internal class Utils(private val context: Context) {
     }
 
     private fun getRealFilenameFromURI(uri: Uri): String {
-        val realPath = getRealPathFromURI(uri)
-        return File(realPath).name
-    }
-
-    private fun getRealPathFromURI(uri: Uri): String {
         val cursor = context.contentResolver.query(uri, null, null, null, null)
-        cursor!!.moveToFirst()
-        val index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
-        return cursor.getString(index)
+        cursor?.moveToFirst()
+        val index = cursor?.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+
+        return if (index != null && index != -1) {
+            val realPath = cursor.getString(index)
+            File(realPath).name
+        } else {
+            Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
+            getRandomScrambledImage().name
+        }
     }
 }

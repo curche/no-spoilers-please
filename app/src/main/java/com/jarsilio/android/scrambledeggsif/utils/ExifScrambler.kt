@@ -32,7 +32,6 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 import java.lang.reflect.Modifier
-import java.util.HashSet
 
 import timber.log.Timber
 
@@ -41,10 +40,15 @@ class ExifScrambler(private val context: Context) {
     private val settings: Settings by lazy { Settings(context) }
     private val utils: Utils by lazy { Utils(context) }
 
-    fun scrambleImage(imageUri: Uri): Uri {
-        val scrambledImageFile = utils.copyToCacheDir(imageUri)
+    fun scrambleImage(imageFile: File): Uri {
+        val scrambledImageFile = utils.prepareScrambledFileInCacheDir(imageFile) // prepareScrambled renames the file if necessary
         removeExifData(scrambledImageFile)
         return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", scrambledImageFile)
+    }
+
+    fun scrambleImage(image: Uri): Uri {
+        val unscrambledImageFile = utils.createFileFromUri(image)
+        return scrambleImage(unscrambledImageFile)
     }
 
     private fun removeExifData(image: File) {

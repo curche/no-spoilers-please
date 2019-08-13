@@ -1,0 +1,18 @@
+New in 1.4.3
+★ (Actually?) fix crash while sharing on some devices (couldn't get real name from uri)
+
+New in 1.4.2
+★ Fix crash while sharing on some devices (couldn't get real name from uri)
+
+New in 1.4.1
+★ Fix crash while sharing (IndexOutOfBounds)
+★ Update some translations
+
+New in 1.4.0
+★ Exclude Scrambled Exif from second share menu
+★ Expose as "file chooser" so that you can upload files from a browser e.g.
+  You need to select the file manager and then Scrambled Exif from there. This
+  might get better in the future :)
+
+★ Add Czech translation
+★ Update Russian translation

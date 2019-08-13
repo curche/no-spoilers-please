@@ -213,8 +213,12 @@ internal class Utils(private val context: Context) {
         cursor?.moveToFirst()
         val index = cursor?.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
 
-        return if (index != null && index != -1) {
-            val realPath = cursor.getString(index)
+        var realPath: String? = null
+        if (index != null && index != -1) {
+           realPath = cursor.getString(index)
+        }
+
+        return if (realPath != null) {
             File(realPath).name
         } else {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")

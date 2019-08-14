@@ -21,6 +21,7 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.app.AlarmManager
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -33,6 +34,7 @@ import java.util.ArrayList
 
 import timber.log.Timber
 import android.os.Parcelable
+import com.jarsilio.android.common.extensions.isNougatOrNewer
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 
@@ -89,12 +91,18 @@ class HandleImageActivity : AppCompatActivity() {
         val targetedShareIntents = buildTargetedShareIntents(imageUris)
         val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), getString(R.string.share_multiple_via))
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
+        chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayListOf(ComponentName(this, HandleImageActivity::class.java)).toTypedArray<Parcelable>())
         startActivity(chooserIntent)
     }
 
     private fun buildTargetedShareIntents(imageUris: ArrayList<Uri>): ArrayList<Intent> {
-        /* Remove our own package from the apps to share with */
+        if (isNougatOrNewer) {
+            Timber.d("Not removing our Activity from the share intent (like this, we don't lose 'direct share'). EXTRA_EXCLUDE_COMPONENTS will take care of if")
+            // we can return the standard without removing our package. EXTRA_EXCLUDE_COMPONENTS will take care about it
+            return arrayListOf(createShareIntent(imageUris))
+        }
 
+        /* Remove our own package from the apps to share with for older Android versions */
         val targetedShareIntents = ArrayList<Intent>()
         val resolveInfos = packageManager.queryIntentActivities(createShareIntent(imageUris), 0)
         for (info in resolveInfos) {

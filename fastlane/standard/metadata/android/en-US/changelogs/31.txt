@@ -1,0 +1,13 @@
+New in 1.4.4
+★ Add Direct Share (again) It now works together with the excluding of Scrambled Exif
+  from the second menu. Yay! :)
+
+New in 1.4.3
+★ (Actually?) fix crash while sharing on some devices (couldn't get real name from uri)
+
+New in 1.4.2
+★ Fix crash while sharing on some devices (couldn't get real name from uri)
+
+New in 1.4.1
+★ Fix crash while sharing (IndexOutOfBounds)
+★ Update some translations

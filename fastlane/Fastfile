@@ -26,6 +26,7 @@ platform :android do
         text: "Please enter keystore password:",
         secure_text: true
       )
+      sh("keytool -list -keystore /keys/apk-release/juanitobananas-release-key.jks -storepass " + password) # Just check to see if password is correct before building
     end
   end
 

@@ -2,17 +2,17 @@
     <string name="share_via">Udostępnij zdjęcie z scrambled Exif przez</string>
     <string name="share_multiple_via">Udostępnij zdjęcia z scrambled Exif przez</string>
     <string name="permission_request">Poproś o pozwolenia</string>
-    <string name="permission_sdcard_text">Scrambled Exif potrzebuje dostępu do twoich plików żeby czytać zdjęcia, które inne aplikacje udostępniają.\n\nKliknij w przycisk na dole, aby dać odpowiednie pozwolenia.</string>
+    <string name="permission_sdcard_text">Scrambled Exif potrzebuje dostępu do twoich plików żeby czytać zdjęcia, które są z nią udostępniane .\n\nKliknij w przycisk na dole, aby dać odpowiednie pozwolenia.</string>
 
     <string name="instructions_title">Instrukcja</string>
     <string name="instructions_1">Wybierz zdjęcia, które chcesz udostępnić z twojej galerii i kliknij ikonkę udostępniania.</string>
     <string name="instructions_2">Wybierz <i>Scrambled Exif</i> z listy aplikacji.</string>
     <string name="instructions_2_1">W tym punkcie, metadane są usuwane!</string>
-    <string name="instructions_3">Po skończeniu lista aplikacji pojawi się po raz drugi. Teraz udostępnij zdjęcia tak normalnie.</string>
+    <string name="instructions_3">Po skończeniu, lista aplikacji pojawi się po raz drugi. Teraz udostępnij zdjęcia tak jak zwykle to robisz.</string>
     <string name="instructions_voila">Et voilà! Właśnie udostępniłeś zdjęcia ze światem bez matadanych!</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif potrzebuje dostępu do plików.
-       Otwórz aplikację i daj w niej do nich dostęp</string>
+       Otwórz aplikację i daj w niej odpowiedni dostęp</string>
     <string name="privacy_policy_menu_item">Polityka Prywatności</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ustawienia</string>

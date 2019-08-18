@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Juan García Basilio
+ * Copyright (c) 2018-2019 Juan García Basilio
  *
  * This file is part of Scrambled Exif.
  *
@@ -33,6 +33,7 @@ import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TextView
 import com.jarsilio.android.common.dialog.Dialogs
+import com.jarsilio.android.common.impressum.ImpressumActivity
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             R.id.privacy_policy_menu_item -> showPrivacyPolicyActivity()
             R.id.settings_menu_item -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             R.id.licenses_menu_item -> showAboutLicensesActivity()
+            R.id.impressum_menu_item -> startActivity(Intent(applicationContext, ImpressumActivityg::class.java))
         }
 
         return super.onOptionsItemSelected(item)

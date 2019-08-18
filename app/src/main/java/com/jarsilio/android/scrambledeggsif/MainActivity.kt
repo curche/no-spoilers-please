@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             R.id.privacy_policy_menu_item -> showPrivacyPolicyActivity()
             R.id.settings_menu_item -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             R.id.licenses_menu_item -> showAboutLicensesActivity()
-            R.id.impressum_menu_item -> startActivity(Intent(applicationContext, ImpressumActivityg::class.java))
+            R.id.impressum_menu_item -> startActivity(Intent(applicationContext, ImpressumActivity::class.java))
         }
 
         return super.onOptionsItemSelected(item)

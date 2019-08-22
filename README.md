@@ -26,7 +26,9 @@ This Android app will remove all this data before sharing. Just share a picture 
 
 ## Translations
 
-If you wish to help to translate this app to your own language, you can do so using [transifex](https://www.transifex.com/juanitobananas/scrambled-exif/).
+If you wish to help to translate this app to your own language, you can do so by translating these two projects using transifex:
+[scrambled-exif](https://www.transifex.com/juanitobananas/scrambled-exif/ "Scrambled Exif on transifex") and
+[libcommon](https://www.transifex.com/juanitobananas/libcommon/ "libcommon on transifex").
 
 ## Misc Stuff and Facts
 

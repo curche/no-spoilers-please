@@ -20,9 +20,8 @@ https://gitlab.com/juanitobananas/scrambled-exif
 
 <b>Translations</b>
 
-If you wish to help to translate this app to your own language, you can do so using transifex:
-
-https://www.transifex.com/juanitobananas/scrambled-exif/
+If you wish to help to translate this app to your own language, you can do so by translating these two projects using transifex:
+https://www.transifex.com/juanitobananas/scrambled-exif/ and https://www.transifex.com/juanitobananas/libcommon/.
 
 <b>Misc Stuff and Facts</b>
 

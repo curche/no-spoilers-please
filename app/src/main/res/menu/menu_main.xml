@@ -33,9 +33,4 @@
         android:title="@string/licenses_menu_item"
         android:orderInCategory="1100"
         app:showAsAction="never" />
-
-    <item android:id="@+id/impressum_menu_item"
-        android:title="@string/impressum_activity_title"
-        android:orderInCategory="1200"
-        app:showAsAction="never" />
 </menu>

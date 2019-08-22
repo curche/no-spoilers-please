@@ -34,6 +34,7 @@ import android.widget.TableLayout
 import android.widget.TextView
 import com.jarsilio.android.common.dialog.Dialogs
 import com.jarsilio.android.common.impressum.ImpressumActivity
+import com.jarsilio.android.common.menu.CommonMenu
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 
@@ -44,6 +45,7 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private val utils: Utils by lazy { Utils(applicationContext) }
+    private val commonMenu: CommonMenu by lazy { CommonMenu(this) }
 
     override fun onResume() {
         super.onResume()
@@ -66,6 +68,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
+        commonMenu.addImpressumToMenu(menu)
         return true
     }
 
@@ -79,7 +82,6 @@ class MainActivity : AppCompatActivity() {
             R.id.privacy_policy_menu_item -> showPrivacyPolicyActivity()
             R.id.settings_menu_item -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             R.id.licenses_menu_item -> showAboutLicensesActivity()
-            R.id.impressum_menu_item -> startActivity(Intent(applicationContext, ImpressumActivity::class.java))
         }
 
         return super.onOptionsItemSelected(item)

@@ -20,15 +20,14 @@ https://gitlab.com/juanitobananas/scrambled-exif
 
 <b>Traduzioni</b>
 
-Se vuoi aiutare a tradurre questa app nella tua lingua, puoi farlo usando transifex:
-
-https://www.transifex.com/juanitobananas/scrambled-exif/
+Se vuoi aiutare a tradurre questa app nella tua lingua, puoi farlo traducendo questi due progetti usando transifex:
+https://www.transifex.com/juanitobananas/scrambled-exif/ e https://www.transifex.com/juanitobananas/libcommon/.
 
 <b>Varie cose e fatti</b>
 
 ★ Sostanzialmente, gli Exif sono usati da jpeg, che è il formato con cui la fotocamera Android salva le foto. Se vuoi maggiori informazioni sugli Exif, controlla Wikipedia.
 
-★ Scrambled Exif può anche rinominare i file.
+★ Scrambled Exif può anche rinominare i file (può essere disattivato).
 
 ★ Per favore, non fidarti ciecamente dell'eliminazione dei dati. Scrambled Exif fa bene il suo lavoro, ma può fallire. Controlla sempre due volte prima di condividere.
 

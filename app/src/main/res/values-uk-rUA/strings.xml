@@ -1,6 +1,6 @@
 <resources>
-    <string name="share_via">Поділитися зображенням зі Смаженим Exif через</string>
-    <string name="share_multiple_via">Поділитися зображеннями зі Смаженим Exif через</string>
+    <string name="share_via">Передати зображення у Смажений Exif через</string>
+    <string name="share_multiple_via">Передати зображення у Смажений Exif через</string>
     <string name="permission_request">Запитати дозволи</string>
     <string name="permission_sdcard_text">Смажений Exif потребує доступу до ваших файлів, щоб читати зображення, якими ви ділитися через нього.\n\nНатисніть на кнопку нижче, щоб надати необхідний дозвіл.</string>
 
@@ -28,8 +28,8 @@
 
     <string name="licenses_menu_item">Ліцензії</string>
     <!-- ACRA -->
-    <string name="acra_notification_channel_name">Падіння</string>
-    <string name="acra_notification_title">Овва! Виявлено падіння додатку 💩</string>
+    <string name="acra_notification_channel_name">Збої у роботі</string>
+    <string name="acra_notification_title">Овва! Виявлено збій у роботі додатку 💩</string>
     <string name="acra_notification_text">Надішліть, будь ласка, розробнику звіт, щоб він спробував полагодити свій додаток.</string>
     <string name="acra_notification_send">Надіслати електронного листа</string>
 

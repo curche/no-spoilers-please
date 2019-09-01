@@ -1,0 +1,16 @@
+New in 1.4.6
+★ Update some translations. Thanks again for all the volunteer
+  translations!
+
+New in 1.4.5
+★ Add German "Impressum" to main menu.
+
+New in 1.4.4
+★ Add Direct Share (again) It now works together with the excluding of Scrambled Exif
+  from the second menu. Yay! :)
+
+New in 1.4.3
+★ (Actually?) fix crash while sharing on some devices (couldn't get real name from uri)
+
+New in 1.4.2
+★ Fix crash while sharing on some devices (couldn't get real name from uri)

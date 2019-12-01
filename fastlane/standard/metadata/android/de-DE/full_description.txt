@@ -20,15 +20,14 @@ https://gitlab.com/juanitobananas/scrambled-exif
 
 <b>Übersetzungen</b>
 
-Wenn du helfen möchtest, diese App in deine Sprache zu übersetzen, dann kannst du das bei Transifex tun:
-
-https://www.transifex.com/juanitobananas/scrambled-exif/
+Wenn Du helfen möchtest, diese App in eine andere Sprache zu übersetzen, benutze Transifex:
+https://www.transifex.com/juanitobananas/scrambled-exif/ und https://www.transifex.com/juanitobananas/libcommon/
 
 <b>Sonstige Dinge und Infos</b>
 
 ★ Exif wird hauptsächlich bei jpeg verwendet, welches ein Format ist, in dem deine Android-Kamera Bilder speichert. Wenn du mehr über Exif erfahren möchtest, schaue auf Wikipedia nach.
 
-★ Scrambled Exif benennt die Dateien auch um.
+★ Scrambled Exif benennt die Dateien auch um (dies kann deaktiviert werden).
 
 ★ Bitte verlasse dich nicht darauf, dass die Daten gelöscht werden. Scrambled Exif macht seine Aarbeit ziemlich gut, aber es kann auch versagen. Prüfe immer noch einmal nach, bevor du etwas teilst.
 

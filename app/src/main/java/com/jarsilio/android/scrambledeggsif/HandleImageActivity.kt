@@ -19,12 +19,15 @@
 
 package com.jarsilio.android.scrambledeggsif
 
+import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.appcompat.app.AppCompatActivity
@@ -34,8 +37,10 @@ import java.util.ArrayList
 
 import timber.log.Timber
 import android.os.Parcelable
+import androidx.core.app.ActivityCompat
 import com.jarsilio.android.common.extensions.isNougatOrNewer
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
+import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 
 class HandleImageActivity : AppCompatActivity() {
@@ -49,11 +54,30 @@ class HandleImageActivity : AppCompatActivity() {
 
         if (utils.isPermissionGranted) {
             scrambleAndShareImages()
+            finish()
         } else {
-            Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app")
-            Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show()
+            utils.requestPermissionsIfNecessary(this)
         }
+    }
+
+    override fun finish() {
         scheduleCacheCleanup()
+        super.finish()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Timber.d("READ_EXTERNAL_STORAGE permission granted.")
+                    scrambleAndShareImages()
+                } else {
+                    Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app")
+                    Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+
         finish()
     }
 

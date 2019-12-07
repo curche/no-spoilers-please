@@ -21,13 +21,16 @@ package com.jarsilio.android.scrambledeggsif.utils
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import androidx.core.app.ActivityCompat
 
 import androidx.core.content.ContextCompat
+import com.jarsilio.android.scrambledeggsif.MainActivity
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.FileInputStream
@@ -44,6 +47,8 @@ import java.util.Date
 import java.util.Random
 import kotlin.math.abs
 
+const val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000
+
 internal class Utils(private val context: Context) {
 
     val settings: Settings by lazy { Settings(context) }
@@ -57,6 +62,13 @@ internal class Utils(private val context: Context) {
                 true
             }
         }
+
+    fun requestPermissionsIfNecessary(activity: Activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            Timber.d("Requesting READ_EXTERNAL_STORAGE permission")
+            ActivityCompat.requestPermissions(activity, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
+        }
+    }
 
     enum class ImageType {
         JPG, PNG, BMP, GIF, TIFF, UNKNOWN

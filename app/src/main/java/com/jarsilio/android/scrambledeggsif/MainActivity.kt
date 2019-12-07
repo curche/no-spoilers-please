@@ -19,7 +19,6 @@
 
 package com.jarsilio.android.scrambledeggsif
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -36,6 +35,7 @@ import com.jarsilio.android.common.dialog.Dialogs
 import com.jarsilio.android.common.impressum.ImpressumActivity
 import com.jarsilio.android.common.menu.CommonMenu
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
+import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 
 import com.mikepenz.aboutlibraries.Libs
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val button = findViewById<Button>(R.id.request_permission_button)
-        button.setOnClickListener { requestPermissions() }
+        button.setOnClickListener { utils.requestPermissionsIfNecessary(this) }
 
         updateLayout()
     }
@@ -108,13 +108,6 @@ class MainActivity : AppCompatActivity() {
                 .start(applicationContext)
     }
 
-    private fun requestPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            Timber.d("Requesting READ_EXTERNAL_STORAGE permission")
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
-        }
-    }
-
     private fun updateLayout() {
         val button = findViewById<Button>(R.id.request_permission_button)
         val permissionExplanation = findViewById<TextView>(R.id.permissions_explanation)
@@ -140,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         when (requestCode) {
             MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Timber.d("Permission granted")
                 } else {
                     Timber.d("Permission denied")
@@ -148,9 +141,5 @@ class MainActivity : AppCompatActivity() {
                 updateLayout()
             }
         }
-    }
-
-    companion object {
-        private val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000
     }
 }

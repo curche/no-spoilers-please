@@ -24,6 +24,8 @@ import android.os.Bundle
 import android.preference.PreferenceActivity
 import android.preference.PreferenceFragment
 import android.view.MenuItem
+import com.jarsilio.android.common.dialog.Dialogs
+import com.jarsilio.android.common.logging.LogUtils
 import com.jarsilio.android.scrambledeggsif.utils.Settings
 import timber.log.Timber
 
@@ -40,9 +42,20 @@ import timber.log.Timber
  */
 class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
     private val settings: Settings by lazy { Settings(applicationContext) }
+    private val logUtils: LogUtils by lazy { LogUtils(applicationContext) }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         Timber.d("Preference with key $key just changed")
+        when (key) {
+            Settings.LOGGING_ENABLED -> {
+                if (settings.isLoggingEnabled) {
+                    logUtils.plantPersistentTreeIfNonePlanted()
+                } else {
+                    logUtils.uprootPersistentTrees()
+                    logUtils.deletePersistentLogs()
+                }
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -59,6 +72,7 @@ class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnShar
         setupActionBar()
         addPreferencesFromResource(R.xml.settings)
         registerPreferencesListener()
+        bindClickListeners()
     }
 
     override fun onResume() {
@@ -98,5 +112,12 @@ class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnShar
 
     private fun unregisterPreferencesListener() {
         settings.preferences.unregisterOnSharedPreferenceChangeListener(this)
+    }
+
+    private fun bindClickListeners() {
+        findPreference(Settings.SEND_LOGS_TO_DEV)?.setOnPreferenceClickListener {
+            Dialogs(this).showReportIssueDialog()
+            true
+        }
     }
 }

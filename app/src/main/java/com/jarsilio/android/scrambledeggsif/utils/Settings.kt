@@ -38,6 +38,10 @@ internal class Settings(private val context: Context) {
         get() = preferences.getBoolean(RENAME_IMAGES, true)
         set(renameImages) = setPreference(RENAME_IMAGES, renameImages)
 
+    var isLoggingEnabled: Boolean
+        get() = preferences.getBoolean(LOGGING_ENABLED, false)
+        set(loggingEnabled) = setPreference(LOGGING_ENABLED, loggingEnabled)
+
     private fun setPreference(key: String, value: Boolean) {
         if (preferenceActivity != null) { // This changes the GUI, but it needs the MainActivity to have started
             val checkBox = preferenceActivity!!.findPreference(key) as CheckBoxPreference
@@ -50,5 +54,7 @@ internal class Settings(private val context: Context) {
     companion object {
         const val KEEP_JPEG_ORIENTATION = "pref_keep_jpeg_orientation"
         const val RENAME_IMAGES = "pref_rename_images"
+        const val LOGGING_ENABLED = "pref_logging_enabled"
+        const val SEND_LOGS_TO_DEV = "pref_send_logs_to_dev"
     }
 }

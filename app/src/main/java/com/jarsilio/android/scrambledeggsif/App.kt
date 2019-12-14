@@ -21,7 +21,9 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.app.Application
 import android.content.Context
+import com.jarsilio.android.common.logging.LogUtils
 import com.jarsilio.android.common.logging.LongTagTree
+import com.jarsilio.android.scrambledeggsif.utils.Settings
 import org.acra.ACRA
 import org.acra.annotation.AcraCore
 import org.acra.annotation.AcraMailSender
@@ -32,6 +34,9 @@ import timber.log.Timber
 @AcraMailSender(mailTo = "juam+scrambled@posteo.net")
 @AcraNotification(resTitle = R.string.acra_notification_title, resText = R.string.acra_notification_text, resChannelName = R.string.acra_notification_channel_name, resSendButtonText = R.string.acra_notification_send, resDiscardButtonText = android.R.string.cancel)
 class App : Application() {
+
+    private val settings: Settings by lazy { Settings(this) }
+    private val logUtils: LogUtils by lazy { LogUtils(this) }
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
@@ -45,6 +50,10 @@ class App : Application() {
         super.onCreate()
         if (BuildConfig.DEBUG) {
             Timber.plant(LongTagTree(this))
+        }
+
+        if (settings.isLoggingEnabled) {
+            logUtils.plantPersistentTreeIfNonePlanted()
         }
     }
 }

@@ -20,4 +20,5 @@
 
 <paths>
     <cache-path name="shared_images" path="images/"/>
+    <cache-path name="logs" path="logs/"/>
 </paths>

@@ -91,7 +91,11 @@ class HandleImageActivity : AppCompatActivity() {
         }
 
         val scrambledImages = scrambleImages(receivedImages)
-        shareImages(scrambledImages)
+        if (scrambledImages.isEmpty()) {
+            Toast.makeText(this, R.string.no_scrambleable_images, Toast.LENGTH_LONG).show()
+        } else {
+            shareImages(scrambledImages)
+        }
     }
 
     private fun scrambleImages(imageUris: ArrayList<Uri>): ArrayList<Uri> {

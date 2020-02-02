@@ -43,10 +43,10 @@ class ContentProxyActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri = data.data
             Timber.d("Received image to scramble: $imageUri. Scrambling...")
-            val scrambledImageUri = ExifScrambler(this).scrambleImage(imageUri)
+            val scrambledImageUri = ExifScrambler(this).scrambleImage(imageUri!!)
             Timber.d("Sending uri in result intent: $scrambledImageUri")
 
             // Send data back to calling app

@@ -14,6 +14,7 @@
     <string name="permissions_open_app_toast">Scrambled Exif needs file access.
         Please open the app and grant it from there</string>
     <string name="no_scrambleable_images">Couldn\'t find any images to scramble.</string>
+    <string name="image_not_scrambleable">Couldn\'t scramble "%s" because it is not a JPEG image.</string>
 
     <string name="privacy_policy_menu_item">Privacy Policy</string>
     <string name="privacy_policy_dialog_title" translatable="false">Scrambled Exif Privacy Policy</string>

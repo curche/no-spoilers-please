@@ -104,11 +104,12 @@ class HandleImageActivity : AppCompatActivity() {
         val scrambledImages = ArrayList<Uri>()
 
         for (imageUri in imageUris) {
-            if (utils.isImage(imageUri)) {
-                Timber.d("Received image (uri): %s. Scrambling...", imageUri)
+            if (utils.isScrambleableImage(imageUri)) {
+                Timber.d("Received a jpeg image (uri): $imageUri. Scrambling...")
                 scrambledImages.add(exifScrambler.scrambleImage(imageUri))
             } else {
-                Timber.d("Received something that's not an image (%s) in a SEND_MULTIPLE. Skipping...", imageUri)
+                Timber.d("Received something that's not a jpeg image ($imageUri) in a SEND_MULTIPLE. Skipping...")
+                Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
             }
         }
 

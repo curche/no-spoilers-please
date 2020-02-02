@@ -220,7 +220,12 @@ internal class Utils(private val context: Context) {
         return getImageType(uri) != ImageType.UNKNOWN
     }
 
-    private fun getRealFilenameFromURI(uri: Uri): String {
+    fun isScrambleableImage(uri: Uri): Boolean {
+        Timber.d("Checking if uri $uri corresponds to a scrambleable image (i.e. is a jpeg)...")
+        return getImageType(uri) == ImageType.JPG
+    }
+
+    fun getRealFilenameFromURI(uri: Uri): String {
         val cursor = context.contentResolver.query(uri, null, null, null, null)
         cursor?.moveToFirst()
         val index = cursor?.getColumnIndex(MediaStore.Images.ImageColumns.DATA)

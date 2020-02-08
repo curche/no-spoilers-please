@@ -29,8 +29,8 @@
     <string name="settings_rename_images">Rename images</string>
     <string name="settings_rename_images_summary">Filenames can tell a recipient of the file the date and time that a photo was taken on some devices.\n\nThis option renames all shared images with a random filename.</string>
 
-    <string name="settings_keep_jpeg_orientation">Keep orientation (only for JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Keep the orientation information for JPEG images</string>
+    <string name="settings_keep_jpeg_orientation">Keep orientation</string>
+    <string name="settings_keep_jpeg_orientation_summary">This \"physically\" rotates the image according to the EXIF data in the original image.\n\nThe image needs to re-written, which means it takes a little longer and implies (probable) quality loss.</string>
 
     <string name="licenses_menu_item">Licenses</string>
     <string name="licenses_about_libraries_text" translatable="false"><![CDATA[<br/><b>Scrambled Exif License</b><br/><br/>Copyright (c) 2018 Juan García Basilio<br/><br/>This app is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/><br/>This app is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a href="http://www.gnu.org/licenses/">GNU General Public License</a> for more details.<br/><br/><b>Third-party libraries</b><br/><br/>Here is a list of the libraries used by this app. Tap on them for more information.]]></string>

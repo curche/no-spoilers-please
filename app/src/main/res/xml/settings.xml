@@ -19,7 +19,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 <SwitchPreference
-    android:defaultValue="true"
+    android:defaultValue="false"
     android:title="@string/settings_keep_jpeg_orientation"
     android:key="pref_keep_jpeg_orientation"
     android:summary="@string/settings_keep_jpeg_orientation_summary" />

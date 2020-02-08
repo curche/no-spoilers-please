@@ -24,13 +24,16 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.core.app.ActivityCompat
 
 import androidx.core.content.ContextCompat
-import com.jarsilio.android.scrambledeggsif.MainActivity
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.FileInputStream
@@ -117,6 +120,10 @@ internal class Utils(private val context: Context) {
 
         copy(context.contentResolver.openInputStream(imageUri)!!, FileOutputStream(unscrambledCopy))
 
+        if (settings.isKeepJpegOrientation) {
+            // Instead of rewriting the tag, "physically" rotate the image. This is expensive.
+            rotateImageAccordingToExifOrientation(unscrambledCopy)
+        }
         return unscrambledCopy
     }
 
@@ -241,5 +248,20 @@ internal class Utils(private val context: Context) {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
             getRandomScrambledImage().name
         }
+    }
+
+    private fun rotateImageAccordingToExifOrientation(imageFile: File) {
+        val rotate = when(ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
+            ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.d("Rotate image 270°"); 270 }
+            ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.d("Rotate image 180°"); 180 }
+            ExifInterface.ORIENTATION_ROTATE_90 -> { Timber.d("Rotate image 90°"); 90 }
+            else -> { Timber.d("Rotate image 0°"); 0 }
+        }
+        val matrix = Matrix()
+        matrix.postRotate(rotate.toFloat())
+
+        val bitmap = BitmapFactory.decodeFile(imageFile.path)
+        val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+        rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 90, imageFile.outputStream())
     }
 }

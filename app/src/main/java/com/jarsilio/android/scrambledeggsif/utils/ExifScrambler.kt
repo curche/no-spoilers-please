@@ -71,35 +71,6 @@ class ExifScrambler(private val context: Context) {
         }
     }
 
-    private fun getOrientation(image: File): String? {
-        var orientation: String? = null
-        try {
-            val exifInterface = ExifInterface(image.toString())
-            orientation = exifInterface.getAttribute(ExifInterface.TAG_ORIENTATION)
-        } catch (e: IOException) {
-            Timber.e(e, "Couldn't read orientation exif attribute for image $image")
-            e.printStackTrace()
-        }
-
-        return orientation
-    }
-
-    private fun setOrientation(orientation: String?, image: File): String? {
-        // Somehow, this adds ImageLength, ImageWidth and LigtSource to the exif metadata
-        // Running remove exif data with ExifInterface after re-writing image to get rid of these
-        try {
-            Timber.d("Trying to set orientation for image $image to $orientation")
-            val exifInterface = ExifInterface(image.toString())
-            exifInterface.setAttribute(ExifInterface.TAG_ORIENTATION, orientation)
-            exifInterface.saveAttributes()
-        } catch (e: IOException) {
-            Timber.e(e, "Couldn't save orientation exif tag for image $image")
-            e.printStackTrace()
-        }
-
-        return orientation
-    }
-
     companion object {
         private val exifAttributes = HashSet<String>()
 

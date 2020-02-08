@@ -46,7 +46,7 @@ class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnShar
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when (key) {
             Settings.REWRITE_IMAGES -> Timber.d("${Settings.REWRITE_IMAGES} changed to ${settings.isRewriteImages}")
-            else -> Timber.d("Unkown preference with key: %s", key)
+            else -> Timber.d("Unknown preference with key: %s", key)
         }
     }
 

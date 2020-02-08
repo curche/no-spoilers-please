@@ -1,0 +1,10 @@
+New in 1.4.8
+★ Ask for permission directly while sharing image.
+★ Update some translations.
+
+New in 1.4.7
+★ Update some translations.
+
+New in 1.4.6
+★ Update some translations. Thanks again for all the volunteer
+  translations!

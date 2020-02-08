@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2019 Juan García Basilio
+ * Copyright (c) 2018-2020 Juan García Basilio
  *
  * This file is part of Scrambled Exif.
  *

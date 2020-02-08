@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 2018-2020 Juan García Basilio
+ * Copyright (c) 2019 Eric Cochran (see https://github.com/NightlyNexus/ExifDataRemover/blob/master/app/src/main/java/com/nightlynexus/exifdataremover/Activity.kt#L107)
  *
  * This file is part of Scrambled Exif.
  *
@@ -21,13 +22,25 @@ package com.jarsilio.android.scrambledeggsif.utils
 
 import android.content.Context
 import android.net.Uri
+import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.BuildConfig
+import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.IOException
 import java.lang.reflect.Modifier
+import java.util.UUID
+import kotlin.collections.HashSet
+import okio.buffer
+import okio.sink
+import okio.source
 import timber.log.Timber
+
+private const val MARKER = 0xFF.toByte()
+private const val APP1 = 0xE1.toByte()
+private const val COMMENT = 0xFE.toByte()
+private const val START_OF_STREAM = 0xDA.toByte()
 
 class ExifScrambler(private val context: Context) {
 
@@ -46,7 +59,7 @@ class ExifScrambler(private val context: Context) {
     }
 
     private fun removeExifData(image: File) {
-        removeExifDataWithExifInterface(image)
+        removeExifDataManually(image)
     }
 
     private fun removeExifDataWithExifInterface(image: File) {
@@ -66,6 +79,43 @@ class ExifScrambler(private val context: Context) {
             exifInterface.saveAttributes()
         } catch (e: IOException) {
             Timber.e(e, "Failed to remove exif data with ExifInterface.")
+        }
+    }
+
+    private fun removeExifDataManually(jpegImage: File) {
+        val output = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
+
+        try {
+            output.sink().buffer().use { sink ->
+                jpegImage.inputStream().source().buffer().use { source ->
+                    sink.write(source, 2)
+                    val sourceBuffer = source.buffer
+                    while (true) {
+                        source.require(2)
+                        if (sourceBuffer[0] != MARKER) {
+                            throw IOException("${sourceBuffer[0]} != $MARKER")
+                        }
+                        val nextByte = sourceBuffer[1]
+                        if (nextByte == APP1 || nextByte == COMMENT) {
+                            source.skip(2)
+                            val size = source.readShort()
+                            source.skip((size - 2).toLong())
+                        } else if (nextByte == START_OF_STREAM) {
+                            sink.writeAll(source)
+                            break
+                        } else {
+                            sink.write(source, 2)
+                            val size = source.readShort()
+                            sink.writeShort(size.toInt())
+                            sink.write(source, (size - 2).toLong())
+                        }
+                    }
+                }
+            }
+            jpegImage.delete()
+            output.renameTo(jpegImage)
+        } catch (e: IOException) {
+            Toast.makeText(context, "Failed to create ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 

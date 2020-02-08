@@ -92,6 +92,9 @@ dependencies {
     implementation "ch.acra:acra-mail:$acraVersion"
     implementation "ch.acra:acra-notification:$acraVersion"
     implementation "ch.acra:acra-dialog:$acraVersion"
+
+    // Okio (modern I/O library)
+    implementation "com.squareup.okio:okio:2.2.2"
 }
 repositories {
     mavenCentral()

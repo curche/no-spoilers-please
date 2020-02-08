@@ -33,10 +33,6 @@ internal class Settings(private val context: Context) {
     val preferences: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(context)
 
-    var isRewriteImages: Boolean
-        get() = preferences.getBoolean(REWRITE_IMAGES, true)
-        set(rewriteImages) = setPreference(REWRITE_IMAGES, rewriteImages)
-
     val isKeepJpegOrientation: Boolean
         get() = preferences.getBoolean(KEEP_JPEG_ORIENTATION, true)
 
@@ -72,7 +68,6 @@ internal class Settings(private val context: Context) {
     }
 
     companion object {
-        const val REWRITE_IMAGES = "pref_rewrite_images"
         const val LAST_ALREADY_SCRAMBLED_PROOF = "pref_last_already_scrambled_proof"
         const val KEEP_JPEG_ORIENTATION = "pref_keep_jpeg_orientation"
         const val RENAME_IMAGES = "pref_rename_images"

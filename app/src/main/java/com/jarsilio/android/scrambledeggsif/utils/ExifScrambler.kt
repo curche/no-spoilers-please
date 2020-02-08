@@ -20,16 +20,12 @@
 package com.jarsilio.android.scrambledeggsif.utils
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.exifinterface.media.ExifInterface
 import androidx.core.content.FileProvider
 import com.jarsilio.android.scrambledeggsif.BuildConfig
 
 import java.io.File
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
 import java.io.IOException
 import java.lang.reflect.Modifier
 
@@ -52,43 +48,10 @@ class ExifScrambler(private val context: Context) {
     }
 
     private fun removeExifData(image: File) {
-        if (settings.isRewriteImages) {
-            Timber.d("Force image re-write is on: rewriting whole image instead of just removing EXIF data")
-            removeExifDataByResavingImage(image)
-        } else {
-            Timber.d("Force image re-write is off: trying to just remove EXIF data")
-            removeExifDataWithExifInterface(image)
-        }
+        removeExifDataWithExifInterface(image)
     }
 
-    private fun removeExifDataByResavingImage(image: File) {
-        val originalOrientation: String? = getOrientation(image) // We might not need this
-        val originalImage = BitmapFactory.decodeFile(image.path)
-        val originalImageType = utils.getImageType(image)
-        try {
-            val outputStream = FileOutputStream(image)
-            if (originalImageType == Utils.ImageType.PNG) {
-                originalImage.compress(Bitmap.CompressFormat.PNG, 95, outputStream)
-            } else {
-                // If I don't know what type of image it is (or it is a JPEG), save as JPEG
-                originalImage.compress(Bitmap.CompressFormat.JPEG, 90, outputStream)
-                if (settings.isKeepJpegOrientation) {
-                    setOrientation(originalOrientation, image)
-                }
-            }
-        } catch (e: FileNotFoundException) {
-            Timber.e(e, "Couldn't find file to write to: $image")
-            e.printStackTrace()
-        }
-
-        Timber.d("Sometimes re-saving as JPEG might add exif data. Removing exif data with ExifInterface to try to delete it")
-        removeExifDataWithExifInterface(image, false)
-    }
-
-    private fun removeExifDataWithExifInterface(image: File, fallback: Boolean = true) {
-        /* First try to delete Exif data because it is the fastest way to do it.
-         * If this fails, open the image and save it again with the resave image
-         */
+    private fun removeExifDataWithExifInterface(image: File) {
         try {
             val exifInterface = ExifInterface(image.toString())
             for (attribute in exifAttributes) {
@@ -104,12 +67,7 @@ class ExifScrambler(private val context: Context) {
             }
             exifInterface.saveAttributes()
         } catch (e: IOException) {
-            if (fallback) {
-                Timber.e(e, "Failed to remove exif data with ExifInterface. Falling back to re-saving image")
-                removeExifDataByResavingImage(image)
-            } else {
-                Timber.e(e, "Failed to remove exif data with ExifInterface.")
-            }
+            Timber.e(e, "Failed to remove exif data with ExifInterface.")
         }
     }
 

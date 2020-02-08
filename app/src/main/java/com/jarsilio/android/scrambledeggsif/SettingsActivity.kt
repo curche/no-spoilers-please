@@ -44,10 +44,7 @@ class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnShar
     private val settings: Settings by lazy { Settings(applicationContext) }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        when (key) {
-            Settings.REWRITE_IMAGES -> Timber.d("${Settings.REWRITE_IMAGES} changed to ${settings.isRewriteImages}")
-            else -> Timber.d("Unknown preference with key: %s", key)
-        }
+        Timber.d("Preference with key $key just changed")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

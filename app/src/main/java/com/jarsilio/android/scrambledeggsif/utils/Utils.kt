@@ -47,8 +47,7 @@ import timber.log.Timber
 import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.util.Random
-import kotlin.math.abs
+import java.util.UUID
 
 const val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000
 
@@ -128,7 +127,7 @@ internal class Utils(private val context: Context) {
     }
 
     private fun getRandomScrambledImage(imageType: ImageType = ImageType.JPG): File {
-        val scrambledImageFilename = "img_eggsif_${abs(Random().nextLong())}.${imageType.name.toLowerCase()}"
+        val scrambledImageFilename = "${UUID.randomUUID()}.${imageType.name.toLowerCase()}"
         return File(context.imagesCacheDir, scrambledImageFilename)
     }
 

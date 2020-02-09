@@ -26,6 +26,11 @@ before_script:
 stages:
   - build
 
+spotlessCheck:
+  stage: build
+  script:
+    - ./gradlew spotlessCheck
+
 lintDebug:
   stage: build
   script:

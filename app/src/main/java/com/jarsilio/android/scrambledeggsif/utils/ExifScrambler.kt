@@ -42,7 +42,7 @@ class ExifScrambler(private val context: Context) {
 
     private val utils: Utils by lazy { Utils(context) }
 
-    fun scrambleImage(imageFile: File): Uri {
+    private fun scrambleImage(imageFile: File): Uri {
         val scrambledImageFile = utils.prepareScrambledFileInCacheDir(imageFile) // prepareScrambled renames the file if necessary
         removeExifData(scrambledImageFile)
         return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", scrambledImageFile)

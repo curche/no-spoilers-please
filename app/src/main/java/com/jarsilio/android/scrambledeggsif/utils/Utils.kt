@@ -179,21 +179,21 @@ internal class Utils(private val context: Context) {
 
     private fun getImageType(uri: Uri): ImageType {
         Timber.d("Getting ImageType from uri $uri...")
-        try {
+        return try {
             val inputStream = context.contentResolver.openInputStream(uri)
             val imageType = getImageType(inputStream)
             inputStream?.close()
-            return imageType
+            imageType
         } catch (e: FileNotFoundException) {
             Timber.e(e, "Couldn't open input stream from content resolver for uri $uri")
-            return ImageType.UNKNOWN
+            ImageType.UNKNOWN
         } catch (e: IOException) {
             Timber.e(e, "Couldn't close input stream from content resolver for uri $uri")
-            return ImageType.UNKNOWN
+            ImageType.UNKNOWN
         }
     }
 
-    fun getImageType(file: File): ImageType {
+    private fun getImageType(file: File): ImageType {
         Timber.d("Getting ImageType from file $file...")
         return try {
             val inputStream = FileInputStream(file)

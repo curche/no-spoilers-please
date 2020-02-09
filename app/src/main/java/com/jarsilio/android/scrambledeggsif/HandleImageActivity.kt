@@ -77,12 +77,10 @@ class HandleImageActivity : AppCompatActivity() {
     }
 
     private fun scrambleAndShareImages() {
-        val receivedImages = if (intent.action == Intent.ACTION_SEND) {
-            arrayListOf(intent.getParcelableExtra(Intent.EXTRA_STREAM))
-        } else if (intent.action == Intent.ACTION_SEND_MULTIPLE) {
-            intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)
-        } else {
-            ArrayList<Uri>()
+        val receivedImages = when (intent.action) {
+            Intent.ACTION_SEND -> arrayListOf(intent.getParcelableExtra(Intent.EXTRA_STREAM))
+            Intent.ACTION_SEND_MULTIPLE -> intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)
+            else -> ArrayList<Uri>()
         }
 
         val scrambledImages = scrambleImages(receivedImages)

@@ -63,6 +63,6 @@ class CleanUpAlarmReceiver : BroadcastReceiver() {
     }
 
     companion object {
-        private val DAY = (24 * 60 * 60 * 1000).toLong()
+        private const val DAY = (24 * 60 * 60 * 1000).toLong()
     }
 }

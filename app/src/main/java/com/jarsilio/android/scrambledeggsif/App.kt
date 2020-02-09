@@ -21,14 +21,11 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.app.Application
 import android.content.Context
-
 import com.jarsilio.android.common.logging.LongTagTree
-
 import org.acra.ACRA
 import org.acra.annotation.AcraCore
 import org.acra.annotation.AcraMailSender
 import org.acra.annotation.AcraNotification
-
 import timber.log.Timber
 
 @AcraCore(buildConfigClass = BuildConfig::class)

@@ -21,14 +21,12 @@ package com.jarsilio.android.scrambledeggsif.utils
 
 import android.content.Context
 import android.net.Uri
-import androidx.exifinterface.media.ExifInterface
 import androidx.core.content.FileProvider
+import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.BuildConfig
-
 import java.io.File
 import java.io.IOException
 import java.lang.reflect.Modifier
-
 import timber.log.Timber
 
 class ExifScrambler(private val context: Context) {

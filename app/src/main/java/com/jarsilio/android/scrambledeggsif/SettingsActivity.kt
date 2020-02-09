@@ -24,9 +24,7 @@ import android.os.Bundle
 import android.preference.PreferenceActivity
 import android.preference.PreferenceFragment
 import android.view.MenuItem
-
 import com.jarsilio.android.scrambledeggsif.utils.Settings
-
 import timber.log.Timber
 
 /**

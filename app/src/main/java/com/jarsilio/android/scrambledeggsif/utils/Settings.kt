@@ -24,7 +24,6 @@ import android.content.SharedPreferences
 import android.preference.CheckBoxPreference
 import android.preference.PreferenceActivity
 import android.preference.PreferenceManager
-
 import java.util.UUID
 
 internal class Settings(private val context: Context) {

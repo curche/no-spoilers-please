@@ -19,7 +19,6 @@
 
 package com.jarsilio.android.scrambledeggsif
 
-import android.Manifest
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.ComponentName
@@ -27,21 +26,17 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.SystemClock
-import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
-
-import java.util.ArrayList
-
-import timber.log.Timber
 import android.os.Parcelable
-import androidx.core.app.ActivityCompat
+import android.os.SystemClock
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.jarsilio.android.common.extensions.isNougatOrNewer
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
+import java.util.ArrayList
+import timber.log.Timber
 
 class HandleImageActivity : AppCompatActivity() {
 

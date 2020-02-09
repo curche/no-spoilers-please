@@ -31,7 +31,6 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.core.app.ActivityCompat
-
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
@@ -42,12 +41,11 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
-
-import timber.log.Timber
 import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.UUID
+import timber.log.Timber
 
 const val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000
 
@@ -238,7 +236,7 @@ internal class Utils(private val context: Context) {
 
         var realPath: String? = null
         if (index != null && index != -1) {
-           realPath = cursor.getString(index)
+            realPath = cursor.getString(index)
         }
         cursor?.close()
 
@@ -251,7 +249,7 @@ internal class Utils(private val context: Context) {
     }
 
     private fun rotateImageAccordingToExifOrientation(imageFile: File) {
-        val rotate = when(ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
+        val rotate = when (ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
             ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.d("Rotate image 270°"); 270 }
             ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.d("Rotate image 180°"); 180 }
             ExifInterface.ORIENTATION_ROTATE_90 -> { Timber.d("Rotate image 90°"); 90 }

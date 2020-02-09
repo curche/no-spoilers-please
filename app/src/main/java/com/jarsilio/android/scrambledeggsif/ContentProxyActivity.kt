@@ -1,12 +1,12 @@
 package com.jarsilio.android.scrambledeggsif
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import timber.log.Timber
-import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
+import timber.log.Timber
 
 const val PICK_IMAGE_REQUEST = 100
 

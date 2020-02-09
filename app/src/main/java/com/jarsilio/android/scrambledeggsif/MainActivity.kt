@@ -21,9 +21,6 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
-import androidx.core.app.ActivityCompat
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -31,16 +28,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.jarsilio.android.common.dialog.Dialogs
-import com.jarsilio.android.common.impressum.ImpressumActivity
 import com.jarsilio.android.common.menu.CommonMenu
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
-
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.LibsBuilder
-
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {

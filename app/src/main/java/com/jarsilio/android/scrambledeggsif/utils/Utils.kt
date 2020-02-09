@@ -27,13 +27,13 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
-import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.core.app.ActivityCompat
 
 import androidx.core.content.ContextCompat
+import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.FileInputStream
@@ -240,6 +240,7 @@ internal class Utils(private val context: Context) {
         if (index != null && index != -1) {
            realPath = cursor.getString(index)
         }
+        cursor?.close()
 
         return if (realPath != null) {
             File(realPath).name

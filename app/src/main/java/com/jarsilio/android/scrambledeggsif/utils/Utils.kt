@@ -20,7 +20,6 @@
 package com.jarsilio.android.scrambledeggsif.utils
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -42,8 +41,6 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.lang.StringBuilder
-import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.UUID
 import timber.log.Timber
 
@@ -95,18 +92,6 @@ internal class Utils(private val context: Context) {
             Timber.d("Copying image $imageFile to 'images' dir: $unscrambledCopy")
             copy(FileInputStream(imageFile), FileOutputStream(unscrambledCopy))
         }
-
-        return unscrambledCopy
-    }
-
-    fun createFileFromBytesArray(imageBytes: ByteArray): File {
-        @SuppressLint("SimpleDateFormat")
-        val now = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-
-        val unscrambledCopy = File(context.imagesCacheDir, "IMG_$now.jpg")
-        Timber.d("Writing bytes to 'images' dir: $unscrambledCopy")
-
-        unscrambledCopy.writeBytes(imageBytes)
 
         return unscrambledCopy
     }
@@ -217,11 +202,6 @@ internal class Utils(private val context: Context) {
             Timber.e(e, "Couldn't open input stream from content resolver for file $file")
             ImageType.UNKNOWN
         }
-    }
-
-    fun isImage(uri: Uri): Boolean {
-        Timber.d("Checking if uri $uri corresponds to an image...")
-        return getImageType(uri) != ImageType.UNKNOWN
     }
 
     fun isScrambleableImage(uri: Uri): Boolean {

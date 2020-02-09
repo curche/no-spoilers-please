@@ -40,7 +40,6 @@ private const val START_OF_STREAM = 0xDA.toByte()
 
 class ExifScrambler(private val context: Context) {
 
-    private val settings: Settings by lazy { Settings(context) }
     private val utils: Utils by lazy { Utils(context) }
 
     fun scrambleImage(imageFile: File): Uri {

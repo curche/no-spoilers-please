@@ -18,6 +18,6 @@
   ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<paths xmlns:android="http://schemas.android.com/apk/res/android">
+<paths>
     <cache-path name="shared_images" path="images/"/>
 </paths>

@@ -24,7 +24,6 @@ import android.content.SharedPreferences
 import android.preference.CheckBoxPreference
 import android.preference.PreferenceActivity
 import android.preference.PreferenceManager
-import java.util.UUID
 
 internal class Settings(private val context: Context) {
     private var preferenceActivity: PreferenceActivity? = null
@@ -39,10 +38,6 @@ internal class Settings(private val context: Context) {
         get() = preferences.getBoolean(RENAME_IMAGES, true)
         set(renameImages) = setPreference(RENAME_IMAGES, renameImages)
 
-    var lastAlreadyScrambledProof: String?
-        get() = preferences.getString(LAST_ALREADY_SCRAMBLED_PROOF, "NO_PROOF-" + UUID.randomUUID().toString())
-        set(proof) = setPreference(LAST_ALREADY_SCRAMBLED_PROOF, proof)
-
     private fun setPreference(key: String, value: Boolean) {
         if (preferenceActivity != null) { // This changes the GUI, but it needs the MainActivity to have started
             val checkBox = preferenceActivity!!.findPreference(key) as CheckBoxPreference
@@ -52,22 +47,7 @@ internal class Settings(private val context: Context) {
         }
     }
 
-    private fun setPreference(key: String, value: String?) {
-        preferences.edit().putString(key, value).apply()
-    }
-
-    fun setPreferenceActivity(preferenceActivity: PreferenceActivity) {
-        /* If a Preference is updated using getPreferences().edit().putBoolean(key, value).commit(),
-         * the GUI doesn't update automatically.
-         * If it is changed using a CheckBox, then it does work. In order to get a CheckBox object,
-         * we need to have the preferenceActivity, which is the MainActivity so we set it the moment
-         * it is launched so that we can use it afterwards.
-         */
-        this.preferenceActivity = preferenceActivity
-    }
-
     companion object {
-        const val LAST_ALREADY_SCRAMBLED_PROOF = "pref_last_already_scrambled_proof"
         const val KEEP_JPEG_ORIENTATION = "pref_keep_jpeg_orientation"
         const val RENAME_IMAGES = "pref_rename_images"
     }

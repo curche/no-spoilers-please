@@ -1,0 +1,8 @@
+New in 1.5.0-beta
+★ Only accept JPEG images.
+★ Fix some empty EXIF tags showing:
+  - Re-write scrambling code (grabbed it from ExifDataRemover - thank you so much, NightlyNexus!)
+  - Remove 'force re-write option' (it was still adding empty tags)
+  - The 'Keep orientation' option now re-writes the image rotating it "physically" (to avoid adding empty tags).
+★ Remove img_eggsif prefix from 'rename images' option:
+  - Use a standard UUID for the filename instead.

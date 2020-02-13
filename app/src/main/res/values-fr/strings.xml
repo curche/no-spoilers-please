@@ -23,9 +23,6 @@
     <string name="settings_rename_images">Renommer les images</string>
     <string name="settings_rename_images_summary">Sur certains appareils les noms de fichier peuvent indiquer au destinataire la date et l’heure où la photo à été prise.\n\nCette option renomme toutes les images partagées avec un nom de fichier aléatoire.</string>
 
-    <string name="settings_keep_jpeg_orientation">Garder l’orientation (seulement pour JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Garder l’information sur l’orientation pour les images JPEG</string>
-
     <string name="licenses_menu_item">Licences</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Plantages</string>

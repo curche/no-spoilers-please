@@ -18,8 +18,5 @@
     <string name="settings_menu_item">Beállítások</string>
 
     <string name="settings_force_image_rewrite">Kényszerítse a képújraírást</string>
-    <string name="settings_keep_jpeg_orientation">Tartsa meg az orientációt (csak JPEG esetén)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Tartsa meg a JPEG képek orientációjára vonatkozó információkat</string>
-
     <string name="licenses_menu_item">Licencek</string>
     </resources>

@@ -23,9 +23,6 @@
     <string name="settings_rename_images">Перейменувати зображення</string>
     <string name="settings_rename_images_summary">Імена файлів можуть повідомити одержувачу файлу дату та час зйомки фотографії.\n\nЦя опція змінює назви усіх поширюваних зображень на випадкові.</string>
 
-    <string name="settings_keep_jpeg_orientation">Зберігати орієнтацію (лише для JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Зберігати інформацію про орієнтацію JPEG-зображень</string>
-
     <string name="licenses_menu_item">Ліцензії</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Збої у роботі</string>

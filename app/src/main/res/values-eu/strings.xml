@@ -22,9 +22,6 @@
     <string name="settings_rename_images">Berrizendatu irudiak</string>
     <string name="settings_rename_images_summary">Fitxategi-izenak fitxategi horren hartzaileei argazkia gailu batzuetan eginiko data eta ordua eman diezaiekete.\n\nAukera honek partekatutako irudi guztiak berrizendatzen ditu ausazko fitxategi-izen batekin.</string>
 
-    <string name="settings_keep_jpeg_orientation">Mantendu orientazioa (JPEGentzako soilik)</string>
-    <string name="settings_keep_jpeg_orientation_summary">JPEG irudien orientazio metadatua mantentzen du</string>
-
     <string name="licenses_menu_item">Lizentziak</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Hutsegiteak</string>

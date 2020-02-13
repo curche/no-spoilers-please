@@ -18,8 +18,5 @@
     <string name="settings_menu_item">Asetukset</string>
 
     <string name="settings_force_image_rewrite">Pakota kuvan ylikirjoitus</string>
-    <string name="settings_keep_jpeg_orientation">Säilytä kuvan suunta (vain JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Säilytä suuntatiedot JPEG kuvissa</string>
-
     <string name="licenses_menu_item">Lisenssit</string>
     </resources>

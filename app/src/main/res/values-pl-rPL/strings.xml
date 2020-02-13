@@ -23,9 +23,6 @@
     <string name="settings_rename_images">Zmień nazwy zdjęć</string>
     <string name="settings_rename_images_summary">Nazwy plików mogą poinformować odbiorcę pliku o dacie i czasie, w którym zdjęcie zostało zrobione na niektórych urządzeniach.\n\nTa opcja zmienia nazwę wszystkich udostępnianych zdjęć na losową nazwę.</string>
 
-    <string name="settings_keep_jpeg_orientation">Zatrzymaj orientację (tylko dla JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Zatrzymaj informacje o orientacji dla zdjęć JPEG</string>
-
     <string name="licenses_menu_item">Licencje</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Awarie</string>

@@ -18,8 +18,5 @@
     <string name="settings_menu_item">Instellingen</string>
 
     <string name="settings_force_image_rewrite">Forceer herschrijven van afbeelding</string>
-    <string name="settings_keep_jpeg_orientation">Behoud oriëntatie (alleen voor JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Behoud oriëntatie-informatie van JPEG-afbeeldingen</string>
-
     <string name="licenses_menu_item">Licenties</string>
     </resources>

@@ -22,9 +22,6 @@
     <string name="settings_rename_images">Renombrar imágenes</string>
     <string name="settings_rename_images_summary">Los nombres de archivo pueden indicar al que recibe el archivo la fecha y hora que una foto fue tomada en algunos dispositivos.\n\n Está opción renombra todas las imágenes compartidas con un nombre de archivo al azar.</string>
 
-    <string name="settings_keep_jpeg_orientation">Mantener la orientación (sólo para JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Mantiene la información sobre la orientación para imágenes JPEG.</string>
-
     <string name="licenses_menu_item">Licencias</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Fallos</string>

@@ -23,9 +23,6 @@ Prosím otevřte aplikaci a povolte toto oprávnění od tamtud</string>
     <string name="settings_rename_images">Přejmenovat obrázky</string>
     <string name="settings_rename_images_summary">Názvy souborů můžou u některých zařízeních příjemci říct datum a čas kdy byl obrázek vyfocen. \n\nToto nastavení přejmenuje všechny sdílené obrázky na náhodný název.</string>
 
-    <string name="settings_keep_jpeg_orientation">Nechat orientaci (Pouze pro JPEG)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Nechat informace o orientaci pro JPEG obrázky</string>
-
     <string name="licenses_menu_item">Licence</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Pády</string>

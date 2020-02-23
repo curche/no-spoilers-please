@@ -13,6 +13,9 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif a besoin de l’accès aux fichiers.
         Merci d’ouvrir l’app et de l’autoriser à partir d’elle</string>
+    <string name="no_scrambleable_images">Impossible de trouver des images à brouiller.</string>
+    <string name="image_not_scrambleable">Impossible de brouiller \"%s\" car ce n\'est pas une image JPEG.</string>
+
     <string name="privacy_policy_menu_item">Politique de confidentialité</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Paramètres</string>
@@ -22,6 +25,9 @@
 
     <string name="settings_rename_images">Renommer les images</string>
     <string name="settings_rename_images_summary">Sur certains appareils les noms de fichier peuvent indiquer au destinataire la date et l’heure où la photo à été prise.\n\nCette option renomme toutes les images partagées avec un nom de fichier aléatoire.</string>
+
+    <string name="settings_keep_jpeg_orientation">Conserver l\'orientation</string>
+    <string name="settings_keep_jpeg_orientation_summary">Ceci fait \"physiquement\" pivoter l’image en fonction des données EXIF de l’image originale.\n\nL’image doit être réécrite, ce qui signifie que cela prendra un peu plus de temps et impliquera une perte (probable) de qualité.</string>
 
     <string name="licenses_menu_item">Licences</string>
     <!-- ACRA -->

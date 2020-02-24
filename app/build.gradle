@@ -67,6 +67,8 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0-alpha02'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -74,18 +76,15 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     implementation 'androidx.exifinterface:exifinterface:1.2.0-beta01'
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // AboutLibraries
     implementation('com.mikepenz:aboutlibraries:6.0.9@aar') {
         transitive = true
     }
-    // It's actually mikepenz's aboutlibrary that needs these
+    // It's actually mikepenz's AboutLibraries that needs these
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test:runner:1.3.0-alpha03'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha03'
-    implementation project(path: ':common')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // ACRA
     def acraVersion = '5.5.0'
@@ -95,6 +94,14 @@ dependencies {
 
     // Okio (modern I/O library)
     implementation 'com.squareup.okio:okio:2.4.3'
+
+    // libcommon
+    implementation project(path: ':common')
+
+    // Testing
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha03'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha03'
 }
 repositories {
     mavenCentral()

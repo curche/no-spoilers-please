@@ -13,6 +13,9 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif deve accedere ai file.
         Apri l\'app e permetti l\'autorizzazione da lì</string>
+    <string name="no_scrambleable_images">Nessuna immagine da strapazzare trovata.</string>
+    <string name="image_not_scrambleable">Impossibile strapazzare \"%s\" perchè non è un\'immagine JPEG.</string>
+
     <string name="privacy_policy_menu_item">Normativa sulla privacy</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Impostazioni</string>
@@ -22,6 +25,9 @@
 
     <string name="settings_rename_images">Rinomina immagini</string>
     <string name="settings_rename_images_summary">I nomi dei file possono rivelare al destinatario la data e l\'ora dello scatto di una foto in alcuni dispositivi.\n\nQuesta opzione rinomina tutte le immagini condivise con un nome casuale.</string>
+
+    <string name="settings_keep_jpeg_orientation">Mantieni l\'orientamento</string>
+    <string name="settings_keep_jpeg_orientation_summary">Ruota \"fisicamente\" l\'immagine a seconda dei dati EXIF nell\'immagine originale.\n\nL\'immagine deve essere rigenerata, perciò richiede più tempo ed implica una (probabile) perdita di qualità.</string>
 
     <string name="licenses_menu_item">Licenze</string>
     <!-- ACRA -->

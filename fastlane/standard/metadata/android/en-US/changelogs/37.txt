@@ -1,0 +1,4 @@
+New in 1.6.0-beta
+★ Add panic button response: deletes app data.
+★ Add option to send logs to dev.
+★ Update some translations.

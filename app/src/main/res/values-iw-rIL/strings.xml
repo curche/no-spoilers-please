@@ -1,0 +1,17 @@
+<resources>
+    <string name="share_via">שתף תמונה עם Scrambled Exif דרך</string>
+    <string name="permission_request">בקש הרשאות</string>
+    <string name="instructions_title">הוראות</string>
+    <string name="instructions_1">בחר מהגלריה את התמונות אותן תרצה לשתף והקש על אייקון השיתוף </string>
+    <string name="instructions_2">בחר ב<i>Scrambled Exif</i> מרשימת האפליקציות</string>
+    <string name="instructions_voila">זהו! הרגע שיתפת עם העולם תמונות ללא מטא דאטה!</string>
+
+    <string name="privacy_policy_menu_item">מדיניות פרטיות</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">הגדרות</string>
+
+    <string name="settings_rename_images">שנה שם התמונות</string>
+    <string name="licenses_menu_item">רישיונות</string>
+    <string name="acra_notification_send">שלח אימייל</string>
+
+</resources>

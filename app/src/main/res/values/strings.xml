@@ -40,6 +40,8 @@
     <string name="settings_send_logs_to_dev">Send logs to dev</string>
     <string name="settings_send_logs_to_dev_summary">Perhaps he\'ll be able to help :)</string>
 
+    <string name="title_activity_panic_settings">Panic Button Settings</string>
+
     <string name="panic_button_title">Panic Button</string>
 
     <string name="settings_panic_button_category_summary">With the following settings you can configure how Scrambled Exif reacts to an external panic button app (e.g. <i>Ripple</i>) trigger.</string>

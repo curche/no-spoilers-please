@@ -44,8 +44,11 @@
 
     <string name="settings_panic_button_category_summary">With the following settings you can configure how Scrambled Exif reacts to an external panic button app (e.g. <i>Ripple</i>) trigger.</string>
 
+    <string name="settings_panic_delete_cached_images">Delete cached images</string>
+    <string name="settings_panic_delete_cached_images_summary">Once the images have been shared, these are safe to delete (a clean-up happens periodically anyway).</string>
+
     <string name="settings_panic_clear_app_data">Clear app data</string>
-    <string name="settings_panic_clear_app_data_summary">Delete cached images and settings.</string>
+    <string name="settings_panic_clear_app_data_summary">Delete cached images and settings. Also kill app and remove from recently used.</string>
 
     <string name="licenses_menu_item">Licenses</string>
     <string name="licenses_about_libraries_text" translatable="false"><![CDATA[<br/><b>Scrambled Exif License</b><br/><br/>Copyright (c) 2018 Juan García Basilio<br/><br/>This app is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/><br/>This app is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a href="http://www.gnu.org/licenses/">GNU General Public License</a> for more details.<br/><br/><b>Third-party libraries</b><br/><br/>Here is a list of the libraries used by this app. Tap on them for more information.]]></string>

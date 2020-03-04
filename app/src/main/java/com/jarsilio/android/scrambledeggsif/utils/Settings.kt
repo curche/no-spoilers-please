@@ -42,8 +42,12 @@ internal class Settings(private val context: Context) {
         get() = preferences.getBoolean(LOGGING_ENABLED, false)
         set(loggingEnabled) = setPreference(LOGGING_ENABLED, loggingEnabled)
 
+    var isPanicDeleteCachedImages: Boolean
+        get() = preferences.getBoolean(PANIC_DELETE_CACHED_IMAGES, true)
+        set(deleteCachedImages) = setPreference(PANIC_DELETE_CACHED_IMAGES, deleteCachedImages)
+
     var isPanicClearAppData: Boolean
-        get() = preferences.getBoolean(PANIC_CLEAR_APP_DATA, true)
+        get() = preferences.getBoolean(PANIC_CLEAR_APP_DATA, false)
         set(loggingEnabled) = setPreference(PANIC_CLEAR_APP_DATA, loggingEnabled)
 
     private fun setPreference(key: String, value: Boolean) {
@@ -60,6 +64,7 @@ internal class Settings(private val context: Context) {
         const val RENAME_IMAGES = "pref_rename_images"
         const val LOGGING_ENABLED = "pref_logging_enabled"
         const val SEND_LOGS_TO_DEV = "pref_send_logs_to_dev"
+        const val PANIC_DELETE_CACHED_IMAGES = "pref_panic_delete_cached_images"
         const val PANIC_CLEAR_APP_DATA = "pref_panic_clear_app_data"
     }
 }

@@ -51,6 +51,11 @@
             android:summary="@string/settings_panic_button_category_summary" />
         <SwitchPreference
             android:defaultValue="true"
+            android:title="@string/settings_panic_delete_cached_images"
+            android:key="pref_panic_delete_cached_images"
+            android:summary="@string/settings_panic_delete_cached_images_summary" />
+        <SwitchPreference
+            android:defaultValue="false"
             android:title="@string/settings_panic_clear_app_data"
             android:key="pref_panic_clear_app_data"
             android:summary="@string/settings_panic_clear_app_data_summary" />

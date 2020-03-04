@@ -17,6 +17,10 @@ class PanicResponderActivity : Activity() {
             return
         }
 
+        if (settings.isPanicDeleteCachedImages) {
+            cacheDir.deleteRecursively()
+        }
+
         if (settings.isPanicClearAppData) {
             try {
                 // Clear app data (and force-close app)
@@ -25,5 +29,7 @@ class PanicResponderActivity : Activity() {
                 // Don't show anything if it fails (in case somebody's watching)
             }
         }
+
+        finish()
     }
 }

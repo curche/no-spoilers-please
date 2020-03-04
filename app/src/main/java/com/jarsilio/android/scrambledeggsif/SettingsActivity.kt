@@ -21,103 +21,63 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceActivity
-import android.preference.PreferenceFragment
-import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 import com.jarsilio.android.common.dialog.Dialogs
 import com.jarsilio.android.common.logging.LogUtils
 import com.jarsilio.android.scrambledeggsif.utils.Settings
-import timber.log.Timber
 
-/**
- * A [PreferenceActivity] that presents a set of application settings. On
- * handset devices, settings are presented as a single list. On tablets,
- * settings are split by category, with category headers shown to the left of
- * the list of settings.
- *
- *
- * See [
- * Android Design: Settings](http://developer.android.com/design/patterns/settings.html) for design guidelines and the [Settings
- * API Guide](http://developer.android.com/guide/topics/ui/settings.html) for more information on developing a Settings UI.
- */
-class SettingsActivity : AppCompatPreferenceActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
-    private val settings: Settings by lazy { Settings(applicationContext) }
-    private val logUtils: LogUtils by lazy { LogUtils(applicationContext) }
-
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-        Timber.d("Preference with key $key just changed")
-        when (key) {
-            Settings.LOGGING_ENABLED -> {
-                if (settings.isLoggingEnabled) {
-                    logUtils.plantPersistentTreeIfNonePlanted()
-                } else {
-                    logUtils.uprootPersistentTrees()
-                    logUtils.deletePersistentLogs()
-                }
-            }
-        }
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == android.R.id.home) {
-            super.onBackPressed()
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
+class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupActionBar()
-        addPreferencesFromResource(R.xml.settings)
-        registerPreferencesListener()
-        bindClickListeners()
+        setContentView(R.layout.settings_activity)
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.settings, SettingsFragment())
+                .commit()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onResume() {
-        super.onResume()
-        registerPreferencesListener()
-    }
+    class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
 
-    override fun onPause() {
-        super.onPause()
-        unregisterPreferencesListener()
-    }
+        private val settings: Settings by lazy { Settings(context!!) }
+        private val logUtils: LogUtils by lazy { LogUtils(context!!) }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterPreferencesListener()
-    }
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.root_preferences, rootKey)
+            bindClickListeners()
+        }
 
-    /**
-     * Set up the [android.app.ActionBar], if the API is available.
-     */
-    private fun setupActionBar() {
-        val actionBar = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-    }
+        private fun bindClickListeners() {
+            findPreference<Preference>(Settings.SEND_LOGS_TO_DEV)?.setOnPreferenceClickListener {
+                Dialogs(context!!).showReportIssueDialog()
+                true
+            }
+        }
 
-    /**
-     * This method stops fragment injection in malicious applications.
-     * Make sure to deny any unknown fragments here.
-     */
-    override fun isValidFragment(fragmentName: String): Boolean {
-        return PreferenceFragment::class.java.name == fragmentName
-    }
+        override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+            when (key) {
+                Settings.LOGGING_ENABLED -> {
+                    if (settings.isLoggingEnabled) {
+                        logUtils.plantPersistentTreeIfNonePlanted()
+                    } else {
+                        logUtils.uprootPersistentTrees()
+                        logUtils.deletePersistentLogs()
+                    }
+                }
+            }
+        }
 
-    private fun registerPreferencesListener() {
-        settings.preferences.registerOnSharedPreferenceChangeListener(this)
-    }
+        override fun onResume() {
+            preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+            super.onResume()
+        }
 
-    private fun unregisterPreferencesListener() {
-        settings.preferences.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    private fun bindClickListeners() {
-        findPreference(Settings.SEND_LOGS_TO_DEV)?.setOnPreferenceClickListener {
-            Dialogs(this).showReportIssueDialog()
-            true
+        override fun onPause() {
+            preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+            super.onPause()
         }
     }
 }

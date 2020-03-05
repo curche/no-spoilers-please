@@ -24,7 +24,12 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/settings_menu_item" />
+            android:label="@string/settings_menu_item"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jarsilio.android.scrambledeggsif.MainActivity" />
+        </activity>
         <activity
             android:name=".panic.PanicSettingsActivity"
             android:label="@string/title_activity_panic_settings"

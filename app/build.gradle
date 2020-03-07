@@ -95,6 +95,9 @@ dependencies {
     // Okio (modern I/O library)
     implementation 'com.squareup.okio:okio:2.4.3'
 
+    // AndroidMediaUtil (just for image rotation actually)
+    implementation 'com.github.juanitobananas:AndroidMediaUtil:v1.0-1'
+
     // libcommon
     implementation project(path: ':common')
 

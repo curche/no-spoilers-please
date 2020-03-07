@@ -23,9 +23,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
+import android.mediautil.image.jpeg.LLJTran
+import android.mediautil.image.jpeg.LLJTranException
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
@@ -33,6 +32,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
+import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -229,17 +229,39 @@ internal class Utils(private val context: Context) {
     }
 
     private fun rotateImageAccordingToExifOrientation(imageFile: File) {
-        val rotate = when (ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
-            ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.d("Rotate image 270°"); 270 }
-            ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.d("Rotate image 180°"); 180 }
-            ExifInterface.ORIENTATION_ROTATE_90 -> { Timber.d("Rotate image 90°"); 90 }
+        val operation = when (ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
+            ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.d("Rotate image 270°"); LLJTran.ROT_270 }
+            ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.d("Rotate image 180°"); LLJTran.ROT_180 }
+            ExifInterface.ORIENTATION_ROTATE_90 -> { Timber.d("Rotate image 90°"); LLJTran.ROT_90 }
             else -> { Timber.d("Rotate image 0°"); 0 }
         }
-        val matrix = Matrix()
-        matrix.postRotate(rotate.toFloat())
 
-        val bitmap = BitmapFactory.decodeFile(imageFile.path)
-        val rotatedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-        rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 90, imageFile.outputStream())
+        if (operation == 0) {
+            Timber.d("The image ($imageFile) doesn't need to be rotated. Skipping...")
+            return
+        }
+
+        val output = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
+
+        val rotated = try {
+            val lljTran = LLJTran(imageFile)
+            lljTran.read(LLJTran.READ_ALL, false) // This could throw an LLJTranException. I am not catching it for now... Let's see.
+            lljTran.transform(operation, LLJTran.OPT_DEFAULTS or LLJTran.OPT_XFORM_ORIENTATION)
+            BufferedOutputStream(FileOutputStream(output)).use {
+                writer -> lljTran.save(writer, LLJTran.OPT_WRITE_ALL)
+            }
+            lljTran.freeMemory()
+            true
+        } catch (e: LLJTranException) {
+            Timber.e(e, "Error occurred while trying to rotate image with LLJTrans (AndroidMediaUtil).")
+            false
+        }
+
+        if (rotated) {
+            imageFile.delete()
+            output.renameTo(imageFile)
+        }
+
+        Timber.d("Done rotating image")
     }
 }

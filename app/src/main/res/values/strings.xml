@@ -30,7 +30,7 @@
     <string name="settings_rename_images_summary">Filenames can tell a recipient of the file the date and time that a photo was taken on some devices.\n\nThis option renames all shared images with a random filename.</string>
 
     <string name="settings_keep_jpeg_orientation">Keep orientation</string>
-    <string name="settings_keep_jpeg_orientation_summary">This \"physically\" rotates the image according to the EXIF data in the original image.\n\nThe image needs to re-written, which means it takes a little longer and implies (probable) quality loss.</string>
+    <string name="settings_keep_jpeg_orientation_summary">This \"physically\" rotates the image according to the EXIF data in the original image.\n\nThis takes a little longer.</string>
 
     <string name="logging_title">Logging</string>
 

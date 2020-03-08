@@ -1,0 +1,15 @@
+New in 1.6.4 (or 1.6.3-beta)
+★ Add JPEG lossless rotation.
+
+New in 1.6.2-beta
+★ "Hide" panic button settings (only visible from Panic Button app - e.g. Ripple).
+★ Add a less destructive panic button reaction: 'delete images'. 'Clear app data'
+  is not default anymore.
+
+New in 1.6.1-beta
+★ Add panic button settings.
+
+New in 1.6.0-beta
+★ Add panic button response: deletes app data.
+★ Add option to send logs to dev.
+★ Update some translations.

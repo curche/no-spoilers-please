@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Juan García Basilio
+ * Copyright (c) 2018-2020 Juan García Basilio
  *
  * This file is part of Scrambled Exif.
  *
@@ -21,14 +21,11 @@ package com.jarsilio.android.scrambledeggsif.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.CheckBoxPreference
-import android.preference.PreferenceActivity
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 
 internal class Settings(private val context: Context) {
-    private var preferenceActivity: PreferenceActivity? = null
 
-    val preferences: SharedPreferences
+    private val preferences: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(context)
 
     val isKeepJpegOrientation: Boolean
@@ -51,12 +48,7 @@ internal class Settings(private val context: Context) {
         set(loggingEnabled) = setPreference(PANIC_CLEAR_APP_DATA, loggingEnabled)
 
     private fun setPreference(key: String, value: Boolean) {
-        if (preferenceActivity != null) { // This changes the GUI, but it needs the MainActivity to have started
-            val checkBox = preferenceActivity!!.findPreference(key) as CheckBoxPreference
-            checkBox.isChecked = value
-        } else { // This doesn't change the GUI
-            preferences.edit().putBoolean(key, value).apply()
-        }
+        preferences.edit().putBoolean(key, value).apply()
     }
 
     companion object {

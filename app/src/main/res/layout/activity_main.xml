@@ -41,7 +41,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
-                app:srcCompat="@mipmap/eggsif_d_on_white_2048x2048"
+                app:srcCompat="@drawable/ic_lonely_egg_in_pan"
                 android:contentDescription="title egg image" />
 
             <TextView

@@ -107,7 +107,7 @@ class HandleImageActivity : AppCompatActivity() {
                     Toast.makeText(this, getString(R.string.error_while_scrambling, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Timber.d("Received something that's not a jpeg image ($imageUri) in a SEND_MULTIPLE. Skipping...")
+                Timber.d("Received something that's not a jpeg or a png image ($imageUri) in a SEND_MULTIPLE. Skipping...")
                 Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
             }
         }

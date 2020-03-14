@@ -27,10 +27,12 @@ import com.jarsilio.android.common.extensions.applicationId
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.IOException
+import java.nio.charset.Charset
 import java.util.UUID
 import okio.buffer
 import okio.sink
 import okio.source
+import timber.log.Timber
 
 private const val MARKER = 0xFF.toByte()
 private const val APP1 = 0xE1.toByte()
@@ -53,7 +55,11 @@ class ExifScrambler(private val context: Context) {
     }
 
     private fun removeExifData(image: File) {
-        removeExifDataManually(image)
+        when (val imageType = utils.getImageType(image)) {
+            Utils.ImageType.JPG -> removeExifDataManually(image)
+            Utils.ImageType.PNG -> PngScrambler(context).scramble(image)
+            else -> Timber.d("Can't remove EXIF data from $imageType.")
+        }
     }
 
     private fun removeExifDataManually(jpegImage: File) {
@@ -87,5 +93,44 @@ class ExifScrambler(private val context: Context) {
         }
         jpegImage.delete()
         output.renameTo(jpegImage)
+    }
+}
+
+class PngScrambler(private val context: Context) {
+    private fun byteArray(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
+
+    private val pngSignature = byteArray(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+    private val pngCriticalChunks = listOf("IHDR", "PLTE", "IDAT", "IEND")
+
+    fun scramble(pngImage: File) {
+        val tempImage = File(context.imagesCacheDir, "${UUID.randomUUID()}.png")
+
+        tempImage.sink().buffer().use { sink ->
+            pngImage.inputStream().source().buffer().use { source ->
+                val byteArray = source.readByteArray(8)
+                if (byteArray contentEquals pngSignature) {
+                    sink.write(byteArray)
+
+                    while (!source.exhausted()) {
+                        val chunkLength = source.readInt()
+                        val chunkName = source.readString(4, Charset.forName("ASCII"))
+                        val chunkData = source.readByteArray(chunkLength.toLong())
+                        val chunkCrc = source.readByteArray(4)
+
+                        if (pngCriticalChunks.contains(chunkName)) {
+                            // Only write chunk to scrambled png file if it's one of the four critical chunks (see https://en.wikipedia.org/wiki/Portable_Network_Graphics#Critical_chunks)
+                            sink.writeInt(chunkLength)
+                            sink.writeString(chunkName, Charset.forName("ASCII"))
+                            sink.write(chunkData)
+                            sink.write(chunkCrc)
+                        }
+                    }
+                } else {
+                    throw IOException("Error scrambling PNG file $pngImage")
+                }
+            }
+        }
+        pngImage.delete()
+        tempImage.renameTo(pngImage)
     }
 }

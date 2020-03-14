@@ -193,7 +193,7 @@ internal class Utils(private val context: Context) {
         }
     }
 
-    private fun getImageType(file: File): ImageType {
+    fun getImageType(file: File): ImageType {
         Timber.d("Getting ImageType from file $file...")
         return try {
             val inputStream = FileInputStream(file)
@@ -206,7 +206,7 @@ internal class Utils(private val context: Context) {
 
     fun isScrambleableImage(uri: Uri): Boolean {
         Timber.d("Checking if uri $uri corresponds to a scrambleable image (i.e. is a jpeg)...")
-        return getImageType(uri) == ImageType.JPG
+        return getImageType(uri) == ImageType.JPG || getImageType(uri) == ImageType.PNG
     }
 
     fun getRealFilenameFromURI(uri: Uri): String {

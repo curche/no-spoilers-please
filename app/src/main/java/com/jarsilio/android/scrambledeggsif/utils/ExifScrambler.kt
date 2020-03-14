@@ -84,16 +84,16 @@ class JpegScrambler(private val context: Context) {
                     val nextByte = sourceBuffer[1]
                     if (nextByte == app1 || nextByte == comment) {
                         source.skip(2)
-                        val size = source.readShort()
-                        source.skip((size - 2).toLong())
+                        val size = source.readShort().toUShort()
+                        source.skip((size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
                     } else if (nextByte == startOfStream) {
                         sink.writeAll(source)
                         break
                     } else {
                         sink.write(source, 2)
-                        val size = source.readShort()
+                        val size = source.readShort().toUShort()
                         sink.writeShort(size.toInt())
-                        sink.write(source, (size - 2).toLong())
+                        sink.write(source, (size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
                     }
                 }
             }

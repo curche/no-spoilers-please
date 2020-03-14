@@ -53,7 +53,10 @@ class ExifScrambler(private val context: Context) {
         when (val imageType = utils.getImageType(image)) {
             Utils.ImageType.JPG -> JpegScrambler(context).scramble(image)
             Utils.ImageType.PNG -> PngScrambler(context).scramble(image)
-            else -> Timber.d("Can't remove EXIF data from $imageType.")
+            else -> {
+                Timber.d("Can't remove EXIF data from $imageType.")
+                throw ScrambleException("Only JPEG and PNG images are supported (image is $imageType).")
+            }
         }
     }
 }
@@ -75,7 +78,7 @@ class JpegScrambler(private val context: Context) {
                 while (true) {
                     source.require(2)
                     if (sourceBuffer[0] != marker) {
-                        throw IOException("${sourceBuffer[0]} != $marker")
+                        throw ScrambleException("Invalid JPEG. Expected an FF marker (${sourceBuffer[0]} != $marker)")
                     }
                     val nextByte = sourceBuffer[1]
                     if (nextByte == app1 || nextByte == comment) {
@@ -129,7 +132,7 @@ class PngScrambler(private val context: Context) {
                         }
                     }
                 } else {
-                    throw IOException("Error scrambling PNG file $pngImage")
+                    throw ScrambleException("Invalid PNG file ($pngImage). It doesn't start with a PNG SIGNATURE.")
                 }
             }
         }
@@ -137,3 +140,5 @@ class PngScrambler(private val context: Context) {
         tempImage.renameTo(pngImage)
     }
 }
+
+class ScrambleException(message: String) : IOException(message)

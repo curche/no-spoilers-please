@@ -35,6 +35,7 @@ import com.jarsilio.android.common.extensions.isNougatOrNewer
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
+import java.io.IOException
 import java.util.ArrayList
 import timber.log.Timber
 
@@ -99,7 +100,12 @@ class HandleImageActivity : AppCompatActivity() {
         for (imageUri in imageUris) {
             if (utils.isScrambleableImage(imageUri)) {
                 Timber.d("Received a jpeg image (uri): $imageUri. Scrambling...")
-                scrambledImages.add(exifScrambler.scrambleImage(imageUri))
+                try {
+                    scrambledImages.add(exifScrambler.scrambleImage(imageUri))
+                } catch (e: IOException) {
+                    Timber.e(e, "An error occurred while scrambling $imageUri. Skipping...")
+                    Toast.makeText(this, getString(R.string.error_while_scrambling, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Timber.d("Received something that's not a jpeg image ($imageUri) in a SEND_MULTIPLE. Skipping...")
                 Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()

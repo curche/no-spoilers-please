@@ -24,7 +24,7 @@ import android.content.Context
 import android.net.Uri
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import com.jarsilio.android.scrambledeggsif.BuildConfig
+import com.jarsilio.android.common.extensions.applicationId
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.IOException
@@ -45,7 +45,7 @@ class ExifScrambler(private val context: Context) {
     private fun scrambleImage(imageFile: File): Uri {
         val scrambledImageFile = utils.prepareScrambledFileInCacheDir(imageFile) // prepareScrambled renames the file if necessary
         removeExifData(scrambledImageFile)
-        return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".fileprovider", scrambledImageFile)
+        return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", scrambledImageFile)
     }
 
     fun scrambleImage(image: Uri): Uri {

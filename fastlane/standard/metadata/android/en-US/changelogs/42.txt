@@ -1,0 +1,15 @@
+New in 1.6.5
+★ Fixed metadata leak bug. *If* scrambling failed with an IOException,
+  the original image was shared.
+★ (Re-)Add PNG metadata removal
+
+New in 1.6.4 (or 1.6.3-beta)
+★ Add JPEG lossless rotation.
+
+New in 1.6.2-beta
+★ "Hide" panic button settings (only visible from Panic Button app - e.g. Ripple).
+★ Add a less destructive panic button reaction: 'delete images'. 'Clear app data'
+  is not default anymore.
+
+New in 1.6.1-beta
+★ Add panic button settings.

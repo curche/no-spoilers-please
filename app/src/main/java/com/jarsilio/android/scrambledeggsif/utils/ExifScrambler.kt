@@ -44,6 +44,7 @@ class ExifScrambler(private val context: Context) {
         return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", scrambledImageFile)
     }
 
+    @Throws(IOException::class)
     fun scrambleImage(image: Uri): Uri {
         val unscrambledImageFile = utils.createFileFromUri(image)
         return scrambleImage(unscrambledImageFile)

@@ -34,11 +34,6 @@ import okio.sink
 import okio.source
 import timber.log.Timber
 
-private const val MARKER = 0xFF.toByte()
-private const val APP1 = 0xE1.toByte()
-private const val COMMENT = 0xFE.toByte()
-private const val START_OF_STREAM = 0xDA.toByte()
-
 class ExifScrambler(private val context: Context) {
 
     private val utils: Utils by lazy { Utils(context) }
@@ -56,30 +51,38 @@ class ExifScrambler(private val context: Context) {
 
     private fun removeExifData(image: File) {
         when (val imageType = utils.getImageType(image)) {
-            Utils.ImageType.JPG -> removeExifDataManually(image)
+            Utils.ImageType.JPG -> JpegScrambler(context).scramble(image)
             Utils.ImageType.PNG -> PngScrambler(context).scramble(image)
             else -> Timber.d("Can't remove EXIF data from $imageType.")
         }
     }
+}
 
-    private fun removeExifDataManually(jpegImage: File) {
-        val output = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
+class JpegScrambler(private val context: Context) {
 
-        output.sink().buffer().use { sink ->
+    private val marker = 0xFF.toByte()
+    private val app1 = 0xE1.toByte()
+    private val comment = 0xFE.toByte()
+    private val startOfStream = 0xDA.toByte()
+
+    fun scramble(jpegImage: File) {
+        val tempImage = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
+
+        tempImage.sink().buffer().use { sink ->
             jpegImage.inputStream().source().buffer().use { source ->
                 sink.write(source, 2)
                 val sourceBuffer = source.buffer
                 while (true) {
                     source.require(2)
-                    if (sourceBuffer[0] != MARKER) {
-                        throw IOException("${sourceBuffer[0]} != $MARKER")
+                    if (sourceBuffer[0] != marker) {
+                        throw IOException("${sourceBuffer[0]} != $marker")
                     }
                     val nextByte = sourceBuffer[1]
-                    if (nextByte == APP1 || nextByte == COMMENT) {
+                    if (nextByte == app1 || nextByte == comment) {
                         source.skip(2)
                         val size = source.readShort()
                         source.skip((size - 2).toLong())
-                    } else if (nextByte == START_OF_STREAM) {
+                    } else if (nextByte == startOfStream) {
                         sink.writeAll(source)
                         break
                     } else {
@@ -92,7 +95,7 @@ class ExifScrambler(private val context: Context) {
             }
         }
         jpegImage.delete()
-        output.renameTo(jpegImage)
+        tempImage.renameTo(jpegImage)
     }
 }
 

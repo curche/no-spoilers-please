@@ -40,7 +40,7 @@ class ExifScrambler(private val context: Context) {
 
     private fun scrambleImage(imageFile: File): Uri {
         val scrambledImageFile = utils.prepareScrambledFileInCacheDir(imageFile) // prepareScrambled renames the file if necessary
-        removeExifData(scrambledImageFile)
+        removeMetadata(scrambledImageFile)
         return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", scrambledImageFile)
     }
 
@@ -50,12 +50,12 @@ class ExifScrambler(private val context: Context) {
         return scrambleImage(unscrambledImageFile)
     }
 
-    private fun removeExifData(image: File) {
+    private fun removeMetadata(image: File) {
         when (val imageType = utils.getImageType(image)) {
             Utils.ImageType.JPG -> JpegScrambler(context).scramble(image)
             Utils.ImageType.PNG -> PngScrambler(context).scramble(image)
             else -> {
-                Timber.d("Can't remove EXIF data from $imageType.")
+                Timber.e("Only JPEG and PNG images are supported (image is $imageType).")
                 throw ScrambleException("Only JPEG and PNG images are supported (image is $imageType).")
             }
         }
@@ -64,45 +64,50 @@ class ExifScrambler(private val context: Context) {
 
 fun byteArray(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
 
+fun Byte.toHexString(): String { return "%02X".format(this) }
+
 class JpegScrambler(private val context: Context) {
 
-    private val marker = 0xFF.toByte()
-    // Skip all APPn (0xEn) and COM (0xFE) segments (See: https://en.wikipedia.org/wiki/JPEG_Image#Syntax_and_structure)
-    private val skippableSegments = byteArray(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
-    private val startOfStream = 0xDA.toByte()
+    private val jpegSegmentMarker = 0xFF.toByte()
+    private val jpegSkippableSegments = byteArray(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
+    private val jpegStartOfStream = 0xDA.toByte()
 
     fun scramble(jpegImage: File) {
         val tempImage = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
 
         tempImage.sink().buffer().use { sink ->
             jpegImage.inputStream().source().buffer().use { source ->
-                sink.write(source, 2)
-                val sourceBuffer = source.buffer
-                while (true) {
-                    source.require(2)
-                    if (sourceBuffer[0] != marker) {
-                        throw ScrambleException("Invalid JPEG. Expected an FF marker (${sourceBuffer[0]} != $marker)")
+                sink.write(source, 2) // This writes the first (empty) start of image segment FFD8 (actually, JPEG allows for segments without payload. This code isn't really (yet?) compatible with that).
+
+                while (!source.exhausted()) {
+                    val marker = source.readByte()
+                    val segmentType = source.readByte()
+
+                    if (marker != jpegSegmentMarker) {
+                        throw ScrambleException("Invalid JPEG. Expected an FF marker (${"%02x".format(marker)} != ${"%02x".format(jpegSegmentMarker)})")
                     }
-                    val nextByte = sourceBuffer[1]
-                    if (skippableSegments.contains(nextByte)) {
-                        source.skip(2)
-                        val size = source.readShort().toUShort()
-                        if (size < 2u) {
-                            throw ScrambleException("Invalid JPEG: segment ${"%02x".format(nextByte).toUpperCase()} has wrong size: $size (<2)")
-                        }
-                        Timber.d("Skipping JPEG segment ${"%02x".format(nextByte).toUpperCase()} (APPn or COM): $size bytes")
+
+                    val size = source.readShort().toUShort()
+                    if (size < 2u) {
+                        Timber.e("Invalid JPEG: segment ${segmentType.toHexString()} has wrong size: $size (<2)")
+                        throw ScrambleException("Invalid JPEG: segment ${segmentType.toHexString()} has wrong size: $size (<2)")
+                    }
+
+                    if (jpegSkippableSegments.contains(segmentType)) {
+                        // Skip all APPn (0xEn) and COM (0xFE) segments (See: https://en.wikipedia.org/wiki/JPEG_Image#Syntax_and_structure)
+                        Timber.d("Skipping JPEG segment ${segmentType.toHexString()} (APPn or COM): $size bytes")
                         source.skip((size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
-                    } else if (nextByte == startOfStream) {
-                        sink.writeAll(source)
-                        break
                     } else {
-                        sink.write(source, 2)
-                        val size = source.readShort().toUShort()
-                        if (size < 2u) {
-                            throw ScrambleException("Invalid JPEG: segment ${"%02x".format(nextByte).toUpperCase()} has wrong size: $size (<2)")
-                        }
+                        sink.writeByte(marker.toInt())
+                        sink.writeByte(segmentType.toInt())
                         sink.writeShort(size.toInt())
-                        sink.write(source, (size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
+
+                        if (segmentType == jpegStartOfStream) {
+                            // Hopefully there aren't any other segments after the SOS
+                            sink.writeAll(source)
+                        } else {
+                            sink.write(source, (size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
+                        }
                     }
                 }
             }

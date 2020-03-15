@@ -62,11 +62,13 @@ class ExifScrambler(private val context: Context) {
     }
 }
 
+fun byteArray(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
+
 class JpegScrambler(private val context: Context) {
 
     private val marker = 0xFF.toByte()
-    private val app1 = 0xE1.toByte()
-    private val comment = 0xFE.toByte()
+    // Skip all APPn (0xEn) and COM (0xFE) segments (See: https://en.wikipedia.org/wiki/JPEG_Image#Syntax_and_structure)
+    private val skippableSegments = byteArray(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
     private val startOfStream = 0xDA.toByte()
 
     fun scramble(jpegImage: File) {
@@ -82,9 +84,13 @@ class JpegScrambler(private val context: Context) {
                         throw ScrambleException("Invalid JPEG. Expected an FF marker (${sourceBuffer[0]} != $marker)")
                     }
                     val nextByte = sourceBuffer[1]
-                    if (nextByte == app1 || nextByte == comment) {
+                    if (skippableSegments.contains(nextByte)) {
                         source.skip(2)
                         val size = source.readShort().toUShort()
+                        if (size < 2u) {
+                            throw ScrambleException("Invalid JPEG: segment ${"%02x".format(nextByte).toUpperCase()} has wrong size: $size (<2)")
+                        }
+                        Timber.d("Skipping JPEG segment ${"%02x".format(nextByte).toUpperCase()} (APPn or COM): $size bytes")
                         source.skip((size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
                     } else if (nextByte == startOfStream) {
                         sink.writeAll(source)
@@ -92,6 +98,9 @@ class JpegScrambler(private val context: Context) {
                     } else {
                         sink.write(source, 2)
                         val size = source.readShort().toUShort()
+                        if (size < 2u) {
+                            throw ScrambleException("Invalid JPEG: segment ${"%02x".format(nextByte).toUpperCase()} has wrong size: $size (<2)")
+                        }
                         sink.writeShort(size.toInt())
                         sink.write(source, (size - 2u).toLong()) // The size counts the 2 bytes of the size itself, and we've already read these
                     }
@@ -104,7 +113,6 @@ class JpegScrambler(private val context: Context) {
 }
 
 class PngScrambler(private val context: Context) {
-    private fun byteArray(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
 
     private val pngSignature = byteArray(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
     private val pngCriticalChunks = listOf("IHDR", "PLTE", "IDAT", "IEND")

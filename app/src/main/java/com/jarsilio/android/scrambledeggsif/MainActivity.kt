@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         updateLayout()
 
         Dialogs(this).showSomeLoveDialogIfNecessary()
+        Dialogs(this).showSoLongAndThanksForAllTheFishDialog()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

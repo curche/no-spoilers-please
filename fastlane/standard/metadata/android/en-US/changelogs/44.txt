@@ -1,0 +1,11 @@
+New in 1.6.6a
+★ Warn users of "paid" apps that they will likely be removed at some point and that they should download the free one to make sure they get updates.
+
+New in 1.6.6
+★ Fix bug while scrambling some JPEGs (like from Huawei devices)
+★ Remove even more JPEG (possible) metadata (all APPn from JPEG spec).
+
+New in 1.6.5
+★ Fix metadata leak bug. *If* scrambling failed with an IOException, the original image was shared.
+★ (Re-)Add PNG metadata removal
+

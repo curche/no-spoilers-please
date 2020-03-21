@@ -21,6 +21,7 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -93,8 +94,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAboutLicensesActivity() {
+        var style = Libs.ActivityStyle.LIGHT_DARK_TOOLBAR
+        var theme = R.style.AppTheme_About_Light
+
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            style = Libs.ActivityStyle.DARK
+            theme = R.style.AppTheme_About_Dark
+        }
+
         LibsBuilder()
-                .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
+                .withActivityStyle(style)
+                .withActivityTheme(theme)
                 .withAboutIconShown(true)
                 .withAboutVersionShown(true)
                 .withActivityTitle(getString(R.string.licenses_menu_item))

@@ -6,4 +6,5 @@
     <color name="yolk">#808080</color>
     <color name="yolkLight">#ffe082</color>
     <color name="windowBackground">#121212</color>
+    <color name="cardColor">#212121</color>
 </resources>

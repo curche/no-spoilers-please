@@ -49,6 +49,11 @@ android {
             resValue "string", "app_name", "Scrambled Exif 💵"
             applicationIdSuffix ".dollar"
         }
+        fortuneCookies {
+            dimension "version"
+            resValue "string", "app_name", "Scrambled Exif 🥠"
+            applicationIdSuffix ".fortunecookies"
+        }
     }
     lintOptions {
         disable 'MissingTranslation'

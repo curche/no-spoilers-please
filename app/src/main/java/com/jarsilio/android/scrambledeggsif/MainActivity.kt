@@ -31,6 +31,7 @@ import android.widget.TableLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.jarsilio.android.common.dialog.Dialogs
+import com.jarsilio.android.common.extensions.flavor
 import com.jarsilio.android.common.menu.CommonMenu
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
@@ -66,6 +67,9 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         commonMenu.addImpressumToMenu(menu)
+        if (flavor == "fortuneCookies") {
+            commonMenu.addCookiesToMenu(menu)
+        }
         return true
     }
 

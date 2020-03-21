@@ -57,6 +57,10 @@ platform :android do
     build_flavor(flavor: "peace")
   end
 
+  lane :build_fortune_cookies do |values|
+    build_flavor(flavor: "fortuneCookies")
+  end
+
   lane :build_flavor do |values|
     flavor = values[:flavor]
     prompt_password_once
@@ -81,6 +85,7 @@ platform :android do
     deploy_dollar
     deploy_love
     deploy_peace
+    # deploy_fortune_cookies
   end
 
   desc "Deploy production (paid flavors) to the Google Play"
@@ -114,6 +119,11 @@ platform :android do
   desc "Deploy production 'peace' flavor to the Google Play"
   lane :deploy_peace do
     deploy_flavor(flavor: "peace")
+  end
+
+  desc "Deploy production 'fortuneCookies' flavor to the Google Play"
+  lane :deploy_fortune_cookies do
+    deploy_flavor(flavor: "fortuneCookies")
   end
 
   lane :deploy_flavor do |values|

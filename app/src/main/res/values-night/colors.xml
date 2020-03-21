@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#383838</color>
+    <color name="colorPrimaryDark">#202020</color>
+    <color name="colorAccent">#ffcb2e</color>
+    <color name="yolk">#808080</color>
+    <color name="yolkLight">#ffe082</color>
+    <color name="windowBackground">#121212</color>
+</resources>

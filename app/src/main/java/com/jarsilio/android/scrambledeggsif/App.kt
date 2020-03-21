@@ -21,6 +21,7 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.app.Application
 import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
 import com.jarsilio.android.common.logging.LogUtils
 import com.jarsilio.android.common.logging.LongTagTree
 import com.jarsilio.android.scrambledeggsif.utils.Settings
@@ -44,6 +45,8 @@ class App : Application() {
         if (!BuildConfig.DEBUG) {
             ACRA.init(this)
         }
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 
     override fun onCreate() {

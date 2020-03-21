@@ -24,4 +24,5 @@
     <color name="colorAccent">#ffcb2e</color>
     <color name="yolk">#ffcb2e</color>
     <color name="yolkLight">#ffe082</color>
+    <color name="windowBackground">#ffffff</color>
 </resources>

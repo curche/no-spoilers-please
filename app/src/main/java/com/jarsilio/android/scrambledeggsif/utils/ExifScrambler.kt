@@ -132,14 +132,14 @@ class PngScrambler(private val context: Context) {
                     sink.write(byteArray)
 
                     while (!source.exhausted()) {
-                        val chunkLength = source.readInt()
+                        val chunkLength = source.readInt().toUInt()
                         val chunkName = source.readString(4, Charset.forName("ASCII"))
                         val chunkData = source.readByteArray(chunkLength.toLong())
                         val chunkCrc = source.readByteArray(4)
 
                         if (pngCriticalChunks.contains(chunkName)) {
                             // Only write chunk to scrambled png file if it's one of the four critical chunks (see https://en.wikipedia.org/wiki/Portable_Network_Graphics#Critical_chunks)
-                            sink.writeInt(chunkLength)
+                            sink.writeInt(chunkLength.toInt())
                             sink.writeString(chunkName, Charset.forName("ASCII"))
                             sink.write(chunkData)
                             sink.write(chunkCrc)

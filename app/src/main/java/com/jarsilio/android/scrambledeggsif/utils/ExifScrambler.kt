@@ -72,6 +72,7 @@ class JpegScrambler(private val context: Context) {
     private val jpegSkippableSegments = byteArray(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
     private val jpegStartOfStream = 0xDA.toByte()
 
+    @ExperimentalUnsignedTypes
     fun scramble(jpegImage: File) {
         val tempImage = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
 
@@ -122,6 +123,7 @@ class PngScrambler(private val context: Context) {
     private val pngSignature = byteArray(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
     private val pngCriticalChunks = listOf("IHDR", "PLTE", "IDAT", "IEND")
 
+    @ExperimentalUnsignedTypes
     fun scramble(pngImage: File) {
         val tempImage = File(context.imagesCacheDir, "${UUID.randomUUID()}.png")
 

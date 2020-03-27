@@ -49,7 +49,7 @@ class HandleImageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_handle_image)
 
         if (utils.isPermissionGranted) {
-            scrambleAndShareImages()
+            handleImages()
             finish()
         } else {
             utils.requestPermissionsIfNecessary(this)
@@ -66,7 +66,7 @@ class HandleImageActivity : AppCompatActivity() {
             MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     Timber.d("READ_EXTERNAL_STORAGE permission granted.")
-                    scrambleAndShareImages()
+                    handleImages()
                 } else {
                     Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app")
                     Toast.makeText(this, getString(R.string.permissions_open_app_toast), Toast.LENGTH_LONG).show()
@@ -77,7 +77,7 @@ class HandleImageActivity : AppCompatActivity() {
         finish()
     }
 
-    private fun scrambleAndShareImages() {
+    private fun handleImages() {
         val receivedImages = when (intent.action) {
             Intent.ACTION_SEND -> arrayListOf(intent.getParcelableExtra(Intent.EXTRA_STREAM))
             Intent.ACTION_SEND_MULTIPLE -> intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)

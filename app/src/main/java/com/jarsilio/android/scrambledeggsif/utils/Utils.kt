@@ -42,6 +42,8 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.lang.StringBuilder
 import java.util.UUID
+import okio.buffer
+import okio.source
 import timber.log.Timber
 
 const val MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1000
@@ -97,28 +99,16 @@ internal class Utils(private val context: Context) {
     }
 
     private fun getMagicNumbers(inputStream: InputStream): String {
-        val bytesToRead = 8
-        val magicBytes = ByteArray(bytesToRead)
-        val bytesRead: Int
-
-        try {
-            bytesRead = inputStream.read(magicBytes, 0, bytesToRead)
-            inputStream.close()
-        } catch (e: IOException) {
-            Timber.e(e, "An error occurred while trying to read the file. Supposing it is not an image")
-            e.printStackTrace()
-            return ""
+        inputStream.source().buffer().use { source ->
+            return try {
+                val magicBytes = source.readByteArray(8).toHexString()
+                Timber.d("First bytes: $magicBytes")
+                magicBytes
+            } catch (e: IOException) {
+                Timber.e(e, "An error occurred while trying to read the file. Supposing it is not an image")
+                ""
+            }
         }
-
-        if (bytesRead != bytesToRead) {
-            Timber.e("Failed to read the first %s bytes for file", bytesToRead)
-            return ""
-        }
-
-        val magicBytesAsHexString = magicBytes.toHexString()
-        Timber.d("First $bytesRead bytes: $magicBytesAsHexString")
-
-        return magicBytesAsHexString
     }
 
     private fun getImageType(inputStream: InputStream?): ImageType {

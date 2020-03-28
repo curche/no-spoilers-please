@@ -114,16 +114,6 @@ internal class Utils(private val context: Context) {
         return File(context.imagesCacheDir, scrambledImageFilename)
     }
 
-    private fun bytesToHex(bytes: ByteArray): String {
-        val stringBuilder = StringBuilder()
-
-        for (byte in bytes) {
-            stringBuilder.append(String.format("%02X", byte))
-        }
-
-        return stringBuilder.toString()
-    }
-
     private fun getMagicNumbers(inputStream: InputStream): String {
         val bytesToRead = 8
         val magicBytes = ByteArray(bytesToRead)
@@ -143,7 +133,7 @@ internal class Utils(private val context: Context) {
             return ""
         }
 
-        val magicBytesAsHexString = bytesToHex(magicBytes)
+        val magicBytesAsHexString = magicBytes.toHexString()
         Timber.d("First $bytesRead bytes: $magicBytesAsHexString")
 
         return magicBytesAsHexString
@@ -265,3 +255,17 @@ internal class Utils(private val context: Context) {
         Timber.d("Done rotating image")
     }
 }
+
+fun byteArrayFromInts(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
+
+fun ByteArray.toHexString(): String {
+    val stringBuilder = StringBuilder()
+
+    for (byte in this) {
+        stringBuilder.append(byte.toHexString())
+    }
+
+    return stringBuilder.toString()
+}
+
+fun Byte.toHexString(): String { return "%02X".format(this) }

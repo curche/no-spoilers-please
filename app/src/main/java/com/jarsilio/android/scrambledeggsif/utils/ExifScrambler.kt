@@ -62,14 +62,10 @@ class ExifScrambler(private val context: Context) {
     }
 }
 
-fun byteArray(vararg ints: Int) = ByteArray(ints.size) { pos -> ints[pos].toByte() }
-
-fun Byte.toHexString(): String { return "%02X".format(this) }
-
 class JpegScrambler(private val context: Context) {
 
     private val jpegSegmentMarker = 0xFF.toByte()
-    private val jpegSkippableSegments = byteArray(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
+    private val jpegSkippableSegments = byteArrayFromInts(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
     private val jpegStartOfStream = 0xDA.toByte()
 
     @ExperimentalUnsignedTypes
@@ -120,7 +116,7 @@ class JpegScrambler(private val context: Context) {
 
 class PngScrambler(private val context: Context) {
 
-    private val pngSignature = byteArray(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+    private val pngSignature = byteArrayFromInts(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
     private val pngCriticalChunks = listOf("IHDR", "PLTE", "IDAT", "IEND")
 
     @ExperimentalUnsignedTypes

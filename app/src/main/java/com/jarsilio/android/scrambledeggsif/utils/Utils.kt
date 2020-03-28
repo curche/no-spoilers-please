@@ -79,9 +79,9 @@ internal class Utils(private val context: Context) {
         }
     }
 
-    fun prepareScrambledFileInCacheDir(imageFile: File): File {
+    fun prepareUnscrambledCopyInCacheDir(imageFile: File): File {
         val unscrambledCopy = if (settings.isRenameImages) {
-            getRandomScrambledImage(getImageType(imageFile))
+            getEmptyRandomImageFile(getImageType(imageFile))
         } else {
             File(context.imagesCacheDir, imageFile.name)
         }
@@ -109,7 +109,7 @@ internal class Utils(private val context: Context) {
         return unscrambledCopy
     }
 
-    private fun getRandomScrambledImage(imageType: ImageType = ImageType.JPG): File {
+    private fun getEmptyRandomImageFile(imageType: ImageType = ImageType.JPG): File {
         val scrambledImageFilename = "${UUID.randomUUID()}.${imageType.name.toLowerCase()}"
         return File(context.imagesCacheDir, scrambledImageFilename)
     }
@@ -214,7 +214,7 @@ internal class Utils(private val context: Context) {
             File(realPath).name
         } else {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
-            getRandomScrambledImage().name
+            getEmptyRandomImageFile().name
         }
     }
 

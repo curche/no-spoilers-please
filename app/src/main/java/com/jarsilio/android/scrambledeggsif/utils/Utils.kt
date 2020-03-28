@@ -133,7 +133,7 @@ internal class Utils(private val context: Context) {
             bytesRead = inputStream.read(magicBytes, 0, bytesToRead)
             inputStream.close()
         } catch (e: IOException) {
-            Timber.e(e, "An error ocurred while trying to read the file. Supposing it is not an image")
+            Timber.e(e, "An error occurred while trying to read the file. Supposing it is not an image")
             e.printStackTrace()
             return ""
         }

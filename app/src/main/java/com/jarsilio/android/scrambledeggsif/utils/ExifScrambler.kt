@@ -47,7 +47,9 @@ class ExifScrambler(private val context: Context) {
             utils.rotateImageAccordingToExifOrientation(imageInCache)
         }
         removeMetadata(imageInCache)
-        return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", imageInCache)
+        val uri = FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", imageInCache)
+        Timber.d("Image with uri (ready to share): $uri")
+        return uri
     }
 
     private fun removeMetadata(image: File) {

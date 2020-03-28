@@ -192,16 +192,18 @@ internal class Utils(private val context: Context) {
 
     fun rotateImageAccordingToExifOrientation(imageFile: File) {
         val operation = when (ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
-            ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.d("Rotate image 270°"); LLJTran.ROT_270 }
-            ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.d("Rotate image 180°"); LLJTran.ROT_180 }
-            ExifInterface.ORIENTATION_ROTATE_90 -> { Timber.d("Rotate image 90°"); LLJTran.ROT_90 }
-            else -> { Timber.d("Rotate image 0°"); 0 }
+            ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.v("Exif rotation 270°"); LLJTran.ROT_270 }
+            ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.v("Exif rotation 180°"); LLJTran.ROT_180 }
+            ExifInterface.ORIENTATION_ROTATE_90 -> { Timber.d("Exif rotation 90°"); LLJTran.ROT_90 }
+            else -> 0
         }
 
         if (operation == 0) {
             Timber.d("The image ($imageFile) doesn't need to be rotated. Skipping...")
             return
         }
+
+        Timber.d("Trying to rotate image with LLJTran")
 
         val output = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
 
@@ -222,9 +224,8 @@ internal class Utils(private val context: Context) {
         if (rotated) {
             imageFile.delete()
             output.renameTo(imageFile)
+            Timber.d("Done rotating image")
         }
-
-        Timber.d("Done rotating image")
     }
 }
 

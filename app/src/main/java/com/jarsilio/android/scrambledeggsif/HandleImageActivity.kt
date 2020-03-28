@@ -97,7 +97,7 @@ class HandleImageActivity : AppCompatActivity() {
 
         for (imageUri in imageUris) {
             if (utils.isScrambleableImage(imageUri)) {
-                Timber.d("Received a jpeg image (uri): $imageUri. Scrambling...")
+                Timber.d("Received a jpeg or a png image (uri): $imageUri. Scrambling...")
                 try {
                     scrambledImages.add(exifScrambler.scrambleImage(imageUri))
                 } catch (e: IOException) {

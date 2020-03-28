@@ -37,17 +37,18 @@ import timber.log.Timber
 class ExifScrambler(private val context: Context) {
 
     private val utils: Utils by lazy { Utils(context) }
-
-    private fun scrambleImage(imageFile: File): Uri {
-        val scrambledImageFile = utils.prepareUnscrambledCopyInCacheDir(imageFile) // prepareScrambled renames the file if necessary
-        removeMetadata(scrambledImageFile)
-        return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", scrambledImageFile)
-    }
+    private val settings: Settings by lazy { Settings(context) }
 
     @Throws(IOException::class)
     fun scrambleImage(image: Uri): Uri {
         val unscrambledImageFile = utils.createFileFromUri(image)
-        return scrambleImage(unscrambledImageFile)
+        val possiblyRenamedImageFile = utils.prepareUnscrambledCopyInCacheDir(unscrambledImageFile)
+        if (settings.isKeepJpegOrientation) {
+            // Instead of rewriting the tag, "physically" rotate the image. This is expensive.
+            utils.rotateImageAccordingToExifOrientation(possiblyRenamedImageFile)
+        }
+        removeMetadata(possiblyRenamedImageFile)
+        return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", possiblyRenamedImageFile)
     }
 
     private fun removeMetadata(image: File) {

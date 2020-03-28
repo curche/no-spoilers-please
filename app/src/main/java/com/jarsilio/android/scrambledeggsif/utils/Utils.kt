@@ -102,10 +102,7 @@ internal class Utils(private val context: Context) {
 
         copy(context.contentResolver.openInputStream(imageUri)!!, FileOutputStream(unscrambledCopy))
 
-        if (settings.isKeepJpegOrientation) {
-            // Instead of rewriting the tag, "physically" rotate the image. This is expensive.
-            rotateImageAccordingToExifOrientation(unscrambledCopy)
-        }
+
         return unscrambledCopy
     }
 
@@ -218,7 +215,7 @@ internal class Utils(private val context: Context) {
         }
     }
 
-    private fun rotateImageAccordingToExifOrientation(imageFile: File) {
+    fun rotateImageAccordingToExifOrientation(imageFile: File) {
         val operation = when (ExifInterface(imageFile).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)) {
             ExifInterface.ORIENTATION_ROTATE_270 -> { Timber.d("Rotate image 270°"); LLJTran.ROT_270 }
             ExifInterface.ORIENTATION_ROTATE_180 -> { Timber.d("Rotate image 180°"); LLJTran.ROT_180 }

@@ -79,30 +79,15 @@ internal class Utils(private val context: Context) {
         }
     }
 
-    fun prepareUnscrambledCopyInCacheDir(imageFile: File): File {
+    fun prepareImageInCache(imageUri: Uri): File {
         val unscrambledCopy = if (settings.isRenameImages) {
-            getEmptyRandomImageFile(getImageType(imageFile))
+            getEmptyRandomImageFile(getImageType(imageUri))
         } else {
-            File(context.imagesCacheDir, imageFile.name)
+            File(context.imagesCacheDir, getRealFilenameFromURI(imageUri))
         }
 
-        if (imageFile.canonicalPath == unscrambledCopy.canonicalPath) {
-            Timber.d("Not copying to 'images' dir. It's already there.")
-        } else {
-            Timber.d("Copying image $imageFile to 'images' dir: $unscrambledCopy")
-            copy(FileInputStream(imageFile), FileOutputStream(unscrambledCopy))
-        }
-
-        return unscrambledCopy
-    }
-
-    fun createFileFromUri(imageUri: Uri): File {
-        val unscrambledCopy = File(context.imagesCacheDir, getRealFilenameFromURI(imageUri))
         Timber.d("Copying image from uri (probably from an intent) ${imageUri.path} to 'unscrambled' dir: $unscrambledCopy")
-
         copy(context.contentResolver.openInputStream(imageUri)!!, FileOutputStream(unscrambledCopy))
-
-
         return unscrambledCopy
     }
 

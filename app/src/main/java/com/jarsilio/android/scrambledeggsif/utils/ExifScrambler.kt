@@ -40,15 +40,14 @@ class ExifScrambler(private val context: Context) {
     private val settings: Settings by lazy { Settings(context) }
 
     @Throws(IOException::class)
-    fun scrambleImage(image: Uri): Uri {
-        val unscrambledImageFile = utils.createFileFromUri(image)
-        val possiblyRenamedImageFile = utils.prepareUnscrambledCopyInCacheDir(unscrambledImageFile)
+    fun scrambleImage(imageUri: Uri): Uri {
+        val imageInCache = utils.prepareImageInCache(imageUri)
         if (settings.isKeepJpegOrientation) {
             // Instead of rewriting the tag, "physically" rotate the image. This is expensive.
-            utils.rotateImageAccordingToExifOrientation(possiblyRenamedImageFile)
+            utils.rotateImageAccordingToExifOrientation(imageInCache)
         }
-        removeMetadata(possiblyRenamedImageFile)
-        return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", possiblyRenamedImageFile)
+        removeMetadata(imageInCache)
+        return FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", imageInCache)
     }
 
     private fun removeMetadata(image: File) {

@@ -146,6 +146,11 @@ class PngScrambler(private val context: Context) {
                             sink.write(chunkData)
                             sink.write(chunkCrc)
                         }
+
+                        if (chunkName == "IEND") {
+                            // Stop writing after IEND. This could even be malicious and is definitely *not* necessary! And incorrect.
+                            break
+                        }
                     }
                 } else {
                     throw ScrambleException("Invalid PNG file ($pngImage). It doesn't start with a PNG SIGNATURE.")

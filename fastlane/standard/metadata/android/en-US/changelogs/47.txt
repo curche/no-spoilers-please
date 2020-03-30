@@ -1,0 +1,14 @@
+New in 1.6.8
+★ Fix crash while converting invalid PNGs (with "illegal" data after IEND).
+
+New in 1.6.7
+★ Fix crash while converting some PNGs.
+
+New in 1.6.6
+★ Fix bug while scrambling some JPEGs (like from Huawei devices)
+★ Remove even more JPEG (possible) metadata (all APPn from JPEG spec).
+
+New in 1.6.5
+★ Fix metadata leak bug. *If* scrambling failed with an IOException, the original image was shared.
+★ (Re-)Add PNG metadata removal
+

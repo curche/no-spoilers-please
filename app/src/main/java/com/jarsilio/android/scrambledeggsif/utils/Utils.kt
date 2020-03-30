@@ -83,7 +83,7 @@ internal class Utils(private val context: Context) {
 
     fun prepareImageInCache(imageUri: Uri): File {
         val unscrambledCopy = if (settings.isRenameImages) {
-            getEmptyRandomImageFile(getImageType(imageUri))
+            File(context.imagesCacheDir, getRandomImageFilename(imageUri))
         } else {
             File(context.imagesCacheDir, getRealFilenameFromURI(imageUri))
         }
@@ -93,9 +93,12 @@ internal class Utils(private val context: Context) {
         return unscrambledCopy
     }
 
-    private fun getEmptyRandomImageFile(imageType: ImageType = ImageType.JPG): File {
-        val scrambledImageFilename = "${UUID.randomUUID()}.${imageType.name.toLowerCase()}"
-        return File(context.imagesCacheDir, scrambledImageFilename)
+    private fun getRandomImageFilename(imageType: ImageType = ImageType.JPG): String {
+        return "${UUID.randomUUID()}.${imageType.name.toLowerCase()}"
+    }
+
+    private fun getRandomImageFilename(uri: Uri): String {
+        return getRandomImageFilename(getImageType(uri))
     }
 
     private fun getMagicNumbers(inputStream: InputStream): String {
@@ -186,7 +189,7 @@ internal class Utils(private val context: Context) {
             File(realPath).name
         } else {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
-            getEmptyRandomImageFile().name
+            getRandomImageFilename(uri)
         }
     }
 

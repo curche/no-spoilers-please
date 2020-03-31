@@ -175,15 +175,13 @@ internal class Utils(private val context: Context) {
     }
 
     fun getRealFilenameFromURI(uri: Uri): String {
-        val cursor = context.contentResolver.query(uri, null, null, null, null)
-        cursor?.moveToFirst()
-        val index = cursor?.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
-
         var realPath: String? = null
-        if (index != null && index != -1) {
-            realPath = cursor.getString(index)
+
+        context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                realPath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+            }
         }
-        cursor?.close()
 
         return if (realPath != null) {
             File(realPath).name

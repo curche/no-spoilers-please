@@ -41,6 +41,7 @@ import com.mikepenz.aboutlibraries.LibsBuilder
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
+    private val dialogs: Dialogs by lazy { Dialogs(this) }
     private val utils: Utils by lazy { Utils(applicationContext) }
     private val commonMenu: CommonMenu by lazy { CommonMenu(this) }
 
@@ -49,8 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         updateLayout()
 
-        Dialogs(this).showSomeLoveDialogIfNecessary()
-        Dialogs(this).showSoLongAndThanksForAllTheFishDialog()
+        dialogs.showSomeLoveDialogIfNecessary()
+        dialogs.showSoLongAndThanksForAllTheFishDialog()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

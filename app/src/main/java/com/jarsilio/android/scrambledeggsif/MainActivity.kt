@@ -29,11 +29,15 @@ import android.view.View
 import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.jarsilio.android.common.dialog.Dialogs
+import com.jarsilio.android.common.extensions.appName
 import com.jarsilio.android.common.extensions.flavor
 import com.jarsilio.android.common.menu.CommonMenu
+import com.jarsilio.android.common.prefs.Values
 import com.jarsilio.android.common.privacypolicy.PrivacyPolicyBuilder
+import com.jarsilio.android.common.utils.VendorUtils
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 import com.mikepenz.aboutlibraries.Libs
@@ -43,6 +47,7 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
     private val dialogs: Dialogs by lazy { Dialogs(this) }
     private val utils: Utils by lazy { Utils(applicationContext) }
+    private val vendorUtils: VendorUtils by lazy { VendorUtils(applicationContext) }
     private val commonMenu: CommonMenu by lazy { CommonMenu(this) }
 
     override fun onResume() {
@@ -52,6 +57,8 @@ class MainActivity : AppCompatActivity() {
 
         dialogs.showSomeLoveDialogIfNecessary()
         dialogs.showSoLongAndThanksForAllTheFishDialog()
+
+        showMiuiPermissionDialogIfNecessary()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -118,6 +125,17 @@ class MainActivity : AppCompatActivity() {
                 .start(applicationContext)
     }
 
+    private fun showMiuiPermissionDialogIfNecessary() {
+        if (Values.getInstance(this).showMiuiPermissionsDialog) {
+            AlertDialog.Builder(this).apply {
+                setTitle(R.string.miui_permissions_title)
+                setMessage(getString(R.string.miui_permissions_message, context.appName))
+                setPositiveButton(R.string.miui_permissions_ok_button) { _, _ -> vendorUtils.openMiuiPermissionsDialogIfNecessary() }
+                setNegativeButton(R.string.miui_permissions_dont_show_again_button) { _, _ -> Values.getInstance(context).showMiuiPermissionsDialog = false }
+                show()
+            }
+        }
+    }
     private fun updateLayout() {
         val button = findViewById<Button>(R.id.request_permission_button)
         val permissionExplanation = findViewById<TextView>(R.id.permissions_explanation)

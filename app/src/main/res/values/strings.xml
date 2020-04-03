@@ -63,4 +63,9 @@
     <string name="acra_notification_text">Please send the report to the dev so that he can try to fix it.</string>
     <string name="acra_notification_send">Send email</string>
 
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Special permissions needed</string>
+    <string name="miui_permissions_message">%s needs a special permission called \'Display pop-up windows while running in the background\' in modern Xiaomi (MIUI) devices. You have to grant it manually.\n\nPlease tap on the \'Take me there\' button or look for the setting manually.</string>
+    <string name="miui_permissions_ok_button">Take me there</string>
+    <string name="miui_permissions_dont_show_again_button">Don\'t show again</string>
 </resources>

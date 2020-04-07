@@ -1,10 +1,10 @@
 # Scrambled Exif
 
-Some people like Facebook and co. to know were their picture was taken so that it can be easily geotagged. Or for whatever reason. That's okay.
+Some people like Facebook and co. to know where their picture was taken so that it can be easily geotagged. Or for whatever reason. That's okay.
 
-Some people *don't* like that. That's is also okay.
+Some people *don't* like that. That's also okay.
 
-**Scrambled Exif** (pronounced *egg* sif) is definitely for the latter.
+**Scrambled Exif** (pronounced *egg* sif) is definitely for the latter group of people.
 
 So you don't want to share all the metadata your phone stores for every picture?
 

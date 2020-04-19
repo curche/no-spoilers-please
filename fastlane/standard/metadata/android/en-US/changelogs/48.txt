@@ -1,0 +1,13 @@
+New in 1.6.9
+★ Xiaomi only: add a dialog to take to special permissions (needed for Scrambled Exif).
+
+New in 1.6.8
+★ Fix crash while converting invalid PNGs (with "illegal" data after IEND).
+
+New in 1.6.7
+★ Fix crash while converting some PNGs.
+
+New in 1.6.6
+★ Fix bug while scrambling some JPEGs (like from Huawei devices)
+★ Remove even more JPEG (possible) metadata (all APPn from JPEG spec).
+

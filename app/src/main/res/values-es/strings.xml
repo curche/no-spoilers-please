@@ -8,10 +8,13 @@
     <string name="instructions_1">Selecciona las imágenes que quieres compartir en la galería y dale al icono de compartir.</string>
     <string name="instructions_2">Selecciona <i>Scrambled Exif</i> de la lista de aplicaciones.</string>
     <string name="instructions_2_1">En este momento, los metadatos están siendo borrados de las imágenes.</string>
-    <string name="instructions_3">Cuanto termine, la lista de aplicaciones reaparecerá. Solo comparte las imágenes como normalmente lo harías.</string>
+    <string name="instructions_3">Cuanto esto termine, la lista de aplicaciones reaparecerá. Solo comparte las imágenes como normalmente lo harías.</string>
     <string name="instructions_voila">¡Ya está! Acabas de compartir algunas fotos libres de metadatos con el mundo.</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la aplicación y concedelos desde ahí.</string>
+    <string name="no_scrambleable_images">No se pudo encontrar imagen para procesar.</string>
+    <string name="image_not_scrambleable">No se pudo procesar \"%s\" porque no es una imagen JPEG.</string>
+
     <string name="privacy_policy_menu_item">Política de privacidad</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Configuración</string>
@@ -20,7 +23,10 @@
     <string name="settings_force_image_rewrite_summary">Esta opción fuerza a reescribir por completo el archivo de imagen (normalmente solo los datos EXIF son removidos).\n\n Está opción hace remover los datos EXIF más lento pero es más seguro, y podría influir en la calidad de la imagen.</string>
 
     <string name="settings_rename_images">Renombrar imágenes</string>
-    <string name="settings_rename_images_summary">Los nombres de archivo pueden indicar al que recibe el archivo la fecha y hora que una foto fue tomada en algunos dispositivos.\n\n Está opción renombra todas las imágenes compartidas con un nombre de archivo al azar.</string>
+    <string name="settings_rename_images_summary">Los nombres de archivo pueden indicar al que recibe el archivo la fecha y hora que una foto fue tomada en algunos dispositivos.\n\nEstá opción renombra todas las imágenes compartidas con un nombre de archivo al azar.</string>
+
+    <string name="settings_keep_jpeg_orientation">Mantener orientación</string>
+    <string name="settings_keep_jpeg_orientation_summary">Esto rota \"fisicamente\" la imagen acorde a los datos EXIF en la imagen original.\n\nLa imagen necesita ser reescrita, lo cual significa que tomará un poco de tiempo e implica (probablemente) pérdida de calidad.</string>
 
     <string name="licenses_menu_item">Licencias</string>
     <!-- ACRA -->

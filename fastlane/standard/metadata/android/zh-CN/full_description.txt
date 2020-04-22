@@ -1,0 +1,36 @@
+Scramble Exif (发音为 <i>egg</i>sif)帮助您在分享图片之前删除图片中的元数据。
+
+如果你愿意的话。
+
+如果你不想让大型互联网公司(或任何人)知道你的照片是在哪里拍摄的，不要忘记在分享之前删除它们的元数据。
+
+要从图片中删除元数据，只需像通常那样分享它并选择<i>Scramble Exif</i>即可。片刻之后，分享对话框将再次出现。现在只需要分享你最初想要分享的应用程序。
+
+Et voilà!
+
+<b>所需的安卓权限:</b>
+
+★ READ_EXTERNAL_STORAGE读取其他应用与其共享的图像。
+
+<b>源代码</b>
+
+★ 这个应用程序是开源的。 你可以在这里看看这些代码(如果你愿意，也可以贡献一些内容) :
+
+https://gitlab.com/juanitobananas/scrambled-exif
+
+<b>翻译</b>
+
+如果你想帮忙把这个应用翻译成你自己的语言，你可以使用 transifex 翻译这两个项目:
+https://www.transifex.com/juanitobananas/scrambled-exif/ and https://www.transifex.com/juanitobananas/libcommon/.
+
+<b>Misc Stuff and Facts</b>
+
+★ 基本上，Exif 由 jpeg 使用，这是安卓相机保存图片的格式。 如果你想知道更多关于 Exif 的信息，请查阅维基百科。
+
+★ Scramble Exif 还可以重命名文件(这可以禁用)。
+
+★ 请不要过分依赖被删除的数据。Scrambled Exif的工作做得很好，但可能会失败。分享之前，请务必仔细检查。
+
+★它并不真正<i>扰乱</i> Exif 数据，而是删除它。所以这个名字可能很愚蠢。但我喜欢。这个图标也不代表炒鸡蛋。所以这个图标可能很愚蠢。但我喜欢。而且我还是鸡蛋的超级粉丝。因此，这个应用程序不仅有一个愚蠢的名字和一个同样愚蠢的图标，它也是我(不愚蠢的)对鸡蛋的敬意。特别是<i>墨西哥煎饼</i>。因为我爱他们。
+
+★ 开心分享您的照片！

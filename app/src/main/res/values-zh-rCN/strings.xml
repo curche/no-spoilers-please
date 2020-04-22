@@ -1,0 +1,39 @@
+<resources>
+    <string name="share_via">通过以下方式与加扰的Exif共享图像</string>
+    <string name="share_multiple_via">通过以下方式与加扰的Exif共享图像</string>
+    <string name="permission_request">请求权限</string>
+    <string name="permission_sdcard_text">Scrambled Exif需要访问您的文件才能读取与其共享的图像。\n\n请点击下面的按钮以授予必要的权限。</string>
+
+    <string name="instructions_title">使用说明</string>
+    <string name="instructions_1">从图库中选择要分享的图片，然后点击分享图标。</string>
+    <string name="instructions_2">从应用列表中选择<i> Scrambled Exif</i>。</string>
+    <string name="instructions_2_1">此时，元数据将被删除！</string>
+    <string name="instructions_3">完成此操作后，将再次出现应用列表。 像往常一样分享图片。</string>
+    <string name="instructions_voila">等等！ 您刚刚与世界分享了一些没有元数据的图片！</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif需要文件访问权限。
+        请打开该应用并从那里授予它</string>
+    <string name="no_scrambleable_images">找不到要加扰的图像。</string>
+    <string name="image_not_scrambleable">因为不是JPEG图像，所以无法加扰“%s”</string>
+
+    <string name="privacy_policy_menu_item">隐私政策</string>
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">设置</string>
+
+    <string name="settings_force_image_rewrite">强制重写图像</string>
+    <string name="settings_force_image_rewrite_summary">此选项强制重写整个图像文件（通常只删除EXIF数据）。\n\n此选项使删除EXIF数据的速度变慢但更安全，并且可能会影响图片质量。</string>
+
+    <string name="settings_rename_images">重命名图像</string>
+    <string name="settings_rename_images_summary">文件名可以告诉文件的接收者在某些设备上拍摄照片的日期和时间。\n\n此选项使用随机文件名重命名所有共享图像。</string>
+
+    <string name="settings_keep_jpeg_orientation">保持方向</string>
+    <string name="settings_keep_jpeg_orientation_summary">此操作会“物理地”根据原始图像中的EXIF数据旋转图像。\n\n该图像需要重新写入，这意味着需要花费更长的时间，并意味着（可能）质量下降。</string>
+
+    <string name="licenses_menu_item">许可证</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">崩溃</string>
+    <string name="acra_notification_title">哇！ 检测到崩溃 💩</string>
+    <string name="acra_notification_text">请将该报告发送给开发人员，以便他可以尝试对其进行修复。</string>
+    <string name="acra_notification_send">发邮件</string>
+
+</resources>

@@ -42,8 +42,8 @@ class SettingsActivity : AppCompatActivity() {
 
     class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
 
-        private val settings: Settings by lazy { Settings(context!!) }
-        private val logUtils: LogUtils by lazy { LogUtils(context!!) }
+        private val settings: Settings by lazy { Settings(requireContext()) }
+        private val logUtils: LogUtils by lazy { LogUtils(requireContext()) }
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
@@ -52,7 +52,7 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun bindClickListeners() {
             findPreference<Preference>(Settings.SEND_LOGS_TO_DEV)?.setOnPreferenceClickListener {
-                Dialogs(context!!).showReportIssueDialog()
+                Dialogs(requireContext()).showReportIssueDialog()
                 true
             }
         }

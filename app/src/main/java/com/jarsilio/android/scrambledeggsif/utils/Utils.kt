@@ -179,6 +179,8 @@ internal class Utils(private val context: Context) {
 
         context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
             if (cursor.moveToFirst()) {
+                @Suppress("DEPRECATION")
+                // TODO: see if there is a way to retrieve the filename on modern Androids. If not, we'll have to remove the option and use random names exclusively.
                 realPath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
             }
         }

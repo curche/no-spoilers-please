@@ -51,7 +51,7 @@ class CleanUpAlarmReceiver : BroadcastReceiver() {
         if (imagesDir.listFiles()?.isEmpty() == true) {
             Timber.d("Cache folder is empty. Canceling cleanup alarm until next time somebody shares an image with us")
             val sender = PendingIntent.getBroadcast(context, 0, intent, 0)
-            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
             if (alarmManager != null) {
                 alarmManager.cancel(sender)
             } else {

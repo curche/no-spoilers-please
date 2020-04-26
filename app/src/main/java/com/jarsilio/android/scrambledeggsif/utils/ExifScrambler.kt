@@ -34,6 +34,7 @@ import okio.sink
 import okio.source
 import timber.log.Timber
 
+@ExperimentalUnsignedTypes
 class ExifScrambler(private val context: Context) {
 
     private val utils: Utils by lazy { Utils(context) }

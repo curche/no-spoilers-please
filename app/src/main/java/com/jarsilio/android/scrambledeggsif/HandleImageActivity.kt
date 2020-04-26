@@ -39,6 +39,7 @@ import java.io.IOException
 import java.util.ArrayList
 import timber.log.Timber
 
+@ExperimentalUnsignedTypes
 class HandleImageActivity : AppCompatActivity() {
 
     private val exifScrambler: ExifScrambler by lazy { ExifScrambler(applicationContext) }

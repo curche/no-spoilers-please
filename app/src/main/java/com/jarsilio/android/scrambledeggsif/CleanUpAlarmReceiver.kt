@@ -48,7 +48,7 @@ class CleanUpAlarmReceiver : BroadcastReceiver() {
 
         // If there are no more files left, we don't need to clean up periodically.
         // We will set the alarm again once Scrambled Exif scrambles some Exifs
-        if (imagesDir.listFiles().isEmpty()) {
+        if (imagesDir.listFiles()?.isEmpty() == true) {
             Timber.d("Cache folder is empty. Canceling cleanup alarm until next time somebody shares an image with us")
             val sender = PendingIntent.getBroadcast(context, 0, intent, 0)
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager

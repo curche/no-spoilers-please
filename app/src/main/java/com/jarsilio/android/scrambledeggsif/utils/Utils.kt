@@ -184,7 +184,7 @@ internal class Utils(private val context: Context) {
         }
 
         return if (realPath != null) {
-            File(realPath).name
+            File(realPath!!).name
         } else {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
             getRandomImageFilename(uri)

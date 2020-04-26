@@ -41,4 +41,9 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
     }
+
+    // Kotlin: treat all warnings as errors
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions.allWarningsAsErrors = true
+    }
 }

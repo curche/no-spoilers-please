@@ -79,8 +79,8 @@ class HandleImageActivity : AppCompatActivity() {
 
     private fun handleImages() {
         val receivedImages = when (intent.action) {
-            Intent.ACTION_SEND -> arrayListOf(intent.getParcelableExtra(Intent.EXTRA_STREAM))
-            Intent.ACTION_SEND_MULTIPLE -> intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)
+            Intent.ACTION_SEND -> arrayListOf(intent.getParcelableExtra(Intent.EXTRA_STREAM)!!)
+            Intent.ACTION_SEND_MULTIPLE -> intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)!!
             else -> ArrayList<Uri>()
         }
 

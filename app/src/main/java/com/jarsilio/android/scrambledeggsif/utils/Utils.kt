@@ -26,7 +26,7 @@ import android.mediautil.image.jpeg.LLJTran
 import android.mediautil.image.jpeg.LLJTranException
 import android.net.Uri
 import android.os.Build
-import android.provider.MediaStore
+import android.provider.OpenableColumns
 import androidx.core.app.ActivityCompat
 import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
@@ -176,22 +176,22 @@ internal class Utils(private val context: Context) {
     }
 
     fun getRealFilenameFromURI(uri: Uri): String {
-        var realPath: String? = null
+        var realFilename: String? = null
 
         context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
             if (cursor.moveToFirst()) {
-                @Suppress("DEPRECATION")
-                // TODO: see if there is a way to retrieve the filename on modern Androids. If not, we'll have to remove the option and use random names exclusively.
-                realPath = cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+                val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (nameIndex != -1) {
+                    realFilename = cursor.getString(nameIndex)
+                }
             }
         }
 
-        return if (realPath != null) {
-            File(realPath!!).name
-        } else {
+        if (realFilename == null) {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
-            getRandomImageFilename(uri)
         }
+
+        return realFilename ?: getRandomImageFilename(uri) // If for some reason, we're not able to read the filename, use random filename as fallback
     }
 
     fun rotateImageAccordingToExifOrientation(imageFile: File) {

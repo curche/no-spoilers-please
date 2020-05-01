@@ -1,6 +1,6 @@
 # Scrambled Exif Privacy Policy
 
-This privacy policy governs your use of the software application Scrambled Eggsif for mobile devices that was created by juanitobananas (Juan García Basilio).
+This privacy policy governs your use of the software application Scrambled Exif for mobile devices that was created by juanitobananas (Juan García Basilio).
 
 ## Data collected by me
 

@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
+import com.jarsilio.android.scrambledeggsif.utils.Utils
 import timber.log.Timber
 
 const val PICK_IMAGE_REQUEST = 100
@@ -19,6 +21,8 @@ const val PICK_IMAGE_REQUEST = 100
 
 @ExperimentalUnsignedTypes
 class ContentProxyActivity : AppCompatActivity() {
+
+    private val utils: Utils by lazy { Utils(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,17 +49,23 @@ class ContentProxyActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
-            val imageUri = data.data
-            Timber.d("Received image to scramble: $imageUri. Scrambling...")
-            val scrambledImageUri = ExifScrambler(this).scrambleImage(imageUri!!)
-            Timber.d("Sending uri in result intent: $scrambledImageUri")
+            val imageUri = data.data!! // I checked for null in the if condition
+            if (utils.isScrambleableImage(imageUri)) {
+                Timber.d("Received image to scramble: $imageUri. Scrambling...")
+                val scrambledImageUri = ExifScrambler(this).scrambleImage(imageUri)
+                Timber.d("Sending uri in result intent: $scrambledImageUri")
 
-            // Send data back to calling app
-            val resultIntent = Intent()
-            resultIntent.data = scrambledImageUri
-            resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
+                // Send data back to calling app
+                val resultIntent = Intent()
+                resultIntent.data = scrambledImageUri
+                resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
 
-            setResult(RESULT_OK, resultIntent)
+                setResult(RESULT_OK, resultIntent)
+            } else {
+                Timber.d("Received something that's not a jpeg or a png image ($imageUri) in a SEND_MULTIPLE. Skipping...")
+                Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
+                setResult(RESULT_CANCELED)
+            }
         } else {
             setResult(RESULT_CANCELED)
         }

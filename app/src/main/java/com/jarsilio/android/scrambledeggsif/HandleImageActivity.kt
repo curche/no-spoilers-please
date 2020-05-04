@@ -116,7 +116,12 @@ class HandleImageActivity : AppCompatActivity() {
 
     private fun shareImages(imageUris: ArrayList<Uri>) {
         val targetedShareIntents = buildTargetedShareIntents(imageUris)
-        val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), getString(R.string.share_multiple_via))
+        val chooserTitle = if (imageUris.size == 1) {
+            getString(R.string.share_via)
+        } else {
+            getString(R.string.share_multiple_via)
+        }
+        val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), chooserTitle)
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
         chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayListOf(ComponentName(this, HandleImageActivity::class.java)).toTypedArray<Parcelable>())
         startActivity(chooserIntent)

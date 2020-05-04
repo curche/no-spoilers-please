@@ -17,9 +17,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ustawienia</string>
 
-    <string name="settings_force_image_rewrite">Wymuś przepisanie zdjęcia</string>
-    <string name="settings_force_image_rewrite_summary">Ta opcja wymusza przepisywanie całego pliku ze zdjęciem (normalnie tylko dane EXIF są usuwane).\n\nTa opcja sprawia, że usuwanie danych EXIF trwa dłużej, ale jest bezpieczniejsze i może mieć wpływ na jakość zdjęcia.</string>
-
     <string name="settings_rename_images">Zmień nazwy zdjęć</string>
     <string name="settings_rename_images_summary">Nazwy plików mogą poinformować odbiorcę pliku o dacie i czasie, w którym zdjęcie zostało zrobione na niektórych urządzeniach.\n\nTa opcja zmienia nazwę wszystkich udostępnianych zdjęć na losową nazwę.</string>
 

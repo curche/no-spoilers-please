@@ -37,9 +37,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Definições</string>
 
-    <string name="settings_force_image_rewrite">Forçar a rescrita da imagem</string>
-    <string name="settings_force_image_rewrite_summary">Esta opção força a rescrita do ficheiro de imagem inteiro (tipicamente apenas os dados EXIF são removidos).\n\nEsta opção remove os dados EXIF de uma forma mais lenta e mais segura, e pode influenciar a qualidade de imagem.</string>
-
     <string name="settings_rename_images">Alterar o nome das imagens</string>
     <string name="settings_rename_images_summary">Os nomes dos ficheiros podem informar o destinatário acerca da data e hora em que a fotografia foi tirada em alguns dispositivos.\n\nEsta opção altera o nome de todas as imagens partilhadas com nomes aleatórios.</string>
 

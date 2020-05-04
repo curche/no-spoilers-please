@@ -13,15 +13,11 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif需要文件访问权限。
         请打开该应用并从那里授予它</string>
-    <string name="no_scrambleable_images">找不到要加扰的图像。</string>
     <string name="image_not_scrambleable">因为不是JPEG图像，所以无法加扰“%s”</string>
 
     <string name="privacy_policy_menu_item">隐私政策</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">设置</string>
-
-    <string name="settings_force_image_rewrite">强制重写图像</string>
-    <string name="settings_force_image_rewrite_summary">此选项强制重写整个图像文件（通常只删除EXIF数据）。\n\n此选项使删除EXIF数据的速度变慢但更安全，并且可能会影响图片质量。</string>
 
     <string name="settings_rename_images">重命名图像</string>
     <string name="settings_rename_images_summary">文件名可以告诉文件的接收者在某些设备上拍摄照片的日期和时间。\n\n此选项使用随机文件名重命名所有共享图像。</string>

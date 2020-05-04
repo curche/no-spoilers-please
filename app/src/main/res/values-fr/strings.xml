@@ -13,15 +13,11 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif a besoin de l’accès aux fichiers.
         Merci d’ouvrir l’app et de l’autoriser à partir d’elle</string>
-    <string name="no_scrambleable_images">Impossible de trouver des images à brouiller.</string>
     <string name="image_not_scrambleable">Impossible de brouiller \"%s\" car ce n\'est pas une image JPEG.</string>
 
     <string name="privacy_policy_menu_item">Politique de confidentialité</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Paramètres</string>
-
-    <string name="settings_force_image_rewrite">Forcer la réécriture de l’image</string>
-    <string name="settings_force_image_rewrite_summary">Cette option force la réécriture complète du fichier de l’image (normalement seule les données EXIF sont supprimées).\n\nCette option rend l’effacement des données EXIF plus lent mais plus sûr, cela peut avoir une influence sur la qualité de l’image.</string>
 
     <string name="settings_rename_images">Renommer les images</string>
     <string name="settings_rename_images_summary">Sur certains appareils les noms de fichier peuvent indiquer au destinataire la date et l’heure où la photo à été prise.\n\nCette option renomme toutes les images partagées avec un nom de fichier aléatoire.</string>

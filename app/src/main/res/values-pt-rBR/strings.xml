@@ -13,15 +13,11 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif precisa de acesso ao arquivo.
   Por favor, abra o aplicativo e conceda-o de lá</string>
-    <string name="no_scrambleable_images">Não consegui encontrar nenhuma imagem para codificar.</string>
     <string name="image_not_scrambleable">Não foi possível codificar \"%s\" porque não é uma imagem JPEG.</string>
 
     <string name="privacy_policy_menu_item">Política de Privacidade</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Configurações</string>
-
-    <string name="settings_force_image_rewrite">Forçar reescrita de imagem</string>
-    <string name="settings_force_image_rewrite_summary">Essa opção força a regravação de todo o arquivo de imagem (normalmente apenas os dados EXIF ​​são removidos).\n\nEsta opção torna a remoção de dados EXIF ​​mais lenta, porém mais segura, e pode ter uma influência na qualidade da imagem.</string>
 
     <string name="settings_rename_images">Renomear imagens</string>
     <string name="settings_rename_images_summary">Os nomes dos arquivos podem informar ao destinatário do arquivo a data e a hora em que uma foto foi tirada em alguns dispositivos.\n\nEsta opção renomeia todas as imagens compartilhadas com um nome de arquivo aleatório.</string>

@@ -37,9 +37,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Подешавања</string>
 
-    <string name="settings_force_image_rewrite">Присили прераду слике</string>
-    <string name="settings_force_image_rewrite_summary">Ова опција присиљава прераду слике преписивањем комплетне слике (обично су само Егзиф (EXIF) подаци уклоњени).\n\nОва опција чини уклањање Егзиф података споријим али сигурнијим и може имати утицаја на квалитет слике</string>
-
     <string name="settings_keep_jpeg_orientation">Задржавање оријентације (само за ЈПЕГ)</string>
     <string name="settings_keep_jpeg_orientation_summary">Задржавање информације о оријентацији за ЈПЕГ слике</string>
 

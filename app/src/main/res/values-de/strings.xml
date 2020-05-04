@@ -16,9 +16,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Einstellungen</string>
 
-    <string name="settings_force_image_rewrite">Umschreiben der Bilder erzwingen</string>
-    <string name="settings_force_image_rewrite_summary">Diese Option erzwingt das Umschreiben der Bild-Dateien: Normalerweise werden nur die Metadaten gelöscht.\n\nDiese Option verlangsamt das Entfernen von Metadaten, ist aber sicherer. Dies kann allerdings die Qualität der Bilder beeinflussen.</string>
-
     <string name="settings_rename_images">Bilder umbenennen</string>
     <string name="settings_rename_images_summary">In einigen Geräten, könnten Dateinamen dem Empfänger verraten, wo und wann das Bild aufgenommen wurde.\n\nDiese Option umbenennt alle Bilder mit zufälligen Dateinamen.</string>
 

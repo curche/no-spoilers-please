@@ -12,15 +12,11 @@
     <string name="instructions_voila">¡Ya está! Acabas de compartir algunas fotos libres de metadatos con el mundo.</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif necesita acceso a los archivos de tu dispositivo. Abre la aplicación y concedelos desde ahí.</string>
-    <string name="no_scrambleable_images">No se pudo encontrar imagen para procesar.</string>
     <string name="image_not_scrambleable">No se pudo procesar \"%s\" porque no es una imagen JPEG.</string>
 
     <string name="privacy_policy_menu_item">Política de privacidad</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Configuración</string>
-
-    <string name="settings_force_image_rewrite">Forzar reescritura de las imágenes</string>
-    <string name="settings_force_image_rewrite_summary">Esta opción fuerza a reescribir por completo el archivo de imagen (normalmente solo los datos EXIF son removidos).\n\nEsta opción hace remover los datos EXIF más lento pero es más seguro, y podría influir en la calidad de la imagen.</string>
 
     <string name="settings_rename_images">Renombrar imágenes</string>
     <string name="settings_rename_images_summary">Los nombres de archivo pueden indicar al que recibe el archivo la fecha y hora que una foto fue tomada en algunos dispositivos.\n\nEstá opción renombra todas las imágenes compartidas con un nombre de archivo al azar.</string>

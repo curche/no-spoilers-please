@@ -17,9 +17,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ρυθμίσεις</string>
 
-    <string name="settings_force_image_rewrite">Υποχρεωτική επανεγγραφή εικόνας</string>
-    <string name="settings_force_image_rewrite_summary">Αυτή η επιλογή υποχρεώνει την επανεγγραφή ολόκληρου του αρχείου εικόνας (κανονικά μόνο τα δεδομένα EXIF αφαιρούνται).\n\nΑυτή η επιλογή κάνει την αφαίρεση των δεδομένων EXIF πιο αργή αλλά πιο ασφαλή, και είναι πιθανό να επηρεάσει την ποιότητα της εικόνας.</string>
-
     <string name="settings_rename_images">Μετονομασία εικόνων</string>
     <string name="settings_rename_images_summary">Τα ονόματα αρχείων μπορούν να αποκαλύψουν στον παραλήπτη του αρχείου την ημερομηνία και ώρα που πάρθηκε η φωτογραφία σε μερικές συσκευές.\n\nΑυτή η επιλογή μετονομάζει όλα τα διαμοιραζόμενα αρχεία σε τυχαία ονόματα.</string>
 

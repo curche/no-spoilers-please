@@ -17,9 +17,6 @@ Var god öppna appen och ge den tillåtelse</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Inställningar</string>
 
-    <string name="settings_force_image_rewrite">Tvinga omskrivning av bild</string>
-    <string name="settings_force_image_rewrite_summary">Detta alternativ tvingar omskrivning av hela bildfilen (normalt raderas enbart EXIF-datan).\n\n\Detta alternativ gör raderingen av EXIF-datan långsammare men säkrare, och kan ha inverkan på bildkvalitet.</string>
-
     <string name="settings_rename_images">Ge bilderna nya namn</string>
     <string name="settings_rename_images_summary">Filnamn kan visa mottagaren av filen vilket datum och tid ett foto togs på vissa enheter.\n\nDetta alternativ ger alla delade bilder nya, slumpvisa namn.</string>
 

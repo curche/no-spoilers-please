@@ -17,9 +17,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Налаштування</string>
 
-    <string name="settings_force_image_rewrite">Примусове перезаписування зображень</string>
-    <string name="settings_force_image_rewrite_summary">Ця опція вмикає примусовий перезапис всього файлу зображення (зазвичай лише видаляються EXIF-дані).\n\nЦя опція робить видалення EXIF-даних повільнішим, проте безпечнішим, та може вплинути на якість зображення.</string>
-
     <string name="settings_rename_images">Перейменувати зображення</string>
     <string name="settings_rename_images_summary">Імена файлів можуть повідомити одержувачу файлу дату та час зйомки фотографії.\n\nЦя опція змінює назви усіх поширюваних зображень на випадкові.</string>
 

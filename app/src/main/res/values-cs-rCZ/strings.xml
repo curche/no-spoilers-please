@@ -17,9 +17,6 @@ Prosím otevřte aplikaci a povolte toto oprávnění od tamtud</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Nastavení</string>
 
-    <string name="settings_force_image_rewrite">Nucené přepsání obrázku</string>
-    <string name="settings_force_image_rewrite_summary">Toto nastavení donutí přepsání celého obrázku (normálně jsou jenom odstraněna data EXIF). \n\nToto nastavení činí odstranění EXIF dat pomalejší, ale bezpečnejší a může mít dopad na kvalitu obrázku.</string>
-
     <string name="settings_rename_images">Přejmenovat obrázky</string>
     <string name="settings_rename_images_summary">Názvy souborů můžou u některých zařízeních příjemci říct datum a čas kdy byl obrázek vyfocen. \n\nToto nastavení přejmenuje všechny sdílené obrázky na náhodný název.</string>
 

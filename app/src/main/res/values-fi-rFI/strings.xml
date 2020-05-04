@@ -17,6 +17,5 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Asetukset</string>
 
-    <string name="settings_force_image_rewrite">Pakota kuvan ylikirjoitus</string>
     <string name="licenses_menu_item">Lisenssit</string>
     </resources>

@@ -36,9 +36,6 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Beállítások</string>
 
-    <string name="settings_force_image_rewrite">Kényszerítse a képújraírást</string>
-    <string name="settings_force_image_rewrite_summary">Ez az opció arra kényszeríti, hogy átírja a teljes képfájlt (általában csak az EXIF adatokat távolítja el).\n\nEz az opció az EXIF adatok lassabb, de biztonságosabb eltávolítását teszi lehetővé, és befolyásolhatja a képminőséget.</string>
-
     <string name="settings_keep_jpeg_orientation">Tartsa meg az orientációt (csak JPEG esetén)</string>
     <string name="settings_keep_jpeg_orientation_summary">Tartsa meg a JPEG képek orientációjára vonatkozó információkat</string>
 

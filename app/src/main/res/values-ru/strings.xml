@@ -13,15 +13,11 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif необходим доступ к файлам.
         Пожалуйста, откройте приложение и предоставьте его оттуда</string>
-    <string name="no_scrambleable_images">Не удалось найти ни одного изображения, которое можно было бы обработать.</string>
     <string name="image_not_scrambleable">Не удалось обработать \"%s\", потому что это не изображение в формате JPEG.</string>
 
     <string name="privacy_policy_menu_item">Политика конфиденциальности</string>
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Настройки</string>
-
-    <string name="settings_force_image_rewrite">Принудительно перезаписывать изображение</string>
-    <string name="settings_force_image_rewrite_summary">Эта опция заставляет перезаписывать файл изображения целиком (обычно удаляются только данные EXIF).\n\nЭтот параметр выполняет удаление данных EXIF медленнее, но надежнее и может повлиять на качество изображения.</string>
 
     <string name="settings_rename_images">Переименовать изображения</string>
     <string name="settings_rename_images_summary">Имена файлов могут указывать получателю файла дату и время съемки на некоторых устройствах.\n\nЭта опция позволит переименовать все отправляемые изображения случайным образом.</string>

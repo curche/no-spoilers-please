@@ -17,6 +17,5 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Instellingen</string>
 
-    <string name="settings_force_image_rewrite">Forceer herschrijven van afbeelding</string>
     <string name="licenses_menu_item">Licenties</string>
     </resources>

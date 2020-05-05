@@ -15,7 +15,7 @@
         Please open the app and grant it from there</string>
     <string name="image_not_scrambleable">Couldn\'t scramble "%s" because it is not a JPEG image.</string>
 
-    <string name="error_while_scrambling">An error occurred while scrambling "%s". Skipping...</string>
+    <string name="error_while_scrambling">An error occurred while scrambling "%s". Skipping…</string>
 
     <string name="privacy_policy_menu_item">Privacy Policy</string>
 

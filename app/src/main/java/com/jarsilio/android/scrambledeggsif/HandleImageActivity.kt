@@ -37,6 +37,7 @@ import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EX
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 import java.io.IOException
 import java.util.ArrayList
+import java.util.Locale
 import timber.log.Timber
 
 @ExperimentalUnsignedTypes
@@ -138,7 +139,7 @@ class HandleImageActivity : AppCompatActivity() {
         val targetedShareIntents = ArrayList<Intent>()
         val resolveInfos = packageManager.queryIntentActivities(createShareIntent(imageUris), 0)
         for (info in resolveInfos) {
-            if (info.activityInfo.packageName.toLowerCase() == packageName.toLowerCase()) {
+            if (info.activityInfo.packageName.toLowerCase(Locale.ROOT) == packageName.toLowerCase(Locale.ROOT)) {
                 continue // Don't add out own package
             }
 

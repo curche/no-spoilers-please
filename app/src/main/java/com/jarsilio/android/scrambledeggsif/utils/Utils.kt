@@ -39,6 +39,7 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 import java.lang.StringBuilder
+import java.util.Locale
 import java.util.UUID
 import okio.buffer
 import okio.source
@@ -95,7 +96,7 @@ internal class Utils(private val context: Context) {
     }
 
     private fun getRandomImageFilename(imageType: ImageType = ImageType.JPG): String {
-        return "${UUID.randomUUID()}.${imageType.name.toLowerCase()}"
+        return "${UUID.randomUUID()}.${imageType.name.toLowerCase(Locale.ROOT)}"
     }
 
     private fun getRandomImageFilename(uri: Uri): String {

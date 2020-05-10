@@ -14,6 +14,7 @@
     <string name="permissions_open_app_toast">Scrambled Exif potřebuje přistup k souborům.
 Prosím otevřte aplikaci a povolte toto oprávnění od tamtud</string>
     <string name="privacy_policy_menu_item">Zásady Ochrany Soukromí</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Nastavení</string>
 
@@ -27,4 +28,4 @@ Prosím otevřte aplikaci a povolte toto oprávnění od tamtud</string>
     <string name="acra_notification_text">Prosím odešlete hlášení vývojáři aby se pokusil chybu opravit.</string>
     <string name="acra_notification_send">Poslat email</string>
 
-</resources>
+    </resources>

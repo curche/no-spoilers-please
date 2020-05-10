@@ -16,6 +16,7 @@
     <string name="image_not_scrambleable">Не удалось обработать \"%s\", потому что это не изображение в формате JPEG.</string>
 
     <string name="privacy_policy_menu_item">Политика конфиденциальности</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Настройки</string>
 
@@ -23,8 +24,6 @@
     <string name="settings_rename_images_summary">Имена файлов могут указывать получателю файла дату и время съемки на некоторых устройствах.\n\nЭта опция позволит переименовать все отправляемые изображения случайным образом.</string>
 
     <string name="settings_keep_jpeg_orientation">Сохранять ориентацию</string>
-    <string name="settings_keep_jpeg_orientation_summary">Это \"физически\" поворачивает изображение в соответствии с данными EXIF ​​в исходном изображении.\n\nИзображение необходимо переписать, что означает, что оно занимает немного больше времени и подразумевает (вероятную) потерю качества.</string>
-
     <string name="licenses_menu_item">Лицензии</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Сбои</string>
@@ -32,4 +31,4 @@
     <string name="acra_notification_text">Пожалуйста, отправьте отчет разработчику, чтобы он мог попытаться исправить ошибку.</string>
     <string name="acra_notification_send">Отправить email</string>
 
-</resources>
+    </resources>

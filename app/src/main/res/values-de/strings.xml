@@ -13,6 +13,7 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif braucht Zugriff auf Deine Dateien. Bitte öffne die App, um die Berechtigung zu erteilen.</string>
     <string name="privacy_policy_menu_item">Datenschutzerklärung</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Einstellungen</string>
 
@@ -26,4 +27,4 @@
     <string name="acra_notification_text">Bitte schick den Bericht an dem Entwickler, damit er versuchen kann, das Problem zu beheben.</string>
     <string name="acra_notification_send">E-Mail verschicken</string>
 
-</resources>
+    </resources>

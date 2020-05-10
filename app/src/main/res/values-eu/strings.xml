@@ -13,6 +13,7 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif-k zure gailuaren fitxategiak atzitzeko baimena behar du. Ireki aplikazioa baimenak emateko</string>
     <string name="privacy_policy_menu_item">Pribatutasun Politika</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ezarpenak</string>
 
@@ -26,4 +27,4 @@
     <string name="acra_notification_text">Mesedez bidali akatsen berri garatzaileari, konpontzen saiatu dadin.</string>
     <string name="acra_notification_send">Bidali mezua</string>
 
-</resources>
+    </resources>

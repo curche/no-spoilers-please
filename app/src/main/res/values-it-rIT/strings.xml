@@ -16,6 +16,7 @@
     <string name="image_not_scrambleable">Impossibile strapazzare \"%s\" perchè non è un\'immagine JPEG.</string>
 
     <string name="privacy_policy_menu_item">Normativa sulla privacy</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Impostazioni</string>
 
@@ -23,7 +24,27 @@
     <string name="settings_rename_images_summary">I nomi dei file possono rivelare al destinatario la data e l\'ora dello scatto di una foto in alcuni dispositivi.\n\nQuesta opzione rinomina tutte le immagini condivise con un nome casuale.</string>
 
     <string name="settings_keep_jpeg_orientation">Mantieni l\'orientamento</string>
-    <string name="settings_keep_jpeg_orientation_summary">Ruota \"fisicamente\" l\'immagine a seconda dei dati EXIF nell\'immagine originale.\n\nL\'immagine deve essere rigenerata, perciò richiede più tempo ed implica una (probabile) perdita di qualità.</string>
+    <string name="settings_keep_jpeg_orientation_summary">Ruota \"fisicamente\" l\'immagine a seconda dei dati EXIF nell\'immagine originale.\n\nRichiede un po\' più tempo.</string>
+
+    <string name="logging_title">Registro</string>
+
+    <string name="settings_enable_logging">Attiva il registro</string>
+    <string name="settings_enable_logging_summary">Scrivi i registri nella cartella cache dell\'app. Sui dispositivi non rootati, solo Scrambled Exif dovrebbe poter accedere a questi registri. Puoi inviarli allo sviluppatore usando l\'opzione sotto.</string>
+
+    <string name="settings_send_logs_to_dev">Invia i registri allo sviluppatore</string>
+    <string name="settings_send_logs_to_dev_summary">Forse sarà in grado di aiutare :)</string>
+
+    <string name="title_activity_panic_settings">Impostazioni pulsante di panico</string>
+
+    <string name="panic_button_title">Pulsante di panico</string>
+
+    <string name="settings_panic_button_category_summary">Con le seguenti impostazioni puoi configurare come Scrambled Exif reagisce ad una chiamata di un\'app esterna di pulsante di panico (es. <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Elimina immagini in cache</string>
+    <string name="settings_panic_delete_cached_images_summary">Una volta che sono state condivise le immagini, si possono eliminare senza problemi (c\'è una pulitura periodica comunque)</string>
+
+    <string name="settings_panic_clear_app_data">Svuota i dati dell\'app</string>
+    <string name="settings_panic_clear_app_data_summary">Elimina le immagini in cache e le impostazioni. Inoltre termina l\'app e rimuovila dai recenti.</string>
 
     <string name="licenses_menu_item">Licenze</string>
     <!-- ACRA -->
@@ -32,4 +53,9 @@
     <string name="acra_notification_text">Invia il rapporto allo sviluppatore in modo che possa risolverlo.</string>
     <string name="acra_notification_send">Invia email</string>
 
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Autorizzazioni speciali necessarie</string>
+    <string name="miui_permissions_message">%s ha bisogno di un\'autorizzazione speciale chiamata \'Mostra finestre pop-up durante l\'esecuzione in background\' nei dispositivi moderni di Xiaomi (MIUI). Devi consentirla a mano.\n\nTocca il pulsante \'Portami lì\' o cerca le impostazioni manualmente.</string>
+    <string name="miui_permissions_ok_button">Portami lì</string>
+    <string name="miui_permissions_dont_show_again_button">Non mostrare più</string>
 </resources>

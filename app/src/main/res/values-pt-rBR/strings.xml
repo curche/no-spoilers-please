@@ -16,6 +16,7 @@
     <string name="image_not_scrambleable">Não foi possível codificar \"%s\" porque não é uma imagem JPEG.</string>
 
     <string name="privacy_policy_menu_item">Política de Privacidade</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Configurações</string>
 
@@ -23,7 +24,27 @@
     <string name="settings_rename_images_summary">Os nomes dos arquivos podem informar ao destinatário do arquivo a data e a hora em que uma foto foi tirada em alguns dispositivos.\n\nEsta opção renomeia todas as imagens compartilhadas com um nome de arquivo aleatório.</string>
 
     <string name="settings_keep_jpeg_orientation">Manter orientação</string>
-    <string name="settings_keep_jpeg_orientation_summary">Isto faz girar \"fisicamente\" a imagem de acordo com os dados EXIF da imagem original. A imagem precisa ser reescrita, o que significa que leva um pouco mais de tempo e implica uma (provável) perda de qualidade.</string>
+    <string name="settings_keep_jpeg_orientation_summary">Isto faz girar \"fisicamente\" a imagem de acordo com os dados do EXIF na imagem original.\n\nIsto leva um pouco mais de tempo.</string>
+
+    <string name="logging_title">Registro de dados</string>
+
+    <string name="settings_enable_logging">Habilitar o registro de dados</string>
+    <string name="settings_enable_logging_summary">Escreva os registros no diretório cache do app. Em dispositivos não enraizados, apenas o Scrambled Exif deve ser capaz de acessar esses registros. Você pode enviá-los para o dev usando a opção abaixo.</string>
+
+    <string name="settings_send_logs_to_dev">Enviar registros para o dev</string>
+    <string name="settings_send_logs_to_dev_summary">Talvez ele seja capaz de ajudar :)</string>
+
+    <string name="title_activity_panic_settings">Configuração do Botão de Pânico</string>
+
+    <string name="panic_button_title">Botão de Pânico</string>
+
+    <string name="settings_panic_button_category_summary">Com as seguintes configurações você pode configurar a forma como o Scrambled Exif reagirá a uma aplicação externa do botão de pânico (Ex.: <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Apagar imagens em cache</string>
+    <string name="settings_panic_delete_cached_images_summary">Uma vez compartilhadas as imagens, estas podem ser apagadas com segurança (uma limpeza acontece periodicamente de qualquer forma).</string>
+
+    <string name="settings_panic_clear_app_data">Limpar os dados da aplicação</string>
+    <string name="settings_panic_clear_app_data_summary">Eliminar as imagens e configurações em cache. Também matar a aplicação e remover de aplicações usadas recentemente.</string>
 
     <string name="licenses_menu_item">Licenças</string>
     <!-- ACRA -->
@@ -32,4 +53,9 @@
     <string name="acra_notification_text">Por favor, envie o relatório para o desenvolvedor para que ele possa tentar corrigi-lo.</string>
     <string name="acra_notification_send">Enviar email</string>
 
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Permissões especiais necessárias</string>
+    <string name="miui_permissions_message">%s necessita de uma permissão especial chamada \'Janelas de visualização em pop-up durante o uso em segundo plano\' em dispositivos Xiaomi (MIUI) modernos. Tem de a conceder manualmente.\n\nPor favor, toque no botão \'Leve-me até lá\' ou procure a configuração manualmente.</string>
+    <string name="miui_permissions_ok_button">Leve-me até lá</string>
+    <string name="miui_permissions_dont_show_again_button">Não mostrar novamente</string>
 </resources>

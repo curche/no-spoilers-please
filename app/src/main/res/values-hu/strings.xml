@@ -14,6 +14,7 @@
     <string name="permissions_open_app_toast">Scrambled Exif fájlhozzáférést igényel.
         Kérjük, nyissa meg az alkalmazást, és engedélyezze ott</string>
     <string name="privacy_policy_menu_item">Adatvédelmi irányelvek</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Beállítások</string>
 

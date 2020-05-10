@@ -16,6 +16,7 @@
     <string name="image_not_scrambleable">因为不是JPEG图像，所以无法加扰“%s”</string>
 
     <string name="privacy_policy_menu_item">隐私政策</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">设置</string>
 
@@ -23,8 +24,6 @@
     <string name="settings_rename_images_summary">文件名可以告诉文件的接收者在某些设备上拍摄照片的日期和时间。\n\n此选项使用随机文件名重命名所有共享图像。</string>
 
     <string name="settings_keep_jpeg_orientation">保持方向</string>
-    <string name="settings_keep_jpeg_orientation_summary">此操作会“物理地”根据原始图像中的EXIF数据旋转图像。\n\n该图像需要重新写入，这意味着需要花费更长的时间，并意味着（可能）质量下降。</string>
-
     <string name="licenses_menu_item">许可证</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">崩溃</string>
@@ -32,4 +31,4 @@
     <string name="acra_notification_text">请将该报告发送给开发人员，以便他可以尝试对其进行修复。</string>
     <string name="acra_notification_send">发邮件</string>
 
-</resources>
+    </resources>

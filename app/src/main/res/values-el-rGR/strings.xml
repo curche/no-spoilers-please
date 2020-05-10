@@ -14,6 +14,7 @@
     <string name="permissions_open_app_toast">Το Scrambled Exif χρειάζεται πρόσβαση στα αρχεία.
          Παρακαλώ ανοίξτε την εφαρμογή και παραχωρήστε το δικαίωμα από εκεί</string>
     <string name="privacy_policy_menu_item">Πολιτική Ιδιωτικότητας</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ρυθμίσεις</string>
 
@@ -27,4 +28,4 @@
     <string name="acra_notification_text">Παρακαλώ στείλτε την αναφορά στον προγραμματιστή ώστε να προσπαθήσει να διορθώσει το σφάλμα.</string>
     <string name="acra_notification_send">Αποστολή email</string>
 
-</resources>
+    </resources>

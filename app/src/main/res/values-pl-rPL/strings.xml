@@ -13,12 +13,38 @@
 
     <string name="permissions_open_app_toast">Scrambled Exif potrzebuje dostępu do plików.
        Otwórz aplikację i daj w niej odpowiedni dostęp</string>
+    <string name="image_not_scrambleable">Nie można wymieszać \"%s\", bo nie jest plikiem JPEG.</string>
+
     <string name="privacy_policy_menu_item">Polityka Prywatności</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ustawienia</string>
 
     <string name="settings_rename_images">Zmień nazwy zdjęć</string>
     <string name="settings_rename_images_summary">Nazwy plików mogą poinformować odbiorcę pliku o dacie i czasie, w którym zdjęcie zostało zrobione na niektórych urządzeniach.\n\nTa opcja zmienia nazwę wszystkich udostępnianych zdjęć na losową nazwę.</string>
+
+    <string name="settings_keep_jpeg_orientation">Zachowaj orientację</string>
+    <string name="settings_keep_jpeg_orientation_summary">\"Fizycznie\" obraca zdjęcie na podstawie danych EXIF w oryginalnym zdjęciu.\n\nZabiera to trochę więcej czasu.</string>
+
+    <string name="logging_title">Logowanie</string>
+
+    <string name="settings_enable_logging">Włącz logowanie</string>
+    <string name="settings_enable_logging_summary">Zapisz logi w ścieżce cache aplikacji. Na nie zrootowanych urządzeniach, tylko Scrambled Exif powinien mieć dostęp do tych logów. Możesz je wysłać do dewelopera używając opcji poniżej.</string>
+
+    <string name="settings_send_logs_to_dev">Wyślij logi do dewelopera</string>
+    <string name="settings_send_logs_to_dev_summary">Może będzie umiał pomóc :)</string>
+
+    <string name="title_activity_panic_settings">Opcje przycisku paniki</string>
+
+    <string name="panic_button_title">Przycisk paniki</string>
+
+    <string name="settings_panic_button_category_summary">Za pomocą tych opcji możesz skonfigurować, jak Scrambled Exif reaguje na sygnał zewnętrznej aplikacji przycisku paniki (np. <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Usuń zcachowane zdjęcia</string>
+    <string name="settings_panic_delete_cached_images_summary">Po tym jak zdjęcia zostały udostępnione, można to usunąć (i tak jest to czyszczone co jakiś czas).</string>
+
+    <string name="settings_panic_clear_app_data">Wyczyść dane aplikacji</string>
+    <string name="settings_panic_clear_app_data_summary">Usuwa zcachowane zdjęcia i opcje. Wyłącza również aplikację i usuwa z ostatnio używanych.</string>
 
     <string name="licenses_menu_item">Licencje</string>
     <!-- ACRA -->
@@ -27,4 +53,9 @@
     <string name="acra_notification_text">Prosimy o wysłanie raportu do developera, żeby mógł to naprawić.</string>
     <string name="acra_notification_send">Wyślij email</string>
 
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Potrzebne specjalne uprawnienia</string>
+    <string name="miui_permissions_message">%s potrzebuje specjalnych uprawnień \'Wyświetl okienka pop-up podczas działania w tle\' w nowych urządzeniach Xiaomi (MIUI). Musisz na nie zezwolić manualnie.\n\nNaciśnij przycisk \'Zabierz mnie tam\', albo poszukaj tych ustawień manualnie.</string>
+    <string name="miui_permissions_ok_button">Zabierz mnie tam</string>
+    <string name="miui_permissions_dont_show_again_button">Nie pokazuj ponownie</string>
 </resources>

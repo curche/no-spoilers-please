@@ -14,6 +14,7 @@
     <string name="permissions_open_app_toast">Scambled Exif behvöer filåtkomst.
 Var god öppna appen och ge den tillåtelse</string>
     <string name="privacy_policy_menu_item">Integritetspolicy</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Inställningar</string>
 
@@ -27,4 +28,4 @@ Var god öppna appen och ge den tillåtelse</string>
     <string name="acra_notification_text">Vänligen skicka rapporten till utvecklaren så att han kan försöka laga det.</string>
     <string name="acra_notification_send">Skicka e-post</string>
 
-</resources>
+    </resources>

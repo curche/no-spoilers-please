@@ -14,6 +14,7 @@
     <string name="permissions_open_app_toast">Смажений Exif потребує доступу до файлів.
 Відкрийте додаток і надайте його звідти.</string>
     <string name="privacy_policy_menu_item">Політика приватності</string>
+
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Налаштування</string>
 
@@ -27,4 +28,4 @@
     <string name="acra_notification_text">Надішліть, будь ласка, розробнику звіт, щоб він спробував полагодити свій додаток.</string>
     <string name="acra_notification_send">Надіслати електронного листа</string>
 
-</resources>
+    </resources>

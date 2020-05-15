@@ -15,6 +15,8 @@
         Apri l\'app e permetti l\'autorizzazione da lì</string>
     <string name="image_not_scrambleable">Impossibile strapazzare \"%s\" perchè non è un\'immagine JPEG.</string>
 
+    <string name="error_while_scrambling">Sì è verificato un errore strapazzando \"%s\". Lo salto...</string>
+
     <string name="privacy_policy_menu_item">Normativa sulla privacy</string>
 
     <!-- Strings related to Settings -->

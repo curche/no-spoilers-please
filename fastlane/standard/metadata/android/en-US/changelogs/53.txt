@@ -1,0 +1,20 @@
+New in 1.6.14
+★ Xiaomi only: open permissions dialog if MIUI version >= 11.
+
+New in 1.6.13
+★ Fix small bugs.
+★ Update privacy policy (add ACRA section).
+
+New in 1.6.12
+★ Remove READ_EXTERNAL_STORAGE permission.
+
+New in 1.6.11
+★ Add Chinese (China) translation.
+★ Update other translations.
+
+New in 1.6.10
+★ Fix crash while 'keeping orientation' for large images.
+
+New in 1.6.9
+★ Xiaomi only: add a dialog to take to special permissions (needed for Scrambled Exif).
+

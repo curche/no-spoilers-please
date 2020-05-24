@@ -15,6 +15,8 @@
         Пожалуйста, откройте приложение и предоставьте его оттуда</string>
     <string name="image_not_scrambleable">Не удалось обработать \"%s\", потому что это не изображение в формате JPEG.</string>
 
+    <string name="error_while_scrambling">Произошла ошибка при скремблировании \"%s\". Пропускаем…</string>
+
     <string name="privacy_policy_menu_item">Политика конфиденциальности</string>
 
     <!-- Strings related to Settings -->
@@ -24,6 +26,28 @@
     <string name="settings_rename_images_summary">Имена файлов могут указывать получателю файла дату и время съемки на некоторых устройствах.\n\nЭта опция позволит переименовать все отправляемые изображения случайным образом.</string>
 
     <string name="settings_keep_jpeg_orientation">Сохранять ориентацию</string>
+    <string name="settings_keep_jpeg_orientation_summary">Это \"физически\" поворачивает изображение в соответствии с данными EXIF в исходном изображении.\n\nЭто займет немного больше времени.</string>
+
+    <string name="logging_title">Ведение журнала</string>
+
+    <string name="settings_enable_logging">Включить ведение журнала</string>
+    <string name="settings_enable_logging_summary">Записывать журналы в каталог кеша приложения. На не рутованных устройствах только Scrambled Exif должен иметь доступ к этим журналам. Вы можете отправить их разработчику, используя опцию ниже.</string>
+
+    <string name="settings_send_logs_to_dev">Отправить журналы разработчику</string>
+    <string name="settings_send_logs_to_dev_summary">Возможно, он сможет помочь :)</string>
+
+    <string name="title_activity_panic_settings">Настройки тревожной кнопки</string>
+
+    <string name="panic_button_title">Тревожная кнопка</string>
+
+    <string name="settings_panic_button_category_summary">С помощью следующих настроек вы можете настроить, как Scrambled Exif реагирует на триггер стороннего приложения тревожной  кнопки (например, <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Удалить кэшированные изображения</string>
+    <string name="settings_panic_delete_cached_images_summary">После обмена изображениями их можно безопасно удалить (в любом случае периодически выполняется очистка).</string>
+
+    <string name="settings_panic_clear_app_data">Очистить данные приложения</string>
+    <string name="settings_panic_clear_app_data_summary">Удалить кэшированные изображения и настройки. Также убить приложение и удалить из недавно использованных.</string>
+
     <string name="licenses_menu_item">Лицензии</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Сбои</string>
@@ -31,4 +55,9 @@
     <string name="acra_notification_text">Пожалуйста, отправьте отчет разработчику, чтобы он мог попытаться исправить ошибку.</string>
     <string name="acra_notification_send">Отправить email</string>
 
-    </resources>
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Требуются специальные разрешения</string>
+    <string name="miui_permissions_message">%s необходимо специальное разрешение, именуемое \"Отображать всплывающие окна во время работы в фоновом режиме\" в современных устройствах Xiaomi (MIUI). Вы должны предоставить его вручную.\n\nПожалуйста, нажмите кнопку \" Отведите меня туда\" или поищите настройки вручную.</string>
+    <string name="miui_permissions_ok_button">Отведите меня туда</string>
+    <string name="miui_permissions_dont_show_again_button">Не показывать снова</string>
+</resources>

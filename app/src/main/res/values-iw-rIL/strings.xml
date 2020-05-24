@@ -1,11 +1,18 @@
 <resources>
     <string name="share_via">שתף תמונה עם Scrambled Exif דרך</string>
+    <string name="share_multiple_via">שתף תמונות עם Scrambled Exif דרך</string>
     <string name="permission_request">בקש הרשאות</string>
+    <string name="permission_sdcard_text">Scrambled Exif זקוקה לגישה לקבצים שלך על מנת לקרוא את התמונות אותן תרצה לשתף
+נא הקש על הכפתור למטה כדי לאשר את ההרשות הנדרשות</string>
+
     <string name="instructions_title">הוראות</string>
     <string name="instructions_1">בחר מהגלריה את התמונות אותן תרצה לשתף והקש על אייקון השיתוף </string>
     <string name="instructions_2">בחר ב<i>Scrambled Exif</i> מרשימת האפליקציות</string>
+    <string name="instructions_2_1">בשלב זה המטא-דאטה נמחק!</string>
     <string name="instructions_voila">זהו! הרגע שיתפת עם העולם תמונות ללא מטא דאטה!</string>
 
+    <string name="permissions_open_app_toast">Scrambled Exif זקוקה לגישה לקובץ
+נא פתח את האפליקציה ואשר את ההרשאה מכאן</string>
     <string name="privacy_policy_menu_item">מדיניות פרטיות</string>
 
     <!-- Strings related to Settings -->
@@ -15,4 +22,8 @@
     <string name="licenses_menu_item">רישיונות</string>
     <string name="acra_notification_send">שלח אימייל</string>
 
-    </resources>
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">נדרשות הרשאות מיוחדות</string>
+    <string name="miui_permissions_ok_button">קח אותי לשם</string>
+    <string name="miui_permissions_dont_show_again_button">אל תראה שוב</string>
+</resources>

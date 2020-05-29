@@ -20,15 +20,14 @@ https://gitlab.com/juanitobananas/scrambled-exif
 
 <b>Käännökset</b>
 
-Jos tahdot auttaa kääntämään tämän sovelluksen omalle kielellesi, voi tehdä sen käyttämällä transifexiä:
-
-https://www.transifex.com/juanitobananas/scrambled-exif/
+Jos tahdot auttaa tämän sovelluksen kääntämisessä omalle kielellesi, voit tehdä niin kääntämällä nämä kaksi projektia transifexilla:
+https://www.transifex.com/juanitobananas/scrambled-exif/ and https://www.transifex.com/juanitobananas/libcommon/.
 
 <b>Sekalaista ja Faktoja</b>
 
 ★ Pohjimmiltaan, jpeg käyttää Exifiä, joka on tiedostomuoto johon sinun Android kamerasi tallentaa kuvat. Jos tahdot tietää lisää Exifistä, tarkasta Wikipedia
 
-★ Scrambled Exif myös uudelleennimeää tiedostot
+★ Scrambled Exif myös uudelleennimeää tiedostot (tämän voi laittaa pois päältä).
 
 ★ Älä nojaudu vahvasti datan poistamiseen. Scrambled Exif tekee työnsä melko hyvin, mutta se voi myös epäonnistua. Tarkasta aina kahdesti ennen kuin jaat.
 

@@ -1,0 +1,62 @@
+<resources>
+    <string name="share_via">Абагуліць выяву з дапамогай scrambled Exif праз</string>
+    <string name="share_multiple_via">Абагуліць выявы з дапамогай scrambled Exif праз</string>
+    <string name="permission_request">Папрасіць дазвол</string>
+    <string name="permission_sdcard_text">Scrambled Exif патрабуе доступу да вашых файлаў, каб счытваць выявы, якія вы хочаце абагуліць.\n\nКалі ласка, націсніце кнопку ніжэй, каб даць адпаведны дазвол.</string>
+
+    <string name="instructions_title">Інструкцыя</string>
+    <string name="instructions_1">Выбярыце выявы з вашай галерэі, якія хочаце абагуліць, і націсніце значок абагулення.</string>
+    <string name="instructions_2">Выбярыце <i>Scrambled Exif</i> са спіса праграм.</string>
+    <string name="instructions_2_1">На гэтым этапе метаданыя выдаляюцца!</string>
+    <string name="instructions_3">Калі гэта будзе зроблена, спіс праграм з\'явіцца зноў. Проста абагульце выявы як звычайна.</string>
+    <string name="instructions_voila">Et voilà! Вы толькі што абагулілі трохі выяў без метаданых са светам!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif патрабуе доступу да файлаў.
+ Калі ласка, адкрыйце праграму, каб даць яго адтуль.</string>
+    <string name="image_not_scrambleable">Не атрымалася апрацаваць \"%s\", бо гэта не файл JPEG.</string>
+
+    <string name="error_while_scrambling">З\'явілася памылка падчас апрацоўкі \"%s\". Пропуск...</string>
+
+    <string name="privacy_policy_menu_item">Палітыка прыватнасці.</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Налады</string>
+
+    <string name="settings_rename_images">Перайменаваць выявы</string>
+    <string name="settings_rename_images_summary">Назвы файлаў могуць інфармаваць пра дату і час здымкі на некаторых прыладах.\n\nГэты параметр змяняе назву кожнай выявы, якую вы абагульваеце, на выпадковую.</string>
+
+    <string name="settings_keep_jpeg_orientation">Захоўваць арыентацыю</string>
+    <string name="settings_keep_jpeg_orientation_summary">Гэта \"фізічна\" абарочвае выяву паводле даных EXIF у арыгінальным файле.\n\nГэта займае больш часу.</string>
+
+    <string name="logging_title">Вядзенне журналаў</string>
+
+    <string name="settings_enable_logging">Уключыць вядзенне журналаў</string>
+    <string name="settings_enable_logging_summary">Запісваць журналы ў каталог cache праграмы. На прыладах без атрыманых правоў root толькі Scrambled Exif мае доступ да гэтых журналаў. Ніжэй вы можаце даслаць іх распрацоўшчыку.</string>
+
+    <string name="settings_send_logs_to_dev">Даслаць журналы распрацоўшчыку</string>
+    <string name="settings_send_logs_to_dev_summary">Магчыма ён будзе ведаць, як дапамагчы :)</string>
+
+    <string name="title_activity_panic_settings">Налады кнопкі панікі</string>
+
+    <string name="panic_button_title">Кнопка панікі</string>
+
+    <string name="settings_panic_button_category_summary">Наступнай наладай вы можаце канфігураваць, як Scrambled Exif рэагуе на актыватар знешняй праграмы кнопкі панікі (напр. <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Выдаліц выявы захаваныя ў памяці cache</string>
+    <string name="settings_panic_delete_cached_images_summary">Калі гэтыя выявы ўжо абагуленыя, іх можна бяспечна выдаліць (усё роўна перыядычна робіцца ачыстка).</string>
+
+    <string name="settings_panic_clear_app_data">Ачысціць даныя праграмы</string>
+    <string name="settings_panic_clear_app_data_summary">Выдаліць захаваныя ў памяці cache выявы і налады. Таксама забіць праграму і выдаліць яе з нядаўна ўжытых.</string>
+
+    <string name="licenses_menu_item">Ліцэнзіі</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Збоі</string>
+    <string name="acra_notification_title">Упс! Быў выяўлены збой 💩</string>
+    <string name="acra_notification_text">Калі ласка, дашліце справаздачу распрацоўшчыку, каб ён мог гэта выправіць.</string>
+    <string name="acra_notification_send">Даслаць email</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Патрабуюцца спецыяльныя дазволы</string>
+    <string name="miui_permissions_ok_button">Забярыце мяне туды</string>
+    <string name="miui_permissions_dont_show_again_button">Не паказваць зноў</string>
+</resources>

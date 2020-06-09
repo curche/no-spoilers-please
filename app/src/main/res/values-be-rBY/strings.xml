@@ -57,6 +57,7 @@
 
     <!-- MIUI permissions -->
     <string name="miui_permissions_title">Патрабуюцца спецыяльныя дазволы</string>
+    <string name="miui_permissions_message">%s патрабуе спецыяльнага дазволу пад назвай \"Адлюстроўваць усплывальныя вокны у фонавым рэжыме\" на сучасных прыладах Xiaomi (MIUI). Вы мусіце даць яго ўручную.\n\nКалі ласка, націсніце кнопку \"Забярыце мяне туды\", альбо пашукайце наладу самастойна.</string>
     <string name="miui_permissions_ok_button">Забярыце мяне туды</string>
     <string name="miui_permissions_dont_show_again_button">Не паказваць зноў</string>
 </resources>

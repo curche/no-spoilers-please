@@ -22,12 +22,14 @@ package com.jarsilio.android.scrambledeggsif.utils
 import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.pm.PackageManager
 import android.mediautil.image.jpeg.LLJTran
 import android.mediautil.image.jpeg.LLJTranException
 import android.net.Uri
 import android.os.Build
 import android.provider.OpenableColumns
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.exifinterface.media.ExifInterface
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.BufferedOutputStream
@@ -53,15 +55,12 @@ internal class Utils(private val context: Context) {
 
     val isPermissionGranted: Boolean
         get() {
-            return true
-            /*
-            TODO: if nobody complains, we can remove all the code that calls isPermissionGranted and the UI that depends on it.
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 val permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
                 permissionCheck == PackageManager.PERMISSION_GRANTED
             } else {
                 true
-            }*/
+            }
         }
 
     fun requestPermissionsIfNecessary(activity: Activity) {

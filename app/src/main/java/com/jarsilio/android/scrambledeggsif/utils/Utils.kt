@@ -55,7 +55,8 @@ internal class Utils(private val context: Context) {
 
     val isPermissionGranted: Boolean
         get() {
-            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
+                    Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q) {
                 val permissionCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)
                 permissionCheck == PackageManager.PERMISSION_GRANTED
             } else {

@@ -28,6 +28,7 @@
     android:title="@string/settings_rename_images"
     android:key="pref_rename_images"
     android:summary="@string/settings_rename_images_summary" />
+<!--
 <PreferenceCategory
     android:key="prefs_logging"
     android:title="@string/logging_title">
@@ -43,4 +44,5 @@
         android:summary="@string/settings_send_logs_to_dev_summary"
         android:dependency="pref_logging_enabled" />
 </PreferenceCategory>
+-->
 </PreferenceScreen>

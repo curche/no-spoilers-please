@@ -15,6 +15,8 @@
   Por favor, abra o aplicativo e conceda-o de lá</string>
     <string name="image_not_scrambleable">Não foi possível codificar \"%s\" porque não é uma imagem JPEG.</string>
 
+    <string name="error_while_scrambling">Ocorreu um erro ao embaralhar \"%s\". Saltando…</string>
+
     <string name="privacy_policy_menu_item">Política de Privacidade</string>
 
     <!-- Strings related to Settings -->

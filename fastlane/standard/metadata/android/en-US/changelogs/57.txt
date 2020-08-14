@@ -14,10 +14,3 @@ New in 1.6.15
 ★ Add Belarusian translation.
 ★ Update other translations.
 
-New in 1.6.14
-★ Xiaomi only: open permissions dialog if MIUI version >= 11.
-
-New in 1.6.13
-★ Fix small bugs.
-★ Update privacy policy (add ACRA section).
-

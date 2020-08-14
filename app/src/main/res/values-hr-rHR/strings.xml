@@ -1,0 +1,63 @@
+<resources>
+    <string name="share_via">Podijeli sliku sa Scrambled Exifom kroz </string>
+    <string name="share_multiple_via">Podijeli slike sa Scrambled Exifom kroz</string>
+    <string name="permission_request">Zatraži dozvolu</string>
+    <string name="permission_sdcard_text">Scrambled Exif zahtijeva pristup Vašim datotekama za čitanje slika koje želite podijeliti kroz aplikaciju.\n\nMolimo dotaknite tipku ispod da biste dali aplikaciji potrebnu dozvolu.</string>
+
+    <string name="instructions_title">Upute</string>
+    <string name="instructions_1">U Vašoj galeriji odaberite slike koje želite podijeliti i dotaknite ikonu za dijeljenje.</string>
+    <string name="instructions_2">Odaberite <i>Scrambled Exif</i> u popisu aplikacija.</string>
+    <string name="instructions_2_1">U ovom koraku se brišu metapodatci!</string>
+    <string name="instructions_3">Kada taj korak završi, ponovno će se prikazati popis aplikacija. Sada možete jednostavno podijeliti fotografiju kao što ste i do sada.</string>
+    <string name="instructions_voila">Et voilà! Upravo ste sa svijetom podijelili slike bez metapodataka!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif zahtijeva pristup datotekama.
+   Molimo otvorite aplikaciju i tamo dozvolite pristup.</string>
+    <string name="image_not_scrambleable">Nije bilo moguće očistiti \"%s\" jer to nije JPEG slika.</string>
+
+    <string name="error_while_scrambling">Dogodila se greška tijekom čišćenja \"%s\". Preskakanje...</string>
+
+    <string name="privacy_policy_menu_item">Politika privatnosti</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Postavke</string>
+
+    <string name="settings_rename_images">Preimenuj slike</string>
+    <string name="settings_rename_images_summary">Nazivi datoteka mogu primatelju otkriti datum i vrijeme okidanja fotografije na nekim uređajima.\n\nOva opcija preimenuje sve slike nasumičnim nazivima.</string>
+
+    <string name="settings_keep_jpeg_orientation">Zadrži orijentaciju</string>
+    <string name="settings_keep_jpeg_orientation_summary">Ovo \"fizički\" rotira sliku prema EXIF podatcima u izvornoj slici.\n\nOvo može trajati malo duže.</string>
+
+    <string name="logging_title">Izvješćivanje</string>
+
+    <string name="settings_enable_logging">Omogući izvješćivanje</string>
+    <string name="settings_enable_logging_summary">Piše izvješća u mapu predmemorije aplikacije. Na uređajima koji nemaju root pristup, samo Scrambled Exif bi smio imati pristup tim izvješćima. Možete ih poslati razvijatelju pomoću tipke ispod.</string>
+
+    <string name="settings_send_logs_to_dev">Pošalji izvješća razvijatelju</string>
+    <string name="settings_send_logs_to_dev_summary">Možda će on moći pomoći :)</string>
+
+    <string name="title_activity_panic_settings">Postavke tipke za paniku</string>
+
+    <string name="panic_button_title">Tipka za paniku</string>
+
+    <string name="settings_panic_button_category_summary">Pomoću sljedeće postavke možete konfigurirati kako Scrambled Exif reagira na okidanje vanjske tipke za paniku (npr. <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Obriši predmemorirane slike</string>
+    <string name="settings_panic_delete_cached_images_summary">Jednom kada su slike podijeljene, sigurno je obrisati ove datoteke (čišćenje se ionako provodi periodično).</string>
+
+    <string name="settings_panic_clear_app_data">Očisti podatke aplikacije</string>
+    <string name="settings_panic_clear_app_data_summary">Briše predmemorirane slike i postavke, te zaustavlja aplikaciju i uklanja ju iz nedavno korištenih.</string>
+
+    <string name="licenses_menu_item">Licencije</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Rušenja</string>
+    <string name="acra_notification_title">Ups! Detektirano je rušenje 💩</string>
+    <string name="acra_notification_text">Molimo pošaljite izvješće razvijatelju da bi on to pokušao popraviti.</string>
+    <string name="acra_notification_send">Pošalji e-poštu</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Potrebne su posebne dozvole</string>
+    <string name="miui_permissions_message">%s zahtijeva posebnu dozvolu zvanu \"Pokaži skočni prozor tijekom rada u pozadini\" na modernim Xiaomi (MIUI) uređajima. Morate to omogućiti ručno.\n\nMolimo kliknite na tipku \"Odvedi me tamo\" ili ručno potražite postavku.</string>
+    <string name="miui_permissions_ok_button">Odvedi me tamo</string>
+    <string name="miui_permissions_dont_show_again_button">Ne prikazuj ponovno</string>
+</resources>

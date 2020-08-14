@@ -1,0 +1,36 @@
+Scrambled Exif (izgovara se <i>egg</i>sif) pomaže Vam u uklanjanju metapodataka sa Vašim slika prije nego što ih podijelite.
+
+Ako tako želite.
+
+Ako ne želite da velike internetske tvrtke (ili tko god) zna gdje su slikane Vaše slike, ne zaboravite s njih ukloniti metapodatke prije nego ih podijelite.
+
+Da biste uklonili metapodatke sa slike, jednostavno ju podijelite kao što to radite i inače te odaberite <i>Scrambled Exif</i>. Koji trenutak kasnije ponovno će se pojaviti "prozor" za dijeljenje. Sada jednostavno podijelite s aplikacijom s kojom želite podijeliti sliku.
+
+Et voilà!
+
+<b>Potrebne dozvole za Android:</b>
+
+★ READ_EXTERNAL_STORAGE za čitanje slika koje podijele druge aplikacije.
+
+<b>Izvorni kôd</b>
+
+★ Ova aplikacija je otvorenog kôda. Kôd možete vidjeti (i doprinijeti mu, ako želite) ovdje:
+
+https://gitlab.com/juanitobananas/scrambled-exif
+
+<b>Prijevodi</b>
+
+Ako želite pomoći u prevođenju ove aplikacije na svoj jezik, možete to učiniti prevođenjem ova dva projekta na transifexu:
+https://www.transifex.com/juanitobananas/scrambled-exif/ i https://www.transifex.com/juanitobananas/libcommon/.
+
+<b>Različite stvari i činjenice</b>
+
+★ Jednostavno rečeno, exif je korišten u jpeg-u, formatu u kojem Vaša Android kamera sprema slike. Ako želite saznati više o Exifu, pogledajte na Wikipediji.
+
+★ Scrambled Exif i preimenuje datoteke (ovo se može onemogućiti).
+
+★ Molimo ne oslanjajte se previše na brisanje metapodataka. Scrambled Exif dobro odrađuje svoj posao, ali može zakazati. Uvijek dva puta provjerite prije nego podijelite slike.
+
+★ Aplikacija zapravo ne <i>scramblea</i> Exif podatke, nego ih potpuno briše, pa je zbog toga ime aplikacije vjerojatno glupo. Ali sviđa mi se. A također sam i veliki obožavatelj jaja. Znači aplikacija nema samo glupo ime i jednako glupu ikonu, nego je i moj (ne-glupi) danak jajima. Pogotovo <i>huevos fritos</i>. Jer ih volim.
+
+★ Zabavite se dijeljenjem slika!

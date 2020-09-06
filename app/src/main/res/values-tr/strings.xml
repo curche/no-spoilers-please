@@ -1,0 +1,64 @@
+<resources>
+    <string name="share_via">Exif silinmiş görüntüyü şununla paylaş</string>
+    <string name="share_multiple_via">Exif silinmiş görüntüleri şununla paylaş</string>
+    <string name="permission_request">İzin iste</string>
+    <string name="permission_sdcard_text">Scrambled Exif paylaştığınız dosyalarınıza erişim iznine ihtiyaç duyar.\n\nLütfen aşağıdaki düğmeye basarak gerekli izinleri veriniz.</string>
+
+    <string name="instructions_title">Talimatlar</string>
+    <string name="instructions_1">Galerinizden paylaşmak istediğiniz görüntü dosyalarını seçiniz ve paylaş düğmesine basınız.</string>
+    <string name="instructions_2">Uygulama listesinden <i>Scrambled Exif</i> seçiniz.</string>
+    <string name="instructions_2_1">Metaveriler bu noktada silinecektir!!</string>
+    <string name="instructions_3">Bu tamamlandığında uygulama listesi tekrar görünecektir. Normalde paylaşacağınız uygulamayı seçiniz.</string>
+    <string name="instructions_voila">Et voilà! İşte metaveri olmadan dünyayla birkaç görüntü paylaştınız!</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exif dosya erişimine ihtiyacı var. Lütfen uygulamayı açıp bu izinleri veriniz</string>
+    <string name="image_not_scrambleable">"%s" metaverisi silinemiyor çünkü JPEG değil.</string>
+
+    <string name="error_while_scrambling">"%s" metaverisi silinirken bir hata oluştu. Atlanıyor…</string>
+
+    <string name="privacy_policy_menu_item">Gizlilik Politikası</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Ayarlar</string>
+
+    <string name="settings_rename_images">Görüntüleri yeniden adlandır</string>
+    <string name="settings_rename_images_summary">Dosya isimleri bazı cihazlarda dosya alıcısı fotoğrafın çekilme tarihi ve zamanını söyleyebilir.\n\nBu seçenek paylaşılan görüntülerin isimlerinin ratgele dosya isimleriyle yeniden adlandırılmasını sağlar.</string>
+
+    <string name="settings_keep_jpeg_orientation">Çerçeveyi koru</string>
+    <string name="settings_keep_jpeg_orientation_summary">Bu seçenek orijinal dosyadaki EXIF verisine göre görüntüyü \"fiziksel olarak\" döndürür.\n\nBu biraz zaman alır.</string>
+
+    <string name="logging_title">Log Tutma</string>
+
+    <string name="settings_enable_logging">log tutmaya izin ver</string>
+    <string name="settings_enable_logging_summary">log\'ları uygulama önbellek klasörüne yazar. root\'suz cihazlarda, sadece Scrambled Exif bu log\'lara erişebilecektir. Bunları aşağıdaki seçenekle geliştiricilere gönderebilirsiniz.</string>
+
+    <string name="settings_send_logs_to_dev">log\'ları geliştiricilere gönder</string>
+    <string name="settings_send_logs_to_dev_summary">Muhtemelen bize yararı dokunur :)</string>
+
+    <string name="title_activity_panic_settings">Panik Düğmesi Ayarları</string>
+
+    <string name="panic_button_title">Panik Düğmesi</string>
+
+    <string name="settings_panic_button_category_summary">Takip eden ayarlarla Scrambled Exif uygulamasının harici bir panik düğmesi uygulamasının (örneğil <i>Ripple</i>) tetiklenmesinde nasıl davranacağını yapılandırabilirsiniz.</string>
+
+    <string name="settings_panic_delete_cached_images">Önbellekteki görüntüleri sil</string>
+    <string name="settings_panic_delete_cached_images_summary">Görüntüler bir kez paylaşıldığında bunların silineceği kesinleşir (bu arada zaten periyodik olarak bir temizleme olur).</string>
+
+    <string name="settings_panic_clear_app_data">Uygulama verisini silin</string>
+    <string name="settings_panic_clear_app_data_summary">Önbellekteki görüntüleri ve ayarları silinir. Ayrıca uygulamayı durdurur ve son kullanılanlardan kaldırılır.</string>
+
+    <string name="licenses_menu_item">Lisans</string>
+    <string name="licenses_about_libraries_text" translatable="false"><![CDATA[<br/><b>Scrambled Exif License</b><br/><br/>Copyright (c) 2018-2020 Juan García Basilio<br/><br/>This app is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br/><br/>This app is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the <a href="http://www.gnu.org/licenses/">GNU General Public License</a> for more details.<br/><br/><b>Third-party libraries</b><br/><br/>Here is a list of the libraries used by this app. Tap on them for more information.]]></string>
+
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Arızalar</string>
+    <string name="acra_notification_title">Hoayda! Arıza var 💩</string>
+    <string name="acra_notification_text">Lütfen geliştiricilere rapor gönerin, böylece bunu düzeltmeye çalışabilirler.</string>
+    <string name="acra_notification_send">email gönder</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Özel izin gerekli</string>
+    <string name="miui_permissions_message">%s modern Xiaomi (MIUI) cihazlarda \'Arkaplanda çalışırkan pop-up ekranı göster\' adında özel bir izne ihtiyaç duyar. Bu izni elle vermelisiniz.\n\nLütfen \'Beni oraya götür\' düğmesine basınız veya ayarlara bakınız.</string>
+    <string name="miui_permissions_ok_button">Beni oraya götür</string>
+    <string name="miui_permissions_dont_show_again_button">Tekrar gösterme</string>
+</resources>

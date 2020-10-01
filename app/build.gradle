@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply from: "../artifacts.gradle"
-apply from: "../spotless.gradle"
+apply from: "../libcommon/artifacts.gradle"
+apply from: "../libcommon/spotless.gradle"
 
 android {
     compileSdkVersion 29

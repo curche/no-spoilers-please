@@ -20,10 +20,6 @@ gitlab_project_id = "5252730"
 default_platform(:android)
 
 platform :android do
-  before_all do
-    gradle(task: "clean")
-    gradle(task: "spotlessCheck")
-  end
 
   lane :build_all do
     build_flavor(flavor: "")

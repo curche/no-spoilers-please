@@ -1,0 +1,14 @@
+New in 1.6.20
+★ Update some translations.
+
+New in 1.6.19
+★ Add Turkish translation. Thank you very much for this, Berkay Gündüz!
+
+New in 1.6.18
+★ Add Croation translation. Thank you very much for this, Ivan Jurica!
+
+New in 1.6.17
+★ Update Portuguese (Brazil) translation.
+★ Remove READ_EXTERNAL_STORAGE permission for Android R and newer.
+★ Remove option to send debug logs.
+

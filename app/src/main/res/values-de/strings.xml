@@ -20,6 +20,7 @@
     <string name="settings_rename_images">Bilder umbenennen</string>
     <string name="settings_rename_images_summary">In einigen Geräten, könnten Dateinamen dem Empfänger verraten, wo und wann das Bild aufgenommen wurde.\n\nDiese Option umbenennt alle Bilder mit zufälligen Dateinamen.</string>
 
+    <string name="settings_keep_jpeg_orientation">Bildausrichtung beibehalten</string>
     <string name="licenses_menu_item">Lizenzen</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Abstürze</string>
@@ -27,4 +28,5 @@
     <string name="acra_notification_text">Bitte schick den Bericht an dem Entwickler, damit er versuchen kann, das Problem zu beheben.</string>
     <string name="acra_notification_send">E-Mail verschicken</string>
 
+    <string name="miui_permissions_ok_button">Zeig mir wie</string>
     </resources>

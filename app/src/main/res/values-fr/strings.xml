@@ -15,6 +15,8 @@
         Merci d’ouvrir l’app et de l’autoriser à partir d’elle</string>
     <string name="image_not_scrambleable">Impossible de brouiller \"%s\" car ce n\'est pas une image JPEG.</string>
 
+    <string name="error_while_scrambling">Une erreur s’est produite pendant le brouillage \"%s\". Passer… </string>
+
     <string name="privacy_policy_menu_item">Politique de confidentialité</string>
 
     <!-- Strings related to Settings -->
@@ -24,6 +26,16 @@
     <string name="settings_rename_images_summary">Sur certains appareils les noms de fichier peuvent indiquer au destinataire la date et l’heure où la photo à été prise.\n\nCette option renomme toutes les images partagées avec un nom de fichier aléatoire.</string>
 
     <string name="settings_keep_jpeg_orientation">Conserver l\'orientation</string>
+    <string name="settings_keep_jpeg_orientation_summary">Cette rotation \"physique\" permet de faire pivoter l’image en fonction des données EXIF de l’image originale.\n\nCela prend un peu plus de temps.</string>
+
+    <string name="logging_title">Journalisation</string>
+
+    <string name="settings_enable_logging">Activer la journalisation</string>
+    <string name="settings_enable_logging_summary">Écrire les journaux dans le répertoire cache de l’application. Sur les appareils non rootés, seul Scrambled Exif devrait pouvoir accéder à ces journaux. Vous pouvez les envoyer au développeur en utilisant l’option ci-dessous..</string>
+
+    <string name="settings_send_logs_to_dev">Envoyer les journaux au développeur</string>
+    <string name="settings_send_logs_to_dev_summary">Peut-être pourra-t-il aider :)</string>
+
     <string name="licenses_menu_item">Licences</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Plantages</string>
@@ -31,4 +43,7 @@
     <string name="acra_notification_text">Veuillez envoyer un rapport au dév pour qu\'il puisse essayer de le corriger.</string>
     <string name="acra_notification_send">Envoyer un courrier électronique</string>
 
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Permissions spéciales nécessaires</string>
+    <string name="miui_permissions_ok_button">M\'emmener là-bas</string>
     </resources>

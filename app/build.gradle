@@ -5,13 +5,13 @@ apply from: "../libcommon/artifacts.gradle"
 apply from: "../libcommon/spotless.gradle"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.jarsilio.android.scrambledeggsif"
         minSdkVersion 15
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 59
         versionName "1.6.20"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

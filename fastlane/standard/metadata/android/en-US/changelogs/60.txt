@@ -1,0 +1,13 @@
+New in 1.6.21
+★ Fix some Android 11 compatibility issues.
+★ Update some translations.
+★ Re-add option to send debug logs in case something breaks to the new Android 11 code.
+
+New in 1.6.20
+★ Update some translations.
+
+New in 1.6.19
+★ Add Turkish translation. Thank you very much for this, Berkay Gündüz!
+
+New in 1.6.18
+★ Add Croatian translation. Thank you very much for this, Ivan Jurica!

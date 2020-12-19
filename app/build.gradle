@@ -11,8 +11,8 @@ android {
         applicationId "com.jarsilio.android.scrambledeggsif"
         minSdkVersion 15
         targetSdkVersion 30
-        versionCode 59
-        versionName "1.6.20"
+        versionCode 60
+        versionName "1.6.21"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true

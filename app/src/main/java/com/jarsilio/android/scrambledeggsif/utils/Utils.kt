@@ -179,7 +179,7 @@ internal class Utils(private val context: Context) {
     fun getRealFilenameFromURI(uri: Uri): String {
         var realFilename: String? = null
 
-        context.contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+        context.contentResolver.query(uri, null, null, null, null)?.let { cursor ->
             if (cursor.moveToFirst()) {
                 val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
                 if (nameIndex != -1) {

@@ -41,7 +41,13 @@ If you wish to help to translate this app to your own language, you can do so by
 - It doesn't really *scramble* the Exif data, it deletes it. So the name is probably stupid. But I like it. The icon doesn't depict scrambled eggs either. So the icon is probably stupid. But I like it. And I also happen to be a huge fan of eggs. So this app doesn't only have a stupid name and an equally stupid icon, it is also my (non-stupid) tribute to eggs. Especially *huevos fritos*. Because I love them.
 
 - Have fun sharing your pics!
- 
+
+## Donating
+
+If you feel like donating, you can do so by using Liberapay [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/juanitobananas/).
+
+Maybe bitcoin is more of your liking? Here you go: bc1qagv574q7k66nwmtef8gxmjge4ekvnjxfytxp5e
+
 ## Legal Attributions
 
 Google Play and the Google Play logo are trademarks of Google Inc.

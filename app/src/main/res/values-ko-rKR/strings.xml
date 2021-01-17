@@ -1,0 +1,63 @@
+<resources>
+    <string name="share_via">스크램블 Exif로 이미지 공유</string>
+    <string name="share_multiple_via">스크램블 Exif로 이미지 공유</string>
+    <string name="permission_request">접근 허용</string>
+    <string name="permission_sdcard_text">스크램블드 Exif이 공유하는 이미지를 읽기 위해 파일에 접근할 수 있어야 합니다.\n\n 필요한 권한을 부여하려면 아래 버튼을 누르십시오.</string>
+
+    <string name="instructions_title">소개</string>
+    <string name="instructions_1">갤러리에서 공유할 사진을 선택하고 공유 아이콘을 누릅니다.</string>
+    <string name="instructions_2">앱 목록에서 <i>스크램블 Exif</i>를 선택합니다.</string>
+    <string name="instructions_2_1">이 시점에서 메타데이터가 삭제되고 있습니다!</string>
+    <string name="instructions_3">이 작업이 완료되면 앱 목록이 다시 나타납니다. 그냥 평소처럼 사진을 공유하세요.</string>
+    <string name="instructions_voila">짜잔! 메타데이터가 없는 사진을 세상과 공유했습니다.</string>
+
+    <string name="permissions_open_app_toast">스크램블 Exif 파일 액세스가 필요합니다.
+앱을 열고 허용하십시오</string>
+    <string name="image_not_scrambleable">JPEG 이미지가 아니기 때문에 \"%s\"를 스크램블할 수 없습니다.</string>
+
+    <string name="error_while_scrambling">\"%s\"을(를) 스크램블하는 동안 오류가 발생했습니다. 스킵하는 중…</string>
+
+    <string name="privacy_policy_menu_item">개인정보 보호정책</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">설정</string>
+
+    <string name="settings_rename_images">이미지 이름 바꾸기</string>
+    <string name="settings_rename_images_summary">파일 이름은 파일의 수신자에게 일부 장치에서 사진을 찍은 날짜와 시간을 알려줄 수 있습니다.\n\n이 옵션은 모든 공유 이미지의 이름을 임의의 파일 이름으로 바꿉니다.</string>
+
+    <string name="settings_keep_jpeg_orientation">방향 유지</string>
+    <string name="settings_keep_jpeg_orientation_summary">이렇게 하면 원본 이미지의 EXIF 데이터에 따라 영상이 \"물리적으로\" 회전합니다.\n\n이 작업은 시간이 좀 더 걸립니다.</string>
+
+    <string name="logging_title">로깅</string>
+
+    <string name="settings_enable_logging">로깅 사용</string>
+    <string name="settings_enable_logging_summary">앱의 캐시 디렉토리에 로그를 씁니다. 루트가 없는 장치에서는 스크램블 Exif만 이러한 로그에 액세스할 수 있어야 합니다. 아래 옵션을 사용하여 개발자에게 보낼 수 있습니다.</string>
+
+    <string name="settings_send_logs_to_dev">개발자에게 로그 보내기</string>
+    <string name="settings_send_logs_to_dev_summary">아마도 그가 도와줄 수 있을 거야 :)</string>
+
+    <string name="title_activity_panic_settings">패닉 버튼 설정</string>
+
+    <string name="panic_button_title">패닉 버튼</string>
+
+    <string name="settings_panic_button_category_summary">다음 설정을 사용하여 스크램블 Exif가 외부 패닉 버튼 앱(예: <i>리플</i>) 트리거에 어떻게 반응하는지 구성할 수 있습니다.</string>
+
+    <string name="settings_panic_delete_cached_images">캐시된 이미지 삭제</string>
+    <string name="settings_panic_delete_cached_images_summary">이미지가 공유되면 삭제해도 무방합니다(어쨌든 정리 작업은 주기적으로 수행됩니다.)</string>
+
+    <string name="settings_panic_clear_app_data">앱 데이터 지우기</string>
+    <string name="settings_panic_clear_app_data_summary">캐시된 이미지 및 설정을 삭제합니다. 또한 앱을 제거하고 최근에 사용한 앱에서 제거합니다.</string>
+
+    <string name="licenses_menu_item">라이센스</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">오류</string>
+    <string name="acra_notification_title">어머나! 오류가 감지되었습니다 💩</string>
+    <string name="acra_notification_text">개발자가 수정할 수 있도록 개발자에게 신고하십시오.</string>
+    <string name="acra_notification_send">이메일 보내기</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">특수 권한 필요</string>
+    <string name="miui_permissions_message">%s는 최신 샤오미(MIUI) 장치에서 \'백그라운드에서 실행 중 팝업 윈도우 표시\'라는 특수 권한이 필요합니다. 수동으로 허용해야 합니다.\n\n \'바로가기\' 버튼을 누르거나 수동으로 설정을 찾아보십시오.</string>
+    <string name="miui_permissions_ok_button">바로가기</string>
+    <string name="miui_permissions_dont_show_again_button">다시 보지 않음</string>
+</resources>

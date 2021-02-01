@@ -1,0 +1,10 @@
+New in 1.6.22
+★ (Hopefully) fix another Android 11 compatibility issue.
+★ Fix crash while keeping original filename on some devices (force rename in these cases).
+★ Update some translations.
+★ Add Korean translation. Thank you very much for this, Gordon Shumway!
+
+New in 1.6.21
+★ Fix some Android 11 compatibility issues.
+★ Update some translations.
+★ Re-add option to send debug logs in case something breaks to the new Android 11 code.

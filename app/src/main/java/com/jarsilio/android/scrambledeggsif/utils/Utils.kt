@@ -178,7 +178,8 @@ internal class Utils(private val context: Context) {
     fun getRealFilenameFromURI(uri: Uri): String {
         var realFilename: String? = null
 
-        context.contentResolver.query(uri, null, null, null, null)?.let { cursor ->
+        val queryCursor = context.contentResolver.query(uri, null, null, null, null)
+        queryCursor?.let { cursor ->
             if (cursor.moveToFirst()) {
                 val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
                 if (nameIndex != -1) {
@@ -187,6 +188,9 @@ internal class Utils(private val context: Context) {
             }
         }
 
+        if (queryCursor == null) {
+            Timber.e("For some reason, couldn't get a cursor to read the filename database.")
+        }
         if (realFilename == null) {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
         }

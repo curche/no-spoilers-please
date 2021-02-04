@@ -43,4 +43,13 @@
             android:summary="@string/settings_send_logs_to_dev_summary"
             android:dependency="pref_logging_enabled" />
     </PreferenceCategory>
+    <PreferenceCategory
+        android:key="prefs_experimental"
+        android:title="@string/experimental_title">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/settings_process_invalid_jpegs"
+            android:key="pref_process_invalid_jpegs"
+            android:summary="@string/settings_process_invalid_jpegs_summary" />
+    </PreferenceCategory>
 </PreferenceScreen>

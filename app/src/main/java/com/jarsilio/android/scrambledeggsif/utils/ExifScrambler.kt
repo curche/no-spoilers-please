@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018-2020 Juan García Basilio
+ * Copyright (c) 2018-2021 Juan García Basilio
  * Copyright (c) 2019 Eric Cochran (see https://github.com/NightlyNexus/ExifDataRemover/blob/master/app/src/main/java/com/nightlynexus/exifdataremover/Activity.kt#L107)
  *
  * This file is part of Scrambled Exif.
@@ -71,6 +71,8 @@ class JpegScrambler(private val context: Context) {
     private val jpegSkippableSegments = byteArrayFromInts(0xFE, 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8, 0xE9, 0xEA, 0xEB, 0xEC, 0xED, 0xEE, 0xEF)
     private val jpegStartOfStream = 0xDA.toByte()
 
+    private val settings by lazy { Settings(context) }
+
     @ExperimentalUnsignedTypes
     fun scramble(jpegImage: File) {
         val tempImage = File(context.imagesCacheDir, "${UUID.randomUUID()}.jpg")
@@ -80,11 +82,20 @@ class JpegScrambler(private val context: Context) {
                 sink.write(source, 2) // This writes the first (empty) start of image segment FFD8 (actually, JPEG allows for segments without payload. This code isn't really (yet?) compatible with that).
 
                 while (!source.exhausted()) {
-                    val marker = source.readByte()
-                    val segmentType = source.readByte()
+                    var marker = source.readByte()
+                    var segmentType = source.readByte()
 
                     if (marker != jpegSegmentMarker) {
-                        throw ScrambleException("Invalid JPEG. Expected an FF marker (${"%02x".format(marker)} != ${"%02x".format(jpegSegmentMarker)})")
+                        Timber.d("Invalid JPEG. Expected an FF marker (${"%02x".format(marker)} != ${"%02x".format(jpegSegmentMarker)}). Will try to skip bytes until we find a JPEG marker and hope for the best")
+                        if (settings.processInvalidJpegs) {
+                            while (marker != jpegSegmentMarker || segmentType == jpegSegmentMarker || segmentType == 0x00.toByte()) {
+                                Timber.v("Skipping byte in malformed JPEG file")
+                                marker = segmentType
+                                segmentType = source.readByte()
+                            }
+                        } else {
+                            throw ScrambleException("Invalid JPEG. Expected an FF marker (${"%02x".format(marker)} != ${"%02x".format(jpegSegmentMarker)})")
+                        }
                     }
 
                     val size = source.readShort().toUShort()

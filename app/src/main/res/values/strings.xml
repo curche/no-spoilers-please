@@ -36,6 +36,11 @@
     <string name="settings_send_logs_to_dev">Send logs to dev</string>
     <string name="settings_send_logs_to_dev_summary">Perhaps he\'ll be able to help :)</string>
 
+    <string name="experimental_title">Experimental</string>
+
+    <string name="settings_process_invalid_jpegs">Process invalid JPEG images</string>
+    <string name="settings_process_invalid_jpegs_summary">Try to ignore invalid JPEG segments by skipping them. This might really not work.</string>
+
     <string name="title_activity_panic_settings">Panic Button Settings</string>
 
     <string name="panic_button_title">Panic Button</string>

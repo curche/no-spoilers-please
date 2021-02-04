@@ -18,29 +18,29 @@
   -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-<SwitchPreference
-    android:defaultValue="false"
-    android:title="@string/settings_keep_jpeg_orientation"
-    android:key="pref_keep_jpeg_orientation"
-    android:summary="@string/settings_keep_jpeg_orientation_summary" />
-<SwitchPreference
-    android:defaultValue="true"
-    android:title="@string/settings_rename_images"
-    android:key="pref_rename_images"
-    android:summary="@string/settings_rename_images_summary" />
-<PreferenceCategory
-    android:key="prefs_logging"
-    android:title="@string/logging_title">
     <SwitchPreference
         android:defaultValue="false"
-        android:title="@string/settings_enable_logging"
-        android:key="pref_logging_enabled"
-        android:summary="@string/settings_enable_logging_summary" />
-    <Preference
-        android:defaultValue="false"
-        android:title="@string/settings_send_logs_to_dev"
-        android:key="pref_send_logs_to_dev"
-        android:summary="@string/settings_send_logs_to_dev_summary"
-        android:dependency="pref_logging_enabled" />
-</PreferenceCategory>
+        android:title="@string/settings_keep_jpeg_orientation"
+        android:key="pref_keep_jpeg_orientation"
+        android:summary="@string/settings_keep_jpeg_orientation_summary" />
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="@string/settings_rename_images"
+        android:key="pref_rename_images"
+        android:summary="@string/settings_rename_images_summary" />
+    <PreferenceCategory
+        android:key="prefs_logging"
+        android:title="@string/logging_title">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/settings_enable_logging"
+            android:key="pref_logging_enabled"
+            android:summary="@string/settings_enable_logging_summary" />
+        <Preference
+            android:defaultValue="false"
+            android:title="@string/settings_send_logs_to_dev"
+            android:key="pref_send_logs_to_dev"
+            android:summary="@string/settings_send_logs_to_dev_summary"
+            android:dependency="pref_logging_enabled" />
+    </PreferenceCategory>
 </PreferenceScreen>

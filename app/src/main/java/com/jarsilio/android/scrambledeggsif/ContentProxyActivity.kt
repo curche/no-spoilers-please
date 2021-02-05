@@ -2,6 +2,7 @@ package com.jarsilio.android.scrambledeggsif
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
@@ -37,31 +38,38 @@ class ContentProxyActivity : AppCompatActivity() {
         Intent.createChooser(intent, getString(R.string.share_multiple_via))
     }
 
+    private fun scrambleAndFinish(imageUri: Uri) {
+        if (utils.isScrambleableImage(imageUri)) {
+            Timber.d("Received image to scramble: $imageUri. Scrambling...")
+            val scrambledImageUri = ExifScrambler(this).scrambleImage(imageUri)
+
+            // Send data back to calling app
+            val resultIntent = Intent()
+            resultIntent.data = scrambledImageUri
+            resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
+
+            Timber.d("Returning uri in result intent: $scrambledImageUri")
+            setResult(RESULT_OK, resultIntent)
+        } else {
+            Timber.d("Received something that's not a jpeg or a png image ($imageUri) in a SEND_MULTIPLE. Skipping...")
+            Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
+            setResult(RESULT_CANCELED)
+        }
+
+        finish()
+    }
+
     private val openGalleryActivityResultLauncher by lazy { // This can only run during onAttach or onCreate (which is the case because we first use the variable onCreate)
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK && result.data != null && result.data!!.data != null) {
-                val imageUri = result.data!!.data!! // I checked for null in the if condition
-                if (utils.isScrambleableImage(imageUri)) {
-                    Timber.d("Received image to scramble: $imageUri. Scrambling...")
-                    val scrambledImageUri = ExifScrambler(this).scrambleImage(imageUri)
-                    Timber.d("Sending uri in result intent: $scrambledImageUri")
-
-                    // Send data back to calling app
-                    val resultIntent = Intent()
-                    resultIntent.data = scrambledImageUri
-                    resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
-
-                    setResult(RESULT_OK, resultIntent)
-                } else {
-                    Timber.d("Received something that's not a jpeg or a png image ($imageUri) in a SEND_MULTIPLE. Skipping...")
-                    Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
-                    setResult(RESULT_CANCELED)
+            if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+                val data = result.data!!
+                if (data.data != null) {
+                    scrambleAndFinish(data.data!!)
                 }
             } else {
                 setResult(RESULT_CANCELED)
+                finish()
             }
-
-            finish()
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {

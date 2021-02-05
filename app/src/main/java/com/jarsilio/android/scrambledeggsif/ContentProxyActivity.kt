@@ -1,13 +1,16 @@
 package com.jarsilio.android.scrambledeggsif
 
 import android.app.Activity
+import android.content.ClipData
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.jarsilio.android.common.extensions.isJellyBeanOrNewer
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 import timber.log.Timber
@@ -32,7 +35,7 @@ class ContentProxyActivity : AppCompatActivity() {
             action = Intent.ACTION_GET_CONTENT
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 // I explicitly don't allow to select multiple images because I still haven't been able to deliver the results correctly in a result intent
-                putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false)
+                putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             }
         }
         Intent.createChooser(intent, getString(R.string.share_multiple_via))
@@ -59,12 +62,39 @@ class ContentProxyActivity : AppCompatActivity() {
         finish()
     }
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+    private fun scrambleAndFinish(selectedClipData: ClipData) {
+        Timber.d("Received several images to scramble in ClipData: $selectedClipData. Scrambling...")
+
+        val selectedImageUris = ArrayList<Uri>()
+        for (i in 0 until selectedClipData.itemCount) {
+            selectedImageUris.add(selectedClipData.getItemAt(i).uri)
+        }
+        val scrambledImageUris = ExifScrambler(this).scrambleImages(selectedImageUris)
+
+        val resultClipData = ClipData("Attachment", arrayOf("image/*"), ClipData.Item(scrambledImageUris.removeAt(0)))
+        for (scrambledImageUri in scrambledImageUris) {
+            resultClipData.addItem(ClipData.Item(scrambledImageUri))
+        }
+
+        Timber.d("Returning uris in ClipData in result intent: $scrambledImageUris")
+        val resultIntent = Intent()
+        resultIntent.clipData = resultClipData
+        resultIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
+
+        setResult(RESULT_OK, resultIntent)
+
+        finish()
+    }
+
     private val openGalleryActivityResultLauncher by lazy { // This can only run during onAttach or onCreate (which is the case because we first use the variable onCreate)
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK && result.data != null) {
                 val data = result.data!!
-                if (data.data != null) {
+                if (data.data != null) { // Single uri
                     scrambleAndFinish(data.data!!)
+                } else if (isJellyBeanOrNewer && data.clipData != null) { // Probably multiple uris. Heavily inspired from https://github.com/SimpleMobileTools/Simple-File-Manager/blob/3284d53d53b545b9beb3351ae9fe9899e2c55b9e/app/src/main/kotlin/com/simplemobiletools/filemanager/pro/activities/MainActivity.kt#L372 (Thank you very much for that @tibbi)
+                    scrambleAndFinish(data.clipData!!)
                 }
             } else {
                 setResult(RESULT_CANCELED)

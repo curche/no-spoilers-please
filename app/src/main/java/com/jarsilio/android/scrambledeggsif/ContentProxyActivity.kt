@@ -97,6 +97,7 @@ class ContentProxyActivity : AppCompatActivity() {
                     scrambleAndFinish(data.clipData!!)
                 }
             } else {
+                Timber.e("Something went wrong and couldn't scramble any images after returning from the gallery...")
                 setResult(RESULT_CANCELED)
                 finish()
             }

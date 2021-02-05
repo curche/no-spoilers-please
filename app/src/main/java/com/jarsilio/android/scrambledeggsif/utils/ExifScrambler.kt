@@ -22,12 +22,15 @@ package com.jarsilio.android.scrambledeggsif.utils
 
 import android.content.Context
 import android.net.Uri
+import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.jarsilio.android.common.extensions.applicationId
+import com.jarsilio.android.scrambledeggsif.R
 import com.jarsilio.android.scrambledeggsif.extensions.imagesCacheDir
 import java.io.File
 import java.io.IOException
 import java.nio.charset.Charset
+import java.util.ArrayList
 import java.util.UUID
 import okio.buffer
 import okio.sink
@@ -62,6 +65,29 @@ class ExifScrambler(private val context: Context) {
                 throw ScrambleException("Only JPEG and PNG images are supported (image is $imageType).")
             }
         }
+    }
+
+    fun scrambleImages(imageUris: ArrayList<Uri>): ArrayList<Uri> {
+        Timber.d("Scrambling images")
+
+        val scrambledImages = ArrayList<Uri>()
+
+        for (imageUri in imageUris) {
+            if (utils.isScrambleableImage(imageUri)) {
+                Timber.d("Received a jpeg or a png image (uri): $imageUri. Scrambling...")
+                try {
+                    scrambledImages.add(scrambleImage(imageUri))
+                } catch (e: IOException) {
+                    Timber.e(e, "An error occurred while scrambling $imageUri. Skipping...")
+                    Toast.makeText(context, context.getString(R.string.error_while_scrambling, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Timber.d("Received something that's not a jpeg or a png image ($imageUri) in a SEND_MULTIPLE. Skipping...")
+                Toast.makeText(context, context.getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return scrambledImages
     }
 }
 

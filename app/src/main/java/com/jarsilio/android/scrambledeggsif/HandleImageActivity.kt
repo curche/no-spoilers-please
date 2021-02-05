@@ -35,7 +35,6 @@ import com.jarsilio.android.common.extensions.isNougatOrNewer
 import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
-import java.io.IOException
 import java.util.ArrayList
 import java.util.Locale
 import timber.log.Timber
@@ -88,33 +87,10 @@ class HandleImageActivity : AppCompatActivity() {
             else -> ArrayList<Uri>()
         }
 
-        val scrambledImages = scrambleImages(receivedImages)
+        val scrambledImages = exifScrambler.scrambleImages(receivedImages)
         if (scrambledImages.isNotEmpty()) {
             shareImages(scrambledImages)
         }
-    }
-
-    private fun scrambleImages(imageUris: ArrayList<Uri>): ArrayList<Uri> {
-        Timber.d("Scrambling images")
-
-        val scrambledImages = ArrayList<Uri>()
-
-        for (imageUri in imageUris) {
-            if (utils.isScrambleableImage(imageUri)) {
-                Timber.d("Received a jpeg or a png image (uri): $imageUri. Scrambling...")
-                try {
-                    scrambledImages.add(exifScrambler.scrambleImage(imageUri))
-                } catch (e: IOException) {
-                    Timber.e(e, "An error occurred while scrambling $imageUri. Skipping...")
-                    Toast.makeText(this, getString(R.string.error_while_scrambling, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Timber.d("Received something that's not a jpeg or a png image ($imageUri) in a SEND_MULTIPLE. Skipping...")
-                Toast.makeText(this, getString(R.string.image_not_scrambleable, utils.getRealFilenameFromURI(imageUri)), Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        return scrambledImages
     }
 
     private fun shareImages(imageUris: ArrayList<Uri>) {

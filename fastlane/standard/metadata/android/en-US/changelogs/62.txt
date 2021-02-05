@@ -1,0 +1,9 @@
+New in 1.7
+★ Add option to try to process invalid JPEG files.
+★ Add ability to select multiple apps when opening Scrambled Exif from a file explorer.
+
+New in 1.6.22
+★ (Hopefully) fix another Android 11 compatibility issue.
+★ Fix crash while keeping original filename on some devices (force rename in these cases).
+★ Update some translations.
+★ Add Korean translation. Thank you very much for this, Gordon Shumway!

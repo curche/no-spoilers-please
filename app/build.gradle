@@ -75,7 +75,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.3.0-alpha02'
+    implementation 'androidx.appcompat:appcompat:1.3.0-rc01'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -90,8 +90,8 @@ dependencies {
     implementation "com.mikepenz:aboutlibraries-core:$aboutLibrariesVersion"
     implementation "com.mikepenz:aboutlibraries:$aboutLibrariesVersion"
     // It's actually mikepenz's AboutLibraries that needs these
-    implementation 'androidx.recyclerview:recyclerview:1.2.0-beta01'
-    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.annotation:annotation:1.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
     // ACRA
@@ -101,7 +101,7 @@ dependencies {
     implementation "ch.acra:acra-dialog:$acraVersion"
 
     // Okio (modern I/O library)
-    implementation 'com.squareup.okio:okio:2.9.0'
+    implementation 'com.squareup.okio:okio:3.0.0-alpha.4'
 
     // AndroidMediaUtil (just for image rotation actually)
     implementation 'com.github.juanitobananas:AndroidMediaUtil:v1.0-1'
@@ -111,7 +111,7 @@ dependencies {
 
     // Testing
     implementation 'androidx.preference:preference:1.1.1'
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

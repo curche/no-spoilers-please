@@ -19,9 +19,9 @@
 
 package com.jarsilio.android.scrambledeggsif
 
-import android.app.Application
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.multidex.MultiDexApplication
 import com.jarsilio.android.common.logging.LogUtils
 import com.jarsilio.android.common.logging.LongTagTree
 import com.jarsilio.android.scrambledeggsif.utils.Settings
@@ -34,7 +34,7 @@ import timber.log.Timber
 @AcraCore(buildConfigClass = BuildConfig::class)
 @AcraMailSender(mailTo = "juam+scrambled@posteo.net")
 @AcraNotification(resTitle = R.string.acra_notification_title, resText = R.string.acra_notification_text, resChannelName = R.string.acra_notification_channel_name, resSendButtonText = R.string.acra_notification_send, resDiscardButtonText = android.R.string.cancel)
-class App : Application() {
+class App : MultiDexApplication() {
 
     private val settings: Settings by lazy { Settings(this) }
     private val logUtils: LogUtils by lazy { LogUtils(this) }

@@ -1,0 +1,68 @@
+<resources>
+    <string name="share_via">Bagikan foto dengan Scramble Exif menggunakan</string>
+    <string name="share_multiple_via">Bagikan Foto - foto dengan Scramble Exif menggunakan</string>
+    <string name="permission_request">Perizinan Yang Dibutuhkan</string>
+    <string name="permission_sdcard_text">Scramble Exif membutuhkan akses pada file anda untuk membaca foto yang anda ingin bagikan.\n\nTolong Klik pada tombol dibawah untuk memberikan akses yang dibutuhkan.</string>
+
+    <string name="instructions_title">Instruksi</string>
+    <string name="instructions_1">Pilih Foto yang ingin Anda bagikan dari galeri Anda dan klik pada ikon Bagikan.</string>
+    <string name="instructions_2">Pilih <i>Scramble Exif</i> dari daftar aplikasi.</string>
+    <string name="instructions_2_1">Pada titik ini, Metadata telah dihapus!</string>
+    <string name="instructions_3">Setelah ini selesai, daftar aplikasi akan muncul kembali, Bagikanlah Foto tersebut seperti yang biasa anda lakukan.</string>
+    <string name="instructions_voila">Dan voilà! Anda baru saja membagikan Foto tanpa metadata dengan dunia!</string>
+
+    <string name="permissions_open_app_toast">Scramble Exif menggunakan akses file.
+Tolong buka kembali aplikasi dan izinkan dari sana</string>
+    <string name="image_not_scrambleable">Tidak dapat mengacak \"%s\" karena itu bukanlah gambar JPEG.</string>
+
+    <string name="error_while_scrambling">Sebuah eror telah terjadi saat Mengacak \"%s\". Lewati...</string>
+
+    <string name="privacy_policy_menu_item">Kebijakan Privasi</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">Pengaturan</string>
+
+    <string name="settings_rename_images">Namakan ulang foto</string>
+    <string name="settings_rename_images_summary">Nama file bisa memberitahu resep dari tanggal dan waktu saat Foto tersebur diambil dari suatu perangkat.\n\nOpsi ini menamakan kembali semua foto yang dibagikan dengan nama file yang teracak.</string>
+
+    <string name="settings_keep_jpeg_orientation">Simpan orientasi</string>
+    <string name="settings_keep_jpeg_orientation_summary">Hal ini secara \"fisik\" memutar foto berdasarkan data EXIF yang ada pada foto original.\n\nIni membutuhkan sedikit waktu.</string>
+
+    <string name="logging_title">Logging</string>
+
+    <string name="settings_enable_logging">Perbolehkan Logging</string>
+    <string name="settings_enable_logging_summary">Tuliskan logs pada berkas sampah aplikasi. Pada aplikasi yang tidak ter-root, hanya Scramble Exif yang dapat mengakses logs ini. Anda bisa mengirim mereka pada developer menggunakan opsi dibawah.</string>
+
+    <string name="settings_send_logs_to_dev">Kirim logs pada developer</string>
+    <string name="settings_send_logs_to_dev_summary">Mungkin dia bisa membantu :)</string>
+
+    <string name="experimental_title">Eksperimental</string>
+
+    <string name="settings_process_invalid_jpegs">Proses kesalahan Foto JPEG</string>
+    <string name="settings_process_invalid_jpegs_summary">Coba untuk mengabaikan kesalahan Segmen JPEG dengan melewatinya. Ini mungkin tidak akan bekerja.</string>
+
+    <string name="title_activity_panic_settings">Pengaturan Tombol Panik</string>
+
+    <string name="panic_button_title">Tombol Panik</string>
+
+    <string name="settings_panic_button_category_summary">Dengan pengaturan yang tersedia, anda bisa mengkonfigurasi bagaimana Scramble Exif bereaksi pada Tombol Panik Eksternal (e.g <i>Ripple</i>) Pelatuk.</string>
+
+    <string name="settings_panic_delete_cached_images">Hapus sampah Foto</string>
+    <string name="settings_panic_delete_cached_images_summary">Setelah Foto dibagikan, mereka aman untuk dihapus (lagi pula pembersihan teratur terjadi).</string>
+
+    <string name="settings_panic_clear_app_data">Bersihkan data Aplikasi</string>
+    <string name="settings_panic_clear_app_data_summary">Hapus sampah Foto dan Pengaturan. Juga hentika aplikasi dan hapus mereka dari yang baru saja digunakan.</string>
+
+    <string name="licenses_menu_item">Lisensi</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Terhentikan</string>
+    <string name="acra_notification_title">Wooops! Hancur terdeteksi 💩</string>
+    <string name="acra_notification_text">Tolong kirim laporan pada developer agar dia bisa mencoba untuk memperbaikinya.</string>
+    <string name="acra_notification_send">Kirim Email</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Izin Spesial dibutuhkan.</string>
+    <string name="miui_permissions_message">%sDibutuhkan Izin Special bernama \'Munculkan Layar Pop-up saat berjalan di latar belakang\' pada perangkat Xiaomi (MIUI) modern. Anda harus mengizinkannya secara manual.\n\nTolong Klik pada tombol \"Bawa aku kesana\" atau pergi ke pengaturan secara manual.</string>
+    <string name="miui_permissions_ok_button">Bawa aku kesana</string>
+    <string name="miui_permissions_dont_show_again_button">Jangan munculkan lagi</string>
+</resources>

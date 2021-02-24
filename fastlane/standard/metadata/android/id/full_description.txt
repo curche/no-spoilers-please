@@ -1,0 +1,36 @@
+Scramble Exif (dieja <i>egg</i> sif) Membantu Anda menghapus metadata yang terdapat pada foto anda sebelum anda membagikannya.
+
+Jika anda merasa ingin melakukannya.
+
+Jika anda tidak ingin Perusahaan Besar (atau siapapun) mengetahui dari mana Foto anda diambil, jangan lupa untuk menghapus metadata dari foto tersebut sebelum anda membagikannya.
+
+Untuk menghapus metadata dari sebuah Foto, mulai dengan membagikannya seperti yang biasa anda lakukan dan pilih <i>Scramble Exif</i>. Beberapa saat kemudian, Dialog "Bagikan" akan muncul kembali. Sekarang bagikan foto tersebut dengan aplikasi yang anda ingin bagikan di tempat pertama.
+
+Dan Voilà!
+
+<b>Perizinan Android Yang Dibutuhkan</b>
+
+★ READ_EXTERNAL_STORAGE untuk membaca Foto dari aplikasi yang ingin dibagikan.
+
+<b>Kode Sumber</b>
+
+★ Aplikas ini Sumber Terbuka. Anda bisa melihat kodenya (dan bisa berkontribusi jika anda ingin melakukannya) disini:
+
+https://gitlab.com/juanitobananas/scrambled-exif
+
+<b>Terjemahan</b>
+
+Jika Anda ingin membantu untuk menerjemahkan aplikasi ini dengan Bahasa Anda sendiri, Anda bisa melakukannya dengan menerjemahkan kedua projek ini menggunakan transifex:
+https://www.transifex.com/juanitobananas/scrambled-exif/ and https://www.transifex.com/juanitobananas/libcommon/.
+
+<b>Lainnya dan Fakta</b>
+
+★ Pada dasarnya, Exif digunakan oleh jpeg, yang dimana adalah format kamera yang digunakan untuk menyimpan gambar. Jika anda ingin tahu lebih banyak tentang Exif, lihat di Wikipedia.
+
+★ Scrambled Exif juga menamakan kembali file (ini bisa di nonaktifkan).
+
+★ Tolong jangan terlalu bergantung pada data yang dihapus. Scramble Exif melakukan pekerjaanjya dengan sangat baik, tapi dapat terjadi kegagalan. Selalu cek kembali sebelum anda membagikannya.
+
+★ Aplikasi ini tidak benar - benar <i>Mengacak</i> data Exif tersebut, ia menghapusnya. Jadi namanya mungkin tidak masuk akal. Tapi aku menyukainya. Ikonnya juga tidak mirip dengan telur yang teracak. Jadi ikonnya mungkin tidak masuk akal. Tapi aku menyukainya. Dan aku juga kebetulan adalah fan besar mengenai telur. Jadi aplikasi ini tidak hanya memiliki nama yang bodoh dan ikon yang sama bodohnya, tapi juga merupakan Atribut (tidak bodoh) ku pada telur. Terutama, <i>huevos fritos</i>. Karena aku mencintainya.
+
+★ Bersenang - senanglah membagikan foto Anda!

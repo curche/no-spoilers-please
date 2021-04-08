@@ -1,0 +1,68 @@
+<resources>
+    <string name="share_via">写真をScrambled Exifでシェアします</string>
+    <string name="share_multiple_via">写真をScrambled Exifでシェアします</string>
+    <string name="permission_request">権限を許可</string>
+    <string name="permission_sdcard_text">Scrambled Exifに写真ファイルをシェアする際、そのファイルを読み込むためのアクセス権限が必要となります。\n\n下にあるボタンをタップして必要な権限に許可をお願いします。</string>
+
+    <string name="instructions_title">このアプリの使用方法</string>
+    <string name="instructions_1">シェアしたい写真をお好きなギャラリーアプリで開き、シェアボタンをタップしてください。</string>
+    <string name="instructions_2">アプリ一覧より<i>Scrambled Exif</i>を選択してください。</string>
+    <string name="instructions_2_1">メタデータが削除された写真ファイルがアプリ内部に生成されます。</string>
+    <string name="instructions_3">この処理の後、アプリ一覧が再度表示されます。シェア先となるアプリを選択してください。</string>
+    <string name="instructions_voila">これで完了です！メタデータが削除された写真ファイルを世界にシェアできました！</string>
+
+    <string name="permissions_open_app_toast">Scrambled Exifの動作にはファイルアクセス権限が必要です
+アプリを開き権限の許可をお願いします</string>
+    <string name="image_not_scrambleable">JPEGファイルではないため \"%s\" ファイルの処理ができませんでした。</string>
+
+    <string name="error_while_scrambling">\"%s\" ファイルの処理中にエラーが発生しました。スキップします...</string>
+
+    <string name="privacy_policy_menu_item">プライバシーポリシー</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settings_menu_item">設定</string>
+
+    <string name="settings_rename_images">ファイル名を変更する</string>
+    <string name="settings_rename_images_summary">いくつかのデバイスにおいて、ファイル名に写真の撮影日時が含まれていることがあります。\n\nこの設定を有効にすると、シェアされるファイルのファイル名をランダムなものに変更することができます。</string>
+
+    <string name="settings_keep_jpeg_orientation">写真の向きを保持する</string>
+    <string name="settings_keep_jpeg_orientation_summary">元の写真ファイルのEXIFデータに従い、写真を正しい向きに回転させてからシェアします。\n\n処理に多少時間がかかります。</string>
+
+    <string name="logging_title">ログの保存</string>
+
+    <string name="settings_enable_logging">ログの保存を有効にする</string>
+    <string name="settings_enable_logging_summary">アプリの動作ログをキャッシュディレクトリに保存します。ルート化されていないデバイスにおいては、Scrambled Exifアプリだけがこのログの内容にアクセスすることができます。開発者へのログの送信は下の項目で行うことができます。</string>
+
+    <string name="settings_send_logs_to_dev">ログを開発者に送信する</string>
+    <string name="settings_send_logs_to_dev_summary">問題の解決に役立つかもしれません。ご協力お願いします :)</string>
+
+    <string name="experimental_title">実験的機能</string>
+
+    <string name="settings_process_invalid_jpegs">無効なJPEGファイルも処理する</string>
+    <string name="settings_process_invalid_jpegs_summary">無効なJPEGデータをスキップすることで、処理を継続しようとします。この機能はうまく動作しないかもしれません。</string>
+
+    <string name="title_activity_panic_settings">パニックボタン設定</string>
+
+    <string name="panic_button_title">パニックボタン</string>
+
+    <string name="settings_panic_button_category_summary">外部のパニックボタンアプリ（例 <i>Ripple</i>）が押された際に、Scrambled Exifがどのように反応するかを設定することができます。</string>
+
+    <string name="settings_panic_delete_cached_images">キャッシュされた写真を削除する</string>
+    <string name="settings_panic_delete_cached_images_summary">写真をシェアした後であれば、キャッシュは削除しても問題ありません（この設定に関わらず定期的に実施されます）。</string>
+
+    <string name="settings_panic_clear_app_data">アプリのデータを削除する</string>
+    <string name="settings_panic_clear_app_data_summary">キャッシュされた写真とアプリの設定データを削除します。またアプリが強制終了され、アプリ履歴からも消去されます。</string>
+
+    <string name="licenses_menu_item">ライセンス</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">クラッシュ</string>
+    <string name="acra_notification_title">申し訳ありません。アプリがクラッシュしました。</string>
+    <string name="acra_notification_text">問題の解決に努めますので、開発者にクラッシュの状況をご報告ください。</string>
+    <string name="acra_notification_send">メールを作成する</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">特別な権限が必要です</string>
+    <string name="miui_permissions_message">最近のXiaomi（MIUI）デバイスにおいて、%s の動作には「バックグラウンドで動作中にポップアップ画面を表示」の権限が必要となります。権限は手動で許可する必要があります。\n\n下にある「設定を表示する」ボタンをタップするか、デバイスの設定アプリから手動で設定してください。</string>
+    <string name="miui_permissions_ok_button">設定を表示する</string>
+    <string name="miui_permissions_dont_show_again_button">以後表示しない</string>
+</resources>

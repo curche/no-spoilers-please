@@ -36,6 +36,21 @@
     <string name="settings_send_logs_to_dev">Envoyer les journaux au développeur</string>
     <string name="settings_send_logs_to_dev_summary">Peut-être pourra-t-il aider :)</string>
 
+    <string name="experimental_title">Expérimental</string>
+
+    <string name="settings_process_invalid_jpegs">Traiter les images JPEG non valides</string>
+    <string name="settings_process_invalid_jpegs_summary">Essayez d’ignorer les segments JPEG invalides en les sautant. Cela pourrait vraiment ne pas fonctionner.</string>
+
+    <string name="title_activity_panic_settings">Paramètres du bouton panique</string>
+
+    <string name="panic_button_title">Bouton panique</string>
+
+    <string name="settings_panic_delete_cached_images">Supprimer les images mises en cache</string>
+    <string name="settings_panic_delete_cached_images_summary">Une fois que les images ont été partagées, elles peuvent être supprimées en toute sécurité (un nettoyage a lieu périodiquement de toute façon).</string>
+
+    <string name="settings_panic_clear_app_data">Nettoyer les données de l\'app</string>
+    <string name="settings_panic_clear_app_data_summary">Supprimer les images et les paramètres mis en cache. Tuer l’application et supprimer ce qui a été récemment utilisé.</string>
+
     <string name="licenses_menu_item">Licences</string>
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Plantages</string>

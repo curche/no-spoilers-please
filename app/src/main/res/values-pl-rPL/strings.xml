@@ -1,8 +1,8 @@
 <resources>
     <string name="share_via">Udostępnij zdjęcie z Scrambled Exif przez</string>
-    <string name="share_multiple_via">Udostępnij zdjęcia z Scrambled Exif przez</string>
+    <string name="share_multiple_via">Udostępnij obrazy z Scrambled Exif przez</string>
     <string name="permission_request">Poproś o pozwolenie</string>
-    <string name="permission_sdcard_text">Scrambled Exif potrzebuje dostępu do twoich plików, aby wczytać udostępniane zdjęcia.\n\nKliknij przycisk poniżej, aby przyznać wymagane uprawnienia.</string>
+    <string name="permission_sdcard_text">Scrambled Exif potrzebuje dostępu do twoich plików, aby wczytać udostępniane obrazy.\n\nKliknij przycisk poniżej, aby przyznać wymagane uprawnienia.</string>
 
     <string name="instructions_title">Instrukcja</string>
     <string name="instructions_1">Wybierz zdjęcia z galerii, które chcesz udostępnić i kliknij ikonę udostępniania. </string>
@@ -21,8 +21,8 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Ustawienia</string>
 
-    <string name="settings_rename_images">Zmień nazwy zdjęć</string>
-    <string name="settings_rename_images_summary">Na niektórych urządzeniach nazwa pliku może zawierać informację o czasie, w którym zdjęcie zostało zrobione.\n\nTa opcja pozwala zmienić nazwę udostępnianych plików na losową.</string>
+    <string name="settings_rename_images">Zmień nazwy obrazów</string>
+    <string name="settings_rename_images_summary">Na niektórych urządzeniach nazwa pliku może zawierać informację o czasie, w którym zrobiono zdjęcie.\n\nTa opcja pozwala zmienić nazwę udostępnianych plików na losową.</string>
 
     <string name="settings_keep_jpeg_orientation">Zachowaj orientację zdjęć</string>
     <string name="settings_keep_jpeg_orientation_summary">„Fizycznie” obraca zdjęcie na podstawie danych EXIF zawartych w oryginalnym obrazie.\n\nZabiera to trochę więcej czasu.</string>
@@ -35,17 +35,22 @@
     <string name="settings_send_logs_to_dev">Wyślij logi do programisty</string>
     <string name="settings_send_logs_to_dev_summary">Może będzie umiał pomóc :)</string>
 
+    <string name="experimental_title">Eksperymentalne</string>
+
+    <string name="settings_process_invalid_jpegs">Przetwórz nieprawidłowe obrazy JPEG</string>
+    <string name="settings_process_invalid_jpegs_summary">Spróbuj zignorować nieprawidłowe segmenty pliku JPEG, pomijając je. Może to nie działać prawidłowo.</string>
+
     <string name="title_activity_panic_settings">Ustawienia przycisku paniki</string>
 
     <string name="panic_button_title">Przycisk paniki</string>
 
     <string name="settings_panic_button_category_summary">Za pomocą tych ustawień możesz skonfigurować, jak Scrambled Exif zareaguje na sygnał zewnętrznej aplikacji przycisku paniki (np. <i >Ripple</i>).</string>
 
-    <string name="settings_panic_delete_cached_images">Usuń zdjęcia z pamięci podręcznej</string>
-    <string name="settings_panic_delete_cached_images_summary">Po udostępnieniu zdjęć można je usunąć z pamięci podręcznej (czyszczenie i tak odbywa się okresowo).</string>
+    <string name="settings_panic_delete_cached_images">Usuń obrazy z pamięci podręcznej</string>
+    <string name="settings_panic_delete_cached_images_summary">Po udostępnieniu obrazów, można je usunąć z pamięci podręcznej (czyszczenie i tak odbywa się okresowo).</string>
 
     <string name="settings_panic_clear_app_data">Wyczyść dane aplikacji</string>
-    <string name="settings_panic_clear_app_data_summary">Usuwa zdjęcia z pamięci podręcznej i przywraca ustawienia do domyślnych. Zamyka również aplikację i usuwa ją z widoku ostatnio używanych.</string>
+    <string name="settings_panic_clear_app_data_summary">Usuwa obrazy z pamięci podręcznej i przywraca ustawienia do domyślnych. Zamyka również aplikację i usuwa ją z widoku ostatnio używanych.</string>
 
     <string name="licenses_menu_item">Licencje</string>
     <!-- ACRA -->

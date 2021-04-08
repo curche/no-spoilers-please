@@ -36,6 +36,11 @@
     <string name="settings_send_logs_to_dev">Enviar registros para o dev</string>
     <string name="settings_send_logs_to_dev_summary">Talvez ele seja capaz de ajudar :)</string>
 
+    <string name="experimental_title">Experimental</string>
+
+    <string name="settings_process_invalid_jpegs">Processar imagens JPEG inválidas</string>
+    <string name="settings_process_invalid_jpegs_summary">Tente ignorar segmentos JPEG inválidos, ignorando-os. Isto pode realmente não funcionar.</string>
+
     <string name="title_activity_panic_settings">Configuração do Botão de Pânico</string>
 
     <string name="panic_button_title">Botão de Pânico</string>

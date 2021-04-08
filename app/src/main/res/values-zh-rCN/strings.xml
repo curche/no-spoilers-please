@@ -36,6 +36,11 @@
     <string name="settings_send_logs_to_dev">发送日志给开发者</string>
     <string name="settings_send_logs_to_dev_summary">他也许可以帮忙 :)</string>
 
+    <string name="experimental_title">实验性</string>
+
+    <string name="settings_process_invalid_jpegs">处理无效的 JPEG 图片</string>
+    <string name="settings_process_invalid_jpegs_summary">试着通过跳过无效的 JPEG 部分来忽略它们。这也许真的不会起作用。</string>
+
     <string name="title_activity_panic_settings">恐慌按钮设置</string>
 
     <string name="panic_button_title">恐慌按钮</string>

@@ -1,44 +1,68 @@
-<!--
-  ~ Copyright (c) 2018 NK
-  ~
-  ~ This file is part of Scrambled Exif.
-  ~
-  ~ Scrambled Exif is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or
-  ~ (at your option) any later version.
-  ~
-  ~ Scrambled Exif is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with Scrambled Exif.  If not, see <http://www.gnu.org/licenses/>.
-  -->
-
 <resources>
-    <string name="share_via">Поделите слику коришћењем Измешаног Егзиф-а</string>
-    <string name="share_multiple_via">Поделите слике коришћењем Измешаног Егзиф-а</string>
+    <string name="share_via">Поделите слику коришћењем Мућканог Егзиф-а</string>
+    <string name="share_multiple_via">Поделите слике коришћењем Мућканог Егзиф-а</string>
     <string name="permission_request">Затражите дозволу</string>
-    <string name="permission_sdcard_text">Измешаном Егзиф-у је неопходан приступ датотекама како би се могле читати слике које желите да делите путем ове апликације.\n\nМолимо да одобрите дозволе за добијање неопходних привилегија.</string>
+    <string name="permission_sdcard_text">Мућкани Егзиф-у је неопходан приступ датотекама како би се могле читати слике које желите да делите путем ове апликације.\n\nМолимо да одобрите дозволе за добијање неопходних привилегија.</string>
 
     <string name="instructions_title">Упутства</string>
     <string name="instructions_1">Изаберите слике које желите да делите и одабрите иконицу за дељење.</string>
-    <string name="instructions_2">Одаберите <i>Измешани Егзиф</i> из листе апликација.</string>
+    <string name="instructions_2">Одаберите <i>Мућкани Егзиф</i> из листе апликација.</string>
     <string name="instructions_2_1">У овом моменту, мета-подаци су избрисани!</string>
     <string name="instructions_3">Након што се мета-подаци подаци избришу, листа апликација ће се појавити опет. У новом изборнику је неопходно за изаберете жељени начин дељења садржаја и да делите слике као што би то и обично урадили.</string>
     <string name="instructions_voila">Готово! Управо сте поделили слике са светом које на садрже мета-податке!</string>
 
-    <string name="permissions_open_app_toast">Измешани Егзиф мора имати приступ датотекама.
+    <string name="permissions_open_app_toast">Мућкани Егзиф мора имати приступ датотекама.
         Молимо да отворите апликацију и дозволите приступ из ње.</string>
+    <string name="image_not_scrambleable">Није могуће мућкати „%s“ јер то није ЈПЕГ слика.</string>
+
+    <string name="error_while_scrambling">Дошло је до грешке током мућкања „%s“. Прескакање…</string>
+
     <string name="privacy_policy_menu_item">Правила приватности</string>
 
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Подешавања</string>
 
-    <string name="settings_keep_jpeg_orientation">Задржавање оријентације (само за ЈПЕГ)</string>
-    <string name="settings_keep_jpeg_orientation_summary">Задржавање информације о оријентацији за ЈПЕГ слике</string>
+    <string name="settings_rename_images">Преименуј слике</string>
+    <string name="settings_rename_images_summary">Имена датотека могу примаоцу датотеке рећи датум и време снимања фотографије на неким уређајима.\n\nОва опција преименује све дељене слике са насумичним именом датотеке.</string>
+
+    <string name="settings_keep_jpeg_orientation">Задржите оријентацију</string>
+    <string name="settings_keep_jpeg_orientation_summary">Ово „физички“ ротира слику према ЕКСИФ подацима на оригиналној слици.\n\nТо траје мало дуже.</string>
+
+    <string name="logging_title">Евидентирање</string>
+
+    <string name="settings_enable_logging">Омогући евиденције</string>
+    <string name="settings_enable_logging_summary">Напишите евиденције у директоријум кеш меморије апликације. На не-рутованим уређајима, само Мућкани Егзиф треба да има приступ тим евиденцијама. Можете их послати програмеру користећи опцију испод.</string>
+
+    <string name="settings_send_logs_to_dev">Пошаљите евиденције програмеру</string>
+    <string name="settings_send_logs_to_dev_summary">Можда ће моћи да помогне :)</string>
+
+    <string name="experimental_title">Експериментално</string>
+
+    <string name="settings_process_invalid_jpegs">Обрадите неважеће ЈПЕГ слике</string>
+    <string name="settings_process_invalid_jpegs_summary">Покушајте да занемарите неважеће ЈПЕГ сегменте тако што ћете их прескочити. Ово можда неће успети.</string>
+
+    <string name="title_activity_panic_settings">Подешавања дугмета за панику</string>
+
+    <string name="panic_button_title">Дугме за панику</string>
+
+    <string name="settings_panic_button_category_summary">Помоћу следећих подешавања можете да подесити како Мућкани Егзиф реагује на спољни окидач за дугме за панику (нпр. <i>Ripple</i>).</string>
+
+    <string name="settings_panic_delete_cached_images">Избришите кеширане слике</string>
+    <string name="settings_panic_delete_cached_images_summary">Кад се слике деле, безбедно их је избрисати (чишћење се ионако периодично дешава).</string>
+
+    <string name="settings_panic_clear_app_data">Обришите податке апликације</string>
+    <string name="settings_panic_clear_app_data_summary">Избришите кеширане слике и подешавања. Такође затвори апликацију и уклоните је из недавно коришћене.</string>
 
     <string name="licenses_menu_item">Лиценце</string>
+    <!-- ACRA -->
+    <string name="acra_notification_channel_name">Грешке</string>
+    <string name="acra_notification_title">Уууупс! Откривена је грешка 💩</string>
+    <string name="acra_notification_text">Пошаљите извештај програмеру како би могао да покуша да их поправи поправи.</string>
+    <string name="acra_notification_send">Шаљи е-пошту</string>
+
+    <!-- MIUI permissions -->
+    <string name="miui_permissions_title">Потребне су посебне дозволе</string>
+    <string name="miui_permissions_message">%s потребна је посебна дозвола под називом „Прикажи искачуће прозоре док се ради у позадини“ на модерним Шаоми (МИУИ) уређајима. Морате га одобрити ручно.\n\nДодирните дугме „Води ме тамо“ или потражите поставку ручно.</string>
+    <string name="miui_permissions_ok_button">Води ме тамо</string>
+    <string name="miui_permissions_dont_show_again_button">Не приказуј поново</string>
 </resources>

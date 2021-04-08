@@ -12,6 +12,8 @@
     <string name="instructions_voila">Et voilà! Du hast ein paar Bilder ohne Metadaten mit der Welt geteilt!</string>
 
     <string name="permissions_open_app_toast">Scrambled Exif braucht Zugriff auf Deine Dateien. Bitte öffne die App, um die Berechtigung zu erteilen.</string>
+    <string name="image_not_scrambleable">Konnte \"%s\" nicht scramblen, weil es kein JPEG-Bild ist.</string>
+
     <string name="privacy_policy_menu_item">Datenschutzerklärung</string>
 
     <!-- Strings related to Settings -->

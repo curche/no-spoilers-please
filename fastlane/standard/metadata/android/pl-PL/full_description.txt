@@ -4,7 +4,7 @@ Jeśli masz ochotę.
 
 Jeśli nie chcesz, żeby duże firmy internetowe (czy ktokolwiek inny) wiedział gdzie twoje zdjęcia były zrobione, nie zapomnij usunąć z nich metadanych, zanim je udostępnisz.
 
-Aby usunąć matadane z twojego zdjęcia, po prostu udostępnij je tak jak zawsze i wybierz <i>Scrambled Exif</i>. Po chwili okno udostępniania pojawi się po raz drugi. Teraz udostępnij twoje zdjęcia z aplikacją, z którą chciałeś to zrobić na początku.
+Aby usunąć metadane ze zdjęcia, po prostu udostępnij je tak jak zawsze i wybierz <i>Scrambled Exif</i>. Po chwili okno udostępniania pojawi się po raz drugi. Teraz udostępnij zdjęcie przy pomocy właściwej aplikacji.
 
 Et voilà!
 

@@ -1,0 +1,6 @@
+New in 1.7.1
+★ Add Catalan translation. Thank you very much for that, Oriol Font, Escaramux Nicola, Adria P and Raul V!
+★ Add Japanese strings translation. Thank you very much, Hira and John Doe!
+★ Add Indonesian translation. Thank you very much for that, Putu!
+★ Update several translations.
+★ Fix multidex crash on some old devices.

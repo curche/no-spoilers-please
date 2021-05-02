@@ -188,13 +188,14 @@ internal class Utils(private val context: Context) {
                     }
                 }
             }
+
+            if (queryCursor == null) {
+                Timber.e("For some reason, couldn't get a cursor to read the filename database.")
+            }
         } catch (e: NullPointerException) {
             Timber.e(e, "Caught a NullPointerException while trying to read the file's real name. Just ignoring it...")
         }
 
-        if (queryCursor == null) {
-            Timber.e("For some reason, couldn't get a cursor to read the filename database.")
-        }
         if (realFilename == null) {
             Timber.e("Couldn't get real filename from uri (probably came from GET_CONTENT intent). Returning a random name.")
         }

@@ -178,14 +178,18 @@ internal class Utils(private val context: Context) {
     fun getRealFilenameFromURI(uri: Uri): String {
         var realFilename: String? = null
 
-        val queryCursor = context.contentResolver.query(uri, null, null, null, null)
-        queryCursor?.let { cursor ->
-            if (cursor.moveToFirst()) {
-                val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                if (nameIndex != -1) {
-                    realFilename = cursor.getString(nameIndex)
+        try {
+            val queryCursor = context.contentResolver.query(uri, null, null, null, null)
+            queryCursor?.let { cursor ->
+                if (cursor.moveToFirst()) {
+                    val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (nameIndex != -1) {
+                        realFilename = cursor.getString(nameIndex)
+                    }
                 }
             }
+        } catch (e: NullPointerException) {
+            Timber.e(e, "Caught a NullPointerException while trying to read the file's real name. Just ignoring it...")
         }
 
         if (queryCursor == null) {

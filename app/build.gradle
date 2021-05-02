@@ -101,7 +101,7 @@ dependencies {
     implementation "ch.acra:acra-dialog:$acraVersion"
 
     // Okio (modern I/O library)
-    implementation 'com.squareup.okio:okio:3.0.0-alpha.4'
+    implementation 'com.squareup.okio:okio:3.0.0-alpha.5'
 
     // AndroidMediaUtil (just for image rotation actually)
     implementation 'com.github.juanitobananas:AndroidMediaUtil:v1.0-1'

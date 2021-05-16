@@ -1,0 +1,36 @@
+Scrambled Exif (phát âm là <i>egg</i>sif) giúp bạn xoá siêu dữ liệu trong các bức ảnh của bạn trước khi bạn chia sẻ chúng.
+
+Nếu bạn cảm thấy thích thế.
+
+Nếu bạn không muốn các công ty Internet lớn (hoặc bất kỳ ai) biết nơi các bức ảnh của bạn được chụp, thì đừng quên xoá siêu dữ liệu khỏi chúng trước khi bạn chia sẻ chúng.
+
+Để xoá siêu dữ liệu khỏi một bức ảnh, chỉ đơn giản là chia sẻ nó như bạn thường làm và chọn <i>Scrambled Exif</i>. Một lúc sau, 'hộp thoại' chia sẻ sẽ xuất hiện lại. Bây giờ, chỉ cần chia sẻ bằng ứng dụng bạn có ý định dùng để chia sẻ vào lúc đầu.
+
+Xong rồi!
+
+<b>Các quyền Android được yêu cầu:</b>
+
+★ READ_EXTERNAL_STORAGE để đọc các hình ảnh mà các ứng dụng khác chia sẻ với ứng dụng này.
+
+<b>Mã nguồn</b>
+
+★ Ứng dụng này là mã nguồn mở. Bạn có thể xem mã nguồn (và đóng góp nếu bạn cảm thấy thích thế) ở đây:
+
+https://gitlab.com/juanitobananas/scrambled-exif
+
+<b>Phiên dịch</b>
+
+Nếu bạn muốn giúp dịch ứng dụng này thành ngôn ngữ của bạn, bạn có thể làm vậy bằng cách dịch hai dự án này bằng transifex:
+https://www.transifex.com/juanitobananas/scrambled-exif/ và https://www.transifex.com/juanitobananas/libcommon/.
+
+<b>Những thứ khác và điều thực tế</b>
+
+★ Về cơ bản, Exif được jpeg sử dụng, nó là định dạng mà máy ảnh Android của bạn lưu các bức ảnh. Nếu bạn muốn biết thêm về Exif, hãy xem Wikipedia.
+
+★ Scrambled Exif cũng đổi tên các tệp (việc này có thể được tắt).
+
+★ Xin đừng chỉ dựa vào việc dữ liệu bị xoá. Scrambled Exif làm công việc của nó khá tốt, nhưng nó có thể sẽ thất bại. Hãy luôn kiểm tra hai lần trước khi bạn chia sẻ.
+
+★ Nó không thực sự <i>xáo trộn</i> dữ liệu Exif, nó xoá dữ liệu đó. Vậy nên cái tên của nó có thể là ngu ngốc. Nhưng tôi thích nó. Biểu tượng cũng không mô tả trứng bác. Vậy nên biểu tượng đó có thể là ngu ngốc. Nhưng tôi thích nó. Và tôi cũng tình cờ là một người hâm mộ lớn của trứng. Vậy nên ứng dụng này không chỉ có một cái tên ngu ngốc và một biểu tượng cũng ngu ngốc như thế, mà nó còn là sự tưởng nhớ (không ngu ngốc) của tôi cho trứng. Đặc biệt là <i>huevos fritos</i>. Bởi vì tôi rất thích chúng.
+
+★ Chúc vui vẻ trong việc chia sẻ các bức ảnh của bạn!

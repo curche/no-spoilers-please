@@ -54,3 +54,4 @@ assembleRelease:
     paths:
     - app/build/outputs/
 
+include: '/.gitlab-ci-fdroid-build.yml'

@@ -15,15 +15,10 @@ RepoType: git
 Repo: https://gitlab.com/juanitobananas/scrambled-exif.git
 
 Builds:
-  - versionName: 1.7.2a
-    versionCode: 65
+  - versionName: 1.7.3
+    versionCode: 66
     commit: HEAD
     subdir: app
     submodules: true
     gradle:
       - standard
-
-AutoUpdateMode: Version v%v
-UpdateCheckMode: Tags ^v[0-9.]+$
-CurrentVersion: 1.7.2a
-CurrentVersionCode: 65

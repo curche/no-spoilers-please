@@ -29,7 +29,7 @@
         android:key="pref_mark_as_spoiler"
         android:summary="@string/settings_mark_as_spoiler_summary" />
     <SwitchPreference
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:title="@string/settings_rename_images"
         android:key="pref_rename_images"
         android:summary="@string/settings_rename_images_summary" />

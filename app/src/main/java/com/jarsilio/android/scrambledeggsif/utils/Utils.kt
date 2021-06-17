@@ -83,11 +83,15 @@ internal class Utils(private val context: Context) {
     }
 
     fun prepareImageInCache(imageUri: Uri): File {
-        val unscrambledCopy = if (settings.isRenameImages) {
-            File(context.imagesCacheDir, getRandomImageFilename(imageUri))
+
+        val imageName = if (settings.isRenameImages) {
+            getRandomImageFilename(imageUri)
         } else {
-            File(context.imagesCacheDir, getRealFilenameFromURI(imageUri))
+            getRealFilenameFromURI(imageUri)
         }
+
+        val fileName = if(settings.isMarkSpoiler) "SPOILER_$imageName" else imageName
+        val unscrambledCopy = File(context.imagesCacheDir, fileName)
 
         Timber.d("Copying image from uri (probably from an intent) ${imageUri.path} to 'unscrambled' dir: $unscrambledCopy")
         copy(context.contentResolver.openInputStream(imageUri)!!, FileOutputStream(unscrambledCopy))

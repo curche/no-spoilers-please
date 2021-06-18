@@ -56,7 +56,9 @@ class MainActivity : AppCompatActivity() {
         updateLayout()
 
         dialogs.showSomeLoveDialogIfNecessary()
-        dialogs.showSoLongAndThanksForAllTheFishDialog()
+        // No Spoilers Please -->
+        // dialogs.showSoLongAndThanksForAllTheFishDialog()
+        // <-- No Spoilers Please
 
         showMiuiPermissionDialogIfNecessary()
     }
@@ -86,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
-            R.id.privacy_policy_menu_item -> showPrivacyPolicyActivity()
+            // R.id.privacy_policy_menu_item -> showPrivacyPolicyActivity()
             R.id.settings_menu_item -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             R.id.licenses_menu_item -> showAboutLicensesActivity()
         }
@@ -94,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    /* No Spoilers Please -->
     private fun showPrivacyPolicyActivity() {
         PrivacyPolicyBuilder()
                 .withIntro(getString(R.string.app_name), "Juan García Basilio (juanitobananas)")
@@ -104,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                 .withEmailSection("juam+scrambled@posteo.net")
                 .start(applicationContext)
     }
+    <-- No Spoilers Please */
 
     private fun showAboutLicensesActivity() {
         var style = Libs.ActivityStyle.LIGHT_DARK_TOOLBAR

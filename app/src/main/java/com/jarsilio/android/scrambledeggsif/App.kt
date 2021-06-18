@@ -32,7 +32,7 @@ import org.acra.annotation.AcraNotification
 import timber.log.Timber
 
 @AcraCore(buildConfigClass = BuildConfig::class)
-@AcraMailSender(mailTo = "juam+scrambled@posteo.net")
+@AcraMailSender(mailTo = "curche454+nospoilerpls@gmail.com")
 @AcraNotification(resTitle = R.string.acra_notification_title, resText = R.string.acra_notification_text, resChannelName = R.string.acra_notification_channel_name, resSendButtonText = R.string.acra_notification_send, resDiscardButtonText = android.R.string.cancel)
 class App : MultiDexApplication() {
 

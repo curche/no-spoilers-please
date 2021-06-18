@@ -86,14 +86,15 @@ class HandleImageActivity : AppCompatActivity() {
             Intent.ACTION_SEND_MULTIPLE -> intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)!!
             else -> ArrayList<Uri>()
         }
+        val extraText = intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
 
         val scrambledImages = exifScrambler.scrambleImages(receivedImages)
         if (scrambledImages.isNotEmpty()) {
-            shareImages(scrambledImages)
+            shareImages(scrambledImages, extraText)
         }
     }
 
-    private fun shareImages(imageUris: ArrayList<Uri>) {
+    private fun shareImages(imageUris: ArrayList<Uri>, extraText: String) {
         val targetedShareIntents = buildTargetedShareIntents(imageUris)
         val chooserTitle = if (imageUris.size == 1) {
             getString(R.string.share_via)
@@ -103,6 +104,7 @@ class HandleImageActivity : AppCompatActivity() {
         val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), chooserTitle)
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
         chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayListOf(ComponentName(this, HandleImageActivity::class.java)).toTypedArray<Parcelable>())
+        chooserIntent.putExtra(Intent.EXTRA_TITLE, extraText)
         startActivity(chooserIntent)
     }
 

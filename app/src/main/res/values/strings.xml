@@ -22,6 +22,7 @@
     <!-- Strings related to Settings -->
     <string name="settings_menu_item">Settings</string>
 
+    <!-- No Spoilers Please -> -->
     <string name="settings_mark_as_spoiler">Mark images as Spoiler</string>
     <string name="settings_mark_as_spoiler_summary">This option adds a SPOILER_ prefix so that Discord recognises it as a \"Spoiler\".\n\nUseful only when sharing images to Discord Android app.</string>
 
@@ -29,6 +30,7 @@
 
     <string name="settings_scramble_images">Enable Image Scrambling</string>
     <string name="settings_scramble_images_summary">Removes EXIF metadata from PNG/JPG images before sharing</string>
+    <!-- <- No Spoilers Please -->
 
     <string name="settings_rename_images">Rename images</string>
     <string name="settings_rename_images_summary">Filenames can tell a recipient of the file the date and time that a photo was taken on some devices.\n\nThis option renames all shared images with a random filename.</string>

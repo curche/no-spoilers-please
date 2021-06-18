@@ -86,11 +86,15 @@ class HandleImageActivity : AppCompatActivity() {
             Intent.ACTION_SEND_MULTIPLE -> intent.getParcelableArrayListExtra(Intent.EXTRA_STREAM)!!
             else -> ArrayList<Uri>()
         }
+        // No Spoilers Please -->
         val extraText = intent.getStringExtra(Intent.EXTRA_TEXT) ?: ""
+        // <-- No Spoilers Please
 
         val scrambledImages = exifScrambler.scrambleImages(receivedImages)
         if (scrambledImages.isNotEmpty()) {
+            // No Spoilers Please -->
             shareImages(scrambledImages, extraText)
+            // <-- No Spoilers Please
         }
     }
 
@@ -104,7 +108,9 @@ class HandleImageActivity : AppCompatActivity() {
         val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), chooserTitle)
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
         chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayListOf(ComponentName(this, HandleImageActivity::class.java)).toTypedArray<Parcelable>())
+        // No Spoilers Please -->
         chooserIntent.putExtra(Intent.EXTRA_TITLE, extraText)
+        // <-- No Spoilers Please
         startActivity(chooserIntent)
     }
 

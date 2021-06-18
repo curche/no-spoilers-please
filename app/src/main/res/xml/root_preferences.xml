@@ -30,6 +30,11 @@
         android:summary="@string/settings_mark_as_spoiler_summary" />
     <SwitchPreference
         android:defaultValue="false"
+        android:title="@string/settings_scramble_images"
+        android:key="pref_scrambling_enabled"
+        android:summary="@string/settings_scramble_images_summary" />
+    <SwitchPreference
+        android:defaultValue="false"
         android:title="@string/settings_rename_images"
         android:key="pref_rename_images"
         android:summary="@string/settings_rename_images_summary" />

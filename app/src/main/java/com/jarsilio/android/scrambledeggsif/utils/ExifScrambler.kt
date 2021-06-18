@@ -50,7 +50,10 @@ class ExifScrambler(private val context: Context) {
             // Instead of rewriting the tag, "physically" rotate the image. This is expensive.
             utils.rotateImageAccordingToExifOrientation(imageInCache)
         }
-        removeMetadata(imageInCache)
+        if (settings.isScramblingEnabled){
+            removeMetadata(imageInCache)
+        }
+
         val uri = FileProvider.getUriForFile(context, context.applicationId + ".fileprovider", imageInCache)
         Timber.d("Image with uri (ready to share): $uri")
         return uri

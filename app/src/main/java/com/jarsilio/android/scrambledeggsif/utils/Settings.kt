@@ -39,6 +39,10 @@ internal class Settings(private val context: Context) {
         get() = preferences.getBoolean(MARK_AS_SPOILER, true)
         set(markSpoilers) = setPreference(MARK_AS_SPOILER, markSpoilers)
 
+    var isScramblingEnabled: Boolean
+        get() = preferences.getBoolean(SCRAMBLING_ENABLED, false)
+        set(scramblingEnabled) = setPreference(SCRAMBLING_ENABLED, scramblingEnabled)
+
     var isLoggingEnabled: Boolean
         get() = preferences.getBoolean(LOGGING_ENABLED, false)
         set(loggingEnabled) = setPreference(LOGGING_ENABLED, loggingEnabled)
@@ -63,6 +67,7 @@ internal class Settings(private val context: Context) {
         const val KEEP_JPEG_ORIENTATION = "pref_keep_jpeg_orientation"
         const val RENAME_IMAGES = "pref_rename_images"
         const val MARK_AS_SPOILER = "pref_mark_as_spoiler"
+        const val SCRAMBLING_ENABLED = "pref_scrambling_enabled"
         const val LOGGING_ENABLED = "pref_logging_enabled"
         const val SEND_LOGS_TO_DEV = "pref_send_logs_to_dev"
         const val PROCESS_INVALID_JPEGS = "pref_process_invalid_jpegs"

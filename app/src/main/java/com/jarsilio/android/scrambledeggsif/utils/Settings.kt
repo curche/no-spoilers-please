@@ -32,7 +32,7 @@ internal class Settings(private val context: Context) {
         get() = preferences.getBoolean(KEEP_JPEG_ORIENTATION, true)
 
     var isRenameImages: Boolean
-        get() = preferences.getBoolean(RENAME_IMAGES, true)
+        get() = preferences.getBoolean(RENAME_IMAGES, false)
         set(renameImages) = setPreference(RENAME_IMAGES, renameImages)
 
     var isMarkSpoiler: Boolean

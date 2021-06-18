@@ -1,17 +1,20 @@
 <resources>
-    <string name="share_via">Share image with scrambled Exif via</string>
-    <string name="share_multiple_via">Share images with scrambled Exif via</string>
+    <string name="app_name" translatable="false">No Spoilers Please</string>
+
+    <!-- %1$s to be replaced with @string/app_name -->
+    <string name="share_via">Share image with %1$s via</string>
+    <string name="share_multiple_via">Share images with %1$s via</string>
     <string name="permission_request">Request permission</string>
-    <string name="permission_sdcard_text">Scrambled Exif needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
+    <string name="permission_sdcard_text">%1$s needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
 
     <string name="instructions_title">Instructions</string>
     <string name="instructions_1">Select the pictures you wish to share from your gallery and tap on the share icon.</string>
-    <string name="instructions_2">Select <i>Scrambled Exif</i> from the app list.</string>
+    <string name="instructions_2">Select <i>No Spoilers Please</i> from the app list.</string>
     <string name="instructions_2_1">At this point, the metadata is being deleted!</string>
     <string name="instructions_3">Once this is done, the app list appears again. Just share the pictures like you normally would.</string>
     <string name="instructions_voila">Et voilà! You just shared some pictures without metadata with the world!</string>
 
-    <string name="permissions_open_app_toast">Scrambled Exif needs file access.
+    <string name="permissions_open_app_toast">%1$s needs file access.
         Please open the app and grant it from there</string>
     <string name="image_not_scrambleable">Couldn\'t scramble "%s" because it is not a JPEG image.</string>
 
@@ -24,7 +27,7 @@
 
     <!-- No Spoilers Please -> -->
     <string name="settings_mark_as_spoiler">Mark images as Spoiler</string>
-    <string name="settings_mark_as_spoiler_summary">This option adds a SPOILER_ prefix so that Discord recognises it as a \"Spoiler\".\n\nUseful only when sharing images to Discord Android app.</string>
+    <string name="settings_mark_as_spoiler_summary">This option adds a SPOILER_ prefix so that Discord recognises it as a \"Spoiler\".\nUseful only when sharing images to Discord Android app.</string>
 
     <string name="scrambling_title">Scrambling</string>
 
@@ -68,7 +71,7 @@
 
     <!-- ACRA -->
     <string name="acra_notification_channel_name">Crashes</string>
-    <string name="acra_notification_title">Wooops! Crash detected 💩</string>
+    <string name="acra_notification_title">Whoops! Crash detected 💩</string>
     <string name="acra_notification_text">Please send the report to the dev so that he can try to fix it.</string>
     <string name="acra_notification_send">Send email</string>
 

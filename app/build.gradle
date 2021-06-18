@@ -12,7 +12,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 66
-        versionName "1.7.3"
+        versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -27,7 +27,7 @@ android {
     productFlavors {
         standard {
             dimension "version"
-            resValue "string", "app_name", "No Spoilers Please"
+            // resValue "string", "app_name", "No Spoilers Please"
         }
         /* No Spoilers Please -->
         peace {

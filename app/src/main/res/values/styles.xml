@@ -27,12 +27,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- AboutLibraries theme -->
+    <!-- No Spoilers Please ->
+    AboutLibraries theme
     <style name="AppTheme.About.Light" parent="AboutLibrariesTheme.Light.DarkToolbar"/>
 
     <style name="AppTheme.About.Dark" parent="AboutLibrariesTheme">
         <item name="android:windowBackground">@color/windowBackground</item>
         <item name="about_libraries_card">@color/cardColor</item>
     </style>
+    <- No Spoilers Please -->
 
 </resources>

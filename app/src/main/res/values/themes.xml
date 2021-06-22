@@ -19,7 +19,7 @@
   -->
 
 <resources>
-    <style name="Theme.AppCompat.Translucent">
+    <style name="Theme.MaterialComponents.Translucent">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

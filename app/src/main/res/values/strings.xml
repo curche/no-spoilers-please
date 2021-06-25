@@ -8,9 +8,12 @@
     <string name="permission_sdcard_text"><i>No Spoilers Please</i> needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
 
     <string name="instructions_title">Instructions</string>
+    <string name="instructions_number_1">"1. "</string>
     <string name="instructions_1">Select the pictures you wish to share from your gallery and tap on the share icon.</string>
+    <string name="instructions_number_2">"2. "</string>
     <string name="instructions_2">Select <i>No Spoilers Please</i> from the app list.</string>
     <string name="instructions_2_1">At this point, the metadata is being deleted!</string>
+    <string name="instructions_number_3">"3. "</string>
     <string name="instructions_3">Once this is done, the app list appears again. Just share the pictures like you normally would.</string>
     <string name="instructions_voila">Et voilà! You just shared some pictures without metadata with the world!</string>
 

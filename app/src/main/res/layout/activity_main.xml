@@ -74,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/instructions_1"
                         android:layout_weight="1"
-                        android:gravity="left"
+                        android:gravity="start"
                         android:singleLine="false" />
                 </TableRow>
                 <TableRow>
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/instructions_2"
                         android:layout_weight="1"
-                        android:gravity="left"
+                        android:gravity="start"
                         android:singleLine="false" />
                 </TableRow>
                 <TableRow
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/instructions_2_1"
                         android:layout_weight="1"
-                        android:gravity="left"
+                        android:gravity="start"
                         android:singleLine="false" />
                 </TableRow>
                 <TableRow>
@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/instructions_3"
                         android:layout_weight="1"
-                        android:gravity="left"
+                        android:gravity="start"
                         android:singleLine="false" />
                 </TableRow>
             </TableLayout>

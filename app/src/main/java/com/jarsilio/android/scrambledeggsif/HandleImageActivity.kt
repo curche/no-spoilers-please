@@ -26,6 +26,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.os.SystemClock
@@ -107,7 +108,9 @@ class HandleImageActivity : AppCompatActivity() {
         }
         val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), chooserTitle)
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())
-        chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayListOf(ComponentName(this, HandleImageActivity::class.java)).toTypedArray<Parcelable>())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            chooserIntent.putExtra(Intent.EXTRA_EXCLUDE_COMPONENTS, arrayListOf(ComponentName(this, HandleImageActivity::class.java)).toTypedArray<Parcelable>())
+        }
         // No Spoilers Please -->
         chooserIntent.putExtra(Intent.EXTRA_TITLE, extraText)
         // <-- No Spoilers Please

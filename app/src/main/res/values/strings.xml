@@ -5,7 +5,7 @@
     <string name="share_via">Share image with %1$s via</string>
     <string name="share_multiple_via">Share images with %1$s via</string>
     <string name="permission_request">Request permission</string>
-    <string name="permission_sdcard_text">%1$s needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
+    <string name="permission_sdcard_text"><i>No Spoilers Please</i> needs access to your files to read the images you share with it.\n\nPlease tap on the button below to grant the necessary permission.</string>
 
     <string name="instructions_title">Instructions</string>
     <string name="instructions_1">Select the pictures you wish to share from your gallery and tap on the share icon.</string>
@@ -79,7 +79,7 @@
 
     <!-- MIUI permissions -->
     <string name="miui_permissions_title">Special permissions needed</string>
-    <string name="miui_permissions_message">%s needs a special permission called \'Display pop-up windows while running in the background\' in modern Xiaomi (MIUI) devices. You have to grant it manually.\n\nPlease tap on the \'Take me there\' button or look for the setting manually.</string>
+    <string name="miui_permissions_message">%1$s needs a special permission called \'Display pop-up windows while running in the background\' in modern Xiaomi (MIUI) devices. You have to grant it manually.\n\nPlease tap on the \'Take me there\' button or look for the setting manually.</string>
     <string name="miui_permissions_ok_button">Take me there</string>
     <string name="miui_permissions_dont_show_again_button">Don\'t show again</string>
 </resources>

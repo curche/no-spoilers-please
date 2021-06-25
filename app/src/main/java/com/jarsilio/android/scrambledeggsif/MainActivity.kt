@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity() {
         if (Values.getInstance(this).showMiuiPermissionsDialog) {
             AlertDialog.Builder(this).apply {
                 setTitle(R.string.miui_permissions_title)
-                setMessage(getString(R.string.miui_permissions_message, context.appName))
+                setMessage(getString(R.string.miui_permissions_message, getString(R.string.app_name)))
                 setPositiveButton(R.string.miui_permissions_ok_button) { _, _ -> vendorUtils.openMiuiPermissionsDialogIfNecessary() }
                 setNegativeButton(R.string.miui_permissions_dont_show_again_button) { _, _ -> Values.getInstance(context).showMiuiPermissionsDialog = false }
                 show()

@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 app:srcCompat="@drawable/ic_launcher_foreground"
-                android:contentDescription="title egg image" />
+                android:contentDescription="@string/app_name" />
             <!-- <- No Spoilers Please -->
             <TextView
                 android:id="@+id/permissions_explanation"

@@ -26,6 +26,8 @@
     <string name="settings_menu_item">Settings</string>
 
     <!-- No Spoilers Please -> -->
+    <string name="settings_general">General Settings</string>
+
     <string name="settings_mark_as_spoiler">Mark images as Spoiler</string>
     <string name="settings_mark_as_spoiler_summary">This option adds a SPOILER_ prefix so that Discord recognises it as a \"Spoiler\".\nUseful only when sharing images to Discord Android app.</string>
 

@@ -19,11 +19,15 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- No Spoilers Please -> -->
-    <SwitchPreference
-        android:defaultValue="true"
-        android:title="@string/settings_mark_as_spoiler"
-        android:key="pref_mark_as_spoiler"
-        android:summary="@string/settings_mark_as_spoiler_summary" />
+    <PreferenceCategory
+        android:key="prefs_general"
+        android:title="@string/settings_general">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/settings_mark_as_spoiler"
+            android:key="pref_mark_as_spoiler"
+            android:summary="@string/settings_mark_as_spoiler_summary" />
+    </PreferenceCategory>
     <!-- <- No Spoilers Please -->
     <SwitchPreference
         android:defaultValue="false"

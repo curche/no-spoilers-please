@@ -37,7 +37,6 @@ import com.jarsilio.android.scrambledeggsif.utils.ExifScrambler
 import com.jarsilio.android.scrambledeggsif.utils.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE
 import com.jarsilio.android.scrambledeggsif.utils.Utils
 import java.util.ArrayList
-import java.util.Locale
 import timber.log.Timber
 
 @ExperimentalUnsignedTypes
@@ -128,7 +127,7 @@ class HandleImageActivity : AppCompatActivity() {
         val targetedShareIntents = ArrayList<Intent>()
         val resolveInfos = packageManager.queryIntentActivities(createShareIntent(imageUris), 0)
         for (info in resolveInfos) {
-            if (info.activityInfo.packageName.toLowerCase(Locale.ROOT) == packageName.toLowerCase(Locale.ROOT)) {
+            if (info.activityInfo.packageName.equals(packageName, ignoreCase = true)) {
                 continue // Don't add out own package
             }
 

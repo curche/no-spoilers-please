@@ -72,7 +72,7 @@ class HandleImageActivity : AppCompatActivity() {
                     handleImages()
                 } else {
                     Timber.d("READ_EXTERNAL_STORAGE has not been granted. Showing toast to tell the user to open the app")
-                    Toast.makeText(this, getString(R.string.permissions_open_app_toast, R.string.app_name), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.permissions_open_app_toast, getString(R.string.app_name)), Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -101,9 +101,9 @@ class HandleImageActivity : AppCompatActivity() {
     private fun shareImages(imageUris: ArrayList<Uri>, extraText: String) {
         val targetedShareIntents = buildTargetedShareIntents(imageUris)
         val chooserTitle = if (imageUris.size == 1) {
-            getString(R.string.share_via, R.string.app_name)
+            getString(R.string.share_via, getString(R.string.app_name))
         } else {
-            getString(R.string.share_multiple_via, R.string.app_name)
+            getString(R.string.share_multiple_via, getString(R.string.app_name))
         }
         val chooserIntent = Intent.createChooser(targetedShareIntents.removeAt(0), chooserTitle)
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, targetedShareIntents.toTypedArray<Parcelable>())

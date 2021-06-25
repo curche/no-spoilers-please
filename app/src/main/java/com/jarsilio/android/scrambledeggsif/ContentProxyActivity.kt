@@ -38,7 +38,7 @@ class ContentProxyActivity : AppCompatActivity() {
                 putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
             }
         }
-        Intent.createChooser(intent, getString(R.string.share_multiple_via, R.string.app_name))
+        Intent.createChooser(intent, getString(R.string.share_multiple_via, getString(R.string.app_name)))
     }
 
     private fun scrambleAndFinish(imageUri: Uri) {

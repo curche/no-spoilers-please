@@ -32,7 +32,7 @@ Get the app from the [releases page](https://github.com/curche/no-spoilers-pleas
 
 This app is a fork on the [Scrambled-Exif](https://gitlab.com/juanitobananas/scrambled-exif/) - a FOSS app for sharing Pictures after Removing Exif data - available from Play Store, F-Droid and GitLab
 
-If you wish to contribute, please have a look at the list of Open issues.
+If you wish to contribute, please have a look at the list of Open issues. Note that the app uses an additional `lib-common` library as a git sub-module is being used and you will need to fetch it to be able to build the app in Android Studio. More on that [here](https://gitlab.com/juanitobananas/libcommon)
 
 Modifications have been made for personal use while hopefully adhering to the Licenses of the parent app. I do not intend to release this to Play Store or F-Droid. In case you notice any problems, please file an [Issue](https://github.com/curche/no-spoilers-please/issues/new)
 

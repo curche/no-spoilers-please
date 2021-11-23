@@ -2,10 +2,19 @@
 |----------|------------|
 | [![fork release](https://img.shields.io/github/release/curche/no-spoilers-please.svg?maxAge=3600&label=fork-release)](https://github.com/curche/no-spoilers-please/releases) | [![parent release](https://img.shields.io/gitlab/pipeline/juanitobananas/scrambled-exif/master?maxAge=3600&label=parent-release)](https://gitlab.com/juanitobananas/scrambled-exif/-/tree/master/) |
 
-
 # No Spoilers Please
 
 No Spoilers Please is a nifty Android app to easily share Spoiler-marked Images to Discord on devices running Android. Discord Android App still doesn't allow for app users to share spoiler-marked images in the same experience as on Desktop versions.
+
+# THIS APP IS NO LONGER MAINTAINED
+
+From the recent Discord Android App onwards (`Discord App 102.17 - Stable Update` or above), Discord has finally added the `SPOILER_` feature to its mobile apps! As a result, this app will no longer be required and the repo has been archived. Thanks to everyone who used the app till now! :D
+
+While you're reading this or were interested in this app, check out the Parent App [ScrambledEggsIF](https://gitlab.com/juanitobananas/scrambled-exif)
+
+<details>
+    <summary><b>Show old readme</b></summary>
+
 
 ## What does it do?
 
@@ -41,3 +50,4 @@ Modifications have been made for personal use while hopefully adhering to the Li
 * [juanitobanas](https://gitlab.com/juanitobananas) for making the original app. Do check it out.
 * Folks at the Tachiyomi Discord for testing out (and actually using it XD)
 * Thanks to you for visiting this Repo!
+</details>
